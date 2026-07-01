@@ -73,27 +73,229 @@ import {
 ,	RhombusPath2D
 ,	GRAB
 ,	C2D
+,	LinkCoordinates
 ,	LinkMetrics
-,	shaftSpec
-,	shaftToPath
 }	from './GeoZU.js'
 
-const
-strokeHeadPath	= ( c2D, pts, close ) => {
-	c2D.beginPath()
-	c2D.moveTo( ...pts[ 0 ] )
-	for	( let i = 1; i < pts.length; i++ )	c2D.lineTo( ...pts[ i ] )
-	close && c2D.closePath()
-}
 
 const
-PrepareCanvas		= _ => {
+PrepareCanvas	= _ => {
 	const
 	$ = _.getContext( '2d' )
 	$.clearRect( 0, 0, _.width, _.height )
 	return $
 }
 
+
+const
+HeadPaintType	= _ => {
+	switch	( _ ) {
+	case 'hollow'			:
+	case 'diamondHollow'	:
+	case 'circleHollow'		:
+		return	'stroke'
+	}
+	return 'fill'
+}
+
+
+const
+HeadAreaPath	= ( A, xyF, xyT ) => {
+	if	( A.corner ) {
+console.assert( false )
+    	return new Path2D()
+	} else {
+		const
+		[ dX, dY ] = DeltaXY( xyF, xyT )
+		const
+		hypot = Math.hypot( dX, dY )
+
+		const
+    	$ = new Path2D()
+    	$.arc(
+			xyT[ 0 ] - dX / hypot * GRAB
+		,	xyT[ 1 ] - dY / hypot * GRAB
+		,	GRAB
+		,	0
+		,	Math.PI * 2
+		)
+		return $
+	}
+}
+
+
+const
+DXY				= ( A, xyF, xyT ) => {
+	const
+	[ dX, dY ] = DeltaXY( xyF, xyT )
+	if	( A.corner ) {
+		dX
+	} else {
+		return DeltaXY( xyF, xyT )
+	}
+}
+
+
+const
+HeadPath		= ( corner, head, xyF, xyT ) => {
+	const
+	[ dX, dY ] = DeltaXY( xyF, xyT )
+	switch ( corner ) {
+	case 'sharp'	:
+	case 'arc'		:
+	case 'bezier'	:
+		switch	( head ) {
+		case 'hollow'			:
+		case 'diamondHollow'	:
+		case 'circleHollow'		:
+		case 
+		}
+	}
+}
+
+
+const
+ShaftPath		= _ => {
+
+	const
+	[ xyF, xyT ]			= LinkCoordinates( _ )
+
+,	[ [ nF, nT ], A, P ]	= _
+,	width					= Math.max( Number( P.lineWidth ) || 1 )
+
+//	TODO:
+,	ArrowType				= _ => 'line'
+,	PolygonMetrics			= _ => [ xyF, xyT ]
+	
+	const
+	$ = new Path2D
+	switch	( ArrowType( _ ) ) {
+	case 'quad'		:
+		{	const
+			[ start, c1, end ] = QuadMetrics( _ )
+			$.moveTo( ...start )
+			$.quadraticCurveTo( ...c1, ...end )
+		}
+		break
+	case 'bezier'	:
+		{	const
+			[ start, c1, c2, end ] = CubicMetrics( _ )
+			$.moveTo( ...start )
+			$.bezierCurveTo( ...c1, ...c2, ...end )
+		}
+		break
+	case 'arc'		:
+		{	const
+			[ start, corners, end ] = ArcMetrics( _ )
+			$.moveTo( ...start )
+			corners.forEach( _ => $.arcTo( _.c[ 0 ], _.c[ 1 ], _.b[ 0 ], _.b[ 1 ], _.r ) )
+			$.lineTo( ...end )
+		}
+		break
+	default		:	//	'line'
+		{	const
+			[ start, ...xys ] = PolygonMetrics( _ )
+			$.moveTo( ...start )
+			xys.forEach( _ => $.lineTo( ..._ ) )
+		}
+		break
+	}
+	return	$
+}
+
+/*
+const
+HeadPathF	= ( style, tip, dir, headLen, headHalf ) => {
+	const
+	[ dx, dy ] = dir
+,	nx = -dy
+,	ny = dx
+,	neck = [ tip[ 0 ] + dx * headLen, tip[ 1 ] + dy * headLen ]
+,	bL = [ neck[ 0 ] + nx * headHalf, neck[ 1 ] + ny * headHalf ]
+,	bR = [ neck[ 0 ] - nx * headHalf, neck[ 1 ] - ny * headHalf ]
+	switch	( style ) {
+	case 'open'		:
+		return	{ kind: 'line', xys: [ bL, tip, bR ], consume: 0 }
+	case 'hollow'	:
+		return	{ kind: 'poly', fill: false, xys: [ tip, bL, bR ], consume: headLen }
+	case 'diamond'	:
+	case 'diamondHollow'	: {
+		const
+		mid = [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
+	,	dL = [ mid[ 0 ] + nx * headHalf, mid[ 1 ] + ny * headHalf ]
+	,	dR = [ mid[ 0 ] - nx * headHalf, mid[ 1 ] - ny * headHalf ]
+		return	{ kind: 'poly', fill: style === 'diamond', xys: [ tip, dL, neck, dR ], consume: headLen }
+	}
+	case 'circle'	:
+	case 'circleHollow'	:
+		return	{
+			kind	: 'circle'
+		,	fill	: style === 'circle'
+		,	center	: [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
+		,	r		: headLen * 0.5
+		,	consume	: headLen
+		}
+	default			:	//	'triangle' ( also the fallback for legacy `true` )
+		return	{ kind: 'poly', fill: true, xys: [ tip, bL, bR ], consume: headLen }
+	}
+}
+*/
+
+const
+DrawLinkCanvas	= ( c2D, _ ) => {
+	c2D.save()
+
+	const
+	[ , A, P ] = _
+	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
+	P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
+	P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
+	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
+	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
+	P.lineDash			&& c2D.setLineDash( P.lineDash )
+
+	c2D.stroke( ShaftPath( _ ) )
+	c2D.restore()
+
+
+	c2D.save()
+	c2D.strokeStyle	= 'white'
+	const
+	[ xyF, xyT ]			= LinkCoordinates( _ )
+	c2D.stroke( HeadAreaPath( A, xyF, xyT ) )
+	c2D.stroke( HeadAreaPath( A, xyT, xyF ) )
+/*
+	c2D.fill			= P.fill ?? P.stroke ?? 'dodgerblue'
+	const
+	hptF = HeadPaintType( A.headF )
+	hptF === 'stroke'	&& c2D.stroke	( HeadPathF( _ ) )
+	hptF === 'fill'		&& c2D.fill		( HeadPathF( _ ) )
+	const
+	hptT = HeadPaintType( A.headT )
+	hptT === 'stroke'	&& c2D.stroke	( HeadPathT( _ ) )
+	hptT === 'fill'		&& c2D.fill		( HeadPathT( _ ) )
+*/
+	c2D.restore()
+}
+
+const
+HitLink			= ( _, xy ) => {
+	const
+	[ xyF, xyT ]			= LinkCoordinates( _ )
+	const
+	[ , A ] = _
+	if	( C2D.isPointInPath( HeadAreaPath( A, xyF, xyT ), ...xy ) ) return true
+	if	( C2D.isPointInPath( HeadAreaPath( A, xyT, xyF ), ...xy ) ) return true
+	C2D.save()
+	try {
+		C2D.lineWidth = GRAB
+		return C2D.isPointInStroke( ShaftPath( _ ), ...xy )
+	} finally {
+		C2D.restore()
+	}
+}
+
+/*
 const
 DrawLinkCanvas	= ( c2D, _ ) => {
 
@@ -102,7 +304,7 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	if	( !$ ) return
 
 	const
-	P = _[ 2 ]
+	[ , ,P ] = _
 
 	c2D.save()
 
@@ -125,24 +327,29 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	const
 	headFill = P.fill ?? P.stroke
 	for ( const h of $.heads )	{
-		if	( h.kind === 'circle' ) {
-			c2D.beginPath()
+		c2D.beginPath()
+		switch	( h.kind ) {
+		case 'circle':
 			c2D.arc( h.center[ 0 ], h.center[ 1 ], h.r, 0, 2 * Math.PI )
 			h.fill
-			?	( c2D.fillStyle = headFill, c2D.fill() )
-			:	( c2D.strokeStyle = P.stroke, c2D.stroke() )
-			return
-		}
-		if	( h.kind === 'line' ) {
-			strokeHeadPath( c2D, h.pts, false )
-			c2D.strokeStyle = P.stroke
-			c2D.stroke()
-			return
-		}
-		strokeHeadPath( c2D, h.pts, true )
-		h.fill
 		?	( c2D.fillStyle = headFill, c2D.fill() )
 		:	( c2D.strokeStyle = P.stroke, c2D.stroke() )
+			break
+		case 'line':
+			c2D.moveTo( ...h.xys[ 0 ] )
+			for	( let i = 1; i < h.xys.length; i++ ) c2D.lineTo( ...h.xys[ i ] )
+			c2D.strokeStyle = P.stroke
+			c2D.stroke()
+			break
+		default:
+			c2D.moveTo( ...h.xys[ 0 ] )
+			for	( let i = 1; i < h.xys.length; i++ ) c2D.lineTo( ...h.xys[ i ] )
+			c2D.closePath()
+			h.fill
+		?	( c2D.fillStyle = headFill, c2D.fill() )
+		:	( c2D.strokeStyle = P.stroke, c2D.stroke() )
+			break
+		}
 	}
 
 	c2D.restore()
@@ -156,7 +363,7 @@ HitLink			= ( _, xy ) => {
 	if	( !$ ) return
 
 	const
-	P = _[ 2 ]
+	[ , ,P ] = _
 
 	C2D.save()
 	try {
@@ -174,8 +381,8 @@ HitLink			= ( _, xy ) => {
 				continue
 			}
 			C2D.beginPath()
-			C2D.moveTo( ...h.pts[ 0 ] )
-			for	( let i = 1; i < h.pts.length; i++ )	C2D.lineTo( ...h.pts[ i ] )
+			C2D.moveTo( ...h.xys[ 0 ] )
+			for	( let i = 1; i < h.xys.length; i++ )	C2D.lineTo( ...h.xys[ i ] )
 			if	( h.kind === 'line' ) {
 				if	( C2D.isPointInStroke( ...xy ) ) return true
 			} else {
@@ -188,6 +395,7 @@ HitLink			= ( _, xy ) => {
 		C2D.restore()
 	}
 }
+*/
 
 import { DrawForeignLabel	} from './ForeignLabel.js'
 

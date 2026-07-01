@@ -64,54 +64,32 @@ RhombusPath2D	= ( { cX, cY, rH, rV } ) => {
 	return	$
 }
 
-//	point on S's outline along the ray from its center in direction ( dX, dY ).
-//	ellipse / rhombus follow their real outline; rect / SVG / PNG use the bbox edge.
-const
-onOutline		= ( S, dX, dY ) => {
-	if	( !dX && !dY ) return [ S.cX, S.cY ]
-	const	rH = Math.abs( S.rH ), rV = Math.abs( S.rV )
-	let		scale
-	switch ( S.type ) {
-	case 'ellipse'	:
-		scale = 1 / Math.hypot( dX / rH, dY / rV )
-		break
-	case 'rhombus'	:
-		scale = 1 / ( Math.abs( dX ) / rH + Math.abs( dY ) / rV )
-		break
-	default			: {	//	rect, SVG, PNG: bounding-box edge
-		const	sH = dX ? rH / Math.abs( dX ) : Infinity
-		const	sV = dY ? rV / Math.abs( dY ) : Infinity
-		scale = Math.min( sH, sV )
+export const
+LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
+	const
+	onOutline		= ( S, dX, dY ) => {
+		if	( !dX && !dY ) return [ S.cX, S.cY ]
+		const	rH = Math.abs( S.rH ), rV = Math.abs( S.rV )
+		let		scale
+		switch ( S.type ) {
+		case 'ellipse'	:
+			scale = 1 / Math.hypot( dX / rH, dY / rV )
+			break
+		case 'rhombus'	:
+			scale = 1 / ( Math.abs( dX ) / rH + Math.abs( dY ) / rV )
+			break
+		default			: {	//	rect, SVG, PNG: bounding-box edge
+			const	sH = dX ? rH / Math.abs( dX ) : Infinity
+			const	sV = dY ? rV / Math.abs( dY ) : Infinity
+			scale = Math.min( sH, sV )
+			}
 		}
+		return	[ S.cX + dX * scale, S.cY + dY * scale ]
 	}
-	return	[ S.cX + dX * scale, S.cY + dY * scale ]
-}
-
-//	auto end facing an anchored end: when the anchored attach point p lies within
-//	the auto rect's vertical span ( and the anchor has an L/R side ) attach on the
-//	near vertical edge at p.y → a horizontal connector; when it lies within the
-//	horizontal span ( anchor has a T/B side ) attach on the near horizontal edge at
-//	p.x → a vertical connector. Otherwise fall back to the centre-ray outline point.
-//	rect / SVG / PNG only; ellipse / rhombus keep their curved attach.
-const
-autoPerp		= ( S, [ px, py ], aOther ) => {
-	if	( S.type !== 'ellipse' && S.type !== 'rhombus' ) {
-		const	hasH = aOther.includes( 'L' ) || aOther.includes( 'R' )
-		,		hasV = aOther.includes( 'T' ) || aOther.includes( 'B' )
-		if	( hasH && T( S ) < py && py < B( S ) )	return [ px <= S.cX ? L( S ) : R( S ), py ]
-		if	( hasV && L( S ) < px && px < R( S ) )	return [ px, py <= S.cY ? T( S ) : B( S ) ]
-	}
-	return	onOutline( S, px - S.cX, py - S.cY )
-}
-
-const
-linkCoordinates	= ( [ [ nF, nT ], A, P ] ) => {
 	const
 	$ = ( S, A, s ) => {
 		let	P
 		switch	( A ) {
-		//	corners → the corner point; sides → the edge midpoint ( so the line
-		//	always lands on the edge and connects cleanly )
 		case 'TL'	: P = [ L( S ), T( S ) ]; break
 		case 'TR'	: P = [ R( S ), T( S ) ]; break
 		case 'BL'	: P = [ L( S ), B( S ) ]; break
@@ -124,21 +102,25 @@ linkCoordinates	= ( [ [ nF, nT ], A, P ] ) => {
 		}
 		//	anchored: rects keep the box point; ellipse / rhombus project onto the outline
 		return	S.type === 'ellipse' || S.type === 'rhombus'
-			?	onOutline( S, P[ 0 ] - S.cX, P[ 1 ] - S.cY )
-			:	P
+		?	onOutline( S, P[ 0 ] - S.cX, P[ 1 ] - S.cY )
+		:	P
 	}
-	const
-	aF = A.anchorF, aT = A.anchorT
-	const
-	pF = $( nF[ 1 ], aF, nT[ 1 ], aT )
-	,	pT = $( nT[ 1 ], aT, nF[ 1 ], aF )
-	//	The perpendicular ( autoPerp ) snap — the auto end attaches level with the
-	//	anchored edge, giving a horizontal / vertical connector — applies only to
-	//	'straight' links. Every other corner style routes the one-anchored link
-	//	orthogonally ( see linkEnds.ortho ), so the auto end keeps its centre-ray
-	//	attach here.
+,	aF = A.anchorF
+,	aT = A.anchorT
+,	pF = $( nF[ 1 ], aF, nT[ 1 ], aT )
+,	pT = $( nT[ 1 ], aT, nF[ 1 ], aF )
+
+,	autoPerp		= ( S, [ px, py ], aOther ) => {
+		if	( S.type !== 'ellipse' && S.type !== 'rhombus' ) {
+			const
+			hasH = aOther.includes( 'L' ) || aOther.includes( 'R' )
+		,	hasV = aOther.includes( 'T' ) || aOther.includes( 'B' )
+			if	( hasH && T( S ) < py && py < B( S ) )	return [ px <= S.cX ? L( S ) : R( S ), py ]
+			if	( hasV && L( S ) < px && px < R( S ) )	return [ px, py <= S.cY ? T( S ) : B( S ) ]
+		}
+		return	onOutline( S, px - S.cX, py - S.cY )
+	}
 	if	( A.corner === 'straight' ) {
-		//	exactly one end anchored: snap the auto end perpendicular to the edge it hits
 		if	( aF && !aT )	return [ pF, autoPerp( nT[ 1 ], pF, aF ) ]
 		if	( aT && !aF )	return [ autoPerp( nF[ 1 ], pT, aT ), pT ]
 	}
@@ -153,11 +135,11 @@ unit			= ( x, y ) => {
 }
 
 const
-pathLength		= pts => {
+pathLength		= xys => {
 	let
 	sum = 0
-	for	( let i = 1; i < pts.length; i++ ) {
-		sum += Math.hypot( pts[ i ][ 0 ] - pts[ i - 1 ][ 0 ], pts[ i ][ 1 ] - pts[ i - 1 ][ 1 ] )
+	for	( let i = 1; i < xys.length; i++ ) {
+		sum += Math.hypot( xys[ i ][ 0 ] - xys[ i - 1 ][ 0 ], xys[ i ][ 1 ] - xys[ i - 1 ][ 1 ] )
 	}
 	return	sum
 }
@@ -165,22 +147,22 @@ pathLength		= pts => {
 //	unit direction ( and length ) of the route's first / last non-degenerate
 //	segment, measured inward from the matching endpoint
 const
-endDir			= ( pts, atStart ) => {
+endDir			= ( xys, atStart ) => {
 	if	( atStart ) {
-		const	a = pts[ 0 ]
-		for	( let i = 1; i < pts.length; i++ ) {
+		const	a = xys[ 0 ]
+		for	( let i = 1; i < xys.length; i++ ) {
 			const
-			dx = pts[ i ][ 0 ] - a[ 0 ]
-			,	dy = pts[ i ][ 1 ] - a[ 1 ]
+			dx = xys[ i ][ 0 ] - a[ 0 ]
+			,	dy = xys[ i ][ 1 ] - a[ 1 ]
 			,	d = Math.hypot( dx, dy )
 			if	( d > 1e-6 ) return [ dx / d, dy / d, d ]
 		}
 	} else {
-		const	a = pts[ pts.length - 1 ]
-		for	( let i = pts.length - 2; i >= 0; i-- ) {
+		const	a = xys[ xys.length - 1 ]
+		for	( let i = xys.length - 2; i >= 0; i-- ) {
 			const
-			dx = pts[ i ][ 0 ] - a[ 0 ]
-			,	dy = pts[ i ][ 1 ] - a[ 1 ]
+			dx = xys[ i ][ 0 ] - a[ 0 ]
+			,	dy = xys[ i ][ 1 ] - a[ 1 ]
 			,	d = Math.hypot( dx, dy )
 			if	( d > 1e-6 ) return [ dx / d, dy / d, d ]
 		}
@@ -189,15 +171,15 @@ endDir			= ( pts, atStart ) => {
 }
 
 const
-subPath			= ( pts, d0, d1 ) => {
+subPath			= ( xys, d0, d1 ) => {
 	const
 	out = []
 	let
 	dist = 0
-	for	( let i = 1; i < pts.length; i++ ) {
+	for	( let i = 1; i < xys.length; i++ ) {
 		const
-		[ ax, ay ] = pts[ i - 1 ]
-		,	[ bx, by ] = pts[ i ]
+		[ ax, ay ] = xys[ i - 1 ]
+		,	[ bx, by ] = xys[ i ]
 		const
 		segLen = Math.hypot( bx - ax, by - ay )
 		if	( segLen < 1e-9 ) continue
@@ -238,23 +220,23 @@ const
 headGeometry		= ( style, tip, dir, headLen, headHalf ) => {
 	const
 	[ dx, dy ] = dir
-	,	nx = -dy
-	,	ny = dx
-	,	neck = [ tip[ 0 ] + dx * headLen, tip[ 1 ] + dy * headLen ]
-	,	bL = [ neck[ 0 ] + nx * headHalf, neck[ 1 ] + ny * headHalf ]
-	,	bR = [ neck[ 0 ] - nx * headHalf, neck[ 1 ] - ny * headHalf ]
+,	nx = -dy
+,	ny = dx
+,	neck = [ tip[ 0 ] + dx * headLen, tip[ 1 ] + dy * headLen ]
+,	bL = [ neck[ 0 ] + nx * headHalf, neck[ 1 ] + ny * headHalf ]
+,	bR = [ neck[ 0 ] - nx * headHalf, neck[ 1 ] - ny * headHalf ]
 	switch	( style ) {
 	case 'open'		:
-		return	{ kind: 'line', pts: [ bL, tip, bR ], consume: 0 }
+		return	{ kind: 'line', xys: [ bL, tip, bR ], consume: 0 }
 	case 'hollow'	:
-		return	{ kind: 'poly', fill: false, pts: [ tip, bL, bR ], consume: headLen }
+		return	{ kind: 'poly', fill: false, xys: [ tip, bL, bR ], consume: headLen }
 	case 'diamond'	:
 	case 'diamondHollow'	: {
 		const
 		mid = [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
 		,	dL = [ mid[ 0 ] + nx * headHalf, mid[ 1 ] + ny * headHalf ]
 		,	dR = [ mid[ 0 ] - nx * headHalf, mid[ 1 ] - ny * headHalf ]
-		return	{ kind: 'poly', fill: style === 'diamond', pts: [ tip, dL, neck, dR ], consume: headLen }
+		return	{ kind: 'poly', fill: style === 'diamond', xys: [ tip, dL, neck, dR ], consume: headLen }
 	}
 	case 'circle'	:
 	case 'circleHollow'	:
@@ -266,7 +248,7 @@ headGeometry		= ( style, tip, dir, headLen, headHalf ) => {
 		,	consume	: headLen
 		}
 	default			:	//	'triangle' ( also the fallback for legacy `true` )
-		return	{ kind: 'poly', fill: true, pts: [ tip, bL, bR ], consume: headLen }
+		return	{ kind: 'poly', fill: true, xys: [ tip, bL, bR ], consume: headLen }
 	}
 }
 
@@ -334,7 +316,7 @@ SIDE_ANCHOR		= new Set( [ 'T', 'B', 'L', 'R' ] )
 const
 linkEnds		= ( [ [ nF, nT ], A, P ] ) => {
 	const
-	[ pF, pT ] = linkCoordinates( [ [ nF, nT ], A, P ] )
+	[ pF, pT ] = LinkCoordinates( [ [ nF, nT ], A, P ] )
 ,	outwardF = boundaryOutward( nF[ 1 ], A.anchorF, pF )
 ,	outwardT = boundaryOutward( nT[ 1 ], A.anchorT, pT )
 ,	frameF = frameHalf( nF[ 2 ] )
@@ -345,7 +327,7 @@ linkEnds		= ( [ [ nF, nT ], A, P ] ) => {
 	,	tipT	: offsetOutward( pT, outwardT, frameT )
 	//	every non-'straight' link is routed orthogonally ( right-angle bends ),
 	//	whatever its anchors. 'straight' is the only direct 2-point line — and the
-	//	only case that gets the perpendicular H/V snap ( see linkCoordinates ).
+	//	only case that gets the perpendicular H/V snap ( see LinkCoordinates ).
 	,	ortho	: A.corner !== 'straight'
 	//	both ends anchored to the same pure side → the shared outward normal, so
 	//	routeFrom can run the link around the outside ( null otherwise )
@@ -466,16 +448,16 @@ ARC_RADIUS		= 48	//	max fillet radius for the 'arc' corner style
 //	tangents at the trimmed ends stay axis-aligned, so the arrowheads still meet
 //	the shaft cleanly in every style.
 export	const
-shaftSpec		= ( pts, corner ) => {
+shaftSpec		= ( xys, corner ) => {
 	const
 	style = corner || 'bezier'
-	if	( pts.length <= 2 || style === 'sharp' )	return { type: 'line', pts }
+	if	( xys.length <= 2 || style === 'sharp' )	return { type: 'line', xys }
 	if	( style === 'arc' ) {
 		const
 		corners = []
-		for	( let i = 1; i < pts.length - 1; i++ ) {
+		for	( let i = 1; i < xys.length - 1; i++ ) {
 			const
-			prev = pts[ i - 1 ], c = pts[ i ], next = pts[ i + 1 ]
+			prev = xys[ i - 1 ], c = xys[ i ], next = xys[ i + 1 ]
 			,	[ inX, inY ] = unit( c[ 0 ] - prev[ 0 ], c[ 1 ] - prev[ 1 ] )
 			,	[ outX, outY ] = unit( next[ 0 ] - c[ 0 ], next[ 1 ] - c[ 1 ] )
 			,	r = Math.min(
@@ -492,12 +474,12 @@ shaftSpec		= ( pts, corner ) => {
 			,	sweep	: inX * outY - inY * outX > 0 ? 1 : 0
 			} )
 		}
-		if	( !corners.length )	return { type: 'line', pts }
-		return	{ type: 'arc', start: pts[ 0 ], end: pts[ pts.length - 1 ], corners }
+		if	( !corners.length )	return { type: 'line', xys }
+		return	{ type: 'arc', start: xys[ 0 ], end: xys[ xys.length - 1 ], corners }
 	}
-	return	pts.length === 3
-	?	{ type: 'quad', p0: pts[ 0 ], c: pts[ 1 ], p1: pts[ 2 ] }
-	:	{ type: 'cubic', p0: pts[ 0 ], c1: pts[ 1 ], c2: pts[ pts.length - 2 ], p1: pts[ pts.length - 1 ] }
+	return	xys.length === 3
+	?	{ type: 'quad', p0: xys[ 0 ], c: xys[ 1 ], p1: xys[ 2 ] }
+	:	{ type: 'cubic', p0: xys[ 0 ], c1: xys[ 1 ], c2: xys[ xys.length - 2 ], p1: xys[ xys.length - 1 ] }
 }
 
 //	trace a shaftSpec onto a Canvas 2D context ( caller does beginPath / stroke )
@@ -518,8 +500,8 @@ shaftToPath		= ( ctx, s ) => {
 		ctx.lineTo( ...s.end )
 		break
 	default		:	//	'line'
-		ctx.moveTo( ...s.pts[ 0 ] )
-		for	( let i = 1; i < s.pts.length; i++ )	ctx.lineTo( ...s.pts[ i ] )
+		ctx.moveTo( ...s.xys[ 0 ] )
+		for	( let i = 1; i < s.xys.length; i++ )	ctx.lineTo( ...s.xys[ i ] )
 	}
 }
 
