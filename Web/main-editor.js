@@ -143,13 +143,7 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 }
 
 const
-HitLink			= ( _, xy ) => {
-	const
-	{	shaftPath
-	,	xyF
-	,	xyT
-	} = ArrowPathes( _ )
-
+HitArrowPathes	= ( { shaftPath, xyF, xyT }, xy ) => {
 	if	( C2D.isPointInPath( HeadAreaPath( xyF, xyT ), ...xy ) ) return true
 	if	( C2D.isPointInPath( HeadAreaPath( xyT, xyF ), ...xy ) ) return true
 
@@ -161,6 +155,8 @@ HitLink			= ( _, xy ) => {
 		C2D.restore()
 	}
 }
+const
+HitLink			= ( _, xy ) => HitArrowPathes( ArrowPathes( _ ), xy )
 
 import { DrawForeignLabel	} from './ForeignLabel.js'
 
@@ -208,24 +204,24 @@ Links_XY	= xy => AvailableLinks().reduce(
 //	— so the head menu is reachable even when that end currently has no arrowhead,
 //	and clicks never fall onto the node.
 const
-HeadEnd_XY	= ( _, xy ) => {
-
-	const
-	{ xyF, xyT } = ArrowPathes( _ )
+HeadEndPathes_XY	= ( { xyF, xyT }, xy ) => {
 	if	( C2D.isPointInPath( HeadAreaPath( xyF, xyT ), ...xy ) ) return 'T'
 	if	( C2D.isPointInPath( HeadAreaPath( xyT, xyF ), ...xy ) ) return 'F'
 	return null
 }
-
-//	first link whose arrowhead is under the point → { link, end } | null
 const
-Head_XY		= xy => {
+ContextLink_XY	= xy => {
+	let
+	link = null
 	for ( const _ of AvailableLinks() ) {
 		const
-		end = HeadEnd_XY( _, xy )
-		if	( end ) return { link: _, end }
+		pathes = ArrowPathes( _ )
+		const
+		end = HeadEndPathes_XY( pathes, xy )
+		if	( end ) return { head: { link: _, end }, link: null }
+		!link && HitArrowPathes( pathes, xy ) && ( link = _ )
 	}
-	return null
+	return	{ head: null, link }
 }
 
 const
@@ -488,7 +484,6 @@ MainEditor extends HTMLElement {
 			ev.stopPropagation()
 		,	this.linkMenuKey && RemoveLink( [ this.linkMenuKey[ 0 ], this.linkMenuKey[ 1 ] ] )
 		,	this.hideContextMenus()
-		,	this.reformer.focus()
 		)
 
 		for ( const b of HEAD_MENU.querySelectorAll( 'button.head-opt' ) ) {
@@ -496,7 +491,6 @@ MainEditor extends HTMLElement {
 				ev.stopPropagation()
 			,	this.setLinkHead( b.dataset.head || '' )
 			,	this.hideContextMenus()
-			,	this.reformer.focus()
 			)
 		}
 
@@ -512,21 +506,18 @@ MainEditor extends HTMLElement {
 			ev.stopPropagation()
 		,	this.nodeMenuTarget && await Restack( this.nodeMenuTarget[ 0 ], true )
 		,	this.hideContextMenus()
-		,	this.reformer.focus()
 		)
 
 		NODE_MENU_BACK.onclick	= async ev => (
 			ev.stopPropagation()
 		,	this.nodeMenuTarget && await Restack( this.nodeMenuTarget[ 0 ], false )
 		,	this.hideContextMenus()
-		,	this.reformer.focus()
 		)
 
 		NODE_MENU_DELETE.onclick	= async ev => (
 			ev.stopPropagation()
 		,	this.nodeMenuTarget && await Delete()
 		,	this.hideContextMenus()
-		,	this.reformer.focus()
 		)
 
 		NODE_MENU_COPY_ID.onclick	= ev => (
@@ -616,13 +607,14 @@ MainEditor extends HTMLElement {
 		void Link( [ [ F, T ], A, link[ 2 ] ] )
 	}
 
-	hideContextMenus() {
+	hideContextMenus( focusReformer = true ) {
 		LINK_MENU.style.display	= 'none'
 		HEAD_MENU.style.display	= 'none'
 		NODE_MENU.style.display	= 'none'
 		this.linkMenuKey		= null
 		this.headMenuTarget		= null
 		this.nodeMenuTarget		= null
+		focusReformer && this.reformer.focus()
 	}
 
 	positionContextMenu( menu, ev ) {
@@ -842,12 +834,12 @@ MainEditor extends HTMLElement {
 	async onContextMenu( ev ) {
 		const
 		xy = XY_EV( ev )
-		//	an arrowhead is the most specific target → its own style menu
 		const
-		head = Head_XY( xy )
+		{ head, link } = ContextLink_XY( xy )
+		//	an arrowhead is the most specific target → its own style menu
 		if	( head ) {
 			ev.preventDefault()
-			this.hideContextMenus()
+			this.hideContextMenus( false )
 			const
 			[ [ nF, nT ], A ] = head.link
 			this.headMenuTarget	= { F: nF[ 0 ], T: nT[ 0 ], end: head.end }
@@ -859,12 +851,10 @@ MainEditor extends HTMLElement {
 			this.positionContextMenu( HEAD_MENU, ev )
 			return
 		}
-		const
-		links = Links_XY( xy )
-		if	( links.length ) {
+		if	( link ) {
 			ev.preventDefault()
-			this.hideContextMenus()
-			this.linkMenuKey	= links[ 0 ][ 0 ].map( _ => _[ 0 ] )	//	[ nodeF, nodeT ] → [ idF, idT ]
+			this.hideContextMenus( false )
+			this.linkMenuKey	= link[ 0 ].map( _ => _[ 0 ] )	//	[ nodeF, nodeT ] → [ idF, idT ]
 			LINK_MENU.style.display	= 'block'
 			this.positionContextMenu( LINK_MENU, ev )
 			return
@@ -873,7 +863,7 @@ MainEditor extends HTMLElement {
 		node = Node_EV( ev )
 		if	( ! node ) return
 		ev.preventDefault()
-		this.hideContextMenus()
+		this.hideContextMenus( false )
 
 		app.reforms			= []
 		this.registReform( node )
@@ -904,8 +894,10 @@ MainEditor extends HTMLElement {
 			if ( ev.metaKey || ev.ctrlKey ) { ev.preventDefault(); await this.expand() }
 			break
 		case 'Escape':
+			ev.preventDefault()
 			this.gesture = null
 			this.hideContextMenus()
+			app.reforms.length = 0
 			await this.DrawReforms()
 			break
 		case 'Delete':
@@ -963,10 +955,9 @@ MainEditor extends HTMLElement {
 
 		this.reformer.tabIndex = 0
 
-		ev.pointerId != null && this.reformer.setPointerCapture( ev.pointerId )
-
 		//	PAN ( middle-drag or space + drag ): scroll by raw client delta, no commit
 		if	( ev.button === 1 || this.spaceDown ) {
+			ev.pointerId != null && this.reformer.setPointerCapture( ev.pointerId )
 			this.reformer.style.cursor = 'grabbing'
 			let	last = [ ev.clientX, ev.clientY ]
 			this.gesture = {
@@ -979,6 +970,9 @@ MainEditor extends HTMLElement {
 			}
 			return
 		}
+		if	( ev.button !== 0 ) return
+
+		ev.pointerId != null && this.reformer.setPointerCapture( ev.pointerId )
 
 		const
 		xy	= XY_EV( ev )
