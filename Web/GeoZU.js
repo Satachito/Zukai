@@ -68,6 +68,29 @@ RhombusPath2D	= ( { cX, cY, rH, rV } ) => {
 	return	$
 }
 
+//	corner anchors ( TL / TR / BL / BR ) each expose two outward edge directions.
+//	the sign pair is [ horizontal, vertical ]: -1 = left / up, +1 = right / down.
+const
+CORNER_OUT		= { TL: [ -1, -1 ], TR: [ 1, -1 ], BL: [ -1, 1 ], BR: [ 1, 1 ] }
+
+//	reduce an anchor to the cardinal exit ( T / B / L / R ) used for routing.
+//	cardinals pass through; a corner picks the outward edge that heads toward the
+//	other endpoint ( q ), preferring the edge the target sits beyond, and falling
+//	back to the axis of larger separation when both / neither qualify.
+const
+CardinalExit	= ( a, [ px, py ], [ qx, qy ] ) => {
+	const	s = CORNER_OUT[ a ]
+	if	( !s ) return a
+	const
+	[ sx, sy ]	= s
+	,	dx	= qx - px
+	,	dy	= qy - py
+	,	hOK	= dx * sx > 0
+	,	vOK	= dy * sy > 0
+	,	horizontal = hOK !== vOK ? hOK : Math.abs( dx ) >= Math.abs( dy )
+	return	horizontal ? ( sx < 0 ? 'L' : 'R' ) : ( sy < 0 ? 'T' : 'B' )
+}
+
 const
 Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 
@@ -98,6 +121,11 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		return [ [ x, yF ], [ x, yT ] ]
 	}
 
+	//	fold corner anchors ( TL / TR / BL / BR ) into a cardinal exit so routing
+	//	only reasons about T / B / L / R
+	aF = CardinalExit( aF, [ xF, yF ], [ xT, yT ] )
+	aT = CardinalExit( aT, [ xT, yT ], [ xF, yF ] )
+
 	switch ( aF ) {
 	case 'T'	:
 		switch ( aT ) {
@@ -105,10 +133,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'B'	: return VHV()
 		case 'L'	: return VH()
 		case 'R'	: return VH()
-		case 'TL'	: return VH()
-		case 'TR'	: return VH()
-		case 'BL'	: return VH()
-		case 'BR'	: return VH()
 		}
 	case 'B'	:
 		switch ( aT ) {
@@ -116,10 +140,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'B'	: return DHU()
 		case 'L'	: return VH()
 		case 'R'	: return VH()
-		case 'TL'	: return VH()
-		case 'TR'	: return VH()
-		case 'BL'	: return VH()
-		case 'BR'	: return VH()
 		}
 	case 'L'	:
 		switch ( aT ) {
@@ -127,10 +147,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'B'	: return HV()
 		case 'L'	: return LVR()
 		case 'R'	: return HVH()
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
 		}
 	case 'R'	:
 		switch ( aT ) {
@@ -138,58 +154,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'B'	: return HV()
 		case 'L'	: return HVH()
 		case 'R'	: return RVL()
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		}
-	case 'TL'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		}
-	case 'TR'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		}
-	case 'BL'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		}
-	case 'BR'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
 		}
 	}
 }
