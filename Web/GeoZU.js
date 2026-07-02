@@ -3,7 +3,11 @@ import {
 }	from './DomUtils.js'
 
 import {
-	Union
+	DeltaXY
+,	DivXY
+,	AddXY
+,	MulXY
+,	Union
 } from './Geo2D.js'
 
 export const
@@ -62,6 +66,154 @@ RhombusPath2D	= ( { cX, cY, rH, rV } ) => {
 	$.lineTo( cX - rH, cY )
 	$.closePath()
 	return	$
+}
+
+const
+Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
+
+	const VHV	= () => {
+		const y = ( yF + yT ) / 2
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const HVH	= () => {
+		const x = ( xF + xT ) / 2
+		return [ [ x, yF ], [ x, yT ] ]
+	}
+	const VH	= () => [ [ xF, yT ] ]
+	const HV	= () => [ [ xT, yF ] ]
+	const UHD	= () => {
+		const y = Math.min( yF, yT ) - GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const DHU	= () => {
+		const y = Math.max( yF, yT ) + GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const LVR	= () => {
+		const x = Math.min( xF, xT ) - GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const RVL	= () => {
+		const x = Math.max( xF, xT ) + GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+
+	switch ( aF ) {
+	case 'T'	:
+		switch ( aT ) {
+		case 'T'	: return UHD()
+		case 'B'	: return VHV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		case 'TL'	: return VH()
+		case 'TR'	: return VH()
+		case 'BL'	: return VH()
+		case 'BR'	: return VH()
+		default		: return VHV()
+		}
+	case 'B'	:
+		switch ( aT ) {
+		case 'T'	: return VHV()
+		case 'B'	: return DHU()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		case 'TL'	: return VH()
+		case 'TR'	: return VH()
+		case 'BL'	: return VH()
+		case 'BR'	: return VH()
+		default		: return VHV()
+		}
+	case 'L'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return LVR()
+		case 'R'	: return HVH()
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HVH()
+		}
+	case 'R'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return HVH()
+		case 'R'	: return RHL()
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HVH()
+		}
+	case 'TL'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'TR'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'BL'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'BR'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	default		:
+		//	TODO:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return VHV()
+		}
+	}
 }
 
 export const
@@ -124,383 +276,309 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 		if	( aF && !aT )	return [ pF, autoPerp( nT[ 1 ], pF, aF ) ]
 		if	( aT && !aF )	return [ autoPerp( nF[ 1 ], pT, aT ), pT ]
 	}
-	return [ pF, pT ]
+	return [ pF, pT, Corners( aF, aT, pF, pT ) ]
 }
 
-const
-unit			= ( x, y ) => {
-	const
-	len = Math.hypot( x, y )
-	return	len < 1e-9 ? [ 0, 0 ] : [ x / len, y / len ]
-}
-
-const
-pathLength		= xys => {
-	let
-	sum = 0
-	for	( let i = 1; i < xys.length; i++ ) {
-		sum += Math.hypot( xys[ i ][ 0 ] - xys[ i - 1 ][ 0 ], xys[ i ][ 1 ] - xys[ i - 1 ][ 1 ] )
+export const
+IsStrokedHead	= _ => {
+	switch	( _ ) {
+	case 'open'				:
+	case 'hollow'			:
+	case 'diamondHollow'	:
+	case 'circleHollow'		:
+		return	true
 	}
-	return	sum
+	return false
 }
 
-//	unit direction ( and length ) of the route's first / last non-degenerate
-//	segment, measured inward from the matching endpoint
-const
-endDir			= ( xys, atStart ) => {
-	if	( atStart ) {
-		const	a = xys[ 0 ]
-		for	( let i = 1; i < xys.length; i++ ) {
-			const
-			dx = xys[ i ][ 0 ] - a[ 0 ]
-			,	dy = xys[ i ][ 1 ] - a[ 1 ]
-			,	d = Math.hypot( dx, dy )
-			if	( d > 1e-6 ) return [ dx / d, dy / d, d ]
-		}
-	} else {
-		const	a = xys[ xys.length - 1 ]
-		for	( let i = xys.length - 2; i >= 0; i-- ) {
-			const
-			dx = xys[ i ][ 0 ] - a[ 0 ]
-			,	dy = xys[ i ][ 1 ] - a[ 1 ]
-			,	d = Math.hypot( dx, dy )
-			if	( d > 1e-6 ) return [ dx / d, dy / d, d ]
-		}
-	}
-	return	[ 0, 0, 0 ]
-}
 
 const
-subPath			= ( xys, d0, d1 ) => {
+HeadMetrics		= ( head, shaftXY, tipXY, lineWidth ) => {
 	const
-	out = []
-	let
-	dist = 0
-	for	( let i = 1; i < xys.length; i++ ) {
-		const
-		[ ax, ay ] = xys[ i - 1 ]
-		,	[ bx, by ] = xys[ i ]
-		const
-		segLen = Math.hypot( bx - ax, by - ay )
-		if	( segLen < 1e-9 ) continue
-		const
-		segStart = dist
-		,	segEnd = dist + segLen
-		if	( segEnd <= d0 ) {
-			dist = segEnd
-			continue
-		}
-		if	( segStart >= d1 ) break
-		const
-		t0 = Math.max( 0, ( d0 - segStart ) / segLen )
-		,	t1 = Math.min( 1, ( d1 - segStart ) / segLen )
-		,	add = t => [ ax + ( bx - ax ) * t, ay + ( by - ay ) * t ]
-		,	p0 = add( t0 )
-		,	p1 = add( t1 )
-		if	( !out.length )	out.push( p0 )
-		else {
-			const
-			last = out[ out.length - 1 ]
-			if	( last[ 0 ] !== p0[ 0 ] || last[ 1 ] !== p0[ 1 ] )	out.push( p0 )
-		}
-		if	( p1[ 0 ] !== out[ out.length - 1 ][ 0 ] || p1[ 1 ] !== out[ out.length - 1 ][ 1 ] )	out.push( p1 )
-		dist = segEnd
-	}
-	return	out
-}
-
-//	per-style arrowhead geometry. dir points inward ( tip -> shaft ). returns a
-//	drawable descriptor plus `consume`: how much of the shaft to trim at this end
-//	so the shaft meets the head cleanly.
-//	  kind 'poly'   + fill   -> filled polygon ( triangle / diamond )
-//	  kind 'poly'   + !fill  -> stroked closed polygon ( hollow triangle / diamond )
-//	  kind 'line'            -> stroked open polyline ( open V )
-//	  kind 'circle' + fill   -> filled / stroked disc
-const
-headGeometry		= ( style, tip, dir, headLen, headHalf ) => {
-	const
-	[ dx, dy ] = dir
-,	nx = -dy
-,	ny = dx
-,	neck = [ tip[ 0 ] + dx * headLen, tip[ 1 ] + dy * headLen ]
-,	bL = [ neck[ 0 ] + nx * headHalf, neck[ 1 ] + ny * headHalf ]
-,	bR = [ neck[ 0 ] - nx * headHalf, neck[ 1 ] - ny * headHalf ]
-	switch	( style ) {
-	case 'open'		:
-		return	{ kind: 'line', xys: [ bL, tip, bR ], consume: 0 }
-	case 'hollow'	:
-		return	{ kind: 'poly', fill: false, xys: [ tip, bL, bR ], consume: headLen }
-	case 'diamond'	:
-	case 'diamondHollow'	: {
-		const
-		mid = [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
-		,	dL = [ mid[ 0 ] + nx * headHalf, mid[ 1 ] + ny * headHalf ]
-		,	dR = [ mid[ 0 ] - nx * headHalf, mid[ 1 ] - ny * headHalf ]
-		return	{ kind: 'poly', fill: style === 'diamond', xys: [ tip, dL, neck, dR ], consume: headLen }
-	}
-	case 'circle'	:
-	case 'circleHollow'	:
-		return	{
-			kind	: 'circle'
-		,	fill	: style === 'circle'
-		,	center	: [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
-		,	r		: headLen * 0.5
-		,	consume	: headLen
-		}
-	default			:	//	'triangle' ( also the fallback for legacy `true` )
-		return	{ kind: 'poly', fill: true, xys: [ tip, bL, bR ], consume: headLen }
-	}
-}
-
-const
-frameHalf		= paint => paint?.stroke ? ( Number( paint.lineWidth ) || 1 ) / 2 : 0
-
-const
-ellipseOutward	= ( S, px, py ) => unit(
-	( px - S.cX ) / ( S.rH * S.rH )
-,	( py - S.cY ) / ( S.rV * S.rV )
-)
-
-const
-rectEdgeOutward	= ( S, px, py ) => {
-	const
-	l = S.cX - S.rH
-	,	r = S.cX + S.rH
-	,	t = S.cY - S.rV
-	,	b = S.cY + S.rV
-	,	dL = Math.abs( px - l )
-	,	dR = Math.abs( px - r )
-	,	dT = Math.abs( py - t )
-	,	dB = Math.abs( py - b )
-	,	m = Math.min( dL, dR, dT, dB )
-	if	( m === dT )	return [ 0, -1 ]
-	if	( m === dB )	return [ 0, 1 ]
-	if	( m === dL )	return [ -1, 0 ]
-	return	[ 1, 0 ]
-}
-
-const
-boundaryOutward	= ( S, anchor, [ px, py ] ) => {
-	switch ( anchor ) {
-	case 'T'	: return [ 0, -1 ]
-	case 'B'	: return [ 0, 1 ]
-	case 'L'	: return [ -1, 0 ]
-	case 'R'	: return [ 1, 0 ]
-	case 'TL'	: return unit( -S.rH, -S.rV )
-	case 'TR'	: return unit( S.rH, -S.rV )
-	case 'BL'	: return unit( -S.rH, S.rV )
-	case 'BR'	: return unit( S.rH, S.rV )
-	default		:
-		switch ( S.type ) {
-		case 'rect':
-		case 'SVG':
-		case 'PNG'	: return rectEdgeOutward( S, px, py )
-		case 'ellipse'	: return ellipseOutward( S, px, py )
-		default		: return unit( px - S.cX, py - S.cY )
-		}
-	}
-}
-
-const
-offsetOutward	= ( p, outward, dist ) => [
-	p[ 0 ] + outward[ 0 ] * dist
-,	p[ 1 ] + outward[ 1 ] * dist
-]
-
-//	the four pure sides ( as opposed to the diagonal corner anchors )
-const
-SIDE_ANCHOR		= new Set( [ 'T', 'B', 'L', 'R' ] )
-
-//	attachment geometry ( boundary points, outward normals, stroke-frame insets
-//	and resulting boundary tips ); computed once per link
-const
-linkEnds		= ( [ [ nF, nT ], A, P ] ) => {
-	const
-	[ pF, pT ] = LinkCoordinates( [ [ nF, nT ], A, P ] )
-,	outwardF = boundaryOutward( nF[ 1 ], A.anchorF, pF )
-,	outwardT = boundaryOutward( nT[ 1 ], A.anchorT, pT )
-,	frameF = frameHalf( nF[ 2 ] )
-,	frameT = frameHalf( nT[ 2 ] )
-	return	{
-		pF, pT, outwardF, outwardT, frameF, frameT
-	,	tipF	: offsetOutward( pF, outwardF, frameF )
-	,	tipT	: offsetOutward( pT, outwardT, frameT )
-		//	only links with an explicit corner style are routed orthogonally
-		//	( right-angle bends ). Omitted corner is the direct 2-point line and
-		//	the only case that gets the perpendicular H/V snap ( see LinkCoordinates ).
-		,	ortho	: !!A.corner
-	//	both ends anchored to the same pure side → the shared outward normal, so
-	//	routeFrom can run the link around the outside ( null otherwise )
-	,	sameSideOut	: A.anchorF && A.anchorF === A.anchorT && SIDE_ANCHOR.has( A.anchorF ) ? outwardF : null
-	}
-}
-
-//	how far beyond the furthest edge the same-side detour runs
-const
-OUTSIDE_LANE	= 32
-
-//	centerline route whose endpoints are exactly the boundary tips, so the
-//	arrowheads, their necks and the shaft all share one geometry
-const
-routeFrom		= e => {
-	const
-	rF = e.tipF
-,	rT = e.tipT
-		//	non-ortho ( omitted corner ) is the only direct 2-point line
-		if	( !e.ortho )	return [ rF, rT ]
-	//	both ends on the same side: run both leads outward to a shared lane beyond
-	//	the furthest edge, then connect — routing the link around the outside
-	if	( e.sameSideOut ) {
-		const
-		[ ox, oy ] = e.sameSideOut
-		if	( ox ) {
-			const	lane = ( ox > 0 ? Math.max( rF[ 0 ], rT[ 0 ] ) : Math.min( rF[ 0 ], rT[ 0 ] ) ) + ox * OUTSIDE_LANE
-			return	[ rF, [ lane, rF[ 1 ] ], [ lane, rT[ 1 ] ], rT ]
-		}
-		const	lane = ( oy > 0 ? Math.max( rF[ 1 ], rT[ 1 ] ) : Math.min( rF[ 1 ], rT[ 1 ] ) ) + oy * OUTSIDE_LANE
-		return	[ rF, [ rF[ 0 ], lane ], [ rT[ 0 ], lane ], rT ]
-	}
-	const
-	midX = ( rF[ 0 ] + rT[ 0 ] ) / 2
-,	midY = ( rF[ 1 ] + rT[ 1 ] ) / 2
-	return	Math.abs( e.outwardF[ 0 ] ) >= Math.abs( e.outwardF[ 1 ] )
-	?	[ rF, [ midX, rF[ 1 ] ], [ midX, rT[ 1 ] ], rT ]
-	:	[ rF, [ rF[ 0 ], midY ], [ rT[ 0 ], midY ], rT ]
-}
-
-export	const
-LinkMetrics		= ( [ [ nF, nT ], A, P ] ) => {
+	[ dX, dY ] = DeltaXY( tipXY, shaftXY )
+,	len = Math.hypot( dX, dY )
+	if	( len < 1e-9 || !head ) return null
 
 	const
-	e = linkEnds( [ [ nF, nT ], A, P ] )
-,	route = routeFrom( e )
-,	len = pathLength( route )
-	if	( len < 1 ) return null
-
-	//	head size scales with the shaft width ( so a thick line gets a proportional
-	//	head ), with a sensible floor and a cap relative to the link length
-	const
-	lw = Number( P.lineWidth ) || 1
+	lw = Number( lineWidth ) || 1
 ,	headLen  = Math.min( len * 0.35, Math.max( 10, lw * 2.4 ) )
 ,	headHalf = Math.max( 4, headLen * 0.45 )
-
-	//	each arrowhead lies along its own end segment of the centerline and is
-	//	never longer than that segment, so its neck stays on the centerline; the
-	//	shaft is then the centerline between the two necks
-	const
-	heads = []
-	let
-	fDist = 0
-,	tDist = len
-
-	if	( A.headF ) {
-		const
-		[ ux, uy, segLen ] = endDir( route, true )
-	,	hl = Math.min( headLen, segLen )
-	,	h = headGeometry( A.headF, route[ 0 ], [ ux, uy ], hl, headHalf )
-		h.end = 'F'
-		heads.push( h )
-		fDist = h.consume
-	}
-	if	( A.headT ) {
-		const
-		[ ux, uy, segLen ] = endDir( route, false )
-	,	hl = Math.min( headLen, segLen )
-	,	h = headGeometry( A.headT, route[ route.length - 1 ], [ ux, uy ], hl, headHalf )
-		h.end = 'T'
-		heads.push( h )
-		tDist = len - h.consume
-	}
-	if	( tDist < fDist )	tDist = fDist
-
-	const
-	shaft = subPath( route, fDist, tDist )
-
-	//	right-click hit zones for the arrowhead menu: a fixed GRAB-radius circle at
-	//	each end, nudged GRAB along the shaft so it sits on the shaft side of the
-	//	boundary tip ( clear of the node ) and works even when no head is drawn.
-	const
-	dF = endDir( route, true )
-,	dT = endDir( route, false )
-,	tipT = route[ route.length - 1 ]
-	const
-	ends = [
-		{ end: 'F', c: [ route[ 0 ][ 0 ] + dF[ 0 ] * GRAB, route[ 0 ][ 1 ] + dF[ 1 ] * GRAB ] }
-	,	{ end: 'T', c: [ tipT[ 0 ] + dT[ 0 ] * GRAB, tipT[ 1 ] + dT[ 1 ] * GRAB ] }
-	]
-	return {
-		shaft	: shaft.length < 2 ? [ route[ 0 ], route[ route.length - 1 ] ] : shaft
-	,	heads
-	,	ends
-	}
+,	dir = DivXY( [ dX, dY ], len )
+,	normal = [ -dir[ 1 ], dir[ 0 ] ]
+,	neck = AddXY( tipXY, MulXY( dir, headLen ) )
+,	baseL = AddXY( neck, MulXY( normal, headHalf ) )
+,	baseR = AddXY( neck, MulXY( normal, -headHalf ) )
+	return	{ dir, normal, neck, baseL, baseR, headLen, headHalf }
 }
-
+const
+SVGXY			= ( [ x, y ] ) => `${ x } ${ y }`
 const
 ARC_RADIUS		= 48	//	max fillet radius for the 'arc' corner style
 
-//	how to stroke the shaft, chosen by the link's `corner` style. a 2-point shaft
-//	is always a straight line; a multi-point ( orthogonal ) shaft can be:
-	//	  'sharp'  polyline with right-angle corners
-	//	  'arc'    straight runs joined by quarter-circle fillets at each corner
-	//	  'curve'  a Bézier whose bend points are the controls, so the curve leaves
-	//	           each node perpendicular ( horizontal / vertical ) and rounds the
-	//	           corners smoothly
-//	tangents at the trimmed ends stay axis-aligned, so the arrowheads still meet
-//	the shaft cleanly in every style.
-export	const
-shaftSpec		= ( xys, corner ) => {
+export const
+HeadNeck		= ( head, shaftXY, tipXY, lineWidth ) => {
+	if	( !head || head === 'open' ) return tipXY
 	const
-	style = corner || ''
-	if	( xys.length <= 2 || style === 'sharp' )	return { type: 'line', xys }
-	if	( style === 'arc' ) {
-		const
-		corners = []
-		for	( let i = 1; i < xys.length - 1; i++ ) {
-			const
-			prev = xys[ i - 1 ], c = xys[ i ], next = xys[ i + 1 ]
-			,	[ inX, inY ] = unit( c[ 0 ] - prev[ 0 ], c[ 1 ] - prev[ 1 ] )
-			,	[ outX, outY ] = unit( next[ 0 ] - c[ 0 ], next[ 1 ] - c[ 1 ] )
-			,	r = Math.min(
-					ARC_RADIUS
-				,	Math.hypot( c[ 0 ] - prev[ 0 ], c[ 1 ] - prev[ 1 ] ) / 2
-				,	Math.hypot( next[ 0 ] - c[ 0 ], next[ 1 ] - c[ 1 ] ) / 2
-				)
-			if	( r < 0.5 )	continue
-			corners.push( {
-				a		: [ c[ 0 ] - inX * r, c[ 1 ] - inY * r ]
-			,	c		: c
-			,	b		: [ c[ 0 ] + outX * r, c[ 1 ] + outY * r ]
-			,	r
-			,	sweep	: inX * outY - inY * outX > 0 ? 1 : 0
-			} )
-		}
-		if	( !corners.length )	return { type: 'line', xys }
-		return	{ type: 'arc', start: xys[ 0 ], end: xys[ xys.length - 1 ], corners }
-	}
-	return	xys.length === 3
-	?	{ type: 'quad', p0: xys[ 0 ], c: xys[ 1 ], p1: xys[ 2 ] }
-	:	{ type: 'cubic', p0: xys[ 0 ], c1: xys[ 1 ], c2: xys[ xys.length - 2 ], p1: xys[ xys.length - 1 ] }
+	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
+	return	metrics?.neck ?? tipXY
 }
 
-//	trace a shaftSpec onto a Canvas 2D context ( caller does beginPath / stroke )
-export	const
-shaftToPath		= ( ctx, s ) => {
-	switch	( s.type ) {
-	case 'quad'	:
-		ctx.moveTo( ...s.p0 )
-		ctx.quadraticCurveTo( s.c[ 0 ], s.c[ 1 ], s.p1[ 0 ], s.p1[ 1 ] )
+export const
+HeadPath		= ( head, shaftXY, tipXY, lineWidth ) => {
+	const
+	$ = new Path2D()
+,	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
+	if	( !metrics ) return $
+	const
+	{ dir, normal, neck, baseL, baseR, headLen, headHalf } = metrics
+
+	switch	( head ) {
+	case 'open'				:
+		$.moveTo( ...baseL )
+		$.lineTo( ...tipXY )
+		$.lineTo( ...baseR )
 		break
-	case 'cubic'	:
-		ctx.moveTo( ...s.p0 )
-		ctx.bezierCurveTo( s.c1[ 0 ], s.c1[ 1 ], s.c2[ 0 ], s.c2[ 1 ], s.p1[ 0 ], s.p1[ 1 ] )
+	case 'hollow'			:
+	case 'triangle'			:
+		$.moveTo( ...tipXY )
+		$.lineTo( ...baseL )
+		$.lineTo( ...baseR )
+		$.closePath()
 		break
-	case 'arc'	:
-		ctx.moveTo( ...s.start )
-		for	( const k of s.corners )	ctx.arcTo( k.c[ 0 ], k.c[ 1 ], k.b[ 0 ], k.b[ 1 ], k.r )
-		ctx.lineTo( ...s.end )
+	case 'diamond'			:
+	case 'diamondHollow'	:
+		{	const
+			center = AddXY( tipXY, MulXY( dir, headLen * 0.5 ) )
+			$.moveTo( ...tipXY )
+			$.lineTo( ...AddXY( center, MulXY( normal, headHalf ) ) )
+			$.lineTo( ...neck )
+			$.lineTo( ...AddXY( center, MulXY( normal, -headHalf ) ) )
+			$.closePath()
+		}
 		break
-	default		:	//	'line'
-		ctx.moveTo( ...s.xys[ 0 ] )
-		for	( let i = 1; i < s.xys.length; i++ )	ctx.lineTo( ...s.xys[ i ] )
+	case 'circle'			:
+	case 'circleHollow'		:
+		$.arc(
+			tipXY[ 0 ] + dir[ 0 ] * headLen * 0.5
+		,	tipXY[ 1 ] + dir[ 1 ] * headLen * 0.5
+		,	headLen * 0.5
+		,	0
+		,	Math.PI * 2
+		)
+		break
+	default					:
+		$.moveTo( ...tipXY )
+		$.lineTo( ...baseL )
+		$.lineTo( ...baseR )
+		$.closePath()
+	}
+	return $
+}
+const
+HeadPathD		= ( head, shaftXY, tipXY, lineWidth ) => {
+	const
+	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
+	if	( !metrics ) return null
+	const
+	{ dir, normal, neck, baseL, baseR, headLen, headHalf } = metrics
+
+	switch	( head ) {
+	case 'open'				:
+		return	`M ${ SVGXY( baseL ) } L ${ SVGXY( tipXY ) } L ${ SVGXY( baseR ) }`
+	case 'hollow'			:
+	case 'triangle'			:
+		return	`M ${ SVGXY( tipXY ) } L ${ SVGXY( baseL ) } L ${ SVGXY( baseR ) } Z`
+	case 'diamond'			:
+	case 'diamondHollow'	: {
+		const
+		center = AddXY( tipXY, MulXY( dir, headLen * 0.5 ) )
+		return	`M ${ SVGXY( tipXY ) }`
+			+	` L ${ SVGXY( AddXY( center, MulXY( normal, headHalf ) ) ) }`
+			+	` L ${ SVGXY( neck ) }`
+			+	` L ${ SVGXY( AddXY( center, MulXY( normal, -headHalf ) ) ) } Z`
+		}
+	case 'circle'			:
+	case 'circleHollow'		: {
+		const
+		r = headLen * 0.5
+	,	c = AddXY( tipXY, MulXY( dir, r ) )
+	,	l = [ c[ 0 ] - r, c[ 1 ] ]
+	,	R = [ c[ 0 ] + r, c[ 1 ] ]
+		return	`M ${ SVGXY( R ) } A ${ r } ${ r } 0 1 0 ${ SVGXY( l ) } A ${ r } ${ r } 0 1 0 ${ SVGXY( R ) } Z`
+		}
+	default					:
+		return	`M ${ SVGXY( tipXY ) } L ${ SVGXY( baseL ) } L ${ SVGXY( baseR ) } Z`
+	}
+}
+
+
+export const
+ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
+	void nF
+	void nT
+	void P
+
+	const
+	$ = new Path2D
+	$.moveTo( ...xyF )
+
+	if	( A.corner ) {
+		switch	( A.corner ) {
+		case 'sharp':
+			corners.forEach( _ => $.lineTo( ..._ ) )
+			$.lineTo( ...xyT )
+			break
+		case 'arc':
+			corners.reduce(
+				( P, C, _ ) => {
+					const
+					N = corners[ _ + 1 ] ?? xyT
+					,   R = Math.min(
+							ARC_RADIUS
+					,   Math.hypot( ...DeltaXY( P, C ) ) / 2
+					,   Math.hypot( ...DeltaXY( C, N ) ) / 2
+					)
+					R < 1
+					?	$.lineTo( ...C )
+					:	$.arcTo( ...C, ...N, R )
+					return C
+				}
+			,	xyF
+			)
+			$.lineTo( ...xyT )
+			break
+		case 'curve':
+			switch	( corners.length ) {
+			case 1:
+				$.quadraticCurveTo( ...corners[ 0 ], ...xyT )
+				break
+			case 2:
+				$.bezierCurveTo( ...corners[ 0 ], ...corners[ 1 ], ...xyT )
+				break
+			default:
+				console.error( A.corner )
+				$.lineTo( ...xyT )
+				break
+			}
+			break
+		}
+	} else {
+		$.lineTo( ...xyT )
+	}
+	return	$
+}
+const
+ShaftPathD		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
+	void nF
+	void nT
+	void P
+	let
+	$ = `M ${ SVGXY( xyF ) }`
+
+	if	( A.corner ) {
+		switch	( A.corner ) {
+		case 'sharp':
+			return	$ + corners.map( _ => ` L ${ SVGXY( _ ) }` ).join( '' ) + ` L ${ SVGXY( xyT ) }`
+		case 'arc':
+			corners.reduce(
+				( P, C, _ ) => {
+					const
+					N = corners[ _ + 1 ] ?? xyT
+				,	R = Math.min(
+						ARC_RADIUS
+					,	Math.hypot( ...DeltaXY( P, C ) ) / 2
+					,	Math.hypot( ...DeltaXY( C, N ) ) / 2
+					)
+					if	( R < 1 ) {
+						$ += ` L ${ SVGXY( C ) }`
+					} else {
+						const
+						inDir = DivXY( DeltaXY( P, C ), Math.hypot( ...DeltaXY( P, C ) ) )
+					,	outDir = DivXY( DeltaXY( C, N ), Math.hypot( ...DeltaXY( C, N ) ) )
+					,	a = AddXY( C, MulXY( inDir, -R ) )
+					,	b = AddXY( C, MulXY( outDir, R ) )
+					,	sweep = inDir[ 0 ] * outDir[ 1 ] - inDir[ 1 ] * outDir[ 0 ] > 0 ? 1 : 0
+						$ += ` L ${ SVGXY( a ) } A ${ R } ${ R } 0 0 ${ sweep } ${ SVGXY( b ) }`
+					}
+					return C
+				}
+			,	xyF
+			)
+			return	$ + ` L ${ SVGXY( xyT ) }`
+		case 'curve':
+			switch	( corners.length ) {
+			case 1:
+				return	$ + ` Q ${ SVGXY( corners[ 0 ] ) } ${ SVGXY( xyT ) }`
+			case 2:
+				return	$ + ` C ${ SVGXY( corners[ 0 ] ) } ${ SVGXY( corners[ 1 ] ) } ${ SVGXY( xyT ) }`
+			default:
+				return	$ + ` L ${ SVGXY( xyT ) }`
+			}
+		}
+	}
+	return	$ + ` L ${ SVGXY( xyT ) }`
+}
+
+const
+HeadShaftXY		= ( cornerXY, fallbackXY, tipXY ) => {
+	if	( !cornerXY ) return fallbackXY
+	return	Math.hypot( ...DeltaXY( tipXY, cornerXY ) ) < 1e-9 ? fallbackXY : cornerXY
+}
+const
+ArrowGeometry	= _ => {
+	const
+	[ xyF, xyT, corners ] = LinkCoordinates( _ )
+	const
+	[ , A, P ]		= _
+
+	const
+	shaftF = HeadShaftXY( A.corner && corners[ 0 ], xyT, xyF )
+,	shaftT = HeadShaftXY( A.corner && corners[ corners.length - 1 ], xyF, xyT )
+,	trimF = HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
+,	trimT = HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
+
+	return	{ A, P, xyF, xyT, corners, shaftF, shaftT, trimF, trimT }
+}
+export const
+ArrowPathes		= _ => {
+	const
+	{ A, P, xyF, xyT, corners, shaftF, shaftT, trimF, trimT } = ArrowGeometry( _ )
+	return {
+		shaftPath	: ShaftPath(
+			_
+		,	trimF
+		,	trimT
+		,	corners
+		)
+
+	,	headPathF	: A.headF
+		?	HeadPath( A.headF, shaftF, xyF, P.lineWidth )
+		:	null
+	,	strokeF		: IsStrokedHead( A.headF )
+
+	,	headPathT	: A.headT
+		?	HeadPath( A.headT, shaftT, xyT, P.lineWidth )
+		:	null
+	,	strokeT		: IsStrokedHead( A.headT )
+
+	,	xyF
+	,	xyT
+	,	corners
+	}
+}
+export const
+ArrowDs			= _ => {
+	const
+	{ A, P, xyF, xyT, corners, shaftF, shaftT, trimF, trimT } = ArrowGeometry( _ )
+	return	{
+		shaftD	: ShaftPathD( _, trimF, trimT, corners )
+	,	headDF	: A.headF
+		?	HeadPathD( A.headF, shaftF, xyF, P.lineWidth )
+		:	null
+	,	strokeF	: IsStrokedHead( A.headF )
+	,	headDT	: A.headT
+		?	HeadPathD( A.headT, shaftT, xyT, P.lineWidth )
+		:	null
+	,	strokeT	: IsStrokedHead( A.headT )
 	}
 }

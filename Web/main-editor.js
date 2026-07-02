@@ -75,10 +75,8 @@ import {
 ,	RhombusPath2D
 ,	GRAB
 ,	C2D
-,	LinkCoordinates
-,	LinkMetrics
+,	ArrowPathes
 }	from './GeoZU.js'
-
 
 const
 PrepareCanvas	= _ => {
@@ -88,359 +86,39 @@ PrepareCanvas	= _ => {
 	return $
 }
 
-
 const
-IsStrokedHead	= _ => {
-	switch	( _ ) {
-	case 'open'				:
-	case 'hollow'			:
-	case 'diamondHollow'	:
-	case 'circleHollow'		:
-		return	true
-	}
-	return false
-}
-
-
-const
-HeadMetrics		= ( head, shaftXY, tipXY, lineWidth ) => {
+HeadAreaPath	= ( xyF, xyT ) => {
 	const
-	[ dX, dY ] = DeltaXY( tipXY, shaftXY )
-,	len = Math.hypot( dX, dY )
-	if	( len < 1e-9 || !head ) return null
+	[ dX, dY ] = DeltaXY( xyF, xyT )
+,	hypot = Math.hypot( dX, dY )
 
-	const
-	lw = Number( lineWidth ) || 1
-,	headLen  = Math.min( len * 0.35, Math.max( 10, lw * 2.4 ) )
-,	headHalf = Math.max( 4, headLen * 0.45 )
-,	dir = DivXY( [ dX, dY ], len )
-,	normal = [ -dir[ 1 ], dir[ 0 ] ]
-,	neck = AddXY( tipXY, MulXY( dir, headLen ) )
-,	baseL = AddXY( neck, MulXY( normal, headHalf ) )
-,	baseR = AddXY( neck, MulXY( normal, -headHalf ) )
-	return	{ dir, normal, neck, baseL, baseR, headLen, headHalf }
-}
-
-const
-HeadNeck		= ( head, shaftXY, tipXY, lineWidth ) => {
-	if	( !head || head === 'open' ) return tipXY
-	const
-	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
-	return	metrics?.neck ?? tipXY
-}
-
-const
-HeadPath		= ( head, shaftXY, tipXY, lineWidth ) => {
 	const
 	$ = new Path2D()
-	,	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
-	if	( !metrics ) return $
-	const
-	{ dir, normal, neck, baseL, baseR, headLen, headHalf } = metrics
-
-	switch	( head ) {
-	case 'open'				:
-		$.moveTo( ...baseL )
-		$.lineTo( ...tipXY )
-		$.lineTo( ...baseR )
-		break
-	case 'hollow'			:
-	case 'triangle'			:
-		$.moveTo( ...tipXY )
-		$.lineTo( ...baseL )
-		$.lineTo( ...baseR )
-		$.closePath()
-		break
-	case 'diamond'			:
-	case 'diamondHollow'	: {
-		const
-		center = AddXY( tipXY, MulXY( dir, headLen * 0.5 ) )
-		,	dL = AddXY( center, MulXY( normal, headHalf ) )
-		,	dR = AddXY( center, MulXY( normal, -headHalf ) )
-		$.moveTo( ...tipXY )
-		$.lineTo( ...dL )
-		$.lineTo( ...neck )
-		$.lineTo( ...dR )
-		$.closePath()
-		break
+	if	( hypot < 1e-9 ) {
+		$.arc( xyT[ 0 ], xyT[ 1 ], GRAB, 0, Math.PI * 2 )
+		return $
 	}
-	case 'circle'			:
-	case 'circleHollow'		:
-		$.arc(
-			tipXY[ 0 ] + dir[ 0 ] * headLen * 0.5
-		,	tipXY[ 1 ] + dir[ 1 ] * headLen * 0.5
-		,	headLen * 0.5
-		,	0
-		,	Math.PI * 2
-		)
-		break
-	default					:
-		$.moveTo( ...tipXY )
-		$.lineTo( ...baseL )
-		$.lineTo( ...baseR )
-		$.closePath()
-	}
+	$.arc(
+		xyT[ 0 ] - dX / hypot * GRAB
+	,	xyT[ 1 ] - dY / hypot * GRAB
+	,	GRAB
+	,	0
+	,	Math.PI * 2
+	)
 	return $
 }
-
-
-const
-Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
-
-	const VHV	= () => {
-		const y = ( yF + yT ) / 2
-		return [ [ xF, y ], [ xT, y ] ]
-	}
-	const HVH	= () => {
-		const x = ( xF + xT ) / 2
-		return [ [ x, yF ], [ x, yT ] ]
-	}
-	const VH	= () => [ [ xF, yT ] ]
-	const HV	= () => [ [ xT, yF ] ]
-	const UHD	= () => {
-		const y = Math.min( yF, yT ) - GRAB
-		return [ [ xF, y ], [ xT, y ] ]
-	}
-	const DHU	= () => {
-		const y = Math.max( yF, yT ) + GRAB
-		return [ [ xF, y ], [ xT, y ] ]
-	}
-	const LVR	= () => {
-		const x = Math.min( xF, xT ) - GRAB
-		return [ [ xF, y ], [ xT, y ] ]
-	}
-	const RVL	= () => {
-		const x = Math.max( xF, xT ) + GRAB
-		return [ [ xF, y ], [ xT, y ] ]
-	}
-
-	switch ( aF ) {
-	case 'T'	:
-		switch ( aT ) {
-		case 'T'	: return UHD()
-		case 'B'	: return VHV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		case 'TL'	: return VH()
-		case 'TR'	: return VH()
-		case 'BL'	: return VH()
-		case 'BR'	: return VH()
-		default		: return VHV()
-		}
-	case 'B'	:
-		switch ( aT ) {
-		case 'T'	: return VHV()
-		case 'B'	: return DHU()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		case 'TL'	: return VH()
-		case 'TR'	: return VH()
-		case 'BL'	: return VH()
-		case 'BR'	: return VH()
-		default		: return VHV()
-		}
-	case 'L'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return LVR()
-		case 'R'	: return HVH()
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HVH()
-		}
-	case 'R'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return HVH()
-		case 'R'	: return RHL()
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HVH()
-		}
-	case 'TL'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HV()
-		}
-	case 'TR'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HV()
-		}
-	case 'BL'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HV()
-		}
-	case 'BR'	:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return HV()
-		}
-	default		:
-		//	TODO:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return VHV()
-		}
-	}
-}
-
-const
-ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
-
-	const
-	width = Math.max( Number( P.lineWidth ) || 1 )
-
-	const
-	$ = new Path2D
-	$.moveTo( ...xyF )
-
-	if	( A.corner ) {
-		switch	( A.corner ) {
-		case 'sharp':
-			corners.forEach( _ => $.lineTo( ..._ ) )
-			$.lineTo( ...xyT )
-			break
-		case 'arc':
-			corners.reduce(
-				( P, C, _ ) => {
-					const
-					N = corners[ _ + 1 ] ?? xyT
-				,   R = Math.min(
-						48	//	ARC_RADIUS MAX
-					,   Math.hypot( ...DeltaXY( P, C ) ) / 2
-					,   Math.hypot( ...DeltaXY( C, N ) ) / 2
-					)
-					R < 1
-					?	$.lineTo( ...C )
-					:	$.arcTo( ...C, ...N, R )
-					return C
-				}
-			,	xyF
-			)
-			$.lineTo( ...xyT )
-			break
-		case 'curve':
-			switch	( corners.length ) {
-			case 1:
-				$.quadraticCurveTo( ...corners[ 0 ], ...xyT )
-				break
-			case 2:
-				$.bezierCurveTo( ...corners[ 0 ], ...corners[ 1 ], ...xyT )
-				break
-			default:
-				console.error( A.corner )
-				$.lineTo( ...xyT )
-				break
-			}
-			break
-		}
-	} else {
-		$.lineTo( ...xyT )
-	}
-	return	$
-}
-
-/*
-const
-HeadPathF	= ( style, tip, dir, headLen, headHalf ) => {
-	const
-	[ dx, dy ] = dir
-,	nx = -dy
-,	ny = dx
-,	neck = [ tip[ 0 ] + dx * headLen, tip[ 1 ] + dy * headLen ]
-,	bL = [ neck[ 0 ] + nx * headHalf, neck[ 1 ] + ny * headHalf ]
-,	bR = [ neck[ 0 ] - nx * headHalf, neck[ 1 ] - ny * headHalf ]
-	switch	( style ) {
-	case 'open'		:
-		return	{ kind: 'line', xys: [ bL, tip, bR ], consume: 0 }
-	case 'hollow'	:
-		return	{ kind: 'poly', fill: false, xys: [ tip, bL, bR ], consume: headLen }
-	case 'diamond'	:
-	case 'diamondHollow'	: {
-		const
-		mid = [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
-	,	dL = [ mid[ 0 ] + nx * headHalf, mid[ 1 ] + ny * headHalf ]
-	,	dR = [ mid[ 0 ] - nx * headHalf, mid[ 1 ] - ny * headHalf ]
-		return	{ kind: 'poly', fill: style === 'diamond', xys: [ tip, dL, neck, dR ], consume: headLen }
-	}
-	case 'circle'	:
-	case 'circleHollow'	:
-		return	{
-			kind	: 'circle'
-		,	fill	: style === 'circle'
-		,	center	: [ tip[ 0 ] + dx * headLen * 0.5, tip[ 1 ] + dy * headLen * 0.5 ]
-		,	r		: headLen * 0.5
-		,	consume	: headLen
-		}
-	default			:	//	'triangle' ( also the fallback for legacy `true` )
-		return	{ kind: 'poly', fill: true, xys: [ tip, bL, bR ], consume: headLen }
-	}
-}
-*/
-
-const
-HeadShaftXY		= ( cornerXY, fallbackXY, tipXY ) => {
-	if	( !cornerXY ) return fallbackXY
-	return	Math.hypot( ...DeltaXY( tipXY, cornerXY ) ) < 1e-9 ? fallbackXY : cornerXY
-}
-
 const
 DrawLinkCanvas	= ( c2D, _ ) => {
 	const
-	[ , A, P ]		= _
+	{	shaftPath
+	,	headPathF
+	,	strokeF
+	,	headPathT
+	,	strokeT
+	} = ArrowPathes( _ )
+
 	const
-	[ xyF, xyT ]	= LinkCoordinates( _ )
-,	corners		= Corners( A.anchorF, A.anchorT, xyF, xyT )
-,	shaftF		= HeadShaftXY( A.corner && corners[ 0 ], xyT, xyF )
-,	shaftT		= HeadShaftXY( A.corner && corners[ corners.length - 1 ], xyF, xyT )
+	[ , , P ] = _
 
 	c2D.save()
 	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
@@ -449,188 +127,40 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
 	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
 	P.lineDash			&& c2D.setLineDash( P.lineDash )
-	c2D.stroke(
-		ShaftPath(
-			_
-		,	HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
-		,	HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
-		,	corners
-		)
-	)
+	c2D.stroke( shaftPath )
 	c2D.restore()
 
 	c2D.save()
-
-//	c2D.strokeStyle	= 'white'
-//	c2D.stroke( HeadAreaPath( A, xyF, xyT ) )
-//	c2D.stroke( HeadAreaPath( A, xyT, xyF ) )
-
 	c2D.fillStyle	= P.fill ?? P.stroke ?? 'dodgerblue'
-	P.stroke	&& ( c2D.strokeStyle = P.stroke )
-	P.lineWidth	&& ( c2D.lineWidth = P.lineWidth )
+	P.stroke	&& ( c2D.strokeStyle	= P.stroke		)
+	P.lineWidth	&& ( c2D.lineWidth		= P.lineWidth	)
 	c2D.lineJoin	= 'round'
 	c2D.lineCap		= 'round'
-	if	( A.headF ) {
-		const
-		$ = HeadPath( A.headF, shaftF, xyF, P.lineWidth )
-		IsStrokedHead( A.headF )
-		?	c2D.stroke( $ )
-		:	c2D.fill( $ )
-	}
-	if	( A.headT ) {
-		const
-		$ = HeadPath( A.headT, shaftT, xyT, P.lineWidth )
-		IsStrokedHead( A.headT )
-		?	c2D.stroke( $ )
-		:	c2D.fill( $ )
-	}
+	headPathF && ( strokeF ? c2D.stroke( headPathF ) : c2D.fill( headPathF ) )
+	headPathT && ( strokeT ? c2D.stroke( headPathT ) : c2D.fill( headPathT ) )
+
 	c2D.restore()
 }
 
 const
 HitLink			= ( _, xy ) => {
 	const
-	[ xyF, xyT ]			= LinkCoordinates( _ )
-	const
-	[ , A ] = _
-	const
-	HeadAreaPath	= ( A, xyF, xyT ) => {
-		const
-		[ dX, dY ] = DeltaXY( xyF, xyT )
-		const
-		hypot = Math.hypot( dX, dY )
+	{	shaftPath
+	,	xyF
+	,	xyT
+	} = ArrowPathes( _ )
 
-		const
-		$ = new Path2D()
-		$.arc(
-			xyT[ 0 ] - dX / hypot * GRAB
-		,	xyT[ 1 ] - dY / hypot * GRAB
-		,	GRAB
-		,	0
-		,	Math.PI * 2
-		)
-		return $
-	}
-	if	( C2D.isPointInPath( HeadAreaPath( A, xyF, xyT ), ...xy ) ) return true
-	if	( C2D.isPointInPath( HeadAreaPath( A, xyT, xyF ), ...xy ) ) return true
+	if	( C2D.isPointInPath( HeadAreaPath( xyF, xyT ), ...xy ) ) return true
+	if	( C2D.isPointInPath( HeadAreaPath( xyT, xyF ), ...xy ) ) return true
 
 	C2D.save()
 	try {
 		C2D.lineWidth = GRAB
-		return C2D.isPointInStroke(
-			ShaftPath(
-				_
-			,	xyF
-			,	xyT
-			,	Corners( A.anchorF, A.anchorT, xyF, xyT ) )
-		,	...xy
-		)
+		return C2D.isPointInStroke( shaftPath, ...xy )
 	} finally {
 		C2D.restore()
 	}
 }
-
-/*
-const
-DrawLinkCanvas	= ( c2D, _ ) => {
-
-	const
-	$ = LinkMetrics( _ )
-	if	( !$ ) return
-
-	const
-	[ , ,P ] = _
-
-	c2D.save()
-
-	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
-	P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
-	P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
-	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
-	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
-	P.lineDash			&& c2D.setLineDash( P.lineDash )
-
-	c2D.beginPath()
-	shaftToPath( c2D, shaftSpec( $.shaft, _[ 1 ].corner ) )
-	c2D.stroke()
-
-	//	heads are always solid and rounded, regardless of the shaft's dash / caps
-	c2D.setLineDash( [] )
-	c2D.lineJoin	= 'round'
-	c2D.lineCap		= 'round'
-
-	const
-	headFill = P.fill ?? P.stroke
-	for ( const h of $.heads )	{
-		c2D.beginPath()
-		switch	( h.kind ) {
-		case 'circle':
-			c2D.arc( h.center[ 0 ], h.center[ 1 ], h.r, 0, 2 * Math.PI )
-			h.fill
-		?	( c2D.fillStyle = headFill, c2D.fill() )
-		:	( c2D.strokeStyle = P.stroke, c2D.stroke() )
-			break
-		case 'line':
-			c2D.moveTo( ...h.xys[ 0 ] )
-			for	( let i = 1; i < h.xys.length; i++ ) c2D.lineTo( ...h.xys[ i ] )
-			c2D.strokeStyle = P.stroke
-			c2D.stroke()
-			break
-		default:
-			c2D.moveTo( ...h.xys[ 0 ] )
-			for	( let i = 1; i < h.xys.length; i++ ) c2D.lineTo( ...h.xys[ i ] )
-			c2D.closePath()
-			h.fill
-		?	( c2D.fillStyle = headFill, c2D.fill() )
-		:	( c2D.strokeStyle = P.stroke, c2D.stroke() )
-			break
-		}
-	}
-
-	c2D.restore()
-}
-
-const
-HitLink			= ( _, xy ) => {
-
-	const
-	$ = LinkMetrics( _ )
-	if	( !$ ) return
-
-	const
-	[ , ,P ] = _
-
-	C2D.save()
-	try {
-		C2D.lineWidth = Math.max( P.lineWidth ?? GRAB, GRAB )
-
-		C2D.beginPath()
-		shaftToPath( C2D, shaftSpec( $.shaft, _[ 1 ].corner ) )
-		if	( C2D.isPointInStroke( ...xy ) ) return true
-
-		for ( const h of $.heads ) {
-			if	( h.kind === 'circle' ) {
-				C2D.beginPath()
-				C2D.arc( h.center[ 0 ], h.center[ 1 ], h.r, 0, 2 * Math.PI )
-				if	( C2D.isPointInPath( ...xy ) ) return true
-				continue
-			}
-			C2D.beginPath()
-			C2D.moveTo( ...h.xys[ 0 ] )
-			for	( let i = 1; i < h.xys.length; i++ )	C2D.lineTo( ...h.xys[ i ] )
-			if	( h.kind === 'line' ) {
-				if	( C2D.isPointInStroke( ...xy ) ) return true
-			} else {
-				C2D.closePath()
-				if	( C2D.isPointInPath( ...xy ) ) return true
-			}
-		}
-		return false
-	} finally {
-		C2D.restore()
-	}
-}
-*/
 
 import { DrawForeignLabel	} from './ForeignLabel.js'
 
@@ -674,22 +204,16 @@ Links_XY	= xy => AvailableLinks().reduce(
 )
 
 //	which end zone ( if any ) of a single link the point lands on → 'F' | 'T'.
-//	fixed GRAB-radius circles at each end ( see LinkMetrics.ends ), on the shaft
-//	side of the boundary tip — so the head menu is reachable even when that end
-//	currently has no arrowhead, and clicks never fall onto the node.
+//	fixed GRAB-radius circles at each end, on the shaft side of the boundary tip
+//	— so the head menu is reachable even when that end currently has no arrowhead,
+//	and clicks never fall onto the node.
 const
 HeadEnd_XY	= ( _, xy ) => {
 
 	const
-	$ = LinkMetrics( _ )
-	if	( !$ ) return null
-
-	for ( const z of $.ends ) {
-		const
-		dx = xy[ 0 ] - z.c[ 0 ]
-	,	dy = xy[ 1 ] - z.c[ 1 ]
-		if	( dx * dx + dy * dy <= GRAB * GRAB )	return z.end
-	}
+	{ xyF, xyT } = ArrowPathes( _ )
+	if	( C2D.isPointInPath( HeadAreaPath( xyF, xyT ), ...xy ) ) return 'T'
+	if	( C2D.isPointInPath( HeadAreaPath( xyT, xyF ), ...xy ) ) return 'F'
 	return null
 }
 
@@ -717,6 +241,7 @@ BBoxGrabCursor	= ( bbox, xy ) => {
 
 	return 'move'
 }
+
 const
 Cursor_EV	= ev => {
 	
@@ -728,19 +253,17 @@ Cursor_EV	= ev => {
 	if	( app.reforms.length ) {
 		const
 		bbox = BBox( app.reforms )
-		if	( ContainsXY( bbox, xy ) )					return 'move'
-		if	( ContainsXY( Outset( bbox, GRAB ), xy ) )	return BBoxGrabCursor( bbox, xy )
+		if	( ContainsXY( Outset( bbox, GRAB ), xy ) )	return ContainsXY( bbox, xy ) ? 'move' : BBoxGrabCursor( bbox, xy )
 	}
 
 	if	( Links_XY( xy ).length )						return 'pointer'
 
 	const
 	$ = Node_XY( xy )
-	return $
-?	LinkMode( ev )
-	?	'crosshair'
-	:	BBoxGrabCursor( TLBR( $[ 1 ] ), xy )
-:	'default'
+
+	if	( $ )											return LinkMode( ev ) ? 'crosshair' :	BBoxGrabCursor( TLBR( $[ 1 ] ), xy )
+
+	return 'default'
 }
 
 
@@ -1602,16 +1125,9 @@ MainEditor extends HTMLElement {
 				const
 				bbox = BBox( app.reforms )
 
-//	SELECTION INSIDE
-				if	( ContainsXY( bbox, xy ) ) {
-					this.gesture.track = move
-					this.gesture.commit = Reform
-					return
-				}
-
-//	SELECTION GRAB
+//	SELECTION GRAB / INSIDE
 				if	( ContainsXY( Outset( bbox, GRAB ), xy ) ) {
-					this.gesture.track = resize
+					this.gesture.track = ContainsXY( bbox, xy ) ? move : resize
 					this.gesture.commit = Reform
 					return
 				}
@@ -1639,20 +1155,20 @@ MainEditor extends HTMLElement {
 
 			const
 			$ = Node_EV( ev )
-			$
-		?	(	this.setEditor( $ )
-			,	LinkMode( ev )
-			?	(	this.gesture.track = link
-				,	this.gesture.commit = commitLink
+			$ ?	(
+				this.setEditor( $ )
+			,	LinkMode( ev ) ? (
+					this.gesture.track = link
+					,	this.gesture.commit = commitLink
 				)
-			:	(	ev.shiftKey
-				?	this.registReform( $ )
-				:	this.addWithContained( $ )
-				,	this.gesture.track = ContainsXY( TLBR( $[ 1 ] ), xy ) ? move: resize
+				: (	ev.shiftKey
+					?	this.registReform( $ )
+					:	this.addWithContained( $ )
+				,	this.gesture.track = ContainsXY( TLBR( $[ 1 ] ), xy ) ? move : resize
 				,	this.gesture.commit = Reform
 				)
 			)
-		:	(	this.gesture.track = area
+			: (	this.gesture.track = area
 			,	this.gesture.commit = commitArea
 			)
 		} finally {

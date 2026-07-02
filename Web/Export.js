@@ -1,57 +1,47 @@
 import { FindNode	} from './Application.js'
 import { CanvasSize	} from './main-editor.js'
-import { XYWH, LinkMetrics, shaftSpec	} from './GeoZU.js'
+import { XYWH, ArrowDs	} from './GeoZU.js'
 import { drawForeignLabelSvg	} from './ForeignLabel.js'
 
 const
-DrawHeadSvg		= ( parts, X, Y, h, headFill, stroke, headWidth ) => {
-	if	( h.kind === 'circle' ) {
-		const
-		fill = h.fill ? `fill="${ headFill }"` : `fill="none" stroke="${ stroke }" stroke-width="${ headWidth }"`
-		parts.push(
-			`<circle cx="${ X( h.center[ 0 ] ) }" cy="${ Y( h.center[ 1 ] ) }" r="${ h.r }" ${ fill }/>`
-		)
-		return
-	}
+DrawArrowHeadSvg	= ( parts, d, stroked, fill, stroke, width ) => {
+	if	( !d ) return
 	const
-	pts = pointsAttr( X, Y, h.xys )
-	if	( h.kind === 'line' ) {
-		parts.push(
-			`<polyline points="${ pts }" fill="none" stroke="${ stroke }" stroke-width="${ headWidth }" stroke-linecap="round" stroke-linejoin="round"/>`
-		)
-		return
-	}
-	const
-	fill = h.fill ? `fill="${ headFill }" stroke="none"` : `fill="none" stroke="${ stroke }" stroke-width="${ headWidth }" stroke-linejoin="round"`
+	paint = stroked
+	?	`fill="none" stroke="${ stroke }" stroke-width="${ width }"`
+	:	`fill="${ fill }" stroke="none"`
 	parts.push(
-		`<polygon points="${ pts }" ${ fill }/>`
+		`<path d="${ d }" ${ paint } stroke-linecap="round" stroke-linejoin="round"/>`
 	)
 }
 
 const
 DrawLinkSvg		= ( parts, X, Y, link ) => {
-	const
-	$ = LinkMetrics( link )
-	if	( !$ ) return
-
+	void X
+	void Y
 	const
 	P = link[ 2 ]
+	,	stroke = P.stroke ?? 'dodgerblue'
 	,	a = [
-		`stroke="${ P.stroke }"`
-	,	`stroke-linecap="${ P.lineCap || 'butt' }"`
+			`stroke="${ stroke }"`
+		,	`stroke-linecap="${ P.lineCap || 'butt' }"`
 	,	`stroke-linejoin="${ P.lineJoin || 'round' }"`
 	]
 	P.lineWidth			&& a.push( `stroke-width="${ P.lineWidth }"` )
 	P.lineDash			&& a.push( `stroke-dasharray="${ P.lineDash.join( ' ' ) }"` )
 	P.lineDashOffset	&& a.push( `stroke-dashoffset="${ P.lineDashOffset }"` )
 
+	const
+	{ shaftD, headDF, strokeF, headDT, strokeT } = ArrowDs( link )
+
 	parts.push(
-		`<path d="${ shaftPathD( X, Y, shaftSpec( $.shaft, link[ 1 ].corner ) ) }" fill="none" ${ a.join( ' ' ) }/>`
+		`<path d="${ shaftD }" fill="none" ${ a.join( ' ' ) }/>`
 	)
 	const
-	headFill = P.fill ?? P.stroke
+	headFill = P.fill ?? stroke
 	,	headWidth = P.lineWidth || 1
-	for ( const h of $.heads )	DrawHeadSvg( parts, X, Y, h, headFill, P.stroke, headWidth )
+	DrawArrowHeadSvg( parts, headDF, strokeF, headFill, stroke, headWidth )
+	DrawArrowHeadSvg( parts, headDT, strokeT, headFill, stroke, headWidth )
 }
 
 export const
@@ -85,23 +75,6 @@ const
 pointsAttr		= ( X, Y, points ) => points.map(
 	( [ x, y ] ) => `${ X( x ) },${ Y( y ) }`
 ).join( ' ' )
-
-const
-shaftPathD		= ( X, Y, s ) => {
-	const	P = ( [ x, y ] ) => `${ X( x ) } ${ Y( y ) }`
-	switch	( s.type ) {
-	case 'quad'	:
-		return	`M ${ P( s.p0 ) } Q ${ P( s.c ) } ${ P( s.p1 ) }`
-	case 'cubic'	:
-		return	`M ${ P( s.p0 ) } C ${ P( s.c1 ) } ${ P( s.c2 ) } ${ P( s.p1 ) }`
-	case 'arc'	:
-		return	`M ${ P( s.start ) }`
-			+ s.corners.map( k => ` L ${ P( k.a ) } A ${ k.r } ${ k.r } 0 0 ${ k.sweep } ${ P( k.b ) }` ).join( '' )
-			+ ` L ${ P( s.end ) }`
-	default		:	//	'line'
-		return	`M ${ s.xys.map( P ).join( ' L ' ) }`
-	}
-}
 
 const
 drawShape		= ( parts, X, Y, S, P ) => {
