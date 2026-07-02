@@ -128,7 +128,7 @@ body.aside-collapsed	> aside	{ display: none }
 }
 .sample-list {
 ;	display			: grid
-;	grid-template-columns	: repeat( 5, auto )
+;	grid-template-columns	: repeat( 6, auto )
 ;	grid-template-rows		: repeat( 2, 1fr )
 ;	gap				: 2px
 ;	height			: 100%
@@ -727,6 +727,7 @@ aside input[type=checkbox]
 		<button id=SAMPLE_ANCHORS	>Anchors	</button>
 		<button id=SAMPLE_ARROWHEADS	>Arrowheads	</button>
 		<button id=SAMPLE_SHOWCASE	>Showcase	</button>
+		<button id=SAMPLE_ANCHORMATRIX	>AnchorMx	</button>
 	</div>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
@@ -998,6 +999,7 @@ SAMPLE_SCREENFLOW.onclick = () => LoadSample( 'Samples/ScreenFlow.zu'	).catch( R
 SAMPLE_ANCHORS		.onclick = () => LoadSample( 'Samples/Anchors.zu'		).catch( Report )
 SAMPLE_ARROWHEADS	.onclick = () => LoadSample( 'Samples/Arrowheads.zu'	).catch( Report )
 SAMPLE_SHOWCASE		.onclick = () => LoadSample( 'Samples/Showcase.zu'		).catch( Report )
+SAMPLE_ANCHORMATRIX	.onclick = () => LoadSample( 'Samples/AnchorMatrix.zu'	).catch( Report )
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )
 DUMP_JOBS		.onclick = DumpJobs
