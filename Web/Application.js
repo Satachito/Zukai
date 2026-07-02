@@ -4,7 +4,7 @@ Report = _ => ( console.error( _ ), alert( _ ) )
 window.app		= {
 	model	: {
 		nodes	: []	//	[ ID, S, P ]		(S)hape		, (P)aint
-	,	links	: []	//	[ [ F, T ]. A, P ]	A: { headF, headT, anchorF, anchorT }
+	,	links	: []	//	[ [ F, T ], A, P ]	A: { headF, headT, anchorF, anchorT }
 	}
 ,	reforms		: []	//	Equal to model.nodes
 }

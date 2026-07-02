@@ -91,11 +91,11 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 	}
 	const LVR	= () => {
 		const x = Math.min( xF, xT ) - GRAB
-		return [ [ xF, y ], [ xT, y ] ]
+		return [ [ x, yF ], [ x, yT ] ]
 	}
 	const RVL	= () => {
 		const x = Math.max( xF, xT ) + GRAB
-		return [ [ xF, y ], [ xT, y ] ]
+		return [ [ x, yF ], [ x, yT ] ]
 	}
 
 	switch ( aF ) {
@@ -140,7 +140,7 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'T'	: return HV()
 		case 'B'	: return HV()
 		case 'L'	: return HVH()
-		case 'R'	: return RHL()
+		case 'R'	: return RVL()
 		case 'TL'	: return HV()
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
@@ -267,16 +267,40 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 			const
 			hasH = aOther.includes( 'L' ) || aOther.includes( 'R' )
 		,	hasV = aOther.includes( 'T' ) || aOther.includes( 'B' )
-			if	( hasH && T( S ) < py && py < B( S ) )	return [ px <= S.cX ? L( S ) : R( S ), py ]
-			if	( hasV && L( S ) < px && px < R( S ) )	return [ px, py <= S.cY ? T( S ) : B( S ) ]
+			//	a horizontal segment reaches the L/R edge only if py is inside the
+			//	box's vertical span; a vertical one reaches T/B only if px is inside
+			//	its horizontal span
+		,	canH = T( S ) < py && py < B( S )
+		,	canV = L( S ) < px && px < R( S )
+		,	toH  = () => [ px <= S.cX ? L( S ) : R( S ), py ]
+		,	toV  = () => [ px, py <= S.cY ? T( S ) : B( S ) ]
+			//	prefer the axis that matches the anchored end's side; otherwise, as
+			//	an exception, still connect on whichever axis the edge admits
+			if	( hasH && canH )	return toH()
+			if	( hasV && canV )	return toV()
+			if	( canH )			return toH()
+			if	( canV )			return toV()
 		}
 		return	onOutline( S, px - S.cX, py - S.cY )
+	}
+	//	unanchored end: pick the side ( T / B / L / R ) the auto-computed point
+	//	lands on, so corner routing treats it like an explicit anchor. Whichever
+	//	of the box-normalized offsets dominates decides horizontal vs vertical.
+,	sideOf		= ( S, [ px, py ] ) => {
+		const
+		dX = px - S.cX
+	,	dY = py - S.cY
+	,	rH = Math.abs( S.rH ) || 1
+	,	rV = Math.abs( S.rV ) || 1
+		return	Math.abs( dX ) / rH >= Math.abs( dY ) / rV
+		?	( dX >= 0 ? 'R' : 'L' )
+		:	( dY >= 0 ? 'B' : 'T' )
 	}
 	if	( !A.corner ) {
 		if	( aF && !aT )	return [ pF, autoPerp( nT[ 1 ], pF, aF ) ]
 		if	( aT && !aF )	return [ autoPerp( nF[ 1 ], pT, aT ), pT ]
 	}
-	return [ pF, pT, Corners( aF, aT, pF, pT ) ]
+	return [ pF, pT, Corners( aF || sideOf( nF[ 1 ], pF ), aT || sideOf( nT[ 1 ], pT ), pF, pT ) ]
 }
 
 export const

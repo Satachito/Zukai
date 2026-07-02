@@ -26,6 +26,7 @@ apply_ops ops ( one op = one undo step ):
   { op:"addLink",    from, to, ends?, paint? }
   { op:"updateLink", from, to, newFrom?, newTo?, ends?, paint? }
   { op:"removeLink", from, to }
+  { op:"autoLayout", algorithm?, cols?, gap?, startX?, startY? }   // deterministic grid layout
   { op:"setCanvas",  width, height }
 "area" is the shape object; "ends" is the link attributes object.
 

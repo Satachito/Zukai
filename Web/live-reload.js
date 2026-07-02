@@ -67,7 +67,7 @@ handleRpc	= async msg => {
 		const
 		result = await runRpc( method, params )
 		ws.send( JSON.stringify( { type: 'rpc-result', id, result } ) )
-		if	( MUTATING.has( method ) || ( method === 'apply' ) ) pushSnapshot()
+		if	( MUTATING.has( method ) ) pushSnapshot()
 	} catch ( er ) {
 		ws.send( JSON.stringify( { type: 'rpc-error', id, error: String( er.message || er ) } ) )
 	}
