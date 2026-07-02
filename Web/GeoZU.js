@@ -109,7 +109,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return VH()
 		case 'BL'	: return VH()
 		case 'BR'	: return VH()
-		default		: return VHV()
 		}
 	case 'B'	:
 		switch ( aT ) {
@@ -121,7 +120,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return VH()
 		case 'BL'	: return VH()
 		case 'BR'	: return VH()
-		default		: return VHV()
 		}
 	case 'L'	:
 		switch ( aT ) {
@@ -133,7 +131,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HVH()
 		}
 	case 'R'	:
 		switch ( aT ) {
@@ -145,7 +142,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HVH()
 		}
 	case 'TL'	:
 		switch ( aT ) {
@@ -158,7 +154,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HV()
 		}
 	case 'TR'	:
 		switch ( aT ) {
@@ -171,7 +166,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HV()
 		}
 	case 'BL'	:
 		switch ( aT ) {
@@ -184,7 +178,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HV()
 		}
 	case 'BR'	:
 		switch ( aT ) {
@@ -197,21 +190,6 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 		case 'TR'	: return HV()
 		case 'BL'	: return HV()
 		case 'BR'	: return HV()
-		default		: return HV()
-		}
-	default		:
-		//	TODO:
-		switch ( aT ) {
-		case 'T'	: return HV()
-		case 'B'	: return HV()
-		case 'L'	: return VH()
-		case 'R'	: return VH()
-		//	TODO:
-		case 'TL'	: return HV()
-		case 'TR'	: return HV()
-		case 'BL'	: return HV()
-		case 'BR'	: return HV()
-		default		: return VHV()
 		}
 	}
 }
