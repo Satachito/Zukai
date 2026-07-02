@@ -72,19 +72,19 @@ Example:
 
     On an `ellipse` / `rhombus`, an anchored point is projected onto the actual
     curved / diagonal outline (a `rect`/`SVG`/`PNG` keeps the box point). The
-    perpendicular H/V snap described under `"straight"` below applies only to
-    `rect` / `SVG` / `PNG` ends, not to `ellipse` / `rhombus`.
-  - `corner` — shaft routing / corner style. Every style **except** `"straight"`
-    routes the link **orthogonally** (right-angle bends), whatever its anchors;
-    the style only changes how that multi-point shaft is drawn:
-    - `"bezier"` — smooth Bézier that leaves each node perpendicular and rounds
-      the corners (default)
+    perpendicular H/V snap described under the default/direct route below applies
+    only to `rect` / `SVG` / `PNG` ends, not to `ellipse` / `rhombus`.
+  - `corner` — shaft routing / corner style. When set, it routes the link
+    **orthogonally** (right-angle bends), whatever its anchors; the value only
+    changes how that multi-point shaft is drawn:
     - `"sharp"` — polyline with right-angle corners (orthogonal)
     - `"arc"` — straight runs joined by quarter-circle fillets
-    - `"straight"` — a direct 2-point line instead of the orthogonal route. With
+    - `"curve"` — smooth Bézier that leaves each node perpendicular and rounds
+      the corners
+    - omitted/default — a direct 2-point line instead of the orthogonal route. With
       exactly one end anchored, the auto end attaches *perpendicular* to the
       anchored edge, so the line snaps to horizontal / vertical when the ends
-      line up. (This perpendicular snap happens **only** with `"straight"`.)
+      line up. (This perpendicular snap happens **only** when `corner` is omitted.)
 - **`paint`** — same shape as node `paint`.
 
 Example:

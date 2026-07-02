@@ -1359,7 +1359,9 @@
 				{
 					"headF": false,
 					"headT": "triangle",
-					"corner": "arc"
+					"corner": "arc",
+					"anchorF": "R",
+					"anchorT": "L"
 				},
 				{
 					"stroke": "#2563eb",

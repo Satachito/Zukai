@@ -16,7 +16,7 @@ Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"
                                   cX/cY = center, rH/rV = half-width/half-height ( size ≈ 2*rH × 2*rV ). Y axis points down.
                                   paint: { fill?, stroke?, lineWidth?, lineDash?, ... } ( optional {} )
 Link  = [ [ fromID, toID ], attributes, paint ]
-                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR ), corner? ( "bezier"|"sharp"|"arc"|"straight" ) }
+                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
 
 apply_ops ops ( one op = one undo step ):
   { op:"addNode",    id, area, paint? }

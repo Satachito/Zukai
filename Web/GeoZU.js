@@ -120,7 +120,7 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 		}
 		return	onOutline( S, px - S.cX, py - S.cY )
 	}
-	if	( A.corner === 'straight' ) {
+	if	( !A.corner ) {
 		if	( aF && !aT )	return [ pF, autoPerp( nT[ 1 ], pF, aF ) ]
 		if	( aT && !aF )	return [ autoPerp( nF[ 1 ], pT, aT ), pT ]
 	}
@@ -325,10 +325,10 @@ linkEnds		= ( [ [ nF, nT ], A, P ] ) => {
 		pF, pT, outwardF, outwardT, frameF, frameT
 	,	tipF	: offsetOutward( pF, outwardF, frameF )
 	,	tipT	: offsetOutward( pT, outwardT, frameT )
-	//	every non-'straight' link is routed orthogonally ( right-angle bends ),
-	//	whatever its anchors. 'straight' is the only direct 2-point line — and the
-	//	only case that gets the perpendicular H/V snap ( see LinkCoordinates ).
-	,	ortho	: A.corner !== 'straight'
+		//	only links with an explicit corner style are routed orthogonally
+		//	( right-angle bends ). Omitted corner is the direct 2-point line and
+		//	the only case that gets the perpendicular H/V snap ( see LinkCoordinates ).
+		,	ortho	: !!A.corner
 	//	both ends anchored to the same pure side → the shared outward normal, so
 	//	routeFrom can run the link around the outside ( null otherwise )
 	,	sameSideOut	: A.anchorF && A.anchorF === A.anchorT && SIDE_ANCHOR.has( A.anchorF ) ? outwardF : null
@@ -346,8 +346,8 @@ routeFrom		= e => {
 	const
 	rF = e.tipF
 ,	rT = e.tipT
-	//	non-ortho ( i.e. corner 'straight' ) is the only direct 2-point line
-	if	( !e.ortho )	return [ rF, rT ]
+		//	non-ortho ( omitted corner ) is the only direct 2-point line
+		if	( !e.ortho )	return [ rF, rT ]
 	//	both ends on the same side: run both leads outward to a shared lane beyond
 	//	the furthest edge, then connect — routing the link around the outside
 	if	( e.sameSideOut ) {
@@ -440,17 +440,17 @@ ARC_RADIUS		= 48	//	max fillet radius for the 'arc' corner style
 
 //	how to stroke the shaft, chosen by the link's `corner` style. a 2-point shaft
 //	is always a straight line; a multi-point ( orthogonal ) shaft can be:
-//	  'sharp'   the legacy polyline with right-angle corners
-//	  'bezier'  a Bézier whose bend points are the controls, so the curve leaves
-//	            each node perpendicular ( horizontal / vertical ) and rounds the
-//	            corners smoothly ( default )
-//	  'arc'     straight runs joined by quarter-circle fillets at each corner
+	//	  'sharp'  polyline with right-angle corners
+	//	  'arc'    straight runs joined by quarter-circle fillets at each corner
+	//	  'curve'  a Bézier whose bend points are the controls, so the curve leaves
+	//	           each node perpendicular ( horizontal / vertical ) and rounds the
+	//	           corners smoothly
 //	tangents at the trimmed ends stay axis-aligned, so the arrowheads still meet
 //	the shaft cleanly in every style.
 export	const
 shaftSpec		= ( xys, corner ) => {
 	const
-	style = corner || 'bezier'
+	style = corner || ''
 	if	( xys.length <= 2 || style === 'sharp' )	return { type: 'line', xys }
 	if	( style === 'arc' ) {
 		const
@@ -504,4 +504,3 @@ shaftToPath		= ( ctx, s ) => {
 		for	( let i = 1; i < s.xys.length; i++ )	ctx.lineTo( ...s.xys[ i ] )
 	}
 }
-

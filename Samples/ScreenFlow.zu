@@ -329,7 +329,7 @@
 					"headT": "open",
 					"anchorF": "R",
 					"anchorT": "L",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#60a5fa",
@@ -345,7 +345,7 @@
 					"headT": "open",
 					"anchorF": "B",
 					"anchorT": "T",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#93c5fd",
@@ -365,7 +365,7 @@
 					"headT": "triangle",
 					"anchorF": "R",
 					"anchorT": "L",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#22c55e",
@@ -381,7 +381,7 @@
 					"headT": "triangle",
 					"anchorF": "R",
 					"anchorT": "L",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#22c55e",
@@ -413,7 +413,7 @@
 					"headT": "triangle",
 					"anchorF": "B",
 					"anchorT": "T",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#16a34a",
@@ -429,7 +429,7 @@
 					"headT": "triangle",
 					"anchorF": "R",
 					"anchorT": "L",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#16a34a",
@@ -445,7 +445,7 @@
 					"headT": "triangle",
 					"anchorF": "B",
 					"anchorT": "T",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#16a34a",
@@ -513,7 +513,7 @@
 					"headT": "triangle",
 					"anchorF": "B",
 					"anchorT": "T",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#a855f7",
@@ -549,7 +549,7 @@
 					"headT": "diamondHollow",
 					"anchorF": "R",
 					"anchorT": "L",
-					"corner": "straight"
+					"corner": "curve"
 				},
 				{
 					"stroke": "#fb923c",

@@ -14,7 +14,7 @@ DrawHeadSvg		= ( parts, X, Y, h, headFill, stroke, headWidth ) => {
 		return
 	}
 	const
-	pts = pointsAttr( X, Y, h.pts )
+	pts = pointsAttr( X, Y, h.xys )
 	if	( h.kind === 'line' ) {
 		parts.push(
 			`<polyline points="${ pts }" fill="none" stroke="${ stroke }" stroke-width="${ headWidth }" stroke-linecap="round" stroke-linejoin="round"/>`
@@ -99,7 +99,7 @@ shaftPathD		= ( X, Y, s ) => {
 			+ s.corners.map( k => ` L ${ P( k.a ) } A ${ k.r } ${ k.r } 0 0 ${ k.sweep } ${ P( k.b ) }` ).join( '' )
 			+ ` L ${ P( s.end ) }`
 	default		:	//	'line'
-		return	`M ${ s.pts.map( P ).join( ' L ' ) }`
+		return	`M ${ s.xys.map( P ).join( ' L ' ) }`
 	}
 }
 

@@ -6,7 +6,11 @@ EqualXY			= ( [ X, Y ], [ x, y ] )	=> X === x && Y === y
 export const
 AddXY			= ( [ X, Y ], [ x, y ] )	=> [ X + x, Y + y ]
 export const
+SubXY			= ( [ X, Y ], [ x, y ] )	=> [ X - x, Y - y ]
+export const
 DivXY			= ( [ X, Y ], _ )			=> [ X / _, Y / _ ]
+export const
+MulXY			= ( [ X, Y ], _ )			=> [ X * _, Y * _ ]
 export const
 DeltaXY			= ( [ X, Y ], [ x, y ] )	=> [ x - X, y - Y ]
 

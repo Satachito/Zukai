@@ -580,7 +580,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -594,7 +595,8 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -608,7 +610,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "open"
+					"headT": "open",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -622,7 +625,8 @@
 				],
 				{
 					"headF": "open",
-					"headT": "open"
+					"headT": "open",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -636,7 +640,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "hollow"
+					"headT": "hollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -650,7 +655,8 @@
 				],
 				{
 					"headF": "hollow",
-					"headT": "hollow"
+					"headT": "hollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -664,7 +670,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "diamond"
+					"headT": "diamond",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -678,7 +685,8 @@
 				],
 				{
 					"headF": "diamond",
-					"headT": "diamond"
+					"headT": "diamond",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -692,7 +700,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "diamondHollow"
+					"headT": "diamondHollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -706,7 +715,8 @@
 				],
 				{
 					"headF": "diamondHollow",
-					"headT": "diamondHollow"
+					"headT": "diamondHollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -720,7 +730,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "circle"
+					"headT": "circle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -734,7 +745,8 @@
 				],
 				{
 					"headF": "circle",
-					"headT": "circle"
+					"headT": "circle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -748,7 +760,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "circleHollow"
+					"headT": "circleHollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -762,7 +775,8 @@
 				],
 				{
 					"headF": "circleHollow",
-					"headT": "circleHollow"
+					"headT": "circleHollow",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#334155",
@@ -776,7 +790,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "open"
+					"headT": "open",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#94a3b8",

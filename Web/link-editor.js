@@ -9,7 +9,7 @@ const
 HEAD_STYLES		= [ '', 'triangle', 'open', 'hollow', 'diamond', 'diamondHollow', 'circle', 'circleHollow' ]
 
 const
-CORNER_STYLES	= [ '', 'bezier', 'arc', 'sharp', 'straight' ]
+CORNER_STYLES	= [ '', 'sharp', 'arc', 'curve' ]
 
 const
 RefreshSelect	= _ => {

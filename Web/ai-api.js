@@ -25,6 +25,9 @@ const
 isNum			= v => typeof v === 'number' && Number.isFinite( v )
 
 const
+CORNER_STYLES	= new Set( [ 'sharp', 'arc', 'curve' ] )
+
+const
 validateNode	= ( n, ids, issues, i ) => {
 	if	( !Array.isArray( n ) || n.length < 2 ) {
 		issues.push( `node[${ i }] must be [ ID, area, paint? ]` )
@@ -51,11 +54,12 @@ validateLink	= ( l, ids, seen, issues, i ) => {
 		issues.push( `link[${ i }] must be [ [ from, to ], ends, paint? ]` )
 		return
 	}
-	const	[ [ F, T ] ] = l
+	const	[ [ F, T ], A = {} ] = l
 	if	( !F || !T )		{ issues.push( `link[${ i }] is missing an endpoint` ); return }
 	if	( F === T )			issues.push( `link[${ i }] is a self-link on "${ F }"` )
 	if	( !ids.has( F ) )	issues.push( `link[${ i }] from "${ F }" is not a node` )
 	if	( !ids.has( T ) )	issues.push( `link[${ i }] to "${ T }" is not a node` )
+	if	( A?.corner && !CORNER_STYLES.has( A.corner ) )	issues.push( `link[${ i }] corner must be sharp, arc, or curve` )
 	const	key = `${ F }\u0000${ T }`
 	if	( seen.has( key ) )	issues.push( `duplicate link ${ F } → ${ T }` )
 	else					seen.add( key )

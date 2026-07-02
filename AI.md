@@ -82,7 +82,7 @@ Recognized keys: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `miterLim
 |-----|--------|-------------|
 | **`headF`, `headT`** | `false` / omit / style name | Arrow at from / to end. Styles: `triangle`, `open`, `hollow`, `diamond`, `diamondHollow`, `circle`, `circleHollow` |
 | **`anchorF`, `anchorT`** | `T` `B` `L` `R` `TL` `TR` `BL` `BR` / omit | Attachment point. Omit = outline hit toward the other node's center |
-| **`corner`** | `bezier` (default) / `sharp` / `arc` / `straight` | Orthogonal routing and corner drawing — see SCHEMA.md |
+| **`corner`** | undefined(default direct line) / `sharp` / `arc` / `curve` | Set only for orthogonal routing; see SCHEMA.md |
 
 Duplicate `[ from, to ]` pairs are merged by `Link()` / `EditLink()`. Avoid duplicates (`validate` reports them).
 

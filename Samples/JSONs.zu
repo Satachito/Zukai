@@ -415,7 +415,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#f48fb1",
@@ -429,7 +430,8 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#4fc3f7",
@@ -443,7 +445,8 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#81c784",
@@ -457,7 +460,8 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#ffb74d",
@@ -471,7 +475,8 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#ff8a65",
@@ -485,7 +490,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#4dd0e1",
@@ -499,7 +505,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#aed581",
@@ -513,7 +520,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#ff8a65",
@@ -527,7 +535,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#7986cb",
@@ -541,7 +550,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#fff176",
@@ -555,7 +565,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#ce93d8",
@@ -569,7 +580,8 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle"
+					"headT": "triangle",
+					"corner": "curve"
 				},
 				{
 					"stroke": "#ce93d8",

@@ -55,13 +55,15 @@ import {
 ,	ContainsXY
 ,	ContainsTLBR
 ,	AreaTLBR
+,	Outset
 ,	XYWH_XYXY
 ,	XY_EV
 ,	AddXY
+,	SubXY
 ,	DivXY
+,	MulXY
 ,	DeltaXY
 ,	EqualXY
-,	Outset
 }	from './Geo2D.js'
 
 import {
@@ -88,117 +90,300 @@ PrepareCanvas	= _ => {
 
 
 const
-HeadPaintType	= _ => {
+IsStrokedHead	= _ => {
 	switch	( _ ) {
+	case 'open'				:
 	case 'hollow'			:
 	case 'diamondHollow'	:
 	case 'circleHollow'		:
-		return	'stroke'
+		return	true
 	}
-	return 'fill'
+	return false
 }
 
 
 const
-HeadAreaPath	= ( A, xyF, xyT ) => {
-	if	( A.corner ) {
-console.assert( false )
-    	return new Path2D()
-	} else {
-		const
-		[ dX, dY ] = DeltaXY( xyF, xyT )
-		const
-		hypot = Math.hypot( dX, dY )
+HeadMetrics		= ( head, shaftXY, tipXY, lineWidth ) => {
+	const
+	[ dX, dY ] = DeltaXY( tipXY, shaftXY )
+	,	len = Math.hypot( dX, dY )
+	if	( len < 1e-9 || !head ) return null
 
+	const
+	lw = Number( lineWidth ) || 1
+	,	headLen  = Math.min( len * 0.35, Math.max( 10, lw * 2.4 ) )
+	,	headHalf = Math.max( 4, headLen * 0.45 )
+	,	dir = DivXY( [ dX, dY ], len )
+	,	normal = [ -dir[ 1 ], dir[ 0 ] ]
+	,	neck = AddXY( tipXY, MulXY( dir, headLen ) )
+	,	baseL = AddXY( neck, MulXY( normal, headHalf ) )
+	,	baseR = AddXY( neck, MulXY( normal, -headHalf ) )
+	return	{ dir, normal, neck, baseL, baseR, headLen, headHalf }
+}
+
+const
+HeadNeck		= ( head, shaftXY, tipXY, lineWidth ) => {
+	if	( !head || head === 'open' ) return tipXY
+	const
+	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
+	return	metrics?.neck ?? tipXY
+}
+
+const
+HeadPath		= ( head, shaftXY, tipXY, lineWidth ) => {
+	const
+	$ = new Path2D()
+	,	metrics = HeadMetrics( head, shaftXY, tipXY, lineWidth )
+	if	( !metrics ) return $
+	const
+	{ dir, normal, neck, baseL, baseR, headLen, headHalf } = metrics
+
+	switch	( head ) {
+	case 'open'				:
+		$.moveTo( ...baseL )
+		$.lineTo( ...tipXY )
+		$.lineTo( ...baseR )
+		break
+	case 'hollow'			:
+	case 'triangle'			:
+		$.moveTo( ...tipXY )
+		$.lineTo( ...baseL )
+		$.lineTo( ...baseR )
+		$.closePath()
+		break
+	case 'diamond'			:
+	case 'diamondHollow'	: {
 		const
-    	$ = new Path2D()
-    	$.arc(
-			xyT[ 0 ] - dX / hypot * GRAB
-		,	xyT[ 1 ] - dY / hypot * GRAB
-		,	GRAB
+		center = AddXY( tipXY, MulXY( dir, headLen * 0.5 ) )
+		,	dL = AddXY( center, MulXY( normal, headHalf ) )
+		,	dR = AddXY( center, MulXY( normal, -headHalf ) )
+		$.moveTo( ...tipXY )
+		$.lineTo( ...dL )
+		$.lineTo( ...neck )
+		$.lineTo( ...dR )
+		$.closePath()
+		break
+	}
+	case 'circle'			:
+	case 'circleHollow'		:
+		$.arc(
+			tipXY[ 0 ] + dir[ 0 ] * headLen * 0.5
+		,	tipXY[ 1 ] + dir[ 1 ] * headLen * 0.5
+		,	headLen * 0.5
 		,	0
 		,	Math.PI * 2
 		)
-		return $
+		break
+	default					:
+		$.moveTo( ...tipXY )
+		$.lineTo( ...baseL )
+		$.lineTo( ...baseR )
+		$.closePath()
 	}
+	return $
 }
 
 
 const
-DXY				= ( A, xyF, xyT ) => {
-	const
-	[ dX, dY ] = DeltaXY( xyF, xyT )
-	if	( A.corner ) {
-		dX
-	} else {
-		return DeltaXY( xyF, xyT )
+Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
+
+	const VHV	= () => {
+		const y = ( yF + yT ) / 2
+		return [ [ xF, y ], [ xT, y ] ]
 	}
-}
+	const HVH	= () => {
+		const x = ( xF + xT ) / 2
+		return [ [ x, yF ], [ x, yT ] ]
+	}
+	const VH	= () => [ [ xF, yT ] ]
+	const HV	= () => [ [ xT, yF ] ]
+	const UHD	= () => {
+		const y = Math.min( yF, yT ) - GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const DHU	= () => {
+		const y = Math.max( yF, yT ) + GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const LVR	= () => {
+		const x = Math.min( xF, xT ) - GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
+	const RVL	= () => {
+		const x = Math.max( xF, xT ) + GRAB
+		return [ [ xF, y ], [ xT, y ] ]
+	}
 
-
-const
-HeadPath		= ( corner, head, xyF, xyT ) => {
-	const
-	[ dX, dY ] = DeltaXY( xyF, xyT )
-	switch ( corner ) {
-	case 'sharp'	:
-	case 'arc'		:
-	case 'bezier'	:
-		switch	( head ) {
-		case 'hollow'			:
-		case 'diamondHollow'	:
-		case 'circleHollow'		:
-		case 
+	switch ( aF ) {
+	case 'T'	:
+		switch ( aT ) {
+		case 'T'	: return UHD()
+		case 'B'	: return VHV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		case 'TL'	: return VH()
+		case 'TR'	: return VH()
+		case 'BL'	: return VH()
+		case 'BR'	: return VH()
+		default		: return VHV()
+		}
+	case 'B'	:
+		switch ( aT ) {
+		case 'T'	: return VHV()
+		case 'B'	: return DHU()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		case 'TL'	: return VH()
+		case 'TR'	: return VH()
+		case 'BL'	: return VH()
+		case 'BR'	: return VH()
+		default		: return VHV()
+		}
+	case 'L'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return LVR()
+		case 'R'	: return HVH()
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HVH()
+		}
+	case 'R'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return HVH()
+		case 'R'	: return RHL()
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HVH()
+		}
+	case 'TL'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'TR'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'BL'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	case 'BR'	:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return HV()
+		}
+	default		:
+		//	TODO:
+		switch ( aT ) {
+		case 'T'	: return HV()
+		case 'B'	: return HV()
+		case 'L'	: return VH()
+		case 'R'	: return VH()
+		//	TODO:
+		case 'TL'	: return HV()
+		case 'TR'	: return HV()
+		case 'BL'	: return HV()
+		case 'BR'	: return HV()
+		default		: return VHV()
 		}
 	}
 }
 
-
 const
-ShaftPath		= _ => {
+ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 
 	const
-	[ xyF, xyT ]			= LinkCoordinates( _ )
+	width = Math.max( Number( P.lineWidth ) || 1 )
 
-,	[ [ nF, nT ], A, P ]	= _
-,	width					= Math.max( Number( P.lineWidth ) || 1 )
-
-//	TODO:
-,	ArrowType				= _ => 'line'
-,	PolygonMetrics			= _ => [ xyF, xyT ]
-	
 	const
 	$ = new Path2D
-	switch	( ArrowType( _ ) ) {
-	case 'quad'		:
-		{	const
-			[ start, c1, end ] = QuadMetrics( _ )
-			$.moveTo( ...start )
-			$.quadraticCurveTo( ...c1, ...end )
+	$.moveTo( ...xyF )
+
+	if	( A.corner ) {
+		switch	( A.corner ) {
+		case 'sharp':
+			corners.forEach( _ => $.lineTo( ..._ ) )
+			$.lineTo( ...xyT )
+			break
+		case 'arc':
+			corners.reduce(
+				( P, C, _ ) => {
+					const
+					N = corners[ _ + 1 ] ?? xyT
+				,   R = Math.min(
+						48	//	ARC_RADIUS MAX
+					,   Math.hypot( ...DeltaXY( P, C ) ) / 2
+					,   Math.hypot( ...DeltaXY( C, N ) ) / 2
+					)
+					R < 1
+					?	$.lineTo( ...C )
+					:	$.arcTo( ...C, ...N, R )
+					return C
+				}
+			,	xyF
+			)
+			$.lineTo( ...xyT )
+			break
+		case 'curve':
+			switch	( corners.length ) {
+			case 1:
+				$.quadraticCurveTo( ...corners[ 0 ], ...xyT )
+				break
+			case 2:
+				$.bezierCurveTo( ...corners[ 0 ], ...corners[ 1 ], ...xyT )
+				break
+			default:
+				console.error( A.corner )
+				$.lineTo( ...xyT )
+				break
+			}
+			break
 		}
-		break
-	case 'bezier'	:
-		{	const
-			[ start, c1, c2, end ] = CubicMetrics( _ )
-			$.moveTo( ...start )
-			$.bezierCurveTo( ...c1, ...c2, ...end )
-		}
-		break
-	case 'arc'		:
-		{	const
-			[ start, corners, end ] = ArcMetrics( _ )
-			$.moveTo( ...start )
-			corners.forEach( _ => $.arcTo( _.c[ 0 ], _.c[ 1 ], _.b[ 0 ], _.b[ 1 ], _.r ) )
-			$.lineTo( ...end )
-		}
-		break
-	default		:	//	'line'
-		{	const
-			[ start, ...xys ] = PolygonMetrics( _ )
-			$.moveTo( ...start )
-			xys.forEach( _ => $.lineTo( ..._ ) )
-		}
-		break
+	} else {
+		$.lineTo( ...xyT )
 	}
 	return	$
 }
@@ -243,38 +428,59 @@ HeadPathF	= ( style, tip, dir, headLen, headHalf ) => {
 
 const
 DrawLinkCanvas	= ( c2D, _ ) => {
-	c2D.save()
-
 	const
-	[ , A, P ] = _
+	[ , A, P ]		= _
+	const
+	[ xyF, xyT ]	= LinkCoordinates( _ )
+	,	corners		= Corners( A.anchorF, A.anchorT, xyF, xyT )
+	,	shaftF		= A.corner && corners.length ? corners[ 0 ] : xyT
+	,	shaftT		= A.corner && corners.length ? corners[ corners.length - 1 ] : xyF
+	,	trimF		= HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
+	,	trimT		= HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
+
+	c2D.save()
 	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
 	P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
 	P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
 	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
 	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
 	P.lineDash			&& c2D.setLineDash( P.lineDash )
-
-	c2D.stroke( ShaftPath( _ ) )
+	c2D.stroke(
+				ShaftPath(
+					_
+				,	trimF
+				,	trimT
+				,	corners
+				)
+			)
 	c2D.restore()
 
 
 	c2D.save()
-	c2D.strokeStyle	= 'white'
-	const
-	[ xyF, xyT ]			= LinkCoordinates( _ )
-	c2D.stroke( HeadAreaPath( A, xyF, xyT ) )
-	c2D.stroke( HeadAreaPath( A, xyT, xyF ) )
-/*
-	c2D.fill			= P.fill ?? P.stroke ?? 'dodgerblue'
-	const
-	hptF = HeadPaintType( A.headF )
-	hptF === 'stroke'	&& c2D.stroke	( HeadPathF( _ ) )
-	hptF === 'fill'		&& c2D.fill		( HeadPathF( _ ) )
-	const
-	hptT = HeadPaintType( A.headT )
-	hptT === 'stroke'	&& c2D.stroke	( HeadPathT( _ ) )
-	hptT === 'fill'		&& c2D.fill		( HeadPathT( _ ) )
-*/
+
+//	c2D.strokeStyle	= 'white'
+//	c2D.stroke( HeadAreaPath( A, xyF, xyT ) )
+//	c2D.stroke( HeadAreaPath( A, xyT, xyF ) )
+
+	c2D.fillStyle	= P.fill ?? P.stroke ?? 'dodgerblue'
+	P.stroke	&& ( c2D.strokeStyle = P.stroke )
+	P.lineWidth	&& ( c2D.lineWidth = P.lineWidth )
+	c2D.lineJoin	= 'round'
+	c2D.lineCap		= 'round'
+	if	( A.headF ) {
+		const
+		$ = HeadPath( A.headF, shaftF, xyF, P.lineWidth )
+		IsStrokedHead( A.headF )
+		?	c2D.stroke( $ )
+		:	c2D.fill( $ )
+	}
+	if	( A.headT ) {
+		const
+		$ = HeadPath( A.headT, shaftT, xyT, P.lineWidth )
+		IsStrokedHead( A.headT )
+		?	c2D.stroke( $ )
+		:	c2D.fill( $ )
+	}
 	c2D.restore()
 }
 
@@ -284,12 +490,38 @@ HitLink			= ( _, xy ) => {
 	[ xyF, xyT ]			= LinkCoordinates( _ )
 	const
 	[ , A ] = _
+	const
+	HeadAreaPath	= ( A, xyF, xyT ) => {
+		const
+		[ dX, dY ] = DeltaXY( xyF, xyT )
+		const
+		hypot = Math.hypot( dX, dY )
+
+		const
+		$ = new Path2D()
+		$.arc(
+			xyT[ 0 ] - dX / hypot * GRAB
+		,	xyT[ 1 ] - dY / hypot * GRAB
+		,	GRAB
+		,	0
+		,	Math.PI * 2
+		)
+		return $
+	}
 	if	( C2D.isPointInPath( HeadAreaPath( A, xyF, xyT ), ...xy ) ) return true
 	if	( C2D.isPointInPath( HeadAreaPath( A, xyT, xyF ), ...xy ) ) return true
+
 	C2D.save()
 	try {
 		C2D.lineWidth = GRAB
-		return C2D.isPointInStroke( ShaftPath( _ ), ...xy )
+		return C2D.isPointInStroke(
+			ShaftPath(
+				_
+			,	xyF
+			,	xyT
+			,	Corners( A.anchorF, A.anchorT, xyF, xyT ) )
+		,	...xy
+		)
 	} finally {
 		C2D.restore()
 	}
