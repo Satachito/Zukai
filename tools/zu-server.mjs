@@ -241,7 +241,7 @@ watchZuTree	= dir => {
 watchZuTree( path.join( WEB, 'Samples' ) )
 
 const
-handleDfApi	= async ( req, res, urlPath ) => {
+handleZuApi	= async ( req, res, urlPath ) => {
 	if	( urlPath === '/__zu/status' && req.method === 'GET' ) {
 		json( res, 200, {
 			connected	: !!( editor && !editor.destroyed )
@@ -353,7 +353,7 @@ server = createServer( ( req, res ) => {
 	const
 	urlPath = req.url.split( '?' )[ 0 ]
 	if	( urlPath.startsWith( '/__zu/' ) && urlPath !== WS_PATH ) {
-		handleDfApi( req, res, urlPath ).catch( er => {
+		handleZuApi( req, res, urlPath ).catch( er => {
 			log( 'api error', er )
 			json( res, 500, { error: 'Internal error' } )
 		} )

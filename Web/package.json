@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node ../tools/zu-server.mjs",
     "lint": "eslint *.js",
+    "test": "node --test test/*.test.mjs",
     "mcp": "node ../tools/zu-mcp.mjs"
   },
   "keywords": [
