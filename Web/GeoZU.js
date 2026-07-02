@@ -263,24 +263,43 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 ,	pT = $( nT[ 1 ], aT, nF[ 1 ], aF )
 
 ,	autoPerp		= ( S, [ px, py ], aOther ) => {
-		if	( S.type !== 'ellipse' && S.type !== 'rhombus' ) {
+		const
+		hasH = aOther.includes( 'L' ) || aOther.includes( 'R' )
+	,	hasV = aOther.includes( 'T' ) || aOther.includes( 'B' )
+		//	a horizontal segment reaches the outline only if py is inside the
+		//	shape's vertical span; a vertical one only if px is inside its
+		//	horizontal span
+	,	canH = T( S ) < py && py < B( S )
+	,	canV = L( S ) < px && px < R( S )
+	,	rH = Math.abs( S.rH )
+	,	rV = Math.abs( S.rV )
+		//	near-side outline point at the given py ( horizontal ) / px ( vertical ):
+		//	rect / SVG / PNG land on the box edge; ellipse / rhombus land on their
+		//	curve / diamond so the segment still meets the drawn shape exactly
+	,	toH = () => {
 			const
-			hasH = aOther.includes( 'L' ) || aOther.includes( 'R' )
-		,	hasV = aOther.includes( 'T' ) || aOther.includes( 'B' )
-			//	a horizontal segment reaches the L/R edge only if py is inside the
-			//	box's vertical span; a vertical one reaches T/B only if px is inside
-			//	its horizontal span
-		,	canH = T( S ) < py && py < B( S )
-		,	canV = L( S ) < px && px < R( S )
-		,	toH  = () => [ px <= S.cX ? L( S ) : R( S ), py ]
-		,	toV  = () => [ px, py <= S.cY ? T( S ) : B( S ) ]
-			//	prefer the axis that matches the anchored end's side; otherwise, as
-			//	an exception, still connect on whichever axis the edge admits
-			if	( hasH && canH )	return toH()
-			if	( hasV && canV )	return toV()
-			if	( canH )			return toH()
-			if	( canV )			return toV()
+			dy = py - S.cY
+			switch ( S.type ) {
+			case 'ellipse'	: return [ S.cX + ( px <= S.cX ? -1 : 1 ) * rH * Math.sqrt( Math.max( 0, 1 - ( dy / rV ) ** 2 ) ), py ]
+			case 'rhombus'	: return [ S.cX + ( px <= S.cX ? -1 : 1 ) * rH * ( 1 - Math.abs( dy ) / rV ), py ]
+			default			: return [ px <= S.cX ? L( S ) : R( S ), py ]
+			}
 		}
+	,	toV = () => {
+			const
+			dx = px - S.cX
+			switch ( S.type ) {
+			case 'ellipse'	: return [ px, S.cY + ( py <= S.cY ? -1 : 1 ) * rV * Math.sqrt( Math.max( 0, 1 - ( dx / rH ) ** 2 ) ) ]
+			case 'rhombus'	: return [ px, S.cY + ( py <= S.cY ? -1 : 1 ) * rV * ( 1 - Math.abs( dx ) / rH ) ]
+			default			: return [ px, py <= S.cY ? T( S ) : B( S ) ]
+			}
+		}
+		//	prefer the axis that matches the anchored end's side; otherwise, as an
+		//	exception, still connect on whichever axis the shape's edge admits
+		if	( hasH && canH )	return toH()
+		if	( hasV && canV )	return toV()
+		if	( canH )			return toH()
+		if	( canV )			return toV()
 		return	onOutline( S, px - S.cX, py - S.cY )
 	}
 	//	unanchored end: pick the side ( T / B / L / R ) the auto-computed point
