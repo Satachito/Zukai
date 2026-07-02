@@ -580,8 +580,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
+					"headT": "triangle"
 				},
 				{
 					"stroke": "#334155",
@@ -595,8 +594,7 @@
 				],
 				{
 					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
+					"headT": "triangle"
 				},
 				{
 					"stroke": "#334155",
@@ -610,8 +608,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "open",
-					"corner": "curve"
+					"headT": "open"
 				},
 				{
 					"stroke": "#334155",
@@ -625,8 +622,7 @@
 				],
 				{
 					"headF": "open",
-					"headT": "open",
-					"corner": "curve"
+					"headT": "open"
 				},
 				{
 					"stroke": "#334155",
@@ -640,8 +636,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "hollow",
-					"corner": "curve"
+					"headT": "hollow"
 				},
 				{
 					"stroke": "#334155",
@@ -655,8 +650,7 @@
 				],
 				{
 					"headF": "hollow",
-					"headT": "hollow",
-					"corner": "curve"
+					"headT": "hollow"
 				},
 				{
 					"stroke": "#334155",
@@ -670,8 +664,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "diamond",
-					"corner": "curve"
+					"headT": "diamond"
 				},
 				{
 					"stroke": "#334155",
@@ -685,8 +678,7 @@
 				],
 				{
 					"headF": "diamond",
-					"headT": "diamond",
-					"corner": "curve"
+					"headT": "diamond"
 				},
 				{
 					"stroke": "#334155",
@@ -700,8 +692,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "diamondHollow",
-					"corner": "curve"
+					"headT": "diamondHollow"
 				},
 				{
 					"stroke": "#334155",
@@ -715,8 +706,7 @@
 				],
 				{
 					"headF": "diamondHollow",
-					"headT": "diamondHollow",
-					"corner": "curve"
+					"headT": "diamondHollow"
 				},
 				{
 					"stroke": "#334155",
@@ -730,8 +720,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "circle",
-					"corner": "curve"
+					"headT": "circle"
 				},
 				{
 					"stroke": "#334155",
@@ -745,8 +734,7 @@
 				],
 				{
 					"headF": "circle",
-					"headT": "circle",
-					"corner": "curve"
+					"headT": "circle"
 				},
 				{
 					"stroke": "#334155",
@@ -760,8 +748,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "circleHollow",
-					"corner": "curve"
+					"headT": "circleHollow"
 				},
 				{
 					"stroke": "#334155",
@@ -775,8 +762,7 @@
 				],
 				{
 					"headF": "circleHollow",
-					"headT": "circleHollow",
-					"corner": "curve"
+					"headT": "circleHollow"
 				},
 				{
 					"stroke": "#334155",
@@ -790,8 +776,7 @@
 				],
 				{
 					"headF": false,
-					"headT": "open",
-					"corner": "curve"
+					"headT": "open"
 				},
 				{
 					"stroke": "#94a3b8",

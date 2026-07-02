@@ -106,18 +106,18 @@ const
 HeadMetrics		= ( head, shaftXY, tipXY, lineWidth ) => {
 	const
 	[ dX, dY ] = DeltaXY( tipXY, shaftXY )
-	,	len = Math.hypot( dX, dY )
+,	len = Math.hypot( dX, dY )
 	if	( len < 1e-9 || !head ) return null
 
 	const
 	lw = Number( lineWidth ) || 1
-	,	headLen  = Math.min( len * 0.35, Math.max( 10, lw * 2.4 ) )
-	,	headHalf = Math.max( 4, headLen * 0.45 )
-	,	dir = DivXY( [ dX, dY ], len )
-	,	normal = [ -dir[ 1 ], dir[ 0 ] ]
-	,	neck = AddXY( tipXY, MulXY( dir, headLen ) )
-	,	baseL = AddXY( neck, MulXY( normal, headHalf ) )
-	,	baseR = AddXY( neck, MulXY( normal, -headHalf ) )
+,	headLen  = Math.min( len * 0.35, Math.max( 10, lw * 2.4 ) )
+,	headHalf = Math.max( 4, headLen * 0.45 )
+,	dir = DivXY( [ dX, dY ], len )
+,	normal = [ -dir[ 1 ], dir[ 0 ] ]
+,	neck = AddXY( tipXY, MulXY( dir, headLen ) )
+,	baseL = AddXY( neck, MulXY( normal, headHalf ) )
+,	baseR = AddXY( neck, MulXY( normal, -headHalf ) )
 	return	{ dir, normal, neck, baseL, baseR, headLen, headHalf }
 }
 
@@ -427,16 +427,20 @@ HeadPathF	= ( style, tip, dir, headLen, headHalf ) => {
 */
 
 const
+HeadShaftXY		= ( cornerXY, fallbackXY, tipXY ) => {
+	if	( !cornerXY ) return fallbackXY
+	return	Math.hypot( ...DeltaXY( tipXY, cornerXY ) ) < 1e-9 ? fallbackXY : cornerXY
+}
+
+const
 DrawLinkCanvas	= ( c2D, _ ) => {
 	const
 	[ , A, P ]		= _
 	const
 	[ xyF, xyT ]	= LinkCoordinates( _ )
-	,	corners		= Corners( A.anchorF, A.anchorT, xyF, xyT )
-	,	shaftF		= A.corner && corners.length ? corners[ 0 ] : xyT
-	,	shaftT		= A.corner && corners.length ? corners[ corners.length - 1 ] : xyF
-	,	trimF		= HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
-	,	trimT		= HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
+,	corners		= Corners( A.anchorF, A.anchorT, xyF, xyT )
+,	shaftF		= HeadShaftXY( A.corner && corners[ 0 ], xyT, xyF )
+,	shaftT		= HeadShaftXY( A.corner && corners[ corners.length - 1 ], xyF, xyT )
 
 	c2D.save()
 	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
@@ -446,15 +450,14 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
 	P.lineDash			&& c2D.setLineDash( P.lineDash )
 	c2D.stroke(
-				ShaftPath(
-					_
-				,	trimF
-				,	trimT
-				,	corners
-				)
-			)
+		ShaftPath(
+			_
+		,	HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
+		,	HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
+		,	corners
+		)
+	)
 	c2D.restore()
-
 
 	c2D.save()
 
