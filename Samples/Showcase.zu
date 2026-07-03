@@ -869,7 +869,7 @@
 					"cY": 1290,
 					"rH": 320,
 					"rV": 20,
-					"html": "<b>6 · Anchor sides — direct + one anchor snaps to H / V</b>",
+					"html": "<b>6 · Anchor sides — ellipse outline projections</b>",
 					"style": ";display:grid\n;place-items:center start\n;font-size:15px"
 				},
 				{}
@@ -877,13 +877,12 @@
 			[
 				"anchors",
 				{
-					"type": "rect",
+					"type": "ellipse",
 					"cX": 850,
 					"cY": 1480,
 					"rH": 96,
 					"rV": 58,
-					"radii": 10,
-					"html": "center<br>node",
+					"html": "ellipse<br>node",
 					"style": ";display:grid\n;place-items:center\n;text-align:center"
 				},
 				{
