@@ -7,7 +7,9 @@
     "dev": "node ../tools/zu-server.mjs",
     "lint": "eslint *.js",
     "test": "node --test test/*.test.mjs",
-    "mcp": "node ../tools/zu-mcp.mjs"
+    "mcp": "node ../tools/zu-mcp.mjs",
+    "playwright-demo": "node ../tools/playwright-mouse-demo.mjs",
+    "os-demo": "node ../tools/os-mouse-demo.mjs"
   },
   "keywords": [
     "diagram",
