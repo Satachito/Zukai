@@ -5,7 +5,7 @@
       "name": "zukai",
       "runtimeExecutable": "node",
       "runtimeArgs": ["tools/zu-server.mjs"],
-      "port": 8080,
+      "port": 8281,
       "autoPort": true
     }
   ]

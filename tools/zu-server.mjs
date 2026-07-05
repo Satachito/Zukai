@@ -5,7 +5,7 @@
 //
 //	Usage:
 //	  node tools/zu-server.mjs
-//	  open http://localhost:8080/?zu=Samples/JSONs.zu
+//	  open http://localhost:8281/?zu=Samples/JSONs.zu
 
 import { createServer	} from 'node:http'
 import { createHash, randomUUID	} from 'node:crypto'
@@ -378,7 +378,7 @@ server.on( 'error', er => {
 		console.error(
 			`[zu-server] port ${ PORT } is already in use.\n`
 			+ `  kill it:  lsof -ti:${ PORT } | xargs kill\n`
-			+ `  or use:   ZU_PORT=${ PORT + 1 } node tools/zu-server.mjs`
+			+ `  or use:   ZU_PORT=8280 node tools/zu-server.mjs`
 		)
 		process.exit( 1 )
 	}

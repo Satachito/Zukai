@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 export const
 ROOT	= path.resolve( path.dirname( fileURLToPath( import.meta.url ) ), '..' )
 ,	WEB	= path.join( ROOT, 'Web' )
-,	PORT	= Number( process.env.ZU_PORT || process.env.PORT ) || 8080
+,	PORT	= Number( process.env.ZU_PORT || process.env.PORT ) || 8281
 ,	ZU_BASE	= process.env.ZU_BASE || `http://127.0.0.1:${ PORT }`
 
 export const

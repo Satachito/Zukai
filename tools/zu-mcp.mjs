@@ -2,8 +2,8 @@
 //	Zukai MCP server — natural-language agents control the live diagram via zu-server.
 //
 //	Prerequisites:
-//	  cd Web && npm run dev          ( zu-server on :8080 )
-//	  open http://localhost:8080/?zu=Samples/JSONs.zu
+//	  cd Web && npm run dev          ( zu-server on :8281 )
+//	  open http://localhost:8281/?zu=Samples/JSONs.zu
 //
 //	Cursor MCP config ( .cursor/mcp.json ):
 //	  { "mcpServers": { "zukai": { "command": "node", "args": ["tools/zu-mcp.mjs"] } } }

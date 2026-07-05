@@ -6,7 +6,7 @@
 //	matching pointer events on MAIN_EDITOR.reformer.
 //
 //	Prerequisites:
-//	  cd Web && npm run dev          ( zu-server on :8080 )
+//	  cd Web && npm run dev          ( zu-server on :8281 )
 //	  cd tools && npm install && npx playwright install chromium
 //
 //	Run:
@@ -16,7 +16,7 @@
 import { chromium } from 'playwright'
 
 const
-PORT	= Number( process.env.ZU_PORT || process.env.PORT ) || 8080
+PORT	= Number( process.env.ZU_PORT || process.env.PORT ) || 8281
 ,	URL	= `http://localhost:${ PORT }/`
 ,	HEADLESS	= process.argv.includes( '--headless' )
 ,	SLOW_MO		= HEADLESS ? 0 : 80

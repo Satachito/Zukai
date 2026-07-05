@@ -35,7 +35,7 @@ cd Web && npm install && npm run dev
 cd ../tools && npm install   # MCP (one-time)
 ```
 
-Open `http://localhost:8080/?zu=Samples/JSONs.zu` and enable the **`zukai`** MCP server in Cursor (**Settings → Tools & MCP**).
+Open `http://localhost:8281/?zu=Samples/JSONs.zu` and enable the **`zukai`** MCP server in Cursor (**Settings → Tools & MCP**).
 
 Full setup, Phase 2/3/4 explanation, MCP tools, and troubleshooting: **[USAGE.md](USAGE.md)**
 
@@ -83,8 +83,8 @@ No live reload or MCP — just preview the app:
 
 ```bash
 cd Web
-python3 -m http.server 8080
-# http://localhost:8080/index.html
+python3 -m http.server 8281
+# http://localhost:8281/index.html
 ```
 
 `Web/Samples` symlinks to `../Samples`. Icon ZIPs symlink from `ICONs/`.

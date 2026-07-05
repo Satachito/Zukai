@@ -40,7 +40,7 @@ Every client runs the same stdio server:
 | **`tools/zu-mcp.mjs`** | MCP tools (`zu_status`, `zu_get_model`, …) |
 | **`tools/zu-mcp-run.sh`** | Launcher — `cd`s into `tools/` so `node_modules` resolves |
 
-The MCP process talks to **`zu-server`** (Phase 3) on port **8080** by default. If you use another port, set **`ZU_PORT`** in the MCP server's environment **and** when starting the dev server (see [Start the dev server](#start-the-dev-server-every-session)).
+The MCP process talks to **`zu-server`** (Phase 3) on port **8281** by default. If you use another port, set **`ZU_PORT`** in the MCP server's environment **and** when starting the dev server (see [Start the dev server](#start-the-dev-server-every-session)).
 
 ---
 
@@ -86,7 +86,7 @@ Config file: **[`.cursor/mcp.json`](.cursor/mcp.json)** (uses `tools/zu-mcp-run.
       "command": "/bin/bash",
       "args": ["/path/to/Zukai/tools/zu-mcp-run.sh"],
       "env": {
-        "ZU_PORT": "8080"
+        "ZU_PORT": "8281"
       }
     }
   }
@@ -112,7 +112,7 @@ In chat, MCP tools appear when the hammer/tools icon shows servers connected. As
 From the **repo root** (project scope — shareable via git):
 
 ```bash
-claude mcp add zukai --scope project --env ZU_PORT=8080 -- /bin/bash tools/zu-mcp-run.sh
+claude mcp add zukai --scope project --env ZU_PORT=8281 -- /bin/bash tools/zu-mcp-run.sh
 ```
 
 Or add the same block to **`.mcp.json`** at the project root (Claude Code's project config — separate from `.cursor/mcp.json`):
@@ -124,7 +124,7 @@ Or add the same block to **`.mcp.json`** at the project root (Claude Code's proj
       "command": "/bin/bash",
       "args": ["/path/to/Zukai/tools/zu-mcp-run.sh"],
       "env": {
-        "ZU_PORT": "8080"
+        "ZU_PORT": "8281"
       }
     }
   }
@@ -148,7 +148,7 @@ Codex uses **TOML**, not JSON. Global config: **`~/.codex/config.toml`**. Projec
 **CLI** (from anywhere):
 
 ```bash
-codex mcp add zukai --env ZU_PORT=8080 -- /bin/bash /path/to/Zukai/tools/zu-mcp-run.sh
+codex mcp add zukai --env ZU_PORT=8281 -- /bin/bash /path/to/Zukai/tools/zu-mcp-run.sh
 ```
 
 **Or edit `~/.codex/config.toml`:**
@@ -161,7 +161,7 @@ enabled = true
 startup_timeout_sec = 30
 
 [mcp_servers.zukai.env]
-ZU_PORT = "8080"
+ZU_PORT = "8281"
 ```
 
 Verify:
@@ -180,13 +180,13 @@ Docs: [OpenAI Codex — MCP](https://developers.openai.com/codex/mcp).
 
 | URL | Phase 2 (auto-reload on save) | Phase 3 / 4 (live MCP) |
 |-----|------------------------------|-------------------------|
-| `http://localhost:8080/?zu=Samples/JSONs.zu` | **Yes** — watches that file | **Yes** |
-| `http://localhost:8080/` | **No** (unless `zu-watch` left in sessionStorage) | **Yes** |
+| `http://localhost:8281/?zu=Samples/JSONs.zu` | **Yes** — watches that file | **Yes** |
+| `http://localhost:8281/` | **No** (unless `zu-watch` left in sessionStorage) | **Yes** |
 | Sample button in the app | **Yes** — sets watch path | **Yes** |
 
 **Recommended for file + AI editing:** use `?zu=Samples/YourDiagram.zu`.
 
-**MCP-only experiments:** `http://localhost:8080/` is fine; live edits apply to whatever is on the canvas (localStorage restore or empty diagram). They are **not** written to disk until `zu_save_file`.
+**MCP-only experiments:** `http://localhost:8281/` is fine; live edits apply to whatever is on the canvas (localStorage restore or empty diagram). They are **not** written to disk until `zu_save_file`.
 
 To clear a stale watch path: DevTools → Application → Session Storage → delete `zu-watch`, or upload a file with **↑** (upload clears the watch).
 
@@ -195,15 +195,15 @@ To clear a stale watch path: DevTools → Application → Session Storage → de
 ## Phase 2 — edit `.zu`, see it in the browser
 
 1. `npm run dev`
-2. Open `http://localhost:8080/?zu=Samples/JSONs.zu`
+2. Open `http://localhost:8281/?zu=Samples/JSONs.zu`
 3. Edit `Samples/JSONs.zu` in your editor and **save**
 4. The browser reloads that file (pan/zoom/selection are not preserved)
 
 Port already in use:
 
 ```bash
-lsof -ti:8080 | xargs kill
-# or: ZU_PORT=8081 npm run dev
+lsof -ti:8281 | xargs kill
+# or: ZU_PORT=8280 npm run dev
 ```
 
 ---
@@ -214,17 +214,17 @@ Requires a connected browser tab (`zu_status` → `"connected": true`).
 
 ```bash
 # Connection check
-curl -s http://127.0.0.1:8080/__zu/status
+curl -s http://127.0.0.1:8281/__zu/status
 
 # Read live model
-curl -s http://127.0.0.1:8080/__zu/model
+curl -s http://127.0.0.1:8281/__zu/model
 
 # Apply ops (example: change VPN rV live, no file save)
 node --input-type=module -e "
-const snap = await (await fetch('http://127.0.0.1:8080/__zu/model')).json();
+const snap = await (await fetch('http://127.0.0.1:8281/__zu/model')).json();
 const vpn = snap.model.nodes.find(n => n[0] === 'VPN');
 const area = { ...vpn[1], rV: 86 };
-await fetch('http://127.0.0.1:8080/__zu/rpc', {
+await fetch('http://127.0.0.1:8281/__zu/rpc', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -310,7 +310,7 @@ Calls `zu_save_file`. Phase 2 may then reload the tab when the file is written.
 | RPC timeout | Restart `npm run dev`; increase Codex `startup_timeout_sec` if needed |
 | Phase 2 not reloading | Use `?zu=…` or Sample button; check `zu-watch` in sessionStorage |
 | `DrawModel failed` + `atob` | Corrupt SVG/PNG on a node — fix via `zu_get_model` / file |
-| Port 8080 in use | `lsof -ti:8080 \| xargs kill` or `ZU_PORT=8081 npm run dev` (+ set `ZU_PORT` in MCP env) |
+| Port 8281 in use | `lsof -ti:8281 \| xargs kill` or `ZU_PORT=8280 npm run dev` (+ set `ZU_PORT` in MCP env) |
 
 ---
 

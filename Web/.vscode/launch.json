@@ -5,14 +5,14 @@
 			"name": "Chrome: docroot = this folder (Web/)",
 			"type": "chrome",
 			"request": "launch",
-			"url": "http://localhost:8080/index.html",
+			"url": "http://localhost:8281/index.html",
 			"webRoot": "${workspaceFolder}"
 		},
 		{
 			"name": "Chrome: docroot = parent Zukai/ (/Web/...)",
 			"type": "chrome",
 			"request": "launch",
-			"url": "http://localhost:8080/Web/index.html",
+			"url": "http://localhost:8281/Web/index.html",
 			"webRoot": "${workspaceFolder}/.."
 		},
 		{

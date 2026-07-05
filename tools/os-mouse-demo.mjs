@@ -13,14 +13,14 @@
 //	  node tools/os-mouse-demo.mjs --auto       # guess layout from Chrome window
 //
 //	Optional env:
-//	  ZU_PORT=8080  ZU_BROWSER="Google Chrome"
+//	  ZU_PORT=8281  ZU_BROWSER="Google Chrome"
 
 import { execFileSync, spawnSync } from 'child_process'
 import readline from 'readline'
 import { setTimeout as sleep } from 'timers/promises'
 
 const
-PORT		= Number( process.env.ZU_PORT || process.env.PORT ) || 8080
+PORT		= Number( process.env.ZU_PORT || process.env.PORT ) || 8281
 ,	BROWSER	= process.env.ZU_BROWSER || 'Google Chrome'
 ,	URL		= `http://localhost:${ PORT }/?zu=Samples/JSONs.zu`
 ,	AUTO		= process.argv.includes( '--auto' )
