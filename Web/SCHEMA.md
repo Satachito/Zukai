@@ -28,8 +28,12 @@ in `localStorage` (`tokyo.828.zukai.canvas`) for the session.
   - `rH`, `rV` — half-width / half-height. The shape spans
     `[cX - rH, cY - rV]` to `[cX + rH, cY + rV]`.
   - `radii` — corner radius, `rect` only (number, optional)
-  - `html` — optional HTML label rendered centered inside the shape
-  - `style` — optional CSS for the label container (e.g. `;display: grid\n;place-items: center`)
+  - `html` — optional HTML label rendered centered inside the shape.
+    Sanitized on draw/export (`SanitizeLabel.js`): allowlisted tags only
+    (`b` `strong` `i` `em` `u` `s` `br` `span` `small` `sub` `sup` `code`);
+    only the `style` attribute is kept; `script` / event handlers / links / images are dropped.
+  - `style` — optional CSS for the label container (e.g. `;display: grid\n;place-items: center`).
+    Also allowlisted (layout/typography/color props only; no `url()` / `expression()`).
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors
