@@ -55,8 +55,26 @@ RestoreApp	= _ => async () => (
 ,	localStorage.setItem( STORAGE_KEY, JSONString() )
 )
 
-const
+//	> 0 while an outer DoTypical owns the undo step ( e.g. ZU.apply batch ).
+let
+historySuspended	= 0
+
+export	const
+withoutHistory	= async fn => {
+	++historySuspended
+	try {
+		return await fn()
+	} finally {
+		--historySuspended
+	}
+}
+
+export	const
 DoTypical	= async ( label, mutate ) => {
+	if	( historySuspended ) {
+		await mutate()
+		return
+	}
 	const
 	before = structuredClone( app )
 	try {

@@ -18,7 +18,7 @@ Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"
 Link  = [ [ fromID, toID ], attributes, paint ]
                                   attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
 
-apply_ops ops ( one op = one undo step ):
+apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the whole batch back ):
   { op:"addNode",    id, area, paint? }
   { op:"updateNode", id, area, paint?, newId? }   // replaces the WHOLE shape+paint, not a patch
   { op:"removeNode", id }
@@ -34,7 +34,7 @@ Rules:
 - Keep node IDs stable; every link must reference existing IDs.
 - Prefer rect / ellipse / rhombus. Never invent or rewrite SVG / PNG payloads — move/resize via cX/cY/rH/rV only.
 - updateNode replaces the full shape — read the current value first and resend every field you want to keep.
-- After applying, the tool returns any validation issues; fix them and call apply_ops again.
+- On failure the document is unchanged and the tool returns an error; fix and call apply_ops again. After a successful apply, the tool may still return validation issues — fix those and call apply_ops again.
 - When the request is done, reply with a one-line summary of what you changed. Do not ask for confirmation before editing.`
 
 //	JSON schema for the single apply_ops tool ( shared by both providers ).

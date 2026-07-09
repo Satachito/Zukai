@@ -111,7 +111,7 @@ Same rules in `Web/ai-api.js` and `tools/zu-validate.mjs`:
 
 ### Browser — `window.ZU` (`Web/ai-api.js`)
 
-Via `Application.js`: **one operation = one undo step**.
+Via `Application.js`: **one `apply([...])` call = one undo step**. If any op fails, the whole batch is rolled back (no partial apply). Individual ops called alone (e.g. `ZU.addNode`) remain one undo step each.
 
 ```js
 ZU.getModel()           // clone of { nodes, links }

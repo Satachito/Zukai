@@ -1,9 +1,9 @@
 //	AI-facing command surface for the live, in-browser model.
 //
-//	Everything here mutates window.app through Application.js so each command is a
-//	single undo step and triggers a redraw. Exposed as window.ZU so an external
-//	agent ( e.g. via the browser CDP Runtime.evaluate, or the WebSocket bridge )
-//	can read, validate, generate and lay out the diagram directly.
+//	Everything here mutates window.app through Application.js. A single apply()
+//	batch is one undo step and rolls back entirely on any op failure. Exposed as
+//	window.ZU so an external agent ( browser CDP, WebSocket bridge, MCP ) can
+//	read, validate, generate and lay out the diagram directly.
 
 import {
 	Node
@@ -14,6 +14,8 @@ import {
 ,	EditLink
 ,	RemoveLink
 ,	SetModel
+,	DoTypical
+,	withoutHistory
 }	from './Application.js'
 
 import {
@@ -108,7 +110,7 @@ autoLayout		= ( { algorithm = 'grid', cols, gap = 48, startX = 200, startY = 200
 	}
 }
 
-//	single op → one of the Application mutators ( each its own undo step )
+//	single op → Application mutator ( own undo step when called alone )
 const
 OPS				= {
 	addNode		: a => Node( [ a.id ?? '', a.area, a.paint ?? {} ] )
@@ -122,13 +124,30 @@ OPS				= {
 ,	setCanvas	: a => ( SetCanvasSize( a.width, a.height ), MAIN_EDITOR.Draw() )
 }
 
-//	apply a list of ops sequentially: [ { op: 'addNode', ... }, ... ]
+//	One apply() = one undo step. Any op failure rolls the whole batch back.
 const
 apply			= async ops => {
-	for	( const o of ops ) {
-		const	fn = OPS[ o.op ]
-		if	( !fn )	throw new Error( `unknown op "${ o.op }"` )
-		await fn( o )
+	if	( !Array.isArray( ops ) ) throw new Error( 'apply expects an array of ops' )
+	if	( !ops.length ) throw new Error( 'apply expects a non-empty ops array' )
+	const
+	canvasBefore = CanvasSize()
+	try {
+		await DoTypical(
+			'AI'
+		,	() => withoutHistory(
+				async () => {
+					for	( const o of ops ) {
+						const	fn = OPS[ o.op ]
+						if	( !fn )	throw new Error( `unknown op "${ o.op }"` )
+						await fn( o )
+					}
+				}
+			)
+		)
+	} catch ( er ) {
+		//	setCanvas is outside app.*; restore it if a later op failed.
+		try { SetCanvasSize( ...canvasBefore ) } catch { /* keep throwing below */ }
+		throw er
 	}
 	return	validateModel()
 }
