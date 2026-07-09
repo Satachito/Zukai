@@ -64,7 +64,7 @@ an OpenAI panel — plus on-disk and MCP workflows. Typical workflows:
 
 | Goal | How |
 |------|-----|
-| Chat with the diagram inside the app | In-app **Claude** or **OpenAI** panel (paste your API key) |
+| Chat with the diagram inside the app | In-app **Claude** or **OpenAI** panel (paste your API key; stored in `localStorage` — see [USAGE.md](USAGE.md) trust notes) |
 | Edit `.zu` on disk, preview on save | Phase 2 — `npm run dev` + `?zu=Samples/….zu` |
 | Change the open diagram from Cursor chat | Phase 4 — MCP (`zu_get_model`, `zu_apply`, …) |
 | One-off file load on GitHub Pages | **↑** upload or a Sample button |
