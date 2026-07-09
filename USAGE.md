@@ -55,6 +55,8 @@ npm run dev
 
 Leave a browser tab open on the dev server (see [Which URL to open](#which-url-to-open)).
 
+The server binds to **`127.0.0.1` only** (override with `ZU_HOST`). The HTTP/WebSocket RPC bridge has **no authentication** — it is for same-machine clients (browser tab + MCP). Do not tunnel or publish this port.
+
 ---
 
 ## Register your MCP client
