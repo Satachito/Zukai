@@ -98,8 +98,8 @@ run	= async () => {
 		await page.goto( URL, { waitUntil: 'networkidle' } )
 		await page.locator( '#MAIN_EDITOR' ).waitFor( { state: 'attached' } )
 
-		log( '1/4 — Load JSONs sample' )
-		await page.locator( '#SAMPLE_JSONS' ).click()
+		log( '1/4 — Load MultiCloud sample' )
+		await page.locator( '#SAMPLE_MULTICLOUD' ).click()
 		await sleep( 900 )
 
 		const

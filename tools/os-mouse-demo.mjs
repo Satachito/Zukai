@@ -2,7 +2,7 @@
 //	Native macOS mouse demo for Zukai — real cursor, real offsetX/offsetY.
 //
 //	Uses cliclick (brew install cliclick) + optional 3-point calibration.
-//	Opens the JSONs sample via URL so no toolbar aiming is needed for load.
+//	Opens the MultiCloud sample via URL so no toolbar aiming is needed for load.
 //
 //	Prerequisites:
 //	  cd Web && npm run dev
@@ -22,7 +22,7 @@ import { setTimeout as sleep } from 'timers/promises'
 const
 PORT		= Number( process.env.ZU_PORT || process.env.PORT ) || 8281
 ,	BROWSER	= process.env.ZU_BROWSER || 'Google Chrome'
-,	URL		= `http://localhost:${ PORT }/?zu=Samples/JSONs.zu`
+,	URL		= `http://localhost:${ PORT }/?zu=Samples/MultiCloud.zu`
 ,	AUTO		= process.argv.includes( '--auto' )
 ,	STEP		= 24
 ,	CHROME_TOP	= Number( process.env.ZU_CHROME_TOP ) || 105

@@ -35,7 +35,7 @@ cd Web && npm install && npm run dev
 cd ../tools && npm install   # MCP (one-time)
 ```
 
-Open `http://localhost:8281/?zu=Samples/JSONs.zu` and enable the **`zukai`** MCP server in Cursor (**Settings → Tools & MCP**).
+Open `http://localhost:8281/?zu=Samples/MultiCloud.zu` and enable the **`zukai`** MCP server in Cursor (**Settings → Tools & MCP**).
 
 Full setup, Phase 2/3/4 explanation, MCP tools, and troubleshooting: **[USAGE.md](USAGE.md)**
 
@@ -73,7 +73,7 @@ Tips:
 
 - Prefer **rect / ellipse / rhombus** over new base64 icons unless you need a specific glyph.
 - Keep **node IDs stable**; every link must reference existing IDs.
-- Use samples as layout references — **[Samples/Sequence.zu](Samples/Sequence.zu)**, **[Samples/MindMap.zu](Samples/MindMap.zu)**, **[Samples/JSONs.zu](Samples/JSONs.zu)** for cloud architecture.
+- Use samples as layout references — **[Samples/Sequence.zu](Samples/Sequence.zu)**, **[Samples/MindMap.zu](Samples/MindMap.zu)**, **[Samples/MultiCloud.zu](Samples/MultiCloud.zu)** for cloud architecture.
 
 Cursor rules: **[Web/.cursorrules](Web/.cursorrules)**, **[Web/CLAUDE.md](Web/CLAUDE.md)** → `SCHEMA.md`.
 

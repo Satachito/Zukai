@@ -147,7 +147,7 @@ body.aside-collapsed	> aside	{ display: none }
 }
 .sample-list {
 ;	display			: grid
-;	grid-template-columns	: repeat( 6, auto )
+;	grid-template-columns	: repeat( 5, auto )
 ;	grid-template-rows		: repeat( 2, 1fr )
 ;	gap				: 2px
 ;	height			: 100%
@@ -754,18 +754,16 @@ aside input[type=checkbox]
 </header>
 <header class=sample-panel>
 	<div class=sample-list>
-		<button id=SAMPLE_JSONS		>JSONs		</button>
-		<button id=SAMPLE_AWS		>AWS		</button>
 		<button id=SAMPLE_GCP		>GCP		</button>
+		<button id=SAMPLE_AWS		>AWS		</button>
 		<button id=SAMPLE_AZURE		>Azure		</button>
-		<button id=SAMPLE_MINDMAP	>MindMap	</button>
 		<button id=SAMPLE_SEQUENCE	>Sequence	</button>
+		<button id=SAMPLE_MULTICLOUD	>MultiCloud	</button>
+		<button id=SAMPLE_SCRIPTS	>Scripts	</button>
 		<button id=SAMPLE_SCREENFLOW	>ScreenFlow</button>
-		<button id=SAMPLE_ANCHORS	>Anchors	</button>
-		<button id=SAMPLE_ARROWHEADS	>Arrowheads	</button>
+		<button id=SAMPLE_MINDMAP	>MindMap	</button>
 		<button id=SAMPLE_SHOWCASE	>Showcase	</button>
 		<button id=SAMPLE_ANCHORMATRIX	>AnchorMx	</button>
-		<button id=SAMPLE_SCRIPTS	>Scripts	</button>
 	</div>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
@@ -1004,18 +1002,16 @@ ASIDE_TOGGLE	.onclick = () => ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	!docu
 ApplyPanel( 'nav-collapsed',	NAV_TOGGLE,		localStorage.getItem( 'nav-collapsed'	) === '1', '‹', '›' )
 ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	localStorage.getItem( 'aside-collapsed'	) === '1', '›', '‹' )
 
-SAMPLE_JSONS	.onclick = () => LoadSample( 'Samples/JSONs.zu'	).catch( Report )
-SAMPLE_AWS		.onclick = () => LoadSample( 'Samples/AWS.zu'		).catch( Report )
 SAMPLE_GCP		.onclick = () => LoadSample( 'Samples/GCP.zu'		).catch( Report )
+SAMPLE_AWS		.onclick = () => LoadSample( 'Samples/AWS.zu'		).catch( Report )
 SAMPLE_AZURE	.onclick = () => LoadSample( 'Samples/Azure.zu'	).catch( Report )
-SAMPLE_MINDMAP	.onclick = () => LoadSample( 'Samples/MindMap.zu'	).catch( Report )
 SAMPLE_SEQUENCE	.onclick = () => LoadSample( 'Samples/Sequence.zu'		).catch( Report )
+SAMPLE_MULTICLOUD	.onclick = () => LoadSample( 'Samples/MultiCloud.zu'	).catch( Report )
+SAMPLE_SCRIPTS		.onclick = () => LoadSample( 'Samples/Scripts.zu'		).catch( Report )
 SAMPLE_SCREENFLOW.onclick = () => LoadSample( 'Samples/ScreenFlow.zu'	).catch( Report )
-SAMPLE_ANCHORS		.onclick = () => LoadSample( 'Samples/Anchors.zu'		).catch( Report )
-SAMPLE_ARROWHEADS	.onclick = () => LoadSample( 'Samples/Arrowheads.zu'	).catch( Report )
+SAMPLE_MINDMAP	.onclick = () => LoadSample( 'Samples/MindMap.zu'	).catch( Report )
 SAMPLE_SHOWCASE		.onclick = () => LoadSample( 'Samples/Showcase.zu'		).catch( Report )
 SAMPLE_ANCHORMATRIX	.onclick = () => LoadSample( 'Samples/AnchorMatrix.zu'	).catch( Report )
-SAMPLE_SCRIPTS		.onclick = () => LoadSample( 'Samples/Scripts.zu'		).catch( Report )
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )
 DUMP_JOBS		.onclick = DumpJobs

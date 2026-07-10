@@ -184,7 +184,7 @@ Docs: [OpenAI Codex — MCP](https://developers.openai.com/codex/mcp).
 
 | URL | Phase 2 (auto-reload on save) | Phase 3 / 4 (live MCP) |
 |-----|------------------------------|-------------------------|
-| `http://localhost:8281/?zu=Samples/JSONs.zu` | **Yes** — watches that file | **Yes** |
+| `http://localhost:8281/?zu=Samples/MultiCloud.zu` | **Yes** — watches that file | **Yes** |
 | `http://localhost:8281/` | **No** (unless `zu-watch` left in sessionStorage) | **Yes** |
 | Sample button in the app | **Yes** — sets watch path | **Yes** |
 
@@ -199,8 +199,8 @@ To clear a stale watch path: DevTools → Application → Session Storage → de
 ## Phase 2 — edit `.zu`, see it in the browser
 
 1. `npm run dev`
-2. Open `http://localhost:8281/?zu=Samples/JSONs.zu`
-3. Edit `Samples/JSONs.zu` in your editor and **save**
+2. Open `http://localhost:8281/?zu=Samples/MultiCloud.zu`
+3. Edit `Samples/MultiCloud.zu` in your editor and **save**
 4. The browser reloads that file (pan/zoom/selection are not preserved)
 
 Port already in use:
@@ -275,7 +275,7 @@ Typical agent steps:
 
 ### Example — persist
 
-> Save the current diagram to `Samples/JSONs.zu`.
+> Save the current diagram to `Samples/MultiCloud.zu`.
 
 Calls `zu_save_file`. Phase 2 may then reload the tab when the file is written.
 

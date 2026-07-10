@@ -3,7 +3,7 @@
 //
 //	Prerequisites:
 //	  cd Web && npm run dev          ( zu-server on :8281 )
-//	  open http://localhost:8281/?zu=Samples/JSONs.zu
+//	  open http://localhost:8281/?zu=Samples/MultiCloud.zu
 //
 //	Cursor MCP config ( .cursor/mcp.json ):
 //	  { "mcpServers": { "zukai": { "command": "node", "args": ["tools/zu-mcp.mjs"] } } }
@@ -99,7 +99,7 @@ server.tool(
 
 server.tool(
 	'zu_load_file'
-,	'Load a .zu file into the browser editor. Path is relative to Web/ ( e.g. Samples/JSONs.zu ).'
+,	'Load a .zu file into the browser editor. Path is relative to Web/ ( e.g. Samples/MultiCloud.zu ).'
 ,	{
 		path	: z.string()
 	}

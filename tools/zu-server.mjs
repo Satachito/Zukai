@@ -5,7 +5,7 @@
 //
 //	Usage:
 //	  node tools/zu-server.mjs
-//	  open http://localhost:8281/?zu=Samples/JSONs.zu
+//	  open http://localhost:8281/?zu=Samples/MultiCloud.zu
 
 import path from 'node:path'
 import { createDevServer } from '../Web/SAT/DevServer.mjs'
@@ -46,6 +46,6 @@ createDevServer( {
 ,	noDocumentError	: 'No editor connected and no cached model.'
 ,	noEditorError	: 'No browser editor connected. Open npm run dev and load a diagram.'
 ,	noStore			: ext => ext === '.zu'
-,	examplePath		: '?zu=Samples/JSONs.zu'
+,	examplePath		: '?zu=Samples/MultiCloud.zu'
 ,	portEnvHint		: 'ZU_PORT=8280 node tools/zu-server.mjs'
 } )
