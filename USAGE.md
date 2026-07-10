@@ -270,7 +270,7 @@ Expect `"connected": true` and a `watchPath` if you opened with `?zu=…`.
 Typical agent steps:
 
 1. `zu_get_model` — read node `"VPN"`, get `rV`, `cY`, `style`
-2. `zu_apply` — `updateNode` with **full** `area` and `paint` (not a partial patch)
+2. `zu_apply` — `updateNode` with the fields to change (omit `paint` to keep it; if you pass `area`, send the full shape object)
 3. Adjust neighbouring nodes if layout must stay flush
 
 ### Example — persist
@@ -294,7 +294,7 @@ Calls `zu_save_file`. Phase 2 may then reload the tab when the file is written.
 
 ### Rules for agents
 
-- **`updateNode` replaces** the whole `area` / `paint`. Read the node first, then change fields.
+- **`updateNode` / `updateLink`:** omit `area` / `paint` / `ends` to keep current values. A provided `area` or `paint` replaces that whole object (not a deep merge of one key).
 - **SVG / PNG nodes:** copy `SVG` / `PNG` base64 **exactly** from `zu_get_model` or the file. A single typo breaks `atob()` and drawing fails.
 - **Layout bands** (VPN, Internet, etc.): changing `rV` often requires updating `cY` and nodes below to avoid overlap.
 - **Undo:** live MCP edits go through `Application.js` and are undoable in the browser (Ctrl/Cmd+Z).

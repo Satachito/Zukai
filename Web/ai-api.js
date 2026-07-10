@@ -6,7 +6,8 @@
 //	read, validate, generate and lay out the diagram directly.
 
 import {
-	Node
+	FindNode
+,	Node
 ,	EditNode
 ,	RemoveNode
 ,	Restack
@@ -22,6 +23,11 @@ import {
 	CanvasSize
 ,	SetCanvasSize
 }	from './main-editor.js'
+
+import {
+	updateNodeArgs
+,	updateLinkArgs
+}	from './update-args.js'
 
 const
 isNum			= v => typeof v === 'number' && Number.isFinite( v )
@@ -112,13 +118,37 @@ autoLayout		= ( { algorithm = 'grid', cols, gap = 48, startX = 200, startY = 200
 
 //	single op → Application mutator ( own undo step when called alone )
 const
+mustFindNode	= id => {
+	const
+	node = FindNode( id )
+	if	( !node ) throw new Error( `no such node: ${ id }` )
+	return node
+}
+
+const
+mustFindLink	= ( from, to ) => {
+	const
+	link = app.model.links.find( ( [ [ f, t ] ] ) => f === from && t === to )
+	if	( !link ) throw new Error( `no such link: ${ from } → ${ to }` )
+	return link
+}
+
+const
 OPS				= {
 	addNode		: a => Node( [ a.id ?? '', a.area, a.paint ?? {} ] )
-,	updateNode	: a => EditNode( a.id, [ a.newId ?? a.id, a.area, a.paint ?? {} ] )
+,	updateNode	: a => {
+		const
+		node = mustFindNode( a.id )
+		return EditNode( a.id, updateNodeArgs( a, node ) )
+	}
 ,	removeNode	: a => RemoveNode( a.id )
 ,	restack		: a => Restack( a.id, a.toFront ?? true )
 ,	addLink		: a => Link( [ [ a.from, a.to ], a.ends ?? { headT: 'triangle' }, a.paint ?? {} ] )
-,	updateLink	: a => EditLink( [ a.from, a.to ], [ [ a.newFrom ?? a.from, a.newTo ?? a.to ], a.ends ?? {}, a.paint ?? {} ] )
+,	updateLink	: a => {
+		const
+		link = mustFindLink( a.from, a.to )
+		return EditLink( [ a.from, a.to ], updateLinkArgs( a, link ) )
+	}
 ,	removeLink	: a => RemoveLink( [ a.from, a.to ] )
 ,	autoLayout	: a => autoLayout( a )
 ,	setCanvas	: a => ( SetCanvasSize( a.width, a.height ), MAIN_EDITOR.Draw() )

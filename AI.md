@@ -94,7 +94,7 @@ Duplicate `[ from, to ]` pairs are merged by `Link()` / `EditLink()`. Avoid dupl
 2. **Never rewrite existing `SVG` / `PNG` payload.** Move/resize via `cX`/`cY`/`rH`/`rV` and stable `ID` only.
 3. **Keep node IDs stable.** Every link must reference existing IDs.
 4. **Band layouts** (VPN, Internet, …): changing `rV` often requires updating **`cY` and nodes below** to stay flush with neighbours.
-5. **`updateNode` (API) replaces the full `shape` / `paint`.** Not a patch — read current state first.
+5. **`updateNode` / `updateLink`:** omitted `area` / `paint` / `ends` keep the current values. When you *do* pass `area` or `paint`, that object replaces the whole field (not a deep merge of e.g. only `fill`).
 
 ---
 
@@ -126,11 +126,11 @@ ZU.setModel({ nodes, links })
 | op | Main arguments |
 |----|----------------|
 | `addNode` | `id`, `area`, `paint?` |
-| `updateNode` | `id`, `area`, `paint?`, `newId?` |
+| `updateNode` | `id`, `area?`, `paint?`, `newId?` — omit `area`/`paint` to keep current |
 | `removeNode` | `id` |
 | `restack` | `id`, `toFront?` |
 | `addLink` | `from`, `to`, `ends?`, `paint?` |
-| `updateLink` | `from`, `to`, `newFrom?`, `newTo?`, `ends?`, `paint?` |
+| `updateLink` | `from`, `to`, `newFrom?`, `newTo?`, `ends?`, `paint?` — omit `ends`/`paint` to keep current |
 | `removeLink` | `from`, `to` |
 | `autoLayout` | grid options |
 | `setCanvas` | `width`, `height` |

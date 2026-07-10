@@ -20,11 +20,11 @@ Link  = [ [ fromID, toID ], attributes, paint ]
 
 apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the whole batch back ):
   { op:"addNode",    id, area, paint? }
-  { op:"updateNode", id, area, paint?, newId? }   // replaces the WHOLE shape+paint, not a patch
+  { op:"updateNode", id, area?, paint?, newId? }   // omit area/paint to keep current; provided objects replace that field whole
   { op:"removeNode", id }
   { op:"restack",    id, toFront? }
   { op:"addLink",    from, to, ends?, paint? }
-  { op:"updateLink", from, to, newFrom?, newTo?, ends?, paint? }
+  { op:"updateLink", from, to, newFrom?, newTo?, ends?, paint? }   // omit ends/paint to keep current
   { op:"removeLink", from, to }
   { op:"autoLayout", algorithm?, cols?, gap?, startX?, startY? }   // deterministic grid layout
   { op:"setCanvas",  width, height }
@@ -33,7 +33,7 @@ apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the who
 Rules:
 - Keep node IDs stable; every link must reference existing IDs.
 - Prefer rect / ellipse / rhombus. Never invent or rewrite SVG / PNG payloads — move/resize via cX/cY/rH/rV only.
-- updateNode replaces the full shape — read the current value first and resend every field you want to keep.
+- Omitting area/paint/ends on update keeps the current value. Passing area or paint replaces that whole object (not a deep merge of one key like fill).
 - On failure the document is unchanged and the tool returns an error; fix and call apply_ops again. After a successful apply, the tool may still return validation issues — fix those and call apply_ops again.
 - When the request is done, reply with a one-line summary of what you changed. Do not ask for confirmation before editing.`
 
