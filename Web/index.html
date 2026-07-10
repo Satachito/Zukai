@@ -314,6 +314,11 @@ aside details {
 ;	flex-direction			: column
 ;	gap						: 4px
 }
+ai-assistant {
+;	display					: flex
+;	flex-direction			: column
+;	gap						: 4px
+}
 .ai-config {
 ;	display					: flex
 ;	flex-direction			: column
@@ -790,59 +795,28 @@ aside input[type=checkbox]
 	<hr>
 	<details open>
 		<summary>Claude assistant</summary>
-		<div class=ai-panel id=AI_PANEL>
-			<div class=ai-head>
-				<span class=ai-head-title>Claude assistant</span>
-				<button id=AI_FLOAT type=button class=ai-float-btn title="Float panel" aria-label="Float / dock panel">⤢</button>
-			</div>
-			<div class=ai-config>
-				<div class=ai-key-row>
-					<input id=AI_KEY type=password placeholder="Anthropic API key (sk-ant-…)" spellcheck=false autocomplete=off>
-					<button id=AI_KEY_TOGGLE type=button class=ai-key-btn title="Show / hide key" aria-label="Show / hide key">👁</button>
-					<button id=AI_KEY_CLEAR type=button class=ai-key-btn title="Clear key" aria-label="Clear key">✕</button>
-				</div>
-				<div class=ai-model-row>
-					<select id=AI_MODEL>
-						<option value=claude-fable-5>Fable 5 (best)</option>
-						<option value=claude-opus-4-8>Opus 4.8</option>
-						<option value=claude-sonnet-5>Sonnet 5 (balanced)</option>
-						<option value=claude-haiku-4-5>Haiku 4.5 (cheap)</option>
-					</select>
-					<button id=AI_MODEL_FETCH type=button class=ai-fetch-btn title="Fetch available models with this API key">Fetch</button>
-				</div>
-			</div>
-			<div id=AI_LOG class=ai-log></div>
-			<textarea id=AI_INPUT class=ai-input rows=2 placeholder="Describe a change… (Enter to send)"></textarea>
-			<button id=AI_SEND>Send</button>
-		</div>
+		<ai-assistant
+			id=AI_PANEL
+			provider=anthropic
+			title="Claude assistant"
+			store-key=zu-anthropic-key
+			store-model=zu-anthropic-model
+			float-store=zu-ai-float
+			key-placeholder="Anthropic API key (sk-ant-…)"
+		></ai-assistant>
 	</details>
 	<hr>
 	<details open>
 		<summary>OpenAI assistant</summary>
-		<div class=ai-panel id=OAI_PANEL>
-			<div class=ai-head>
-				<span class=ai-head-title>OpenAI assistant</span>
-				<button id=OAI_FLOAT type=button class=ai-float-btn title="Float panel" aria-label="Float / dock panel">⤢</button>
-			</div>
-			<div class=ai-config>
-				<div class=ai-key-row>
-					<input id=OAI_KEY type=password placeholder="OpenAI API key (sk-…)" spellcheck=false autocomplete=off>
-					<button id=OAI_KEY_TOGGLE type=button class=ai-key-btn title="Show / hide key" aria-label="Show / hide key">👁</button>
-					<button id=OAI_KEY_CLEAR type=button class=ai-key-btn title="Clear key" aria-label="Clear key">✕</button>
-				</div>
-				<div class=ai-model-row>
-					<select id=OAI_MODEL>
-						<option value=gpt-5.6>gpt-5.6 (best)</option>
-						<option value=gpt-5.6-terra>gpt-5.6-terra (balanced)</option>
-						<option value=gpt-5.6-luna>gpt-5.6-luna (cheap)</option>
-					</select>
-					<button id=OAI_MODEL_FETCH type=button class=ai-fetch-btn title="Fetch available models with this API key">Fetch</button>
-				</div>
-			</div>
-			<div id=OAI_LOG class=ai-log></div>
-			<textarea id=OAI_INPUT class=ai-input rows=2 placeholder="Describe a change… (Enter to send)"></textarea>
-			<button id=OAI_SEND>Send</button>
-		</div>
+		<ai-assistant
+			id=OAI_PANEL
+			provider=openai
+			title="OpenAI assistant"
+			store-key=zu-openai-key
+			store-model=zu-openai-model
+			float-store=zu-oai-float
+			key-placeholder="OpenAI API key (sk-…)"
+		></ai-assistant>
 	</details>
 	<hr>
 	<details open>
@@ -963,8 +937,8 @@ import './link-editor.js'
 import './cloud-icons.js'
 import { CanvasSize, SetCanvasSize } from './main-editor.js'
 import './ai-api.js'
-import { initAIPanel } from './ai-panel.js'
-import { initOpenAIPanel } from './ai-panel-openai.js'
+import './SAT/ai/ai-assistant.js'
+import { systemWithModel } from './ai-system.js'
 import { loadZuFile, initLiveReload, setWatchPath } from './live-reload.js'
 import { saveSVG, printPDF, copySVG, baseName, downloadBlob } from './Export.js'
 
@@ -1035,48 +1009,14 @@ FORCE_DRAW		.onclick = () => MAIN_EDITOR.Draw()
 NODE			.onclick = () => Node( [ NODE_ID.value, ...NODE_EDITOR.$ ] )
 LINK			.onclick = () => Link( LINK_EDITOR.$ )
 
-initAIPanel()
-initOpenAIPanel()
-
-//	Float / dock an AI panel: the docked panel pops out into a larger fixed box
-//	over the canvas, draggable by its header. State persists in localStorage.
 const
-makeFloatable = ( panel, btn, storeKey ) => {
-	const
-	setFloat = on => {
-		panel.classList.toggle( 'floating', on )
-		on || ( panel.style.left = panel.style.top = panel.style.right = panel.style.transform = '' )
-		btn.textContent	= on ? '⤓' : '⤢'
-		btn.title		= on ? 'Dock panel' : 'Float panel'
-		localStorage.setItem( storeKey, on ? '1' : '' )
+initAIPanels = () => {
+	for ( const el of [ AI_PANEL, OAI_PANEL ] ) {
+		el.systemWithModel	= systemWithModel
+		el.applyOps			= ops => window.ZU.apply( ops )
 	}
-	btn.onclick = () => setFloat( !panel.classList.contains( 'floating' ) )
-
-	const
-	head = panel.querySelector( '.ai-head' )
-	let	drag = null
-	head.onpointerdown = ev => {
-		if	( !panel.classList.contains( 'floating' ) || ev.target === btn ) return
-		const	r = panel.getBoundingClientRect()
-		drag = { dx: ev.clientX - r.left, dy: ev.clientY - r.top }
-		//	switch from the centered transform to absolute left/top for dragging
-		panel.style.transform	= 'none'
-		panel.style.left		= `${ r.left }px`
-		panel.style.top			= `${ r.top }px`
-		panel.style.right		= 'auto'
-		head.setPointerCapture( ev.pointerId )
-	}
-	head.onpointermove = ev => {
-		if	( !drag ) return
-		panel.style.left	= `${ ev.clientX - drag.dx }px`
-		panel.style.top		= `${ ev.clientY - drag.dy }px`
-	}
-	head.onpointerup = ev => { drag = null; head.releasePointerCapture?.( ev.pointerId ) }
-
-	setFloat( localStorage.getItem( storeKey ) === '1' )
 }
-makeFloatable( AI_PANEL,	AI_FLOAT,	'zu-ai-float'	)
-makeFloatable( OAI_PANEL,	OAI_FLOAT,	'zu-oai-float'	)
+initAIPanels()
 
 DOWNLOAD		.onclick = () => downloadBlob(
 	new Blob( [ JSONString() ], { type: 'application/json' } )

@@ -4,7 +4,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin'
 import pluginPromise from 'eslint-plugin-promise'
 
 export default [
-	{ ignores: [ 'eslint.config.js' ] },
+	{ ignores: [ 'eslint.config.js', 'SAT/**' ] },
 	{
 		plugins	: {
 			'@typescript-eslint'	: tsPlugin

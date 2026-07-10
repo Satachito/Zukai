@@ -1,0 +1,3 @@
+[submodule "Web/SAT"]
+	path = Web/SAT
+	url = https://github.com/Satachito/SAT.git
