@@ -11,8 +11,8 @@ Open the page and start drawing — no build step for the hosted demo. Diagrams 
 - **4096 × 4096 canvas** with pan/zoom
 - **Shapes** — rect, ellipse, rhombus, SVG, PNG
 - **Links** with arrowheads, anchor points, and orthogonal routing
-- **Cloud icon palettes** — AWS, Azure, GCP (bundled ZIP archives)
-- **Sample diagrams** — JSON primitives, cloud layouts, mind map, sequence chart
+- **Cloud icon palettes** — AWS, Azure, GCP (official ZIP archives under `ICONs/`)
+- **Sample diagrams** — MultiCloud, cloud layouts, mind map, sequence, showcase
 - **Import / export** — load and save `.zu` files (↑ / ↓ buttons)
 - **Session restore** — last diagram is kept in `localStorage`
 - **Light / dark mode** — follows system preference
@@ -117,4 +117,15 @@ Satoru Ogura — with help from AIs.
 
 ## License
 
-ISC
+Zukai application code is **ISC**.
+
+Third-party assets are **not** covered by that license:
+
+| Asset | Source | Terms |
+|-------|--------|--------|
+| AWS architecture icons (`ICONs/Asset-Package_…zip`) | [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/) | AWS trademark / site terms — for architecture diagrams and technical materials; do not alter marks or imply AWS endorsement |
+| Azure architecture icons (`ICONs/Azure_Public_Service_Icons_….zip`) | [Azure Architecture Icons](https://learn.microsoft.com/en-us/azure/architecture/icons/) | Microsoft permits use in architectural diagrams, training materials, or documentation only; all other rights reserved |
+| Google Cloud icons (`ICONs/google-cloud-*.zip`, `Google-Cloud-Icons.zip`, …) | [Google Cloud icon library](https://cloud.google.com/icons) | Google brand guidelines — for diagrams and technical documentation; do not modify or use as your own product branding |
+| Line icons in `Samples/MultiCloud.zu` | [Lucide](https://lucide.dev) (some icons derived from [Feather](https://feathericons.com)) | Lucide **ISC**; Feather-derived icons **MIT** — keep copyright / permission notices when redistributing |
+
+Samples such as `AWS.zu` / `Azure.zu` / `GCP.zu` embed a few official icons for diagram demos. Redistributing or shipping the full `ICONs/` ZIP archives remains subject to each vendor’s terms above, not Zukai’s ISC license.
