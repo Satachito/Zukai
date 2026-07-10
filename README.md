@@ -11,7 +11,7 @@ Open the page and start drawing — no build step for the hosted demo. Diagrams 
 - **4096 × 4096 canvas** with pan/zoom
 - **Shapes** — rect, ellipse, rhombus, SVG, PNG
 - **Links** with arrowheads, anchor points, and orthogonal routing
-- **Cloud icon palettes** — AWS, Azure, GCP (official ZIP archives under `ICONs/`)
+- **Cloud icon palettes** — AWS, Azure, GCP, and Lucide line icons (ZIP archives under `ICONs/`)
 - **Sample diagrams** — MultiCloud, cloud layouts, mind map, sequence, showcase
 - **Import / export** — load and save `.zu` files (↑ / ↓ buttons)
 - **Session restore** — last diagram is kept in `localStorage`
@@ -23,7 +23,7 @@ Open the page and start drawing — no build step for the hosted demo. Diagrams 
 1. Open the [live demo](https://satachito.github.io/Zukai/).
 2. Click a **Sample( … )** button on the right panel to load an example.
 3. Drag on the canvas to move nodes; use the mode selector to create nodes and links.
-4. Expand **GCP / Azure / AWS** in the left panel to place cloud icons.
+4. Expand **GCP / Azure / AWS / Lucide** in the left panel to place icons.
 5. Press **↓** to download the diagram as a `.zu` file.
 
 ## Local development & AI workflow
@@ -126,6 +126,6 @@ Third-party assets are **not** covered by that license:
 | AWS architecture icons (`ICONs/Asset-Package_…zip`) | [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/) | AWS trademark / site terms — for architecture diagrams and technical materials; do not alter marks or imply AWS endorsement |
 | Azure architecture icons (`ICONs/Azure_Public_Service_Icons_….zip`) | [Azure Architecture Icons](https://learn.microsoft.com/en-us/azure/architecture/icons/) | Microsoft permits use in architectural diagrams, training materials, or documentation only; all other rights reserved |
 | Google Cloud icons (`ICONs/google-cloud-*.zip`, `Google-Cloud-Icons.zip`, …) | [Google Cloud icon library](https://cloud.google.com/icons) | Google brand guidelines — for diagrams and technical documentation; do not modify or use as your own product branding |
-| Line icons in `Samples/MultiCloud.zu` | [Lucide](https://lucide.dev) (some icons derived from [Feather](https://feathericons.com)) | Lucide **ISC**; Feather-derived icons **MIT** — keep copyright / permission notices when redistributing |
+| Lucide icons (`ICONs/lucide-line-icons.zip`; a subset is also embedded in `Samples/MultiCloud.zu`) | [Lucide](https://lucide.dev) via `lucide-static` (some icons derived from [Feather](https://feathericons.com)) | Lucide **ISC**; Feather-derived icons **MIT** — see `LICENSE` / `NOTICE.txt` in the ZIP. Icons are grouped by Lucide categories in the left panel |
 
 Samples such as `AWS.zu` / `Azure.zu` / `GCP.zu` embed a few official icons for diagram demos. Redistributing or shipping the full `ICONs/` ZIP archives remains subject to each vendor’s terms above, not Zukai’s ISC license.
