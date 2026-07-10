@@ -121,17 +121,21 @@ drawSvgNode		= ( parts, X, Y, S ) => {
 	)
 	const
 	root = new DOMParser().parseFromString( svgText, 'image/svg+xml' ).documentElement
-	const
-	vb = root.viewBox.baseVal
-	const
-	svgW = vb.width || Number.parseFloat( root.getAttribute( 'width' ) ) || w
-	const
-	svgH = vb.height || Number.parseFloat( root.getAttribute( 'height' ) ) || h
-	parts.push(
-		`<g transform="translate(${ X( x ) },${ Y( y ) }) scale(${ w / svgW },${ h / svgH })">`
-	,	root.innerHTML
-	,	'</g>'
-	)
+	if	( root.querySelector( 'parsererror' ) || root.tagName.toLowerCase() !== 'svg' ) {
+		throw new Error( 'Invalid embedded SVG' )
+	}
+	//	Keep the full <svg> so root stroke/fill/viewBox are preserved ( not just innerHTML ).
+	if	( !root.getAttribute( 'viewBox' ) ) {
+		const
+		ow = Number.parseFloat( root.getAttribute( 'width' ) ) || w
+		,	oh = Number.parseFloat( root.getAttribute( 'height' ) ) || h
+		root.setAttribute( 'viewBox', `0 0 ${ ow } ${ oh }` )
+	}
+	root.setAttribute( 'x', X( x ) )
+	root.setAttribute( 'y', Y( y ) )
+	root.setAttribute( 'width', w )
+	root.setAttribute( 'height', h )
+	parts.push( new XMLSerializer().serializeToString( root ) )
 }
 
 const

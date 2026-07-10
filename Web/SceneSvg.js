@@ -76,17 +76,21 @@ appendShape	= ( parent, S, P ) => {
 		if	( root.querySelector( 'parsererror' ) || root.tagName.toLowerCase() !== 'svg' ) {
 			throw new Error( 'Invalid embedded SVG' )
 		}
+		//	Keep the full <svg> ( root stroke/fill/viewBox inherit correctly ).
+		//	Only children → <g> drops presentation attrs on the root.
 		const
-		vb = root.viewBox.baseVal
-		,	svgW = vb.width || Number.parseFloat( root.getAttribute( 'width' ) ) || w
-		,	svgH = vb.height || Number.parseFloat( root.getAttribute( 'height' ) ) || h
-		,	g = E( 'g', {
-				transform: `translate(${ x },${ y }) scale(${ w / svgW },${ h / svgH })`
-			} )
-		for ( const child of [ ...root.childNodes ] ) {
-			g.appendChild( document.importNode( child, true ) )
+		nested = document.importNode( root, true )
+		if	( !nested.getAttribute( 'viewBox' ) ) {
+			const
+			ow = Number.parseFloat( nested.getAttribute( 'width' ) ) || w
+			,	oh = Number.parseFloat( nested.getAttribute( 'height' ) ) || h
+			nested.setAttribute( 'viewBox', `0 0 ${ ow } ${ oh }` )
 		}
-		parent.appendChild( g )
+		nested.setAttribute( 'x', x )
+		nested.setAttribute( 'y', y )
+		nested.setAttribute( 'width', w )
+		nested.setAttribute( 'height', h )
+		parent.appendChild( nested )
 		break
 	}
 	case 'PNG': {
