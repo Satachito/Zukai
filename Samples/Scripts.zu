@@ -6,11 +6,11 @@
 				{
 					"type": "rect",
 					"cX": 480,
-					"cY": 44,
-					"rH": 440,
-					"rV": 28,
+					"cY": 64,
+					"rH": 470,
+					"rV": 60,
 					"html": "Live labels · <code>&lt;script&gt;</code> in <code>html</code>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center\n;font-size:18px\n;font-weight:600"
+					"style": ";display:grid\n;place-items:center\n;text-align:center\n;font-size:18px\n;font-weight:600\n;padding:12px 20px\n;line-height:1.4\n;box-sizing:border-box"
 				},
 				{
 					"fill": "rgba(37, 99, 235, 0.22)",
@@ -23,9 +23,9 @@
 				{
 					"type": "rect",
 					"cX": 480,
-					"cY": 108,
+					"cY": 168,
 					"rH": 440,
-					"rV": 28,
+					"rV": 32,
 					"html": "Load shows a confirm dialog. Live scene runs scripts; Export / PDF / Copy SVG strip them.",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;font-size:12px\n;opacity:.85\n;padding:0 12px"
 				},
@@ -40,7 +40,7 @@
 				{
 					"type": "rect",
 					"cX": 185,
-					"cY": 290,
+					"cY": 310,
 					"rH": 135,
 					"rV": 100,
 					"radii": 16,
@@ -58,7 +58,7 @@
 				{
 					"type": "rect",
 					"cX": 480,
-					"cY": 290,
+					"cY": 310,
 					"rH": 135,
 					"rV": 100,
 					"radii": 16,
@@ -76,7 +76,7 @@
 				{
 					"type": "rect",
 					"cX": 775,
-					"cY": 290,
+					"cY": 310,
 					"rH": 135,
 					"rV": 100,
 					"radii": 16,
@@ -94,7 +94,7 @@
 				{
 					"type": "rect",
 					"cX": 300,
-					"cY": 530,
+					"cY": 550,
 					"rH": 250,
 					"rV": 90,
 					"radii": 16,
@@ -112,7 +112,7 @@
 				{
 					"type": "rect",
 					"cX": 775,
-					"cY": 530,
+					"cY": 550,
 					"rH": 135,
 					"rV": 90,
 					"radii": 16,
