@@ -10,6 +10,7 @@ import { OPS_SCHEMA, systemWithModel, initPanel, readSSE } from './ai-core.js'
 
 const
 ENDPOINT		= 'https://api.anthropic.com/v1/messages'
+,	MODELS_URL		= 'https://api.anthropic.com/v1/models'
 ,	TOOLS			= [
 	{
 		name		: 'apply_ops'
@@ -17,6 +18,40 @@ ENDPOINT		= 'https://api.anthropic.com/v1/messages'
 	,	input_schema: OPS_SCHEMA
 	}
 ]
+
+//	Chat-oriented Claude ids only; drop dated snapshots ( keep aliases like claude-haiku-4-5 ).
+const
+listModels		= async key => {
+	const
+	headers	= {
+		'x-api-key'									: key
+	,	'anthropic-version'							: '2023-06-01'
+	,	'anthropic-dangerous-direct-browser-access'	: 'true'
+	}
+	,	out		= []
+	let	after	= null
+	for	( ;; ) {
+		const
+		url = new URL( MODELS_URL )
+		url.searchParams.set( 'limit', '1000' )
+		after && url.searchParams.set( 'after_id', after )
+		const
+		res = await fetch( url, { headers } )
+		if	( !res.ok ) {
+			const	j = await res.json().catch( () => null )
+			throw new Error( j?.error?.message || `HTTP ${ res.status }` )
+		}
+		const
+		j = await res.json()
+		out.push( ...( j.data || [] ) )
+		if	( !j.has_more ) break
+		after = j.last_id
+		if	( !after ) break
+	}
+	return	out
+	.	filter( m => /^claude-/.test( m.id ) && !/-20\d{6}$/.test( m.id ) )
+	.	map( m => ( { id: m.id, label: m.display_name || m.id } ) )
+}
 
 //	Stream one assistant turn; render text live; reconstruct the content blocks.
 //	Returns { assistant, toolCalls:[ { id, input } ] }.
@@ -91,11 +126,13 @@ initAIPanel		= () => initPanel( {
 	,	keyToggle	: AI_KEY_TOGGLE
 	,	keyClear	: AI_KEY_CLEAR
 	,	model		: AI_MODEL
+	,	modelFetch	: AI_MODEL_FETCH
 	,	input		: AI_INPUT
 	,	send		: AI_SEND
 	,	log			: AI_LOG
 	}
 ,	initMessages	: prompt => [ { role: 'user', content: prompt } ]
+,	listModels
 ,	streamTurn
 	//	Anthropic: tool results go back in a single user message, as tool_result blocks
 ,	toolResultMessages	: results => [ {

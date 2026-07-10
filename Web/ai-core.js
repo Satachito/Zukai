@@ -94,13 +94,54 @@ initPanel		= provider => {
 		return	div
 	}
 
-	//	restore persisted key / model
+	//	restore persisted key / model ( drop stale model ids → first option = latest )
 	el.key.value		= localStorage.getItem( storeKey ) || ''
-	el.model.value		= localStorage.getItem( storeModel ) || el.model.value
+	const
+	pickModel	= prefer => {
+		const
+		ok = prefer && [ ...el.model.options ].some( o => o.value === prefer )
+		el.model.value = ok ? prefer : el.model.options[ 0 ]?.value
+		el.model.value && localStorage.setItem( storeModel, el.model.value )
+	}
+	pickModel( localStorage.getItem( storeModel ) )
 	el.key.onchange		= () => setKey( el.key.value.trim() )
 	el.model.onchange	= () => localStorage.setItem( storeModel, el.model.value )
 	el.keyToggle.onclick	= () => el.key.type = el.key.type === 'password' ? 'text' : 'password'
 	el.keyClear.onclick		= () => { el.key.value = ''; setKey( '' ); el.key.focus() }
+
+	if	( el.modelFetch && provider.listModels ) {
+		el.modelFetch.onclick = async () => {
+			const
+			key = el.key.value.trim()
+			if	( !key ) {
+				logLine( 'error', 'Set your API key first ( the key field above ).' )
+				return
+			}
+			setKey( key )
+			el.modelFetch.disabled = true
+			const
+			prev = el.model.value
+			try {
+				const
+				models = await provider.listModels( key )
+				if	( !models.length ) throw new Error( 'No chat models returned' )
+				el.model.replaceChildren()
+				for ( const m of models ) {
+					const
+					o = document.createElement( 'option' )
+					o.value			= m.id
+					o.textContent	= m.label || m.id
+					el.model.append( o )
+				}
+				pickModel( prev )
+				logLine( 'status', `Loaded ${ models.length } models` )
+			} catch ( er ) {
+				logLine( 'error', String( er?.message || er ) )
+			} finally {
+				el.modelFetch.disabled = false
+			}
+		}
+	}
 
 	const
 	run			= async () => {

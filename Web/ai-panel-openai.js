@@ -10,6 +10,7 @@ import { OPS_SCHEMA, systemWithModel, initPanel, readSSE } from './ai-core.js'
 
 const
 ENDPOINT		= 'https://api.openai.com/v1/chat/completions'
+,	MODELS_URL		= 'https://api.openai.com/v1/models'
 ,	TOOLS			= [
 	{
 		type		: 'function'
@@ -20,6 +21,33 @@ ENDPOINT		= 'https://api.openai.com/v1/chat/completions'
 		}
 	}
 ]
+
+//	Chat / reasoning text models; drop embeddings, audio, images, dated snapshots.
+const
+listModels		= async key => {
+	const
+	res = await fetch(
+		MODELS_URL
+	,	{ headers: { authorization: `Bearer ${ key }` } }
+	)
+	if	( !res.ok ) {
+		const	j = await res.json().catch( () => null )
+		throw new Error( j?.error?.message || `HTTP ${ res.status }` )
+	}
+	const
+	j = await res.json()
+	return	( j.data || [] )
+	.	filter( m => {
+		const
+		id = m.id
+		if	( !/^(gpt-|o[1-9]|chatgpt-)/.test( id ) ) return false
+		if	( /realtime|audio|transcribe|tts|image|search|moderation|embedding|instruct|codex/i.test( id ) ) return false
+		if	( /-\d{4}-\d{2}-\d{2}$/.test( id ) || /-20\d{6}$/.test( id ) ) return false
+		return	true
+	} )
+	.	sort( ( a, b ) => ( b.created || 0 ) - ( a.created || 0 ) )
+	.	map( m => ( { id: m.id, label: m.id } ) )
+}
 
 //	Stream one assistant turn; render text live; accumulate function-call deltas.
 //	Returns { assistant, toolCalls:[ { id, input } ] }.
@@ -91,11 +119,13 @@ initOpenAIPanel	= () => initPanel( {
 	,	keyToggle	: OAI_KEY_TOGGLE
 	,	keyClear	: OAI_KEY_CLEAR
 	,	model		: OAI_MODEL
+	,	modelFetch	: OAI_MODEL_FETCH
 	,	input		: OAI_INPUT
 	,	send		: OAI_SEND
 	,	log			: OAI_LOG
 	}
 ,	initMessages	: prompt => [ { role: 'user', content: prompt } ]
+,	listModels
 ,	streamTurn
 	//	OpenAI: one tool-role message per tool call
 ,	toolResultMessages	: results => results.map( r => ( {
