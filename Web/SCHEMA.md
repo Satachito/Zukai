@@ -12,8 +12,8 @@ is top-left with the **y axis pointing down**.
 
 Canvas size is **not** stored in `.zu`. On load, it is derived from the nodes'
 bounding box (with margin, snapped to 256 px); an empty diagram uses **4096 × 4096**.
-At runtime the `<canvas>` element is the source of truth; manual resizes persist
-in `localStorage` (`tokyo.828.zukai.canvas`) for the session.
+At runtime the SVG scene + overlay `<canvas>` are the source of truth for size;
+manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the session.
 
 ## Node
 
@@ -28,12 +28,16 @@ in `localStorage` (`tokyo.828.zukai.canvas`) for the session.
   - `rH`, `rV` — half-width / half-height. The shape spans
     `[cX - rH, cY - rV]` to `[cX + rH, cY + rV]`.
   - `radii` — corner radius, `rect` only (number, optional)
-  - `html` — optional HTML label rendered centered inside the shape.
-    Sanitized on draw/export (`SanitizeLabel.js`): allowlisted tags only
-    (`b` `strong` `i` `em` `u` `s` `br` `span` `small` `sub` `sup` `code`);
-    only the `style` attribute is kept; `script` / event handlers / links / images are dropped.
+  - `html` — optional HTML label rendered centered inside the shape via
+    live SVG `foreignObject` (not sanitized while editing). **Export / copy /
+    print** run it through `SanitizeLabel.js` (allowlisted tags only:
+    `b` `strong` `i` `em` `u` `s` `br` `span` `small` `sub` `sup` `code`;
+    only the `style` attribute is kept; `script` / event handlers / links /
+    images are dropped). **Load** scans for risky markup and asks before
+    continuing.
   - `style` — optional CSS for the label container (e.g. `;display: grid\n;place-items: center`).
-    Also allowlisted (layout/typography/color props only; no `url()` / `expression()`).
+    Live: applied as-is. Export: allowlisted layout/typography/color props only
+    (no `url()` / `expression()`).
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors

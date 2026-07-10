@@ -70,9 +70,6 @@ import {
 	XYWH
 ,	TLBR
 ,	BBox
-,	RectPath2D
-,	EllipsePath2D
-,	RhombusPath2D
 ,	GRAB
 ,	C2D
 ,	ArrowPathes
@@ -158,7 +155,7 @@ HitArrowPathes	= ( { shaftPath, xyF, xyT }, xy ) => {
 const
 HitLink			= ( _, xy ) => HitArrowPathes( ArrowPathes( _ ), xy )
 
-import { DrawForeignLabel	} from './ForeignLabel.js'
+import { mountSceneSvg, setSceneSize, paintScene } from './SceneSvg.js'
 
 const
 NodeMode = ev => CREATE_NODE.checked || !!ev?.metaKey
@@ -268,28 +265,6 @@ const
 copyText		= text => navigator.clipboard.writeText( text ).catch( Report )
 
 const
-DrawPath		= ( c2D, path, P ) => {
-	c2D.save()
-	const	fill	= P[ 'fill'	]
-	if	( fill ) {
-		c2D.fillStyle = fill
-		c2D.fill( path )
-	}
-	const	stroke	= P[ 'stroke' ]
-	if	( stroke ) {
-		P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
-		P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
-		P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
-		P.miterLimit		&& ( c2D.miterLimit		= P.miterLimit		)
-		P.lineDash			&& ( c2D.setLineDash	( P.lineDash )		)
-		P.lineDashOffset	&& ( c2D.lineDashOffset	= P.lineDashOffset	)
-		c2D.strokeStyle = stroke
-		c2D.stroke( path )
-	}
-	c2D.restore()
-}
-
-const
 ShowHoverLabel = ( ev, text ) => {
 	UNDER_HOVER.textContent		= text
 	UNDER_HOVER.style.display	= 'block'
@@ -327,87 +302,22 @@ MainEditor extends HTMLElement {
 	}
 
 	canvasSize() {
-		return	[ this.drawer.width, this.drawer.height ]
+		return	[ this.reformer.width, this.reformer.height ]
 	}
 
 	setCanvasSize( w, h ) {
 		if	( !( w > 0 && h > 0 ) )	throw new Error( `Invalid canvas size: ${ w }×${ h }` )
-		this.drawer.width		= this.reformer.width		= w
-		this.drawer.height		= this.reformer.height		= h
+		this.reformer.width		= w
+		this.reformer.height	= h
+		setSceneSize( this.scene, w, h )
 	}
 
 	clearInteraction() {
 		this.gesture = null
 	}
 
-	async DrawModel() {
-
-		const
-		c2D = PrepareCanvas( this.drawer )
-
-		const
-		drawSVG		= async ( svg, S ) => {
-			//	SVG must go through <img>: createImageBitmap() rejects SVG blobs
-			//	in Chrome ("The source image could not be decoded").
-			const
-			url = URL.createObjectURL( new Blob( svg, { type: 'image/svg+xml;charset=utf-8' } ) )
-			try {
-				const
-				image = new Image()
-				image.src = url
-				image.decode ? await image.decode() : await new Promise(
-					( Res, Rej ) => (
-						image.onload	= () => Res()
-					,	image.onerror	= () => Rej( new Error( 'SVG: loading failed' ) )
-					)
-				)
-				c2D.drawImage( image, ...XYWH( S ) )
-			} finally {
-				URL.revokeObjectURL( url )
-			}
-		}
-
-
-		for ( const [ ID, S, P ] of app.model.nodes ) {
-			try {
-				switch ( S.type ) {
-				case 'rect':
-					DrawPath( c2D, RectPath2D( S ), P )
-					break
-				case 'ellipse':
-					DrawPath( c2D, EllipsePath2D( S ), P )
-					break
-				case 'rhombus':
-					DrawPath( c2D, RhombusPath2D( S ), P )
-					break
-				case 'SVG':
-					await drawSVG(
-						[ Uint8Array.from( atob( S.SVG ), ch => ch.charCodeAt( 0 ) ) ]
-					,	S
-					)
-					break
-				case 'PNG':
-					c2D.drawImage(
-						await createImageBitmap(
-							new Blob(
-								[ Uint8Array.from( atob( S.PNG ), _ => _.charCodeAt( 0 ) ) ]
-							,	{ type: 'image/png' }
-							)
-						)
-					,	...XYWH( S )
-					)
-					break
-				default:
-					console.error( 'Unknown:', S.type )
-					break
-				}
-				if	( S.html )	await DrawForeignLabel( drawSVG, S )
-			} catch ( er ) {
-				console.error( 'DrawModel failed:', ID, er )
-			}
-		}
-
-		AvailableLinks().forEach( _ => DrawLinkCanvas( c2D, _ ) )
+	DrawModel() {
+		paintScene( this.scene, app.model )
 	}
 
 	DrawReforms() {
@@ -458,9 +368,9 @@ MainEditor extends HTMLElement {
 
 		this.style.position			= 'relative'
 
-		this.drawer					= AE( this, 'canvas' )
+		this.scene					= mountSceneSvg( this )
 		this.reformer				= AE( this, 'canvas' )
-		this.drawer.style.position	= this.reformer.style.position	= 'absolute'
+		this.reformer.style.position	= 'absolute'
 		//	stop the browser from claiming the drag as a scroll / gesture ( which
 		//	would fire pointercancel and abort the move before pointerup commits )
 		this.reformer.style.touchAction	= 'none'

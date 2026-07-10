@@ -53,7 +53,7 @@ separately from the file format.
 | **`cX`, `cY`** | ✓ | Center (numbers). **Not** `cx`/`cy` |
 | **`rH`, `rV`** | ✓ | Half-width / half-height. Size ≈ `2×|rH|` × `2×|rV|` |
 | **`radii`** | — | Corner radius for `rect` |
-| **`html`** | — | Label HTML (`foreignObject`). **Not** `innerHTML` |
+| **`html`** | — | Label HTML (live `foreignObject`, unsanitized). Export sanitizes. Field name is `html`, **not** `innerHTML` |
 | **`style`** | — | Label CSS fragments (`;prop : value`, newline-separated) |
 | **`SVG`** | when type=SVG | SVG source string (encoded to base64 at draw time) |
 | **`PNG`** | when type=PNG | PNG base64 |

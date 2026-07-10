@@ -1,5 +1,6 @@
-//	ノードラベル ( shape.html / shape.style ) 用の許可リストサニタイズ。
-//	信頼できない .zu でも script / イベントハンドラ / 危険 CSS を落とす。
+//	ノードラベル ( shape.html / shape.style ) 用。
+//	Export 時の許可リストサニタイズと、Load 時の危険内容検出。
+//	Live 描画は Sanitize しない（foreignObject に生 HTML）。
 
 export const
 ALLOWED_TAGS = new Set( [
@@ -115,8 +116,8 @@ appendSanitized	= ( srcParent, dstParent ) => {
 	}
 }
 
-export const
-sanitizeLabelHtml	= html => {
+const
+parseLabelRoot	= html => {
 	//	フル HTML ドキュメント + innerHTML 代入。断片を text/html で直接
 	//	parseFromString すると環境によって body に載らないことがある。
 	const
@@ -125,8 +126,74 @@ sanitizeLabelHtml	= html => {
 	,	'text/html'
 	)
 	,	src = doc.getElementById( '__zu_label__' )
-	,	dst = doc.createElement( 'div' )
 	src.innerHTML = String( html ?? '' )
+	return src
+}
+
+export const
+sanitizeLabelHtml	= html => {
+	const
+	src = parseLabelRoot( html )
+	,	dst = src.ownerDocument.createElement( 'div' )
 	appendSanitized( src, dst )
 	return	[ ...dst.childNodes ].map( serializeNode ).join( '' )
+}
+
+//	Load 前チェック用: script / イベント / 危険 URL・CSS など。
+export const
+labelContentRisks	= ( html, style ) => {
+	const
+	risks = new Set()
+	if	( style && BAD_CSS_VALUE.test( String( style ) ) ) {
+		risks.add( 'dangerous CSS in label style' )
+	}
+	if	( !html ) return [ ...risks ]
+
+	const
+	walk	= node => {
+		for ( const child of node.childNodes ) {
+			if	( child.nodeType !== 1 ) continue
+			const
+			tag = child.tagName.toLowerCase()
+			if	( DROP_WITH_CONTENT.has( tag ) ) risks.add( `<${ tag }>` )
+			for ( const attr of child.attributes ) {
+				const
+				name	= attr.name.toLowerCase()
+				,	val	= attr.value
+				if	( name.startsWith( 'on' ) ) risks.add( `event handler ${ name }` )
+				if	( /javascript:/i.test( val ) || /data:\s*text\/html/i.test( val ) ) {
+					risks.add( `${ name } URL` )
+				}
+				if	( name === 'style' && BAD_CSS_VALUE.test( val ) ) {
+					risks.add( 'dangerous CSS in element style' )
+				}
+			}
+			walk( child )
+		}
+	}
+	walk( parseLabelRoot( html ) )
+	return	[ ...risks ]
+}
+
+export const
+modelRiskyLabelNodes	= model => model.nodes.flatMap(
+	( [ id, S ] ) => {
+		const
+		risks = labelContentRisks( S.html, S.style )
+		return	risks.length ? [ { id, risks } ] : []
+	}
+)
+
+export const
+confirmRiskyLabels	= model => {
+	const
+	risky = modelRiskyLabelNodes( model )
+	if	( !risky.length ) return true
+	const
+	ids		= risky.map( _ => _.id ).slice( 0, 8 ).join( ', ' )
+	,	more	= risky.length > 8 ? ` (+${ risky.length - 8 } more)` : ''
+	return	confirm(
+		`This file's labels include potentially dangerous HTML (e.g. <script>) on: ${ ids }${ more }.\n\n`
+	+	`Loading will render it live and it may run in the browser. Continue?`
+	)
 }

@@ -10,7 +10,7 @@ before( () => {
 } )
 
 const
-{ sanitizeLabelHtml, sanitizeStyle } = await import( '../SanitizeLabel.js' )
+{ sanitizeLabelHtml, sanitizeStyle, labelContentRisks, modelRiskyLabelNodes } = await import( '../SanitizeLabel.js' )
 
 test( 'keeps sample-style markup', () => {
 	assert.equal(
@@ -49,4 +49,20 @@ test( 'sanitizeStyle allowlists props and blocks url/expression', () => {
 	assert.equal( sanitizeStyle( 'background:url(javascript:alert(1))' ), '' )
 	assert.equal( sanitizeStyle( 'font-size:expression(alert(1))' ), '' )
 	assert.equal( sanitizeStyle( 'color:red;width:100%;evil:1' ), 'color:red;width:100%' )
+} )
+
+test( 'labelContentRisks flags script and handlers', () => {
+	assert.deepEqual( labelContentRisks( '<b>ok</b>', '' ), [] )
+	assert.ok( labelContentRisks( '<script>alert(1)</script>', '' ).includes( '<script>' ) )
+	assert.ok( labelContentRisks( '<b onclick="x">x</b>', '' ).some( _ => _.includes( 'onclick' ) ) )
+	assert.ok( labelContentRisks( 'x', 'background:url(evil)' ).length )
+	assert.ok(
+		modelRiskyLabelNodes( {
+			nodes	: [
+				[ 'Safe', { html: '<b>a</b>' }, {} ]
+			,	[ 'Bad', { html: '<iframe></iframe>', style: '' }, {} ]
+			]
+		,	links	: []
+		} ).some( _ => _.id === 'Bad' )
+	)
 } )

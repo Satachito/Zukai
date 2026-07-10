@@ -403,24 +403,28 @@ Paste		= async _ => {	//	ClipboardData
 }
 
 import { BBox } from './GeoZU.js'
+import { confirmRiskyLabels } from './SanitizeLabel.js'
 
 export	const
-Load		= _ => DoTypical(
-	'Load'
-,	() => {
-		const
-		{ model } = JSON.parse( _ )
-		if	( !model || !Array.isArray( model.nodes ) || !Array.isArray( model.links ) ) {
-			throw new Error( '.zu root must include model.nodes and model.links arrays' )
-		}
-		const
-		canvasSize = model.nodes.length ? BBox( model.nodes ) : null
-		app.model	= model
-		app.reforms	= []
-		if	( canvasSize ) {
-			const
-			[ , , b, r ] = canvasSize
-			MAIN_EDITOR.setCanvasSize( r + 256 , b + 256 )
-		}
+Load		= async _ => {
+	const
+	{ model } = JSON.parse( _ )
+	if	( !model || !Array.isArray( model.nodes ) || !Array.isArray( model.links ) ) {
+		throw new Error( '.zu root must include model.nodes and model.links arrays' )
 	}
-)
+	if	( !confirmRiskyLabels( model ) ) return
+	return	DoTypical(
+		'Load'
+	,	() => {
+			const
+			canvasSize = model.nodes.length ? BBox( model.nodes ) : null
+			app.model	= model
+			app.reforms	= []
+			if	( canvasSize ) {
+				const
+				[ , , b, r ] = canvasSize
+				MAIN_EDITOR.setCanvasSize( r + 256 , b + 256 )
+			}
+		}
+	)
+}
