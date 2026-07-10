@@ -2,6 +2,7 @@
 //	Labels go in as raw foreignObject HTML (no SanitizeLabel) — Export still sanitizes.
 
 import { XYWH, ArrowDs } from './GeoZU.js'
+import { ParseEmbeddedSVG } from './DomUtils.js'
 import { appendLiveLabel, activateLiveLabelScripts } from './ForeignLabel.js'
 
 const
@@ -67,25 +68,11 @@ appendShape	= ( parent, S, P ) => {
 		)
 		break
 	case 'SVG': {
-		const
-		[ x, y, w, h ] = XYWH( S )
-		,	svgText = new TextDecoder().decode(
-				Uint8Array.from( atob( S.SVG ), ch => ch.charCodeAt( 0 ) )
-			)
-		,	root = new DOMParser().parseFromString( svgText, 'image/svg+xml' ).documentElement
-		if	( root.querySelector( 'parsererror' ) || root.tagName.toLowerCase() !== 'svg' ) {
-			throw new Error( 'Invalid embedded SVG' )
-		}
 		//	Keep the full <svg> ( root stroke/fill/viewBox inherit correctly ).
 		//	Only children → <g> drops presentation attrs on the root.
 		const
-		nested = document.importNode( root, true )
-		if	( !nested.getAttribute( 'viewBox' ) ) {
-			const
-			ow = Number.parseFloat( nested.getAttribute( 'width' ) ) || w
-			,	oh = Number.parseFloat( nested.getAttribute( 'height' ) ) || h
-			nested.setAttribute( 'viewBox', `0 0 ${ ow } ${ oh }` )
-		}
+		[ x, y, w, h ] = XYWH( S )
+		,	nested = document.importNode( ParseEmbeddedSVG( S.SVG, w, h ), true )
 		nested.setAttribute( 'x', x )
 		nested.setAttribute( 'y', y )
 		nested.setAttribute( 'width', w )

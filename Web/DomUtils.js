@@ -54,3 +54,76 @@ EscapeXML		= _ => String( _ )
 .	replace( />/g, '&gt;' )
 .	replace( /"/g, '&quot;' )
 
+//	Embedded icon SVGs ( type:'SVG' nodes ) carry document-global <style> rules
+//	and generic ids ( .cls-1, #mask… ). Inlined side by side into one scene or
+//	export SVG those collide across icons — the last <style> wins and url(#…)
+//	resolves into another icon's defs — so rescope ids and rules per embed.
+let
+embedSeq		= 0
+
+const
+EscapeRegExp	= _ => _.replace( /[.*+?^${}()|[\]\\]/g, '\\$&' )
+
+const
+ScopeSVG		= ( root, scope ) => {
+	const
+	ids = new Map()
+	for ( const el of root.querySelectorAll( '[id]' ) ) {
+		const	id = el.getAttribute( 'id' )
+		ids.set( id, `${ scope }-${ id }` )
+		el.setAttribute( 'id', ids.get( id ) )
+	}
+	const
+	fixURLs = _ => {
+		for ( const [ o, n ] of ids ) _ = _.replaceAll( `url(#${ o })`, `url(#${ n })` )
+		return _
+	}
+	for ( const el of root.querySelectorAll( '*' ) ) {
+		for ( const at of el.attributes ) {
+			if	( at.value.includes( 'url(#' ) ) {
+				at.value = fixURLs( at.value )
+			} else if (
+				( at.name === 'href' || at.name === 'xlink:href' )
+			&&	at.value.startsWith( '#' )
+			&&	ids.has( at.value.slice( 1 ) )
+			) {
+				at.value = `#${ ids.get( at.value.slice( 1 ) ) }`
+			}
+		}
+	}
+	root.setAttribute( 'class', `${ root.getAttribute( 'class' ) ?? '' } ${ scope }`.trim() )
+	for ( const style of root.querySelectorAll( 'style' ) ) {
+		let	$ = style.textContent
+		//	'#id' followed by a delimiter covers both url(#id) and #id selectors
+		for ( const [ o, n ] of ids ) {
+			$ = $.replace( new RegExp( `#${ EscapeRegExp( o ) }(?![\\w-])`, 'g' ), `#${ n }` )
+		}
+		//	confine every plain rule to this embed's subtree
+		style.textContent = $.replace(
+			/(^|\})([^{}@]+)\{/g
+		,	( m, brace, sels ) =>
+				brace + sels.split( ',' ).map( _ => `.${ scope } ${ _.trim() }` ).join( ',' ) + '{'
+		)
+	}
+}
+
+export const
+ParseEmbeddedSVG	= ( b64, w, h ) => {
+	const
+	svgText = new TextDecoder().decode(
+		Uint8Array.from( atob( b64 ), ch => ch.charCodeAt( 0 ) )
+	)
+	,	root = new DOMParser().parseFromString( svgText, 'image/svg+xml' ).documentElement
+	if	( root.querySelector( 'parsererror' ) || root.tagName.toLowerCase() !== 'svg' ) {
+		throw new Error( 'Invalid embedded SVG' )
+	}
+	if	( !root.getAttribute( 'viewBox' ) ) {
+		const
+		ow = Number.parseFloat( root.getAttribute( 'width' ) ) || w
+		,	oh = Number.parseFloat( root.getAttribute( 'height' ) ) || h
+		root.setAttribute( 'viewBox', `0 0 ${ ow } ${ oh }` )
+	}
+	ScopeSVG( root, `zu-embed-${ ++embedSeq }` )
+	return root
+}
+

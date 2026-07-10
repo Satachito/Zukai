@@ -1,6 +1,7 @@
 import { FindNode	} from './Application.js'
 import { CanvasSize	} from './main-editor.js'
 import { XYWH, ArrowDs	} from './GeoZU.js'
+import { ParseEmbeddedSVG	} from './DomUtils.js'
 import { drawForeignLabelSvg	} from './ForeignLabel.js'
 
 const
@@ -113,24 +114,10 @@ drawShape		= ( parts, X, Y, S, P ) => {
 
 const
 drawSvgNode		= ( parts, X, Y, S ) => {
+	//	Keep the full <svg> so root stroke/fill/viewBox are preserved ( not just innerHTML ).
 	const
 	[ x, y, w, h ] = XYWH( S )
-	const
-	svgText = new TextDecoder().decode(
-		Uint8Array.from( atob( S.SVG ), ch => ch.charCodeAt( 0 ) )
-	)
-	const
-	root = new DOMParser().parseFromString( svgText, 'image/svg+xml' ).documentElement
-	if	( root.querySelector( 'parsererror' ) || root.tagName.toLowerCase() !== 'svg' ) {
-		throw new Error( 'Invalid embedded SVG' )
-	}
-	//	Keep the full <svg> so root stroke/fill/viewBox are preserved ( not just innerHTML ).
-	if	( !root.getAttribute( 'viewBox' ) ) {
-		const
-		ow = Number.parseFloat( root.getAttribute( 'width' ) ) || w
-		,	oh = Number.parseFloat( root.getAttribute( 'height' ) ) || h
-		root.setAttribute( 'viewBox', `0 0 ${ ow } ${ oh }` )
-	}
+	,	root = ParseEmbeddedSVG( S.SVG, w, h )
 	root.setAttribute( 'x', X( x ) )
 	root.setAttribute( 'y', Y( y ) )
 	root.setAttribute( 'width', w )
