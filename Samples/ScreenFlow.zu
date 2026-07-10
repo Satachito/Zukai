@@ -5,10 +5,10 @@
 				"title",
 				{
 					"type": "rect",
-					"cX": 810,
-					"cY": 70,
-					"rH": 400,
-					"rV": 30,
+					"cX": 920,
+					"cY": 48,
+					"rH": 440,
+					"rV": 24,
 					"html": "<b>Screen transition: shopping app</b>",
 					"style": ";display:grid\n;place-items:center\n;font-size:18px\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
@@ -20,10 +20,10 @@
 				"auth-area",
 				{
 					"type": "rect",
-					"cX": 240,
-					"cY": 400,
-					"rH": 205,
-					"rV": 300,
+					"cX": 292,
+					"cY": 440,
+					"rH": 252,
+					"rV": 310,
 					"radii": 18,
 					"html": "Auth / onboarding",
 					"style": ";padding:12px\n;font-weight:700\n;color:light-dark(#1e3a8a,#bfdbfe)"
@@ -38,10 +38,10 @@
 				"shop-area",
 				{
 					"type": "rect",
-					"cX": 800,
-					"cY": 400,
-					"rH": 350,
-					"rV": 300,
+					"cX": 964,
+					"cY": 440,
+					"rH": 372,
+					"rV": 310,
 					"radii": 18,
 					"html": "Main purchase flow",
 					"style": ";padding:12px\n;font-weight:700\n;color:light-dark(#14532d,#bbf7d0)"
@@ -56,10 +56,10 @@
 				"account-area",
 				{
 					"type": "rect",
-					"cX": 1360,
-					"cY": 400,
-					"rH": 200,
-					"rV": 300,
+					"cX": 1536,
+					"cY": 440,
+					"rH": 152,
+					"rV": 310,
 					"radii": 18,
 					"html": "Account",
 					"style": ";padding:12px\n;font-weight:700\n;color:light-dark(#581c87,#e9d5ff)"
@@ -74,10 +74,10 @@
 				"splash",
 				{
 					"type": "rect",
-					"cX": 250,
-					"cY": 185,
-					"rH": 105,
-					"rV": 44,
+					"cX": 292,
+					"cY": 210,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Splash</b><br><small>app start</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#172554,#dbeafe)"
@@ -92,10 +92,10 @@
 				"login",
 				{
 					"type": "rect",
-					"cX": 155,
-					"cY": 360,
-					"rH": 105,
-					"rV": 44,
+					"cX": 172,
+					"cY": 370,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Login</b><br><small>email / SSO</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#172554,#dbeafe)"
@@ -110,10 +110,10 @@
 				"signup",
 				{
 					"type": "rect",
-					"cX": 370,
-					"cY": 360,
-					"rH": 105,
-					"rV": 44,
+					"cX": 412,
+					"cY": 370,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Sign up</b><br><small>new account</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#172554,#dbeafe)"
@@ -128,10 +128,10 @@
 				"forgot",
 				{
 					"type": "rect",
-					"cX": 155,
-					"cY": 520,
-					"rH": 105,
-					"rV": 44,
+					"cX": 172,
+					"cY": 530,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Password reset</b><br><small>mail link</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#172554,#dbeafe)"
@@ -146,10 +146,10 @@
 				"home",
 				{
 					"type": "rect",
-					"cX": 590,
-					"cY": 360,
-					"rH": 105,
-					"rV": 44,
+					"cX": 724,
+					"cY": 370,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Home</b><br><small>feed / banners</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -164,10 +164,10 @@
 				"search",
 				{
 					"type": "rect",
-					"cX": 810,
-					"cY": 185,
-					"rH": 105,
-					"rV": 44,
+					"cX": 964,
+					"cY": 210,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Search</b><br><small>keyword / filters</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -182,10 +182,10 @@
 				"detail",
 				{
 					"type": "rect",
-					"cX": 810,
-					"cY": 360,
-					"rH": 105,
-					"rV": 44,
+					"cX": 964,
+					"cY": 370,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Product detail</b><br><small>variants / reviews</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -200,10 +200,10 @@
 				"cart",
 				{
 					"type": "rect",
-					"cX": 1025,
-					"cY": 360,
-					"rH": 105,
-					"rV": 44,
+					"cX": 1204,
+					"cY": 370,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Cart</b><br><small>items / coupons</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -218,10 +218,10 @@
 				"checkout",
 				{
 					"type": "rect",
-					"cX": 1025,
-					"cY": 500,
-					"rH": 105,
-					"rV": 44,
+					"cX": 1204,
+					"cY": 530,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Checkout</b><br><small>address / payment</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -236,10 +236,10 @@
 				"complete",
 				{
 					"type": "rect",
-					"cX": 810,
-					"cY": 640,
-					"rH": 105,
-					"rV": 44,
+					"cX": 964,
+					"cY": 670,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Order complete</b><br><small>receipt</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#14532d,#dcfce7)"
@@ -254,10 +254,10 @@
 				"profile",
 				{
 					"type": "rect",
-					"cX": 1360,
-					"cY": 270,
-					"rH": 105,
-					"rV": 44,
+					"cX": 1536,
+					"cY": 280,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Profile</b><br><small>orders / points</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#581c87,#f3e8ff)"
@@ -272,10 +272,10 @@
 				"settings",
 				{
 					"type": "rect",
-					"cX": 1360,
+					"cX": 1536,
 					"cY": 460,
-					"rH": 105,
-					"rV": 44,
+					"rH": 100,
+					"rV": 40,
 					"radii": 14,
 					"html": "<b>Settings</b><br><small>notifications</small>",
 					"style": ";display:grid\n;place-items:center\n;text-align:center\n;color:light-dark(#581c87,#f3e8ff)"
@@ -290,9 +290,9 @@
 				"login-required",
 				{
 					"type": "rect",
-					"cX": 1270,
-					"cY": 590,
-					"rH": 130,
+					"cX": 1536,
+					"cY": 640,
+					"rH": 120,
 					"rV": 34,
 					"radii": 10,
 					"html": "Login required<br><small>modal / redirect</small>",

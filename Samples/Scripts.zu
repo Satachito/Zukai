@@ -39,10 +39,10 @@
 				"clock",
 				{
 					"type": "rect",
-					"cX": 200,
-					"cY": 280,
-					"rH": 150,
-					"rV": 110,
+					"cX": 185,
+					"cY": 290,
+					"rH": 135,
+					"rV": 100,
 					"radii": 16,
 					"html": "<div style=\"display:grid;place-items:center;gap:6px;height:100%;padding:12px;box-sizing:border-box\"><div style=\"font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7\">Local time</div><div data-role=\"clock\" style=\"font:600 28px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em\">--:--:--</div><div data-role=\"date\" style=\"font-size:12px;opacity:.75\">—</div></div><script>(()=>{const s=document.currentScript,root=s.parentElement,clock=root.querySelector('[data-role=clock]'),date=root.querySelector('[data-role=date]');const tick=()=>{if(!root.isConnected){clearInterval(id);return}const d=new Date();clock.textContent=d.toLocaleTimeString();date.textContent=d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})};const id=setInterval(tick,250);tick()})()</script>",
 					"style": ";display:grid\n;place-items:stretch"
@@ -58,9 +58,9 @@
 				{
 					"type": "rect",
 					"cX": 480,
-					"cY": 280,
-					"rH": 150,
-					"rV": 110,
+					"cY": 290,
+					"rH": 135,
+					"rV": 100,
 					"radii": 16,
 					"html": "<div style=\"display:grid;place-items:center;gap:6px;height:100%;padding:12px;box-sizing:border-box\"><div style=\"font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7\">Uptime since paint</div><div data-role=\"up\" style=\"font:600 36px ui-monospace,SFMono-Regular,Menlo,monospace\">0.0s</div><div style=\"font-size:12px;opacity:.75\">resets on redraw</div></div><script>(()=>{const s=document.currentScript,root=s.parentElement,el=root.querySelector('[data-role=up]'),t0=performance.now();const tick=()=>{if(!root.isConnected){clearInterval(id);return}el.textContent=((performance.now()-t0)/1000).toFixed(1)+'s'};const id=setInterval(tick,100);tick()})()</script>",
 					"style": ";display:grid\n;place-items:stretch"
@@ -75,10 +75,10 @@
 				"status",
 				{
 					"type": "rect",
-					"cX": 760,
-					"cY": 280,
-					"rH": 150,
-					"rV": 110,
+					"cX": 775,
+					"cY": 290,
+					"rH": 135,
+					"rV": 100,
 					"radii": 16,
 					"html": "<div style=\"display:grid;place-items:center;gap:10px;height:100%;padding:12px;box-sizing:border-box\"><div style=\"font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7\">Build status</div><div data-role=\"badge\" style=\"display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font:600 14px system-ui,sans-serif;background:rgba(0,0,0,.25)\"><span data-role=\"dot\" style=\"width:10px;height:10px;border-radius:50%;background:#94a3b8\"></span><span data-role=\"label\">…</span></div><div data-role=\"bar\" style=\"width:70%;height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden\"><div data-role=\"fill\" style=\"height:100%;width:0%;background:#34d399;transition:width .2s linear\"></div></div></div><script>(()=>{const s=document.currentScript,root=s.parentElement,dot=root.querySelector('[data-role=dot]'),label=root.querySelector('[data-role=label]'),fill=root.querySelector('[data-role=fill]');const states=[{t:'Queued',c:'#94a3b8',p:8},{t:'Running',c:'#38bdf8',p:42},{t:'Testing',c:'#fbbf24',p:78},{t:'Passed',c:'#34d399',p:100}];let i=0;const tick=()=>{if(!root.isConnected){clearInterval(id);return}const st=states[i%states.length];i++;dot.style.background=st.c;label.textContent=st.t;fill.style.width=st.p+'%';fill.style.background=st.c};const id=setInterval(tick,1200);tick()})()</script>",
 					"style": ";display:grid\n;place-items:stretch"
@@ -93,9 +93,9 @@
 				"spark",
 				{
 					"type": "rect",
-					"cX": 340,
-					"cY": 520,
-					"rH": 290,
+					"cX": 300,
+					"cY": 530,
+					"rH": 250,
 					"rV": 90,
 					"radii": 16,
 					"html": "<div style=\"display:grid;grid-template-rows:auto 1fr auto;gap:4px;height:100%;padding:10px 14px;box-sizing:border-box\"><div style=\"font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7\">Live sparkline <span data-role=\"val\" style=\"float:right;font:600 12px ui-monospace,monospace;letter-spacing:0;text-transform:none;opacity:1\">—</span></div><canvas data-role=\"cv\" width=\"520\" height=\"96\" style=\"width:100%;height:100%;display:block\"></canvas><div style=\"font-size:11px;opacity:.65\">&lt;script&gt; + canvas · rAF until node is removed</div></div><script>(()=>{const s=document.currentScript,root=s.parentElement,cv=root.querySelector('[data-role=cv]'),val=root.querySelector('[data-role=val]'),ctx=cv.getContext('2d');const n=48,buf=Array.from({length:n},()=>0.5);let t=0,raf;const frame=()=>{if(!root.isConnected)return;t+=0.08;buf.shift();buf.push(0.5+0.35*Math.sin(t)+0.12*Math.sin(t*2.7)+0.05*Math.sin(t*7.1));const w=cv.width,h=cv.height;ctx.clearRect(0,0,w,h);ctx.beginPath();buf.forEach((y,i)=>{const x=i/(n-1)*w,py=(1-y)*h;i?ctx.lineTo(x,py):ctx.moveTo(x,py)});ctx.strokeStyle=getComputedStyle(root).color;ctx.lineWidth=2;ctx.stroke();val.textContent=buf[buf.length-1].toFixed(2);raf=requestAnimationFrame(frame)};raf=requestAnimationFrame(frame)})()</script>",
@@ -111,9 +111,9 @@
 				"howto",
 				{
 					"type": "rect",
-					"cX": 760,
-					"cY": 520,
-					"rH": 150,
+					"cX": 775,
+					"cY": 530,
+					"rH": 135,
 					"rV": 90,
 					"radii": 16,
 					"html": "<div style=\"display:grid;align-content:center;gap:8px;height:100%;padding:12px 14px;box-sizing:border-box;font-size:12px;line-height:1.45\"><b style=\"font-size:13px\">How it works</b><div>Put markup + <code>&lt;script&gt;</code> in the node <code>html</code> field.</div><div>Use <code>document.currentScript.parentElement</code> and stop timers when <code>!root.isConnected</code>.</div></div>",
