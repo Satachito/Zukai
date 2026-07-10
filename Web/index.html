@@ -746,6 +746,7 @@ aside input[type=checkbox]
 		<button id=SAMPLE_ARROWHEADS	>Arrowheads	</button>
 		<button id=SAMPLE_SHOWCASE	>Showcase	</button>
 		<button id=SAMPLE_ANCHORMATRIX	>AnchorMx	</button>
+		<button id=SAMPLE_SCRIPTS	>Scripts	</button>
 	</div>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
@@ -995,6 +996,7 @@ SAMPLE_ANCHORS		.onclick = () => LoadSample( 'Samples/Anchors.zu'		).catch( Repo
 SAMPLE_ARROWHEADS	.onclick = () => LoadSample( 'Samples/Arrowheads.zu'	).catch( Report )
 SAMPLE_SHOWCASE		.onclick = () => LoadSample( 'Samples/Showcase.zu'		).catch( Report )
 SAMPLE_ANCHORMATRIX	.onclick = () => LoadSample( 'Samples/AnchorMatrix.zu'	).catch( Report )
+SAMPLE_SCRIPTS		.onclick = () => LoadSample( 'Samples/Scripts.zu'		).catch( Report )
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )
 DUMP_JOBS		.onclick = DumpJobs

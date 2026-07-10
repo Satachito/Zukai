@@ -2,7 +2,7 @@
 //	Labels go in as raw foreignObject HTML (no SanitizeLabel) — Export still sanitizes.
 
 import { XYWH, ArrowDs } from './GeoZU.js'
-import { appendLiveLabel } from './ForeignLabel.js'
+import { appendLiveLabel, activateLiveLabelScripts } from './ForeignLabel.js'
 
 const
 SVG_NS = 'http://www.w3.org/2000/svg'
@@ -194,4 +194,5 @@ paintScene	= ( svg, model ) => {
 		nF && nT && appendLink( links, [ [ nF, nT ], A, P ] )
 	}
 	svg.appendChild( links )
+	activateLiveLabelScripts( svg )
 }

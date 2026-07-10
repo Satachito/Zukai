@@ -21,6 +21,18 @@ labelWrapperStyle	= ( S, { sanitize } ) => {
 	return	`width:100%;height:100%;box-sizing:border-box;color-scheme:light dark;color:${ color };${ extra }`
 }
 
+//	innerHTML で入れた <script> は実行されないので、同等の script に差し替える。
+export const
+activateLiveLabelScripts	= root => {
+	for ( const old of [ ...root.querySelectorAll( 'script' ) ] ) {
+		const
+		s = document.createElement( 'script' )
+		for ( const { name, value } of old.attributes ) s.setAttribute( name, value )
+		s.textContent = old.textContent
+		old.replaceWith( s )
+	}
+}
+
 //	Live SVG DOM: raw html / style (Load 時に危険内容は確認ダイアログ)。
 export const
 appendLiveLabel	= ( parent, S ) => {
