@@ -143,10 +143,14 @@ buildVectorSVG	= () => {
 	[ w, h ] = CanvasSize()
 ,	X = _ => _
 ,	Y = _ => _
-,	bg = matchMedia( '(prefers-color-scheme: dark)' ).matches ? '#000000' : '#ffffff'
+,	dark = matchMedia( '(prefers-color-scheme: dark)' ).matches
+,	bg = dark ? '#000000' : '#ffffff'
+	//	currentColor icons ( e.g. Lucide line icons ) have no page to inherit
+	//	color from in a standalone SVG — pin the theme's foreground on the root
+,	fg = dark ? '#ffffff' : '#000000'
 ,	parts = [
 	'<?xml version="1.0" encoding="UTF-8"?>'
-,	`<svg xmlns="http://www.w3.org/2000/svg" width="${ w }" height="${ h }" viewBox="0 0 ${ w } ${ h }">`
+,	`<svg xmlns="http://www.w3.org/2000/svg" width="${ w }" height="${ h }" viewBox="0 0 ${ w } ${ h }" color="${ fg }">`
 ,	`<rect width="100%" height="100%" fill="${ bg }"/>`
 ]
 

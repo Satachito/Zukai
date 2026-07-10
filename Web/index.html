@@ -462,6 +462,12 @@ nav {
 nav cloud-icons {
 ;	display					: block
 }
+/*	line icons ( e.g. Lucide ) are stroke:currentColor → black inside <img>,
+	invisible on the dark panel. A light chip keeps every set readable. */
+nav cloud-icons img {
+;	background				: light-dark( transparent, #ffffff )
+;	border-radius			: 4px
+}
 .icon-spinner-wrap {
 ;	position				: fixed
 ;	display					: flex
