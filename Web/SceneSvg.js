@@ -4,6 +4,7 @@
 import { XYWH, ArrowDs } from './GeoZU.js'
 import { ParseEmbeddedSVG } from './DomUtils.js'
 import { appendLiveLabel, activateLiveLabelScripts } from './ForeignLabel.js'
+import { layoutScrollableLabels } from './LabelScroll.js'
 
 const
 SVG_NS = 'http://www.w3.org/2000/svg'
@@ -182,4 +183,5 @@ paintScene	= ( svg, model ) => {
 	}
 	svg.appendChild( links )
 	activateLiveLabelScripts( svg )
+	layoutScrollableLabels( svg )
 }

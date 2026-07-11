@@ -5,7 +5,7 @@
 export const
 ALLOWED_TAGS = new Set( [
 	'b', 'strong', 'i', 'em', 'u', 's'
-,	'br', 'span', 'small', 'sub', 'sup', 'code'
+,	'br', 'span', 'small', 'sub', 'sup', 'code', 'div'
 ] )
 
 //	中身ごと捨てる（unwrap すると script 本文がテキストとして残る）
@@ -27,6 +27,7 @@ ALLOWED_CSS = new Set( [
 ,	'text-align', 'text-decoration', 'line-height', 'letter-spacing', 'white-space'
 ,	'display', 'place-items', 'place-content', 'align-items', 'justify-content', 'justify-items', 'gap'
 ,	'opacity', 'padding', 'margin', 'width', 'height', 'box-sizing'
+,	'overflow', 'overflow-x', 'overflow-y', 'min-height', 'max-height'
 ] )
 
 const

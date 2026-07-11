@@ -156,6 +156,7 @@ const
 HitLink			= ( _, xy ) => HitArrowPathes( ArrowPathes( _ ), xy )
 
 import { mountSceneSvg, setSceneSize, paintScene } from './SceneSvg.js'
+import { labelScrollTargetAtPoint } from './LabelScroll.js'
 
 const
 NodeMode = ev => CREATE_NODE.checked || !!ev?.metaKey
@@ -489,6 +490,9 @@ MainEditor extends HTMLElement {
 		//	are delivered to the canvas even when the cursor leaves it — the release
 		//	(commit) is never lost over a panel or off-window.
 		this.reformer.onpointerleave	= () => ( UNDER_HOVER.style.display = 'none' )
+		this.addEventListener( 'pointermove', ev => this.onLabelScrollPointerMove( ev ), true )
+		this.addEventListener( 'pointerdown', ev => this.onLabelScrollPointerDown( ev ), true )
+		this.addEventListener( 'wheel', ev => this.onLabelScrollWheel( ev ), { capture: true, passive: false } )
 		//	suppress middle-click autoscroll so middle-drag can pan instead
 		this.reformer.addEventListener( 'mousedown', ev => ev.button === 1 && ev.preventDefault() )
 		this.reformer.onpointerdown		= ev => this.onMouseDown( ev )
@@ -847,11 +851,73 @@ MainEditor extends HTMLElement {
 	onMouseMove( ev ) {
 		if	( this.gesture ) {
 			this.gesture.move( ev )
+		}
+	}
+
+	onLabelScrollPointerMove( ev ) {
+		if	( this.gesture ) return
+
+		const
+		target = labelScrollTargetAtPoint( this, ev.clientX, ev.clientY )
+		if	( target ) {
+			this.reformer.style.cursor = 'default'
+			UNDER_HOVER.style.display = 'none'
 			return
 		}
-		this.hoverXY = [ ev.offsetX, ev.offsetY ]	//	remembered for refreshModeCursor
-		this.reformer.style.cursor = Cursor_EV( ev )
-		UpdateHoverLabel( ev )
+
+		const
+		r = this.reformer.getBoundingClientRect()
+		,	xy = [ ev.clientX - r.left, ev.clientY - r.top ]
+		this.hoverXY = xy
+		this.reformer.style.cursor = Cursor_EV( { ...ev, offsetX: xy[ 0 ], offsetY: xy[ 1 ] } )
+		UpdateHoverLabel( { ...ev, offsetX: xy[ 0 ], offsetY: xy[ 1 ] } )
+	}
+
+	onLabelScrollPointerDown( ev ) {
+		if	( this.gesture ) return
+		if	( ev.button !== 0 ) return
+		if	( this.spaceDown || NodeMode( ev ) || LinkMode( ev ) ) return
+		if	( ev.target !== this.reformer ) return
+
+		const
+		target = labelScrollTargetAtPoint( this, ev.clientX, ev.clientY )
+		if	( !target ) return
+
+		ev.preventDefault()
+		ev.stopPropagation()
+		this.reformer.style.pointerEvents = 'none'
+
+		const
+		under = document.elementFromPoint( ev.clientX, ev.clientY )
+		if	( under && under !== this.reformer ) {
+			under.dispatchEvent( new PointerEvent( 'pointerdown', {
+				bubbles		: true
+			,	cancelable	: true
+			,	pointerId	: ev.pointerId
+			,	pointerType	: ev.pointerType
+			,	clientX		: ev.clientX
+			,	clientY		: ev.clientY
+			,	button		: ev.button
+			,	buttons		: ev.buttons
+			,	pressure	: ev.pressure
+			,	width		: ev.width
+			,	height		: ev.height
+			,	isPrimary	: ev.isPrimary
+			} ) )
+		}
+	}
+
+	onLabelScrollWheel( ev ) {
+		if	( this.gesture ) return
+
+		const
+		target = labelScrollTargetAtPoint( this, ev.clientX, ev.clientY )
+		if	( !target ) return
+
+		ev.preventDefault()
+		ev.stopPropagation()
+		target.scrollTop	+= ev.deltaY
+		target.scrollLeft	+= ev.deltaX
 	}
 
 	async onMouseUp( ev ) {

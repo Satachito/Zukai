@@ -3,6 +3,7 @@
 
 import { EscapeXML } from './DomUtils.js'
 import { XYWH } from './GeoZU.js'
+import { hasScrollableLabel } from './LabelScroll.js'
 import { sanitizeLabelHtml, sanitizeStyle } from './SanitizeLabel.js'
 
 const
@@ -18,7 +19,8 @@ labelWrapperStyle	= ( S, { sanitize } ) => {
 	//	height:100% がないと div が内容サイズに縮み、文字が上に寄る。
 	const
 	extra = sanitize ? sanitizeStyle( S.style || '' ) : ( S.style || '' )
-	return	`width:100%;height:100%;box-sizing:border-box;color-scheme:light dark;color:${ color };${ extra }`
+	,	clip = hasScrollableLabel( S ) ? 'overflow:hidden;min-height:0;' : ''
+	return	`width:100%;height:100%;box-sizing:border-box;color-scheme:light dark;color:${ color };${ clip }${ extra }`
 }
 
 //	innerHTML で入れた <script> は実行されないので、同等の script に差し替える。
@@ -44,6 +46,7 @@ appendLiveLabel	= ( parent, S ) => {
 	fo.setAttribute( 'y', y )
 	fo.setAttribute( 'width', w )
 	fo.setAttribute( 'height', h )
+	hasScrollableLabel( S ) && fo.setAttribute( 'pointer-events', 'all' )
 	const
 	div = document.createElementNS( XHTML_NS, 'div' )
 	div.setAttribute( 'style', labelWrapperStyle( S, { sanitize: false } ) )

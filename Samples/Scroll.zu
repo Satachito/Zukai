@@ -1,0 +1,97 @@
+{
+	"model": {
+		"nodes": [
+			[
+				"title",
+				{
+					"type": "rect",
+					"cX": 480,
+					"cY": 56,
+					"rH": 420,
+					"rV": 40,
+					"html": "Scrollable node labels",
+					"style": ";display:grid\n;place-items:center\n;text-align:center\n;font-size:20px\n;font-weight:600\n;padding:12px 20px\n;line-height:1.35\n;box-sizing:border-box"
+				},
+				{
+					"fill": "rgba(37, 99, 235, 0.22)",
+					"stroke": "#60a5fa",
+					"lineWidth": 1.5
+				}
+			],
+			[
+				"note",
+				{
+					"type": "rect",
+					"cX": 480,
+					"cY": 130,
+					"rH": 400,
+					"rV": 28,
+					"html": "Wheel, drag the scrollbar, or touch-scroll inside the boxes. Drag from the title bar; resize from the outer edge.",
+					"style": ";display:grid\n;place-items:center\n;text-align:center\n;font-size:12px\n;opacity:.85\n;padding:0 12px\n;box-sizing:border-box"
+				},
+				{
+					"fill": "rgba(100, 116, 139, 0.18)",
+					"stroke": "#94a3b8",
+					"lineWidth": 1
+				}
+			],
+			[
+				"log",
+				{
+					"type": "rect",
+					"cX": 250,
+					"cY": 340,
+					"rH": 185,
+					"rV": 140,
+					"radii": 14,
+					"html": "<div style=\"display:grid;grid-template-rows:auto 1fr;height:100%;box-sizing:border-box\"><div style=\"padding:10px 12px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;border-bottom:1px solid rgba(128,128,128,.35)\">Event log</div><div data-zu-scroll style=\"overflow-y:auto;padding:8px 12px;box-sizing:border-box;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace\"><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">01</code> Scale region <b>asia-northeast1</b> · service api-1 · 123ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">02</code> Rollback region <b>us-central1</b> · service api-2 · 126ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">03</code> Deploy region <b>asia-northeast1</b> · service api-3 · 129ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">04</code> Scale region <b>us-central1</b> · service api-4 · 132ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">05</code> Rollback region <b>asia-northeast1</b> · service api-0 · 135ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">06</code> Deploy region <b>us-central1</b> · service api-1 · 138ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">07</code> Scale region <b>asia-northeast1</b> · service api-2 · 141ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">08</code> Rollback region <b>us-central1</b> · service api-3 · 144ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">09</code> Deploy region <b>asia-northeast1</b> · service api-4 · 147ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">10</code> Scale region <b>us-central1</b> · service api-0 · 150ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">11</code> Rollback region <b>asia-northeast1</b> · service api-1 · 153ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">12</code> Deploy region <b>us-central1</b> · service api-2 · 156ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">13</code> Scale region <b>asia-northeast1</b> · service api-3 · 159ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">14</code> Rollback region <b>us-central1</b> · service api-4 · 162ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">15</code> Deploy region <b>asia-northeast1</b> · service api-0 · 165ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">16</code> Scale region <b>us-central1</b> · service api-1 · 168ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">17</code> Rollback region <b>asia-northeast1</b> · service api-2 · 171ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">18</code> Deploy region <b>us-central1</b> · service api-3 · 174ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">19</code> Scale region <b>asia-northeast1</b> · service api-4 · 177ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">20</code> Rollback region <b>us-central1</b> · service api-0 · 180ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">21</code> Deploy region <b>asia-northeast1</b> · service api-1 · 183ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">22</code> Scale region <b>us-central1</b> · service api-2 · 186ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">23</code> Rollback region <b>asia-northeast1</b> · service api-3 · 189ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">24</code> Deploy region <b>us-central1</b> · service api-4 · 192ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">25</code> Scale region <b>asia-northeast1</b> · service api-0 · 195ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">26</code> Rollback region <b>us-central1</b> · service api-1 · 198ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">27</code> Deploy region <b>asia-northeast1</b> · service api-2 · 201ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">28</code> Scale region <b>us-central1</b> · service api-3 · 204ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">29</code> Rollback region <b>asia-northeast1</b> · service api-4 · 207ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">30</code> Deploy region <b>us-central1</b> · service api-0 · 210ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">31</code> Scale region <b>asia-northeast1</b> · service api-1 · 213ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">32</code> Rollback region <b>us-central1</b> · service api-2 · 216ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">33</code> Deploy region <b>asia-northeast1</b> · service api-3 · 219ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">34</code> Scale region <b>us-central1</b> · service api-4 · 222ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">35</code> Rollback region <b>asia-northeast1</b> · service api-0 · 225ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">36</code> Deploy region <b>us-central1</b> · service api-1 · 228ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">37</code> Scale region <b>asia-northeast1</b> · service api-2 · 231ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">38</code> Rollback region <b>us-central1</b> · service api-3 · 234ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">39</code> Deploy region <b>asia-northeast1</b> · service api-4 · 237ms</div><div style=\"padding:4px 0;border-bottom:1px solid rgba(128,128,128,.25)\"><code style=\"opacity:.7\">40</code> Scale region <b>us-central1</b> · service api-0 · 240ms</div></div></div>",
+					"style": ";display:grid\n;place-items:stretch\n;box-sizing:border-box"
+				},
+				{
+					"fill": "rgba(6, 95, 70, 0.28)",
+					"stroke": "#34d399",
+					"lineWidth": 2
+				}
+			],
+			[
+				"list",
+				{
+					"type": "rect",
+					"cX": 710,
+					"cY": 340,
+					"rH": 185,
+					"rV": 140,
+					"radii": 14,
+					"html": "<div style=\"display:grid;grid-template-rows:auto 1fr;height:100%;box-sizing:border-box\"><div style=\"padding:10px 12px 6px;font-size:13px;font-weight:600;border-bottom:1px solid rgba(128,128,128,.35)\">Checklist · drag here</div><div data-zu-scroll style=\"overflow-y:auto;padding:8px 12px 12px;box-sizing:border-box;font-size:12px;line-height:1.5\"><div>• Item 1: lorem ipsum dolor sit amet consectetur</div><div>• Item 2: lorem ipsum dolor sit amet consectetur</div><div>• Item 3: lorem ipsum dolor sit amet consectetur</div><div>• Item 4: lorem ipsum dolor sit amet consectetur</div><div>• Item 5: lorem ipsum dolor sit amet consectetur</div><div>• Item 6: lorem ipsum dolor sit amet consectetur</div><div>• Item 7: lorem ipsum dolor sit amet consectetur</div><div>• Item 8: lorem ipsum dolor sit amet consectetur</div><div>• Item 9: lorem ipsum dolor sit amet consectetur</div><div>• Item 10: lorem ipsum dolor sit amet consectetur</div><div>• Item 11: lorem ipsum dolor sit amet consectetur</div><div>• Item 12: lorem ipsum dolor sit amet consectetur</div><div>• Item 13: lorem ipsum dolor sit amet consectetur</div><div>• Item 14: lorem ipsum dolor sit amet consectetur</div><div>• Item 15: lorem ipsum dolor sit amet consectetur</div><div>• Item 16: lorem ipsum dolor sit amet consectetur</div><div>• Item 17: lorem ipsum dolor sit amet consectetur</div><div>• Item 18: lorem ipsum dolor sit amet consectetur</div><div>• Item 19: lorem ipsum dolor sit amet consectetur</div><div>• Item 20: lorem ipsum dolor sit amet consectetur</div><div>• Item 21: lorem ipsum dolor sit amet consectetur</div><div>• Item 22: lorem ipsum dolor sit amet consectetur</div><div>• Item 23: lorem ipsum dolor sit amet consectetur</div><div>• Item 24: lorem ipsum dolor sit amet consectetur</div><div>• Item 25: lorem ipsum dolor sit amet consectetur</div></div></div>",
+					"style": ";display:grid\n;place-items:stretch\n;box-sizing:border-box"
+				},
+				{
+					"fill": "rgba(124, 58, 237, 0.22)",
+					"stroke": "#a78bfa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"howto",
+				{
+					"type": "rect",
+					"cX": 480,
+					"cY": 570,
+					"rH": 380,
+					"rV": 56,
+					"radii": 12,
+					"html": "<div style=\"display:grid;gap:6px;font-size:12px;line-height:1.45\"><b>How to scroll</b><div><code>data-zu-scroll</code> on an inner <code>div</code>, or <code>overflow-y:auto</code> on the label <code>style</code>.</div><div>Live only — Export keeps markup but static SVG won’t scroll.</div></div>",
+					"style": ";display:grid\n;place-items:stretch\n;padding:12px 14px\n;box-sizing:border-box"
+				},
+				{
+					"fill": "rgba(51, 65, 85, 0.35)",
+					"stroke": "#cbd5e1",
+					"lineWidth": 1.5
+				}
+			]
+		],
+		"links": [],
+		"w": 960,
+		"h": 640
+	}
+}

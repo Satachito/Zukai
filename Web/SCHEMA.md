@@ -31,13 +31,17 @@ manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the sess
   - `html` — optional HTML label rendered centered inside the shape via
     live SVG `foreignObject` (not sanitized while editing). **Export / copy /
     print** run it through `SanitizeLabel.js` (allowlisted tags only:
-    `b` `strong` `i` `em` `u` `s` `br` `span` `small` `sub` `sup` `code`;
+    `b` `strong` `i` `em` `u` `s` `br` `span` `small` `sub` `sup` `code` `div`;
     only the `style` attribute is kept; `script` / event handlers / links /
     images are dropped). **Load** scans for risky markup and asks before
     continuing.
   - `style` — optional CSS for the label container (e.g. `;display: grid\n;place-items: center`).
     Live: applied as-is. Export: allowlisted layout/typography/color props only
-    (no `url()` / `expression()`).
+    (no `url()` / `expression()`). `overflow` / `overflow-x` / `overflow-y` are
+    allowed for clipped export; interaction is live-only.
+    Scrollable labels: set `overflow-y: auto` (or `overflow-x`) on `style`, or put
+    `data-zu-scroll` on an inner element in `html` with `overflow` CSS. The editor
+    forwards wheel / pointer events into those areas.
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors
