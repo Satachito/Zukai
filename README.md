@@ -1,5 +1,17 @@
 # Zukai
 
+<p align="center">
+  <a href="https://satachito.github.io/Zukai/">
+    <img src="Web/zukai-demo.gif" alt="Zukai — Build cloud diagrams with AI" width="960">
+  </a>
+</p>
+
+<p align="center">
+  <strong>Build cloud diagrams with AI.</strong><br>
+  クラウド構成図を、AIと一緒に。<br><br>
+  <a href="https://satachito.github.io/Zukai/"><strong>Try Zukai →</strong></a>
+</p>
+
 Canvas-based diagram editor for **cloud architecture**, **mind maps**, and **sequence diagrams**.
 
 **Live demo:** https://satachito.github.io/Zukai/
