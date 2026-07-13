@@ -927,23 +927,29 @@ MainEditor extends HTMLElement {
 		,	this.setEditorToLargestReform()
 		)
 	}
+	//	PAN: scroll by raw client delta, no commit. Used by middle-drag / space +
+	//	drag, and by a one-finger touch that starts on empty canvas ( iPad has no
+	//	middle button or space, and touch-action:none blocks native scroll ).
+	startPan( ev ) {
+		ev.pointerId != null && this.reformer.setPointerCapture( ev.pointerId )
+		this.reformer.style.cursor = 'grabbing'
+		let	last = [ ev.clientX, ev.clientY ]
+		this.gesture = {
+			move	: _ => {
+				this.scrollLeft	-= _.clientX - last[ 0 ]
+				this.scrollTop	-= _.clientY - last[ 1 ]
+				last = [ _.clientX, _.clientY ]
+			}
+		,	up		: _ => ( this.reformer.style.cursor = Cursor_EV( _ ) )
+		}
+	}
 	async onMouseDown( ev ) {
 
 		this.reformer.tabIndex = 0
 
-		//	PAN ( middle-drag or space + drag ): scroll by raw client delta, no commit
+		//	PAN ( middle-drag or space + drag )
 		if	( ev.button === 1 || this.spaceDown ) {
-			ev.pointerId != null && this.reformer.setPointerCapture( ev.pointerId )
-			this.reformer.style.cursor = 'grabbing'
-			let	last = [ ev.clientX, ev.clientY ]
-			this.gesture = {
-				move	: _ => {
-					this.scrollLeft	-= _.clientX - last[ 0 ]
-					this.scrollTop	-= _.clientY - last[ 1 ]
-					last = [ _.clientX, _.clientY ]
-				}
-			,	up		: _ => ( this.reformer.style.cursor = Cursor_EV( _ ) )
-			}
+			this.startPan( ev )
 			return
 		}
 		if	( ev.button !== 0 ) return
@@ -1138,8 +1144,13 @@ MainEditor extends HTMLElement {
 				,	this.gesture.commit = Reform
 				)
 			)
-			: (	this.gesture.track = area
-			,	this.gesture.commit = commitArea
+			: (	//	one-finger touch on empty canvas pans ( scrolls ) instead of
+				//	drawing a marquee — the only touch scroll path on iPad
+				ev.pointerType === 'touch'
+				?	this.startPan( ev )
+				: (	this.gesture.track = area
+				,	this.gesture.commit = commitArea
+				)
 			)
 		} finally {
 			needsRedraw && await this.DrawReforms()
