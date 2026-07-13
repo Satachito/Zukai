@@ -35,7 +35,8 @@ test( 'strips script and event handlers', () => {
 } )
 
 test( 'unwraps unknown tags, drops dangerous ones with content', () => {
-	assert.equal( sanitizeLabelHtml( '<div><b>a</b></div>' ), '<b>a</b>' )
+	//	div is allowed since scrollable labels ( d9ad01c ) — kept as-is
+	assert.equal( sanitizeLabelHtml( '<div><b>a</b></div>' ), '<div><b>a</b></div>' )
 	assert.equal( sanitizeLabelHtml( '<p>hello</p>' ), 'hello' )
 	assert.equal( sanitizeLabelHtml( '<a href="javascript:alert(1)">click</a>' ), '' )
 } )
