@@ -10,24 +10,10 @@
 					"rH": 16,
 					"rV": 48,
 					"html": "2.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)\n;writing-mode:vertical-rl"
 				},
 				{
 					"fill": "none",
-					"stroke": "none"
-				}
-			],
-			[
-				"bg",
-				{
-					"type": "rect",
-					"cX": 570,
-					"cY": 520.14453125,
-					"rH": 570,
-					"rV": 520
-				},
-				{
-					"fill": "#fff",
 					"stroke": "none"
 				}
 			],
@@ -168,8 +154,8 @@
 					"type": "rect"
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -184,8 +170,8 @@
 					"type": "rect"
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -198,7 +184,7 @@
 					"rH": 30,
 					"rV": 12,
 					"html": "引き戸",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -272,8 +258,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -286,7 +272,7 @@
 					"rH": 14,
 					"rV": 90,
 					"html": "引き戸 2.0m<br>（開時・外側）",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333\n;line-height:1.2"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)\n;line-height:1.2"
 				},
 				{
 					"fill": "none",
@@ -302,11 +288,11 @@
 					"rH": 20,
 					"rV": 100,
 					"html": "シュー<br>ボックス",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333\n;line-height:1.15"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)\n;line-height:1.15"
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -460,8 +446,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -474,8 +461,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -488,8 +476,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -502,8 +491,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -516,8 +506,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -530,8 +521,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -544,8 +536,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -558,8 +551,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -572,8 +566,9 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
@@ -586,23 +581,24 @@
 					"rV": 3.5
 				},
 				{
-					"fill": "#444",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 1.5
 				}
 			],
 			[
 				"nslide_1",
 				{
 					"cX": 260,
-					"cY": 386.14453125,
-					"rH": 144,
+					"cY": 386,
+					"rH": 148,
 					"rV": 4,
 					"radii": 1,
 					"type": "rect"
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -610,31 +606,15 @@
 				"nslide_2",
 				{
 					"cX": 560,
-					"cY": 384.14453125,
-					"rH": 144,
+					"cY": 384,
+					"rH": 148,
 					"rV": 4,
 					"radii": 1,
 					"type": "rect"
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
-					"lineWidth": 1.6
-				}
-			],
-			[
-				"nslide_3",
-				{
-					"cX": 860,
-					"cY": 386.14453125,
-					"rH": 144,
-					"rV": 4,
-					"radii": 1,
-					"type": "rect"
-				},
-				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -667,34 +647,6 @@
 				}
 			],
 			[
-				"ns_g2a",
-				{
-					"type": "ellipse",
-					"cX": 710,
-					"cY": 390.14453125,
-					"rH": 3,
-					"rV": 3
-				},
-				{
-					"fill": "none",
-					"stroke": "none"
-				}
-			],
-			[
-				"ns_g2b",
-				{
-					"cX": 710,
-					"cY": 378.14453125,
-					"rH": 3,
-					"rV": 3,
-					"type": "ellipse"
-				},
-				{
-					"fill": "none",
-					"stroke": "none"
-				}
-			],
-			[
 				"lbl_nslide_a",
 				{
 					"cX": 260,
@@ -702,7 +654,7 @@
 					"html": "3.0m",
 					"rH": 40,
 					"rV": 10,
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)",
 					"type": "rect"
 				},
 				{
@@ -718,23 +670,7 @@
 					"html": "3.0m",
 					"rH": 40,
 					"rV": 10,
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
-					"type": "rect"
-				},
-				{
-					"fill": "none",
-					"stroke": "none"
-				}
-			],
-			[
-				"lbl_nslide_c",
-				{
-					"cX": 860,
-					"cY": 368,
-					"html": "3.0m",
-					"rH": 40,
-					"rV": 10,
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)",
 					"type": "rect"
 				},
 				{
@@ -745,12 +681,12 @@
 			[
 				"lbl_nslide",
 				{
-					"cX": 560,
-					"cY": 404.14453125,
-					"html": "３枚引き戸（各 3.0m・全幅 9.0m）",
-					"rH": 180,
+					"cX": 410,
+					"cY": 404,
+					"html": "２枚引き戸（各 3.0m・全幅 6.0m）",
+					"rH": 160,
 					"rV": 12,
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:light-dark(#000000, #ffffff)",
 					"type": "rect"
 				},
 				{
@@ -854,7 +790,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -873,7 +809,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -892,7 +828,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -912,7 +848,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -931,7 +867,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -950,7 +886,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -995,7 +931,7 @@
 					"rH": 30,
 					"rV": 10,
 					"html": "洗濯機",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#666"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1011,7 +947,7 @@
 					"rH": 30,
 					"rV": 10,
 					"html": "乾燥機",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#666"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1027,7 +963,7 @@
 					"rH": 50,
 					"rV": 14,
 					"html": "作業場",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#333\n;font-weight:600"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:light-dark(#000000, #ffffff)\n;font-weight:600"
 				},
 				{
 					"fill": "none",
@@ -1045,8 +981,8 @@
 					"radii": 3
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1061,7 +997,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1130,7 +1066,7 @@
 					"rH": 28,
 					"rV": 10,
 					"html": "洗面台",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1148,8 +1084,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#eef4f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -1164,8 +1100,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#eef4f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -1235,8 +1171,8 @@
 					"rV": 26
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1251,7 +1187,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1266,8 +1202,8 @@
 					"radii": 2
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1280,7 +1216,7 @@
 					"rH": 28,
 					"rV": 10,
 					"html": "トイレ",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1298,8 +1234,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#eef4f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -1314,8 +1250,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#eef4f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6
 				}
 			],
@@ -1386,8 +1322,8 @@
 					"radii": 6
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1403,7 +1339,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1418,7 +1354,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1431,7 +1367,7 @@
 					"rH": 28,
 					"rV": 10,
 					"html": "浴槽",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1448,8 +1384,8 @@
 					"rV": 5
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1492,8 +1428,8 @@
 					"radii": 1
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1562,7 +1498,7 @@
 					"rH": 32,
 					"rV": 10,
 					"html": "シャワー",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1579,8 +1515,8 @@
 					"rV": 31
 				},
 				{
-					"fill": "#f7f7f7",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1596,7 +1532,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -1641,7 +1577,7 @@
 					"rH": 36,
 					"rV": 10,
 					"html": "冷蔵庫",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1660,7 +1596,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -1705,7 +1641,7 @@
 					"rH": 28,
 					"rV": 10,
 					"html": "収納",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1724,7 +1660,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -1743,7 +1679,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -1762,7 +1698,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -1779,7 +1715,7 @@
 					"rH": 55,
 					"rV": 10,
 					"html": "コンロ（据置）",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1798,7 +1734,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1813,7 +1749,7 @@
 				},
 				{
 					"fill": "none",
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -1882,7 +1818,7 @@
 					"rH": 28,
 					"rV": 10,
 					"html": "シンク",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1898,7 +1834,7 @@
 					"rH": 140,
 					"rV": 10,
 					"html": "キッチン（下部収納・南側一杯）",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1914,7 +1850,7 @@
 					"rH": 110,
 					"rV": 40,
 					"html": "<b>ワークスペース</b><br><small>約 9.0㎡（3.0m × 3.0m）</small><br><small>移動式カーテン仕切り</small>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1930,7 +1866,7 @@
 					"rH": 140,
 					"rV": 42,
 					"html": "<b>寝室</b><br><small>約 9.0㎡（3.0m × 3.0m）</small>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1946,7 +1882,7 @@
 					"rH": 110,
 					"rV": 40,
 					"html": "<b>クローゼット</b><br><small>約 9.0㎡（3.0m × 3.0m）</small><br><small>移動式カーテン仕切り</small>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1962,7 +1898,7 @@
 					"rH": 120,
 					"rV": 24,
 					"html": "<b>ＬＤＫ 約32.0㎡</b>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:20px\n;font-weight:600\n;color:#111"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:20px\n;font-weight:600\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1978,7 +1914,7 @@
 					"rH": 72,
 					"rV": 36,
 					"html": "<b>玄関</b><br><small>2.0m × 2.0m</small>",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:16px\n;font-weight:600\n;line-height:1.3\n;color:#111"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:16px\n;font-weight:600\n;line-height:1.3\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -1994,7 +1930,7 @@
 					"rH": 50,
 					"rV": 12,
 					"html": "サニタリー ▶",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2010,7 +1946,7 @@
 					"rH": 40,
 					"rV": 10,
 					"html": "1.8×5.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2027,8 +1963,8 @@
 					"rV": 22
 				},
 				{
-					"fill": "#fff",
-					"stroke": "#111",
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.5
 				}
 			],
@@ -2042,8 +1978,9 @@
 					"rV": 14
 				},
 				{
-					"fill": "#111",
-					"stroke": "none"
+					"fill": "none",
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
 				}
 			],
 			[
@@ -2055,7 +1992,7 @@
 					"rH": 16,
 					"rV": 10,
 					"html": "北",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#333"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2155,7 +2092,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "9.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2255,7 +2192,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "3.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2327,7 +2264,7 @@
 					"rH": 48,
 					"rV": 14,
 					"html": "3.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2399,7 +2336,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "3.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -2499,7 +2436,7 @@
 					"rH": 14,
 					"rV": 36,
 					"html": "8.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)\n;writing-mode:vertical-rl"
 				},
 				{
 					"fill": "none",
@@ -2599,7 +2536,7 @@
 					"rH": 14,
 					"rV": 36,
 					"html": "3.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)\n;writing-mode:vertical-rl"
 				},
 				{
 					"fill": "none",
@@ -2671,7 +2608,7 @@
 					"rH": 14,
 					"rV": 36,
 					"html": "5.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)\n;writing-mode:vertical-rl"
 				},
 				{
 					"fill": "none",
@@ -2855,7 +2792,7 @@
 					"rH": 14,
 					"rV": 36,
 					"html": "5.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)\n;writing-mode:vertical-rl"
 				},
 				{
 					"fill": "none",
@@ -2955,7 +2892,7 @@
 					"rH": 48,
 					"rV": 14,
 					"html": "2.0m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -3027,7 +2964,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "5.2m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -3099,7 +3036,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "1.8m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -3199,7 +3136,7 @@
 					"rH": 36,
 					"rV": 12,
 					"html": "0.4m",
-					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -3215,7 +3152,7 @@
 					"rH": 360,
 					"rV": 16,
 					"html": "1LDK 間取り図（約72㎡・ワンルーム寄り）",
-					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:22px\n;font-weight:600\n;color:#111"
+					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:22px\n;font-weight:600\n;color:light-dark(#000000, #ffffff)"
 				},
 				{
 					"fill": "none",
@@ -3231,7 +3168,35 @@
 					"rH": 410,
 					"rV": 12,
 					"html": "建物：東西 9.0m × 南北 8.0m　／　縮尺 1:100（100px＝1m）　／　家具なし・設備アイコンのみ",
-					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#444"
+					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:light-dark(#000000, #ffffff)"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wall_cl_w",
+				{
+					"cX": 710,
+					"cY": 390,
+					"rH": 3,
+					"rV": 3,
+					"type": "ellipse"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wall_cl_e",
+				{
+					"cX": 1010,
+					"cY": 390,
+					"rH": 3,
+					"rV": 3,
+					"type": "ellipse"
 				},
 				{
 					"fill": "none",
@@ -3250,7 +3215,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 14,
 					"lineJoin": "miter"
 				}
@@ -3265,7 +3230,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 14,
 					"lineJoin": "miter"
 				}
@@ -3280,7 +3245,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 14,
 					"lineJoin": "miter"
 				}
@@ -3295,7 +3260,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 14,
 					"lineJoin": "miter"
 				}
@@ -3310,7 +3275,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 6
 				}
 			],
@@ -3324,7 +3289,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 6
 				}
 			],
@@ -3338,7 +3303,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 3
 				}
 			],
@@ -3352,7 +3317,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 3
 				}
 			],
@@ -3366,7 +3331,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3380,7 +3345,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3394,7 +3359,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3408,7 +3373,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#444",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						3,
@@ -3426,7 +3391,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#444",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						3,
@@ -3444,21 +3409,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"ns_g2a",
-					"ns_g2b"
-				],
-				{
-					"headF": false,
-					"headT": false
-				},
-				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3472,7 +3423,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#bbb",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.5,
 					"lineDash": [
 						6,
@@ -3490,7 +3441,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#bbb",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.5,
 					"lineDash": [
 						6,
@@ -3508,7 +3459,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#bbb",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.5,
 					"lineDash": [
 						6,
@@ -3526,7 +3477,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -3544,7 +3495,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3558,7 +3509,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3572,7 +3523,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						8,
@@ -3590,7 +3541,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						8,
@@ -3608,7 +3559,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						8,
@@ -3626,7 +3577,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						8,
@@ -3644,7 +3595,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3658,7 +3609,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						2,
@@ -3676,7 +3627,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2,
 					"lineDash": [
 						2,
@@ -3694,7 +3645,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -3712,7 +3663,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#888",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1.6,
 					"lineDash": [
 						5,
@@ -3730,7 +3681,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3744,7 +3695,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#111",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 2
 				}
 			],
@@ -3758,7 +3709,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3772,7 +3723,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3786,7 +3737,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3800,7 +3751,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3814,7 +3765,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3828,7 +3779,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3842,7 +3793,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3856,7 +3807,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3870,7 +3821,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3884,7 +3835,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3898,7 +3849,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3912,7 +3863,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3926,7 +3877,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3940,7 +3891,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3954,7 +3905,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3968,7 +3919,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3982,7 +3933,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -3996,7 +3947,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4010,7 +3961,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4024,7 +3975,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4038,7 +3989,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4052,7 +4003,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4066,7 +4017,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4080,7 +4031,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4094,7 +4045,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4108,7 +4059,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4122,7 +4073,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4136,7 +4087,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4150,7 +4101,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4164,7 +4115,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4178,7 +4129,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4192,7 +4143,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4206,7 +4157,7 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
 				}
 			],
@@ -4220,11 +4171,24 @@
 					"headT": false
 				},
 				{
-					"stroke": "#333",
+					"stroke": "light-dark(#000000, #ffffff)",
 					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"wall_cl_w",
+					"wall_cl_e"
+				],
+				{
+					"headT": "triangle"
+				},
+				{
+					"lineWidth": 6,
+					"stroke": "light-dark(#000000, #ffffff)"
 				}
 			]
 		]
 	},
-	"prompt": "日本の建築図面風の間取り図を1枚作成せよ。家具は描かず、設備アイコンと寸法・室名のみ。\n\n# キャンバス・縮尺\n- viewBox: 0 0 1140 1040\n- 縮尺: 100px = 1.0m（1:100）\n- 平面本体は translate(110,90) 内。建物外形は 900×800px = 東西9.0m × 南北8.0m\n- 原点: 北西角。+X=東、+Y=南。北矢印を北東外側に置く\n\n# 見た目（厳守）\n- 白背景。外壁 stroke #111 / 14px。内壁 6px。薄い区画壁 3px\n- ゾーン境界: 灰色破線。ガラス: 破線 + 薄い水色(#eef4f7)の戸板\n- 実線設備: fill #f7f7f7 + stroke #111。破線（diminished）設備: stroke #888 dash\n- 引き戸パネル: 薄い矩形。日本語ラベル（Hiragino Sans / Noto Sans JP）\n- 家具・人・装飾・パース・影は禁止\n\n# ゾーニング（建物内座標）\n北帯（y=0–300、高さ3.0m、全幅9.0m）を西→東に3等分:\n1. ワークスペース 3.0×3.0m（x0–300）\n2. 寝室 3.0×3.0m（x300–600）\n3. クローゼット 3.0×3.0m（x600–900）\n- x=300 と x=600 は壁ではなく移動式カーテン（破線＋丸ドット）\n- 北帯とLDKの境 y=300 は壁なし。全幅9.0mの3枚引き戸（各3.0m）。戸板は薄く、完全に北帯側に置く\n\nLDK: 概ね x0–720, y300–800（玄関・サニタリーを除く）。室名「ＬＤＫ 約32.0㎡」\n\n玄関（南西）: x0–200, y600–800 = 2.0×2.0m\n- 西側外壁に開口。引き戸1枚（高さ2.0m）。開時の戸板は外壁の外側（西側）に描く\n- 東側にシューボックス 0.4×2.0m（x160–200, y600–800）。視線遮断用\n\nサニタリー（東）: x720–900, y300–800 = 1.8×5.0m。北→南の順:\n1. 洗濯（~0.95m）: 洗濯機・乾燥機は破線（diminished）\n2. 作業場（文字のみ）\n3. 洗面: 洗面台は東壁に密着（縦型ボウル）\n4. 洗面とトイレの境: 全幅ガラス引き戸（薄い水色戸板2枚）\n5. トイレ: 横向き、タンクを東。東壁に密着\n6. トイレと浴室の境: 全幅ガラス引き戸（同上）\n7. 浴室: 浴槽（東西に）＋東側シャワー\n\nLDK↔サニタリー西壁（x=720）:\n- 北: y300–468 は内壁\n- 中央: y468–648 に開口1つ（1.8m）。薄い引き戸2枚をサニタリー側（東側）に縦に並べる\n- 南: y648–800 は内壁\n※洗面・トイレそれぞれに別ドアは付けない。開口は1つだけ\n\nキッチン: 南側、玄関東からサニタリー西まで（x200–720付近）にカウンター\n- 西→東: 冷蔵庫（破線）→収納（破線）→コンロ据置（破線）→シンク（実線・サニタリー寄り）\n- 下部収納付き。南側一杯\n\n# 寸法線（必須）\n北外側: 全幅9.0m、および3.0+3.0+3.0m\n西外側: 全高8.0m、北3.0m／南5.0m、玄関2.0m\n東外側: サニタリー5.0m\n南外側: 玄関2.0m／LDK5.2m／サニタリー1.8m、シューボックス0.4m\n\n# タイトル\n「1LDK 間取り図（約72㎡・ワンルーム寄り）」\nメタ: 「建物：東西 9.0m × 南北 8.0m　／　縮尺 1:100（100px＝1m）　／　家具なし・設備アイコンのみ」\n\n# 出力\n完全な.zuのみ。説明文は不要。座標は上記寸法と矛盾させないこと。"
+	"prompt": "日本の建築図面風の間取り図を1枚作成せよ。家具は描かず、設備アイコンと寸法・室名のみ。\n\n# キャンバス・縮尺\n- viewBox: 0 0 1140 1040\n- 縮尺: 100px = 1.0m（1:100）\n- 平面本体は translate(110,90) 内。建物外形は 900×800px = 東西9.0m × 南北8.0m\n- 原点: 北西角。+X=東、+Y=南。北矢印を北東外側に置く\n\n# 見た目（厳守）\n- 背景塗りなし（light/dark 対応）。色は light-dark(#000000, #ffffff)。外壁 stroke light-dark(#000000, #ffffff) / 14px。内壁 6px。薄い区画壁 3px\n- ゾーン境界: 灰色破線。ガラス: 破線（塗りなし）の戸板\n- 実線設備: fill none + stroke light-dark(#000000, #ffffff)（塗りつぶしなし）。破線（diminished）設備: stroke light-dark(#000000, #ffffff) dash\n- 引き戸パネル: 薄い矩形。日本語ラベル（Hiragino Sans / Noto Sans JP）\n- 家具・人・装飾・パース・影は禁止\n\n# ゾーニング（建物内座標）\n北帯（y=0–300、高さ3.0m、全幅9.0m）を西→東に3等分:\n1. ワークスペース 3.0×3.0m（x0–300）\n2. 寝室 3.0×3.0m（x300–600）\n3. クローゼット 3.0×3.0m（x600–900）\n- x=300 と x=600 は壁ではなく移動式カーテン（破線＋丸ドット）\n- 北帯とLDKの境 y=300:\n  - ワークスペース〜寝室前（x0–600）: 3.0m×2枚の薄い引き戸。戸板は完全に北帯側\n  - クローゼット前（x600–900）: 引き戸なし・普通の内壁（6px）\n\nLDK: 概ね x0–720, y300–800（玄関・サニタリーを除く）。室名「ＬＤＫ 約32.0㎡」\n\n玄関（南西）: x0–200, y600–800 = 2.0×2.0m\n- 西側外壁に開口。引き戸1枚（高さ2.0m）。開時の戸板は外壁の外側（西側）に描く\n- 東側にシューボックス 0.4×2.0m（x160–200, y600–800）。視線遮断用\n\nサニタリー（東）: x720–900, y300–800 = 1.8×5.0m。北→南の順:\n1. 洗濯（~0.95m）: 洗濯機・乾燥機は破線（diminished）\n2. 作業場（文字のみ）\n3. 洗面: 洗面台は東壁に密着（縦型ボウル）\n4. 洗面とトイレの境: 全幅ガラス引き戸（薄い水色戸板2枚）\n5. トイレ: 横向き、タンクを東。東壁に密着\n6. トイレと浴室の境: 全幅ガラス引き戸（同上）\n7. 浴室: 浴槽（東西に）＋東側シャワー\n\nLDK↔サニタリー西壁（x=720）:\n- 北: y300–468 は内壁\n- 中央: y468–648 に開口1つ（1.8m）。薄い引き戸2枚をサニタリー側（東側）に縦に並べる\n- 南: y648–800 は内壁\n※洗面・トイレそれぞれに別ドアは付けない。開口は1つだけ\n\nキッチン: 南側、玄関東からサニタリー西まで（x200–720付近）にカウンター\n- 西→東: 冷蔵庫（破線）→収納（破線）→コンロ据置（破線）→シンク（実線・サニタリー寄り）\n- 下部収納付き。南側一杯\n\n# 寸法線（必須）\n北外側: 全幅9.0m、および3.0+3.0+3.0m\n西外側: 全高8.0m、北3.0m／南5.0m、玄関2.0m\n東外側: サニタリー5.0m\n南外側: 玄関2.0m／LDK5.2m／サニタリー1.8m、シューボックス0.4m\n\n# タイトル\n「1LDK 間取り図（約72㎡・ワンルーム寄り）」\nメタ: 「建物：東西 9.0m × 南北 8.0m　／　縮尺 1:100（100px＝1m）　／　家具なし・設備アイコンのみ」\n\n# 出力\n完全な.zuのみ。説明文は不要。座標は上記寸法と矛盾させないこと。"
 }
