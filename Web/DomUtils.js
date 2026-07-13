@@ -127,3 +127,34 @@ ParseEmbeddedSVG	= ( b64, w, h ) => {
 	return root
 }
 
+//	Canvas 2D does not reliably accept CSS light-dark() / color-mix() / var().
+//	Resolve light-dark(light, dark) against prefers-color-scheme for overlay draws
+//	( selection drag, create/link gestures ). Nested rgb() commas are OK.
+export const
+ResolveColor	= color => {
+	if	( typeof color !== 'string' ) return color
+	const
+	s = color.trim()
+	if	( !/^light-dark\s*\(/i.test( s ) || !s.endsWith( ')' ) ) return color
+	const
+	inner = s.replace( /^light-dark\s*\(/i, '' ).slice( 0, -1 )
+	let
+	depth = 0
+	,	split = -1
+	for ( let i = 0; i < inner.length; i++ ) {
+		const
+		c = inner[ i ]
+		if	( c === '(' ) depth++
+		else if ( c === ')' ) depth--
+		else if ( c === ',' && depth === 0 ) {
+			split = i
+			break
+		}
+	}
+	if	( split < 0 ) return color
+	const
+	light = inner.slice( 0, split ).trim()
+	,	dark = inner.slice( split + 1 ).trim()
+	return matchMedia( '(prefers-color-scheme: dark)' ).matches ? dark : light
+}
+

@@ -42,25 +42,41 @@ scrollableAncestor	= ( el, scene ) => {
 	return null
 }
 
+//	True when any node label opts into scroll forwarding ( rare; skip probe otherwise ).
+export const
+modelHasScrollableLabel	= model =>
+	( model?.nodes ?? [] ).some( ( [ , S ] ) => hasScrollableLabel( S ) )
+
 //	Probe with the overlay transparent so elementsFromPoint reaches foreignObject HTML.
+//	Toggling pointer-events fires pointerleave on the canvas — callers must ignore that
+//	leave ( see MainEditor.probingLabelScroll ) or the hover-id tooltip vanishes.
 export const
 labelScrollTargetAtPoint	= ( editor, clientX, clientY ) => {
 	const
 	scene = editor.scene
 	,	reformer = editor.reformer
 	if	( !scene || !reformer ) return null
-
-	reformer.style.pointerEvents = 'none'
-	const
-	stack = document.elementsFromPoint( clientX, clientY )
-	let	target = null
-	for ( const el of stack ) {
-		if	( !scene.contains( el ) ) continue
-		target = scrollableAncestor( el, scene )
-		if	( target ) break
+	if	( !modelHasScrollableLabel( globalThis.app?.model ) ) {
+		reformer.style.pointerEvents = 'auto'
+		return null
 	}
-	reformer.style.pointerEvents = target ? 'none' : 'auto'
-	return	target
+
+	editor.probingLabelScroll = true
+	try {
+		reformer.style.pointerEvents = 'none'
+		const
+		stack = document.elementsFromPoint( clientX, clientY )
+		let	target = null
+		for ( const el of stack ) {
+			if	( !scene.contains( el ) ) continue
+			target = scrollableAncestor( el, scene )
+			if	( target ) break
+		}
+		reformer.style.pointerEvents = target ? 'none' : 'auto'
+		return	target
+	} finally {
+		editor.probingLabelScroll = false
+	}
 }
 
 //	Grid children default to min-height:auto and grow with content inside

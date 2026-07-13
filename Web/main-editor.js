@@ -1,5 +1,6 @@
 import {
 	AE
+,	ResolveColor
 }	from './DomUtils.js'
 
 import {
@@ -117,8 +118,12 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	const
 	[ , , P ] = _
 
+	const
+	stroke = P.stroke ? ResolveColor( P.stroke ) : null
+	,	fill = ResolveColor( P.fill ?? P.stroke ?? 'dodgerblue' )
+
 	c2D.save()
-	P.stroke			&& ( c2D.strokeStyle	= P.stroke			)
+	stroke				&& ( c2D.strokeStyle	= stroke			)
 	P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
 	P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
 	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
@@ -128,9 +133,9 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	c2D.restore()
 
 	c2D.save()
-	c2D.fillStyle	= P.fill ?? P.stroke ?? 'dodgerblue'
-	P.stroke	&& ( c2D.strokeStyle	= P.stroke		)
-	P.lineWidth	&& ( c2D.lineWidth		= P.lineWidth	)
+	c2D.fillStyle	= fill
+	stroke			&& ( c2D.strokeStyle	= stroke		)
+	P.lineWidth		&& ( c2D.lineWidth		= P.lineWidth	)
 	c2D.lineJoin	= 'round'
 	c2D.lineCap		= 'round'
 	headPathF && ( strokeF ? c2D.stroke( headPathF ) : c2D.fill( headPathF ) )
@@ -156,7 +161,7 @@ const
 HitLink			= ( _, xy ) => HitArrowPathes( ArrowPathes( _ ), xy )
 
 import { mountSceneSvg, setSceneSize, paintScene } from './SceneSvg.js'
-import { labelScrollTargetAtPoint } from './LabelScroll.js'
+import { labelScrollTargetAtPoint, modelHasScrollableLabel } from './LabelScroll.js'
 
 const
 NodeMode = ev => CREATE_NODE.checked || !!ev?.metaKey
@@ -318,6 +323,9 @@ MainEditor extends HTMLElement {
 	}
 
 	DrawModel() {
+		//	Scroll-label probing can leave the overlay with pointer-events:none;
+		//	always restore so hover / drag keep working after Draw.
+		this.reformer.style.pointerEvents = 'auto'
 		paintScene( this.scene, app.model )
 	}
 
@@ -489,7 +497,15 @@ MainEditor extends HTMLElement {
 		//	Pointer Capture: once a drag starts we capture the pointer so move/up
 		//	are delivered to the canvas even when the cursor leaves it — the release
 		//	(commit) is never lost over a panel or off-window.
-		this.reformer.onpointerleave	= () => ( UNDER_HOVER.style.display = 'none' )
+		this.probingLabelScroll			= false
+		//	Do not hide on canvas pointerleave — label-scroll probing toggles
+		//	pointer-events and synthesizes leave. Hide when the pointer leaves
+		//	the editor host instead.
+		this.addEventListener( 'pointerleave', ev => {
+			if	( this.probingLabelScroll ) return
+			if	( ev.target !== this ) return
+			UNDER_HOVER.style.display = 'none'
+		} )
 		this.addEventListener( 'pointermove', ev => this.onLabelScrollPointerMove( ev ), true )
 		this.addEventListener( 'pointerdown', ev => this.onLabelScrollPointerDown( ev ), true )
 		this.addEventListener( 'wheel', ev => this.onLabelScrollWheel( ev ), { capture: true, passive: false } )
@@ -851,11 +867,25 @@ MainEditor extends HTMLElement {
 	onMouseMove( ev ) {
 		if	( this.gesture ) {
 			this.gesture.move( ev )
+			return
 		}
+		//	Hover id tooltip + cursor: drive from the canvas itself so we use
+		//	offsetX/Y ( scroll-correct ) and do not depend on capture probing.
+		this.hoverXY = [ ev.offsetX, ev.offsetY ]
+		this.reformer.style.cursor = Cursor_EV( ev )
+		UpdateHoverLabel( ev )
 	}
 
 	onLabelScrollPointerMove( ev ) {
 		if	( this.gesture ) return
+		//	Only needed when scrollable foreignObject labels exist; otherwise the
+		//	canvas pointermove above owns hover.
+		if	( !modelHasScrollableLabel( app.model ) ) {
+			if	( this.reformer.style.pointerEvents === 'none' ) {
+				this.reformer.style.pointerEvents = 'auto'
+			}
+			return
+		}
 
 		const
 		target = labelScrollTargetAtPoint( this, ev.clientX, ev.clientY )
@@ -865,12 +895,12 @@ MainEditor extends HTMLElement {
 			return
 		}
 
-		const
-		r = this.reformer.getBoundingClientRect()
-		,	xy = [ ev.clientX - r.left, ev.clientY - r.top ]
-		this.hoverXY = xy
-		this.reformer.style.cursor = Cursor_EV( { ...ev, offsetX: xy[ 0 ], offsetY: xy[ 1 ] } )
-		UpdateHoverLabel( { ...ev, offsetX: xy[ 0 ], offsetY: xy[ 1 ] } )
+		//	After a probe, canvas may have missed this move — refresh hover if the
+		//	pointer is still over the overlay.
+		if	( ev.target !== this.reformer ) return
+		this.hoverXY = [ ev.offsetX, ev.offsetY ]
+		this.reformer.style.cursor = Cursor_EV( ev )
+		UpdateHoverLabel( ev )
 	}
 
 	onLabelScrollPointerDown( ev ) {
@@ -1027,7 +1057,7 @@ MainEditor extends HTMLElement {
 			const
 			P = NODE_EDITOR.PAINT.$
 			c2D.save()
-			c2D.strokeStyle = P.stroke || 'dodgerblue'
+			c2D.strokeStyle = ResolveColor( P.stroke || 'dodgerblue' )
 			c2D.lineWidth = Number( P.lineWidth || 2 )
 			c2D.lineCap = P.lineCap || 'butt'
 			c2D.strokeRect( ...XYWH_XYXY( [ xy, XY ] ) )
@@ -1050,7 +1080,7 @@ MainEditor extends HTMLElement {
 		link	= ( c2D, xy, XY ) => {
 			const	P = LINK_EDITOR.PAINT.$
 			c2D.save()
-			c2D.strokeStyle = P.stroke || 'dodgerblue'
+			c2D.strokeStyle = ResolveColor( P.stroke || 'dodgerblue' )
 			c2D.lineWidth = Number( P.lineWidth || 2 )
 			c2D.lineCap = P.lineCap || 'butt'
 			c2D.beginPath()
