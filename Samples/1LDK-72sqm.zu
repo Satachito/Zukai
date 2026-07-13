@@ -1,0 +1,4230 @@
+{
+	"model": {
+		"nodes": [
+			[
+				"dw2l",
+				{
+					"type": "rect",
+					"cX": 8,
+					"cY": 790,
+					"rH": 16,
+					"rV": 48,
+					"html": "2.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"bg",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 520.14453125,
+					"rH": 570,
+					"rV": 520
+				},
+				{
+					"fill": "#fff",
+					"stroke": "none"
+				}
+			],
+			[
+				"ow_NW",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ow_NE",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ow_SE",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ow_SW",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ow_W_openN",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sw_n0",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sw_n1",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 558.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sw_s0",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 738.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sw_s1",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"door_san_1",
+				{
+					"cX": 834,
+					"cY": 604.14453125,
+					"rH": 4,
+					"rV": 41,
+					"radii": 1,
+					"type": "rect"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"door_san_2",
+				{
+					"cX": 834,
+					"cY": 691.14453125,
+					"rH": 4,
+					"rV": 41,
+					"radii": 1,
+					"type": "rect"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"lbl_door_san",
+				{
+					"type": "rect",
+					"cX": 778,
+					"cY": 648.14453125,
+					"rH": 30,
+					"rV": 12,
+					"html": "引き戸",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"gk_n0",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"gk_n1",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"gk_e0",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"gk_e1",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"door_gk",
+				{
+					"type": "rect",
+					"cX": 96,
+					"cY": 790.14453125,
+					"rH": 8,
+					"rV": 96,
+					"radii": 1
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"lbl_door_gk",
+				{
+					"type": "rect",
+					"cX": 68,
+					"cY": 790.14453125,
+					"rH": 14,
+					"rV": 90,
+					"html": "引き戸 2.0m<br>（開時・外側）",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333\n;line-height:1.2"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"shoebox",
+				{
+					"type": "rect",
+					"cX": 290,
+					"cY": 790.14453125,
+					"rH": 20,
+					"rV": 100,
+					"html": "シュー<br>ボックス",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333\n;line-height:1.15"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sb_a",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 740.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sb_b",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 740.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sb_c",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 790.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sb_d",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 790.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sb_e",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 840.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sb_f",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 840.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_t",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 102.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_b",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 378.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_t",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 102.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_b",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 378.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_d0",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 130.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_d0",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 130.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_d1",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 190.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_d1",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 190.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_d2",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 250.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_d2",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 250.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_d3",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 310.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_d3",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 310.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu1_d4",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 360.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"cu2_d4",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 360.14453125,
+					"rH": 3.5,
+					"rV": 3.5
+				},
+				{
+					"fill": "#444",
+					"stroke": "none"
+				}
+			],
+			[
+				"nslide_1",
+				{
+					"cX": 260,
+					"cY": 386.14453125,
+					"rH": 144,
+					"rV": 4,
+					"radii": 1,
+					"type": "rect"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"nslide_2",
+				{
+					"cX": 560,
+					"cY": 384.14453125,
+					"rH": 144,
+					"rV": 4,
+					"radii": 1,
+					"type": "rect"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"nslide_3",
+				{
+					"cX": 860,
+					"cY": 386.14453125,
+					"rH": 144,
+					"rV": 4,
+					"radii": 1,
+					"type": "rect"
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"ns_g1a",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ns_g1b",
+				{
+					"cX": 410,
+					"cY": 378.14453125,
+					"rH": 3,
+					"rV": 3,
+					"type": "ellipse"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ns_g2a",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ns_g2b",
+				{
+					"cX": 710,
+					"cY": 378.14453125,
+					"rH": 3,
+					"rV": 3,
+					"type": "ellipse"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_nslide_a",
+				{
+					"cX": 260,
+					"cY": 368,
+					"html": "3.0m",
+					"rH": 40,
+					"rV": 10,
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
+					"type": "rect"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_nslide_b",
+				{
+					"cX": 560,
+					"cY": 368,
+					"html": "3.0m",
+					"rH": 40,
+					"rV": 10,
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
+					"type": "rect"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_nslide_c",
+				{
+					"cX": 860,
+					"cY": 368,
+					"html": "3.0m",
+					"rH": 40,
+					"rV": 10,
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333",
+					"type": "rect"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_nslide",
+				{
+					"cX": 560,
+					"cY": 404.14453125,
+					"html": "３枚引き戸（各 3.0m・全幅 9.0m）",
+					"rH": 180,
+					"rV": 12,
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333",
+					"type": "rect"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z1a",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 485.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z1b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 485.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z2a",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 555.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z2b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 555.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z3a",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 765.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"z3b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 765.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"washer",
+				{
+					"type": "rect",
+					"cX": 878,
+					"cY": 433.14453125,
+					"rH": 36,
+					"rV": 33,
+					"radii": 2
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"washer_c1",
+				{
+					"type": "ellipse",
+					"cX": 878,
+					"cY": 433.14453125,
+					"rH": 22,
+					"rV": 22
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"washer_c2",
+				{
+					"type": "ellipse",
+					"cX": 878,
+					"cY": 433.14453125,
+					"rH": 9,
+					"rV": 9
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"dryer",
+				{
+					"type": "rect",
+					"cX": 962,
+					"cY": 433.14453125,
+					"rH": 36,
+					"rV": 33,
+					"radii": 2
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"dryer_c1",
+				{
+					"type": "ellipse",
+					"cX": 962,
+					"cY": 433.14453125,
+					"rH": 22,
+					"rV": 22
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"dryer_c2",
+				{
+					"type": "ellipse",
+					"cX": 962,
+					"cY": 433.14453125,
+					"rH": 7,
+					"rV": 7
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"dry_x1",
+				{
+					"type": "ellipse",
+					"cX": 944,
+					"cY": 415.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dry_x2",
+				{
+					"type": "ellipse",
+					"cX": 980,
+					"cY": 451.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_washer",
+				{
+					"type": "rect",
+					"cX": 878,
+					"cY": 478.14453125,
+					"rH": 30,
+					"rV": 10,
+					"html": "洗濯機",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#666"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_dryer",
+				{
+					"type": "rect",
+					"cX": 962,
+					"cY": 478.14453125,
+					"rH": 30,
+					"rV": 10,
+					"html": "乾燥機",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#666"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_work",
+				{
+					"type": "rect",
+					"cX": 920,
+					"cY": 520.14453125,
+					"rH": 50,
+					"rV": 14,
+					"html": "作業場",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#333\n;font-weight:600"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wash_base",
+				{
+					"type": "rect",
+					"cX": 984,
+					"cY": 609.14453125,
+					"rH": 22,
+					"rV": 39,
+					"radii": 3
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"wash_bowl",
+				{
+					"type": "ellipse",
+					"cX": 980,
+					"cY": 609.14453125,
+					"rH": 12,
+					"rV": 24
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"wash_f1",
+				{
+					"type": "ellipse",
+					"cX": 996,
+					"cY": 609.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wash_f2",
+				{
+					"type": "ellipse",
+					"cX": 1008,
+					"cY": 609.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wash_f3",
+				{
+					"type": "ellipse",
+					"cX": 1008,
+					"cY": 602.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"wash_f4",
+				{
+					"type": "ellipse",
+					"cX": 1008,
+					"cY": 616.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_wash",
+				{
+					"type": "rect",
+					"cX": 925,
+					"cY": 605.14453125,
+					"rH": 28,
+					"rV": 10,
+					"html": "洗面台",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"glass1_a",
+				{
+					"type": "rect",
+					"cX": 877,
+					"cY": 654.14453125,
+					"rH": 39,
+					"rV": 4,
+					"radii": 1
+				},
+				{
+					"fill": "#eef4f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"glass1_b",
+				{
+					"type": "rect",
+					"cX": 963,
+					"cY": 658.14453125,
+					"rH": 39,
+					"rV": 4,
+					"radii": 1
+				},
+				{
+					"fill": "#eef4f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"g1a",
+				{
+					"type": "ellipse",
+					"cX": 838,
+					"cY": 658.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g1b",
+				{
+					"type": "ellipse",
+					"cX": 916,
+					"cY": 658.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g1c",
+				{
+					"type": "ellipse",
+					"cX": 924,
+					"cY": 662.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g1d",
+				{
+					"type": "ellipse",
+					"cX": 1002,
+					"cY": 662.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"toilet_bowl",
+				{
+					"type": "ellipse",
+					"cX": 942,
+					"cY": 704.14453125,
+					"rH": 38,
+					"rV": 26
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"toilet_rim",
+				{
+					"type": "ellipse",
+					"cX": 946,
+					"cY": 704.14453125,
+					"rH": 20,
+					"rV": 14
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"toilet_tank",
+				{
+					"type": "rect",
+					"cX": 998,
+					"cY": 704.14453125,
+					"rH": 12,
+					"rV": 24,
+					"radii": 2
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lbl_toilet",
+				{
+					"type": "rect",
+					"cX": 925,
+					"cY": 740.14453125,
+					"rH": 28,
+					"rV": 10,
+					"html": "トイレ",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"glass2_a",
+				{
+					"type": "rect",
+					"cX": 877,
+					"cY": 759.14453125,
+					"rH": 39,
+					"rV": 4,
+					"radii": 1
+				},
+				{
+					"fill": "#eef4f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"glass2_b",
+				{
+					"type": "rect",
+					"cX": 963,
+					"cY": 763.14453125,
+					"rH": 39,
+					"rV": 4,
+					"radii": 1
+				},
+				{
+					"fill": "#eef4f7",
+					"stroke": "#111",
+					"lineWidth": 1.6
+				}
+			],
+			[
+				"g2a",
+				{
+					"type": "ellipse",
+					"cX": 838,
+					"cY": 763.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g2b",
+				{
+					"type": "ellipse",
+					"cX": 916,
+					"cY": 763.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g2c",
+				{
+					"type": "ellipse",
+					"cX": 924,
+					"cY": 767.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"g2d",
+				{
+					"type": "ellipse",
+					"cX": 1002,
+					"cY": 767.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"bathtub",
+				{
+					"type": "rect",
+					"cX": 900,
+					"cY": 836.14453125,
+					"rH": 60,
+					"rV": 41,
+					"radii": 6
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"bathtub_in",
+				{
+					"type": "rect",
+					"cX": 900,
+					"cY": 836.14453125,
+					"rH": 52,
+					"rV": 33,
+					"radii": 5
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"bathtub_drain",
+				{
+					"type": "ellipse",
+					"cX": 940,
+					"cY": 836.14453125,
+					"rH": 4,
+					"rV": 4
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lbl_bath",
+				{
+					"type": "rect",
+					"cX": 900,
+					"cY": 788.14453125,
+					"rH": 28,
+					"rV": 10,
+					"html": "浴槽",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"shower_head",
+				{
+					"type": "ellipse",
+					"cX": 984,
+					"cY": 802.14453125,
+					"rH": 5,
+					"rV": 5
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sh_a",
+				{
+					"type": "ellipse",
+					"cX": 984,
+					"cY": 802.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sh_b",
+				{
+					"type": "ellipse",
+					"cX": 984,
+					"cY": 836.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"shower_base",
+				{
+					"type": "rect",
+					"cX": 984,
+					"cY": 842.14453125,
+					"rH": 4,
+					"rV": 5,
+					"radii": 1
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sh_s1",
+				{
+					"type": "ellipse",
+					"cX": 978,
+					"cY": 808.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sh_s2",
+				{
+					"type": "ellipse",
+					"cX": 968,
+					"cY": 820.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sh_s3",
+				{
+					"type": "ellipse",
+					"cX": 984,
+					"cY": 810.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sh_s4",
+				{
+					"type": "ellipse",
+					"cX": 976,
+					"cY": 824.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_shower",
+				{
+					"type": "rect",
+					"cX": 984,
+					"cY": 870.14453125,
+					"rH": 32,
+					"rV": 10,
+					"html": "シャワー",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:10px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"kit_counter",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 859.14453125,
+					"rH": 260,
+					"rV": 31
+				},
+				{
+					"fill": "#f7f7f7",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"fridge",
+				{
+					"type": "rect",
+					"cX": 356,
+					"cY": 859.14453125,
+					"rH": 36,
+					"rV": 23,
+					"radii": 2
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"fr_a",
+				{
+					"type": "ellipse",
+					"cX": 356,
+					"cY": 836.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"fr_b",
+				{
+					"type": "ellipse",
+					"cX": 356,
+					"cY": 882.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_fridge",
+				{
+					"type": "rect",
+					"cX": 356,
+					"cY": 818.14453125,
+					"rH": 36,
+					"rV": 10,
+					"html": "冷蔵庫",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"storage",
+				{
+					"type": "rect",
+					"cX": 454,
+					"cY": 859.14453125,
+					"rH": 50,
+					"rV": 23,
+					"radii": 2
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"st_a",
+				{
+					"type": "ellipse",
+					"cX": 454,
+					"cY": 836.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"st_b",
+				{
+					"type": "ellipse",
+					"cX": 454,
+					"cY": 882.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_storage",
+				{
+					"type": "rect",
+					"cX": 454,
+					"cY": 818.14453125,
+					"rH": 28,
+					"rV": 10,
+					"html": "収納",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"stove",
+				{
+					"type": "rect",
+					"cX": 572,
+					"cY": 859.14453125,
+					"rH": 42,
+					"rV": 25,
+					"radii": 2
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"stove_b1",
+				{
+					"type": "ellipse",
+					"cX": 554,
+					"cY": 859.14453125,
+					"rH": 11,
+					"rV": 11
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"stove_b2",
+				{
+					"type": "ellipse",
+					"cX": 590,
+					"cY": 859.14453125,
+					"rH": 11,
+					"rV": 11
+				},
+				{
+					"fill": "none",
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				"lbl_stove",
+				{
+					"type": "rect",
+					"cX": 572,
+					"cY": 818.14453125,
+					"rH": 55,
+					"rV": 10,
+					"html": "コンロ（据置）",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#666"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sink",
+				{
+					"type": "rect",
+					"cX": 765,
+					"cY": 859.14453125,
+					"rH": 45,
+					"rV": 21,
+					"radii": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sink_bowl",
+				{
+					"type": "ellipse",
+					"cX": 765,
+					"cY": 859.14453125,
+					"rH": 24,
+					"rV": 13
+				},
+				{
+					"fill": "none",
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sk_a",
+				{
+					"type": "ellipse",
+					"cX": 765,
+					"cY": 838.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sk_b",
+				{
+					"type": "ellipse",
+					"cX": 765,
+					"cY": 830.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sk_c",
+				{
+					"type": "ellipse",
+					"cX": 752,
+					"cY": 830.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"sk_d",
+				{
+					"type": "ellipse",
+					"cX": 778,
+					"cY": 830.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_sink",
+				{
+					"type": "rect",
+					"cX": 765,
+					"cY": 818.14453125,
+					"rH": 28,
+					"rV": 10,
+					"html": "シンク",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_kit",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 878.14453125,
+					"rH": 140,
+					"rV": 10,
+					"html": "キッチン（下部収納・南側一杯）",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"room_ws",
+				{
+					"type": "rect",
+					"cX": 260,
+					"cY": 220.14453125,
+					"rH": 110,
+					"rV": 40,
+					"html": "<b>ワークスペース</b><br><small>約 9.0㎡（3.0m × 3.0m）</small><br><small>移動式カーテン仕切り</small>",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"room_br",
+				{
+					"type": "rect",
+					"cX": 560,
+					"cY": 230.14453125,
+					"rH": 140,
+					"rV": 42,
+					"html": "<b>寝室</b><br><small>約 9.0㎡（3.0m × 3.0m）</small>",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"room_cl",
+				{
+					"type": "rect",
+					"cX": 860,
+					"cY": 220.14453125,
+					"rH": 110,
+					"rV": 40,
+					"html": "<b>クローゼット</b><br><small>約 9.0㎡（3.0m × 3.0m）</small><br><small>移動式カーテン仕切り</small>",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;font-weight:600\n;line-height:1.35\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"room_ldk",
+				{
+					"type": "rect",
+					"cX": 470,
+					"cY": 570.14453125,
+					"rH": 120,
+					"rV": 24,
+					"html": "<b>ＬＤＫ 約32.0㎡</b>",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:20px\n;font-weight:600\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"room_gk",
+				{
+					"type": "rect",
+					"cX": 210,
+					"cY": 770.14453125,
+					"rH": 72,
+					"rV": 36,
+					"html": "<b>玄関</b><br><small>2.0m × 2.0m</small>",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:16px\n;font-weight:600\n;line-height:1.3\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_san",
+				{
+					"type": "rect",
+					"cX": 788,
+					"cY": 510.14453125,
+					"rH": 50,
+					"rV": 12,
+					"html": "サニタリー ▶",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:12px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"lbl_san_sz",
+				{
+					"type": "rect",
+					"cX": 920,
+					"cY": 378.14453125,
+					"rH": 40,
+					"rV": 10,
+					"html": "1.8×5.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:11px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"north_ring",
+				{
+					"type": "ellipse",
+					"cX": 1050,
+					"cY": 80.14453125,
+					"rH": 22,
+					"rV": 22
+				},
+				{
+					"fill": "#fff",
+					"stroke": "#111",
+					"lineWidth": 1.5
+				}
+			],
+			[
+				"north_arrow",
+				{
+					"type": "rhombus",
+					"cX": 1050,
+					"cY": 76.14453125,
+					"rH": 7,
+					"rV": 14
+				},
+				{
+					"fill": "#111",
+					"stroke": "none"
+				}
+			],
+			[
+				"north_lbl",
+				{
+					"type": "rect",
+					"cX": 1050,
+					"cY": 116.14453125,
+					"rH": 16,
+					"rV": 10,
+					"html": "北",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#333"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 62.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 62.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9t0a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 54.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9t0b",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 70.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9t1a",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 54.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9t1b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 70.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn9l",
+				{
+					"type": "rect",
+					"cX": 560,
+					"cY": 48.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "9.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3b",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t0a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 27.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t0b",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 43.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t1a",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 27.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t1b",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 43.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3l",
+				{
+					"type": "rect",
+					"cX": 260,
+					"cY": 20.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "3.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3c",
+				{
+					"type": "ellipse",
+					"cX": 410,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3d",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t2a",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 27.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t2b",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 43.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3l2",
+				{
+					"type": "rect",
+					"cX": 560,
+					"cY": 20.14453125,
+					"rH": 48,
+					"rV": 14,
+					"html": "3.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3e",
+				{
+					"type": "ellipse",
+					"cX": 710,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3f",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 35.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t3a",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 27.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3t3b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 43.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dn3l3",
+				{
+					"type": "rect",
+					"cX": 860,
+					"cY": 20.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "3.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8a",
+				{
+					"type": "ellipse",
+					"cX": 82,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8b",
+				{
+					"type": "ellipse",
+					"cX": 82,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8t0a",
+				{
+					"type": "ellipse",
+					"cX": 74,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8t0b",
+				{
+					"type": "ellipse",
+					"cX": 90,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8t1a",
+				{
+					"type": "ellipse",
+					"cX": 74,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8t1b",
+				{
+					"type": "ellipse",
+					"cX": 90,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw8l",
+				{
+					"type": "rect",
+					"cX": 62,
+					"cY": 490.14453125,
+					"rH": 14,
+					"rV": 36,
+					"html": "8.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3a",
+				{
+					"type": "ellipse",
+					"cX": 55,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3b",
+				{
+					"type": "ellipse",
+					"cX": 55,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3t0a",
+				{
+					"type": "ellipse",
+					"cX": 47,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3t0b",
+				{
+					"type": "ellipse",
+					"cX": 63,
+					"cY": 90.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3t1a",
+				{
+					"type": "ellipse",
+					"cX": 47,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3t1b",
+				{
+					"type": "ellipse",
+					"cX": 63,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw3l",
+				{
+					"type": "rect",
+					"cX": 32,
+					"cY": 240.14453125,
+					"rH": 14,
+					"rV": 36,
+					"html": "3.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw5a",
+				{
+					"type": "ellipse",
+					"cX": 55,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw5b",
+				{
+					"type": "ellipse",
+					"cX": 55,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw5t1a",
+				{
+					"type": "ellipse",
+					"cX": 47,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw5t1b",
+				{
+					"type": "ellipse",
+					"cX": 63,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw5l",
+				{
+					"type": "rect",
+					"cX": 32,
+					"cY": 640.14453125,
+					"rH": 14,
+					"rV": 36,
+					"html": "5.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2a",
+				{
+					"type": "ellipse",
+					"cX": 22,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2b",
+				{
+					"type": "ellipse",
+					"cX": 22,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2t0a",
+				{
+					"type": "ellipse",
+					"cX": 14,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2t0b",
+				{
+					"type": "ellipse",
+					"cX": 30,
+					"cY": 690.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2t1a",
+				{
+					"type": "ellipse",
+					"cX": 14,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"dw2t1b",
+				{
+					"type": "ellipse",
+					"cX": 30,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5a",
+				{
+					"type": "ellipse",
+					"cX": 1038,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5b",
+				{
+					"type": "ellipse",
+					"cX": 1038,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5t0a",
+				{
+					"type": "ellipse",
+					"cX": 1030,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5t0b",
+				{
+					"type": "ellipse",
+					"cX": 1046,
+					"cY": 390.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5t1a",
+				{
+					"type": "ellipse",
+					"cX": 1030,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5t1b",
+				{
+					"type": "ellipse",
+					"cX": 1046,
+					"cY": 890.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"de5l",
+				{
+					"type": "rect",
+					"cX": 1066,
+					"cY": 640.14453125,
+					"rH": 14,
+					"rV": 36,
+					"html": "5.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222\n;writing-mode:vertical-rl"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2b",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2t0a",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 910.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2t0b",
+				{
+					"type": "ellipse",
+					"cX": 110,
+					"cY": 926.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2t1a",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 910.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2t1b",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 926.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds2l",
+				{
+					"type": "rect",
+					"cX": 210,
+					"cY": 938.14453125,
+					"rH": 48,
+					"rV": 14,
+					"html": "2.0m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds52a",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds52b",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds52t1a",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 910.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds52t1b",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 926.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds52l",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 938.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "5.2m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds18a",
+				{
+					"type": "ellipse",
+					"cX": 830,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds18b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 918.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds18t1a",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 910.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds18t1b",
+				{
+					"type": "ellipse",
+					"cX": 1010,
+					"cY": 926.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds18l",
+				{
+					"type": "rect",
+					"cX": 920,
+					"cY": 938.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "1.8m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04a",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 958.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04b",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 958.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04t0a",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 950.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04t0b",
+				{
+					"type": "ellipse",
+					"cX": 270,
+					"cY": 966.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04t1a",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 950.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04t1b",
+				{
+					"type": "ellipse",
+					"cX": 310,
+					"cY": 966.14453125,
+					"rH": 3,
+					"rV": 3
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"ds04l",
+				{
+					"type": "rect",
+					"cX": 290,
+					"cY": 978.14453125,
+					"rH": 36,
+					"rV": 12,
+					"html": "0.4m",
+					"style": ";display:grid\n;place-items:center\n;text-align:center;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:18px\n;color:#222"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"title",
+				{
+					"type": "rect",
+					"cX": 470,
+					"cY": 1000.14453125,
+					"rH": 360,
+					"rV": 16,
+					"html": "1LDK 間取り図（約72㎡・ワンルーム寄り）",
+					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:22px\n;font-weight:600\n;color:#111"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			],
+			[
+				"meta",
+				{
+					"type": "rect",
+					"cX": 520,
+					"cY": 1024.14453125,
+					"rH": 410,
+					"rV": 12,
+					"html": "建物：東西 9.0m × 南北 8.0m　／　縮尺 1:100（100px＝1m）　／　家具なし・設備アイコンのみ",
+					"style": ";display:grid\n;place-items:center start\n;text-align:left;font-family:\"Hiragino Sans\",\"Noto Sans JP\",\"Yu Gothic\",sans-serif;font-size:13px\n;color:#444"
+				},
+				{
+					"fill": "none",
+					"stroke": "none"
+				}
+			]
+		],
+		"links": [
+			[
+				[
+					"ow_NW",
+					"ow_NE"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 14,
+					"lineJoin": "miter"
+				}
+			],
+			[
+				[
+					"ow_NE",
+					"ow_SE"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 14,
+					"lineJoin": "miter"
+				}
+			],
+			[
+				[
+					"ow_SE",
+					"ow_SW"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 14,
+					"lineJoin": "miter"
+				}
+			],
+			[
+				[
+					"ow_NW",
+					"ow_W_openN"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 14,
+					"lineJoin": "miter"
+				}
+			],
+			[
+				[
+					"sw_n0",
+					"sw_n1"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 6
+				}
+			],
+			[
+				[
+					"sw_s0",
+					"sw_s1"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 6
+				}
+			],
+			[
+				[
+					"gk_n0",
+					"gk_n1"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 3
+				}
+			],
+			[
+				[
+					"gk_e0",
+					"gk_e1"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 3
+				}
+			],
+			[
+				[
+					"sb_a",
+					"sb_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sb_c",
+					"sb_d"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sb_e",
+					"sb_f"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"cu1_t",
+					"cu1_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#444",
+					"lineWidth": 2,
+					"lineDash": [
+						3,
+						6
+					]
+				}
+			],
+			[
+				[
+					"cu2_t",
+					"cu2_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#444",
+					"lineWidth": 2,
+					"lineDash": [
+						3,
+						6
+					]
+				}
+			],
+			[
+				[
+					"ns_g1a",
+					"ns_g1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"ns_g2a",
+					"ns_g2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"z1a",
+					"z1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#bbb",
+					"lineWidth": 1.5,
+					"lineDash": [
+						6,
+						5
+					]
+				}
+			],
+			[
+				[
+					"z2a",
+					"z2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#bbb",
+					"lineWidth": 1.5,
+					"lineDash": [
+						6,
+						5
+					]
+				}
+			],
+			[
+				[
+					"z3a",
+					"z3b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#bbb",
+					"lineWidth": 1.5,
+					"lineDash": [
+						6,
+						5
+					]
+				}
+			],
+			[
+				[
+					"dry_x1",
+					"dry_x2"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				[
+					"wash_f1",
+					"wash_f2"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"wash_f3",
+					"wash_f4"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"g1a",
+					"g1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						8,
+						4
+					]
+				}
+			],
+			[
+				[
+					"g1c",
+					"g1d"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						8,
+						4
+					]
+				}
+			],
+			[
+				[
+					"g2a",
+					"g2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						8,
+						4
+					]
+				}
+			],
+			[
+				[
+					"g2c",
+					"g2d"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						8,
+						4
+					]
+				}
+			],
+			[
+				[
+					"sh_a",
+					"sh_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sh_s1",
+					"sh_s2"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						2,
+						3
+					]
+				}
+			],
+			[
+				[
+					"sh_s3",
+					"sh_s4"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2,
+					"lineDash": [
+						2,
+						3
+					]
+				}
+			],
+			[
+				[
+					"fr_a",
+					"fr_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				[
+					"st_a",
+					"st_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#888",
+					"lineWidth": 1.6,
+					"lineDash": [
+						5,
+						4
+					]
+				}
+			],
+			[
+				[
+					"sk_a",
+					"sk_b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sk_c",
+					"sk_d"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#111",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"dn9a",
+					"dn9b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn9t0a",
+					"dn9t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn9t1a",
+					"dn9t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3a",
+					"dn3b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3t0a",
+					"dn3t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3t1a",
+					"dn3t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3c",
+					"dn3d"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3t2a",
+					"dn3t2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3e",
+					"dn3f"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dn3t3a",
+					"dn3t3b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw8a",
+					"dw8b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw8t0a",
+					"dw8t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw8t1a",
+					"dw8t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw3a",
+					"dw3b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw3t0a",
+					"dw3t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw3t1a",
+					"dw3t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw5a",
+					"dw5b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw5t1a",
+					"dw5t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw2a",
+					"dw2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw2t0a",
+					"dw2t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"dw2t1a",
+					"dw2t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"de5a",
+					"de5b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"de5t0a",
+					"de5t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"de5t1a",
+					"de5t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds2a",
+					"ds2b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds2t0a",
+					"ds2t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds2t1a",
+					"ds2t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds52a",
+					"ds52b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds52t1a",
+					"ds52t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds18a",
+					"ds18b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds18t1a",
+					"ds18t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds04a",
+					"ds04b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds04t0a",
+					"ds04t0b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			],
+			[
+				[
+					"ds04t1a",
+					"ds04t1b"
+				],
+				{
+					"headF": false,
+					"headT": false
+				},
+				{
+					"stroke": "#333",
+					"lineWidth": 1
+				}
+			]
+		]
+	},
+	"prompt": "日本の建築図面風の間取り図を1枚作成せよ。家具は描かず、設備アイコンと寸法・室名のみ。\n\n# キャンバス・縮尺\n- viewBox: 0 0 1140 1040\n- 縮尺: 100px = 1.0m（1:100）\n- 平面本体は translate(110,90) 内。建物外形は 900×800px = 東西9.0m × 南北8.0m\n- 原点: 北西角。+X=東、+Y=南。北矢印を北東外側に置く\n\n# 見た目（厳守）\n- 白背景。外壁 stroke #111 / 14px。内壁 6px。薄い区画壁 3px\n- ゾーン境界: 灰色破線。ガラス: 破線 + 薄い水色(#eef4f7)の戸板\n- 実線設備: fill #f7f7f7 + stroke #111。破線（diminished）設備: stroke #888 dash\n- 引き戸パネル: 薄い矩形。日本語ラベル（Hiragino Sans / Noto Sans JP）\n- 家具・人・装飾・パース・影は禁止\n\n# ゾーニング（建物内座標）\n北帯（y=0–300、高さ3.0m、全幅9.0m）を西→東に3等分:\n1. ワークスペース 3.0×3.0m（x0–300）\n2. 寝室 3.0×3.0m（x300–600）\n3. クローゼット 3.0×3.0m（x600–900）\n- x=300 と x=600 は壁ではなく移動式カーテン（破線＋丸ドット）\n- 北帯とLDKの境 y=300 は壁なし。全幅9.0mの3枚引き戸（各3.0m）。戸板は薄く、完全に北帯側に置く\n\nLDK: 概ね x0–720, y300–800（玄関・サニタリーを除く）。室名「ＬＤＫ 約32.0㎡」\n\n玄関（南西）: x0–200, y600–800 = 2.0×2.0m\n- 西側外壁に開口。引き戸1枚（高さ2.0m）。開時の戸板は外壁の外側（西側）に描く\n- 東側にシューボックス 0.4×2.0m（x160–200, y600–800）。視線遮断用\n\nサニタリー（東）: x720–900, y300–800 = 1.8×5.0m。北→南の順:\n1. 洗濯（~0.95m）: 洗濯機・乾燥機は破線（diminished）\n2. 作業場（文字のみ）\n3. 洗面: 洗面台は東壁に密着（縦型ボウル）\n4. 洗面とトイレの境: 全幅ガラス引き戸（薄い水色戸板2枚）\n5. トイレ: 横向き、タンクを東。東壁に密着\n6. トイレと浴室の境: 全幅ガラス引き戸（同上）\n7. 浴室: 浴槽（東西に）＋東側シャワー\n\nLDK↔サニタリー西壁（x=720）:\n- 北: y300–468 は内壁\n- 中央: y468–648 に開口1つ（1.8m）。薄い引き戸2枚をサニタリー側（東側）に縦に並べる\n- 南: y648–800 は内壁\n※洗面・トイレそれぞれに別ドアは付けない。開口は1つだけ\n\nキッチン: 南側、玄関東からサニタリー西まで（x200–720付近）にカウンター\n- 西→東: 冷蔵庫（破線）→収納（破線）→コンロ据置（破線）→シンク（実線・サニタリー寄り）\n- 下部収納付き。南側一杯\n\n# 寸法線（必須）\n北外側: 全幅9.0m、および3.0+3.0+3.0m\n西外側: 全高8.0m、北3.0m／南5.0m、玄関2.0m\n東外側: サニタリー5.0m\n南外側: 玄関2.0m／LDK5.2m／サニタリー1.8m、シューボックス0.4m\n\n# タイトル\n「1LDK 間取り図（約72㎡・ワンルーム寄り）」\nメタ: 「建物：東西 9.0m × 南北 8.0m　／　縮尺 1:100（100px＝1m）　／　家具なし・設備アイコンのみ」\n\n# 出力\n完全な.zuのみ。説明文は不要。座標は上記寸法と矛盾させないこと。"
+}
