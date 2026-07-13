@@ -12,8 +12,9 @@ SVG_NS		= 'http://www.w3.org/2000/svg'
 
 const
 labelWrapperStyle	= ( S, { sanitize } ) => {
+	//	Adaptive default ( matches --color-fg ). Extra label styles may override.
 	const
-	color = matchMedia( '(prefers-color-scheme: dark)' ).matches ? '#ffffff' : '#000000'
+	color = 'light-dark(#000000, #ffffff)'
 	//	div が foreignObject 全体を埋めることで、ノード側の flex/grid 指定
 	//	( place-items:center など ) でラベルを中央寄せできる。
 	//	height:100% がないと div が内容サイズに縮み、文字が上に寄る。

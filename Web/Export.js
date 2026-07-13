@@ -1,16 +1,24 @@
 import { FindNode	} from './Application.js'
 import { CanvasSize	} from './main-editor.js'
 import { XYWH, ArrowDs	} from './GeoZU.js'
-import { ParseEmbeddedSVG	} from './DomUtils.js'
+import { EscapeXML, ParseEmbeddedSVG	} from './DomUtils.js'
 import { drawForeignLabelSvg	} from './ForeignLabel.js'
+
+//	Theme tokens for standalone SVG ( live editor uses the same pair ).
+const
+FG_LIGHT_DARK	= 'light-dark(#000000, #ffffff)'
+,	BG_LIGHT_DARK	= 'light-dark(#ffffff, #000000)'
+
+const
+paintColor		= c => c ? EscapeXML( c ) : c
 
 const
 DrawArrowHeadSvg	= ( parts, d, stroked, fill, stroke, width ) => {
 	if	( !d ) return
 	const
 	paint = stroked
-	?	`fill="none" stroke="${ stroke }" stroke-width="${ width }"`
-	:	`fill="${ fill }" stroke="none"`
+	?	`fill="none" stroke="${ paintColor( stroke ) }" stroke-width="${ width }"`
+	:	`fill="${ paintColor( fill ) }" stroke="none"`
 	parts.push(
 		`<path d="${ d }" ${ paint } stroke-linecap="round" stroke-linejoin="round"/>`
 	)
@@ -24,7 +32,7 @@ DrawLinkSvg		= ( parts, X, Y, link ) => {
 	P = link[ 2 ]
 	,	stroke = P.stroke ?? 'dodgerblue'
 	,	a = [
-			`stroke="${ stroke }"`
+			`stroke="${ paintColor( stroke ) }"`
 		,	`stroke-linecap="${ P.lineCap || 'butt' }"`
 	,	`stroke-linejoin="${ P.lineJoin || 'round' }"`
 	]
@@ -62,8 +70,8 @@ downloadBlob = ( blob, filename ) => {
 const
 paintAttrs		= P => {
 	let
-	$ = `fill="${P.fill ? P.fill :	'none' }"`
-	P.stroke			&& ( $ += ` stroke="${ ( P.stroke ) }"`						)
+	$ = `fill="${ paintColor( P.fill ? P.fill : 'none' ) }"`
+	P.stroke			&& ( $ += ` stroke="${ paintColor( P.stroke ) }"`				)
 	P.lineWidth			&& ( $ += ` stroke-width="${ P.lineWidth }"`				)
 	P.lineCap			&& ( $ += ` stroke-linecap="${ P.lineCap }"`				)
 	P.lineJoin			&& ( $ += ` stroke-linejoin="${ P.lineJoin }"`				)
@@ -143,15 +151,12 @@ buildVectorSVG	= () => {
 	[ w, h ] = CanvasSize()
 ,	X = _ => _
 ,	Y = _ => _
-,	dark = matchMedia( '(prefers-color-scheme: dark)' ).matches
-,	bg = dark ? '#000000' : '#ffffff'
-	//	currentColor icons ( e.g. Lucide line icons ) have no page to inherit
-	//	color from in a standalone SVG — pin the theme's foreground on the root
-,	fg = dark ? '#ffffff' : '#000000'
+	//	Keep light-dark() paints adaptive: declare color-scheme so viewers resolve
+	//	them ( baking matchMedia would lock the file to the export-time theme ).
 ,	parts = [
 	'<?xml version="1.0" encoding="UTF-8"?>'
-,	`<svg xmlns="http://www.w3.org/2000/svg" width="${ w }" height="${ h }" viewBox="0 0 ${ w } ${ h }" color="${ fg }">`
-,	`<rect width="100%" height="100%" fill="${ bg }"/>`
+,	`<svg xmlns="http://www.w3.org/2000/svg" width="${ w }" height="${ h }" viewBox="0 0 ${ w } ${ h }" color-scheme="light dark" style="color-scheme:light dark" color="${ EscapeXML( FG_LIGHT_DARK ) }">`
+,	`<rect width="100%" height="100%" fill="${ EscapeXML( BG_LIGHT_DARK ) }"/>`
 ]
 
 	for ( const [ , S, P ] of app.model.nodes ) {
@@ -255,8 +260,8 @@ printPDF	= filename => {
 	const	doc = iframe.contentDocument
 	doc.open()
 	doc.write(
-		`<!doctype html><html><head><meta charset="utf-8"><title>${ baseName( filename ) }</title>`
-	+	`<style>@page{size:${ w }px ${ h }px;margin:0}html,body{margin:0;padding:0}svg{display:block}</style>`
+		`<!doctype html><html style="color-scheme:light dark"><head><meta charset="utf-8"><title>${ baseName( filename ) }</title>`
+	+	`<style>@page{size:${ w }px ${ h }px;margin:0}html,body{margin:0;padding:0;color-scheme:light dark}svg{display:block}</style>`
 	+	`</head><body>${ inline }</body></html>`
 	)
 	doc.close()
