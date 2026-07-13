@@ -15,6 +15,7 @@ import {
 ,	EditLink
 ,	RemoveLink
 ,	SetModel
+,	SetPrompt
 ,	DoTypical
 ,	withoutHistory
 }	from './Application.js'
@@ -152,6 +153,7 @@ OPS				= {
 ,	removeLink	: a => RemoveLink( [ a.from, a.to ] )
 ,	autoLayout	: a => autoLayout( a )
 ,	setCanvas	: a => ( SetCanvasSize( a.width, a.height ), MAIN_EDITOR.Draw() )
+,	setPrompt	: a => SetPrompt( a.text ?? '' )
 }
 
 //	One apply() = one undo step. Any op failure rolls the whole batch back.
@@ -185,6 +187,8 @@ apply			= async ops => {
 window.ZU = {
 	getModel
 ,	setModel
+,	getPrompt	: () => app.prompt ?? ''
+,	setPrompt	: _ => SetPrompt( typeof _ === 'string' ? _ : ( _?.text ?? '' ) )
 ,	validate	: validateModel
 ,	apply
 ,	autoLayout

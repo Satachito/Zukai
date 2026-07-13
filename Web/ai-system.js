@@ -20,6 +20,7 @@ apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the who
   { op:"removeLink", from, to }
   { op:"autoLayout", algorithm?, cols?, gap?, startX?, startY? }   // deterministic grid layout
   { op:"setCanvas",  width, height }
+  { op:"setPrompt",  text }   // the .zu's top-level "prompt" note ( "" clears it )
 "area" is the shape object; "ends" is the link attributes object.
 
 Rules:
@@ -30,4 +31,9 @@ Rules:
 - When the request is done, reply with a one-line summary of what you changed. Do not ask for confirmation before editing.`
 
 export const
-systemWithModel	= () => `${ SYSTEM }\n\nCurrent model ( JSON ):\n${ JSON.stringify( window.ZU.getModel() ) }`
+systemWithModel	= () => {
+	const
+	prompt = window.ZU.getPrompt()
+	return	`${ SYSTEM }\n\nCurrent model ( JSON ):\n${ JSON.stringify( window.ZU.getModel() ) }`
+	+	( prompt ? `\n\nDocument prompt ( the .zu's top-level "prompt" ):\n${ prompt }` : '' )
+}

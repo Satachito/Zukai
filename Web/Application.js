@@ -7,13 +7,18 @@ window.app		= {
 	,	links	: []	//	[ [ F, T ], A, P ]	A: { headF, headT, anchorF, anchorT }
 	}
 ,	reforms		: []	//	Equal to model.nodes
+,	prompt		: undefined	//	optional top-level "prompt" carried in the .zu
 }
 
 export	const
 STORAGE_KEY	= 'tokyo.828.zukai'
 
 export	const
-JSONString	= () => JSON.stringify( { model: app.model }, null, '\t' )
+JSONString	= () => JSON.stringify(
+	{ model: app.model, ...( app.prompt ? { prompt: app.prompt } : {} ) }
+,	null
+,	'\t'
+)
 
 export	const
 FindNode		= ID => app.model.nodes.find( _ => _[ 0 ] === ID )
@@ -52,6 +57,7 @@ RestoreApp	= _ => async () => (
 ,	MAIN_EDITOR.clearInteraction()
 ,	await MAIN_EDITOR.Draw()
 ,	LINK_EDITOR.Sync()
+,	PROMPT_TEXT.Sync()
 ,	localStorage.setItem( STORAGE_KEY, JSONString() )
 )
 
@@ -184,6 +190,12 @@ SetModel	= model => DoTypical(
 		app.model	= { nodes: model.nodes ?? [], links: model.links ?? [] }
 		app.reforms	= []
 	}
+)
+
+export	const
+SetPrompt	= _ => DoTypical(
+	'SetPrompt'
+,	() => { app.prompt = typeof _ === 'string' && _ ? _ : undefined }
 )
 
 //	move a node to the front ( drawn last → on top ) or back ( drawn first ) of
@@ -408,7 +420,7 @@ import { confirmRiskyLabels } from './SanitizeLabel.js'
 export	const
 Load		= async _ => {
 	const
-	{ model } = JSON.parse( _ )
+	{ model, prompt } = JSON.parse( _ )
 	if	( !model || !Array.isArray( model.nodes ) || !Array.isArray( model.links ) ) {
 		throw new Error( '.zu root must include model.nodes and model.links arrays' )
 	}
@@ -420,6 +432,7 @@ Load		= async _ => {
 			canvasSize = model.nodes.length ? BBox( model.nodes ) : null
 			app.model	= model
 			app.reforms	= []
+			app.prompt	= typeof prompt === 'string' && prompt ? prompt : undefined
 			if	( canvasSize ) {
 				const
 				[ , , b, r ] = canvasSize

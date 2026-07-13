@@ -70,7 +70,7 @@ server.tool(
 server.tool(
 	'zu_apply'
 ,	`Apply one or more ops to the live diagram ( same ops as window.ZU.apply ).
-Ops: addNode, updateNode, removeNode, restack, addLink, updateLink, removeLink, autoLayout, setCanvas.
+Ops: addNode, updateNode, removeNode, restack, addLink, updateLink, removeLink, autoLayout, setCanvas, setPrompt.
 Example updateNode: { "op": "updateNode", "id": "VPN", "area": { "type": "rhombus", "cX": 960, "cY": 584, "rH": 512, "rV": 72, "html": "VPN" } }`
 ,	{
 		ops	: z.array( z.record( z.any() ) )
@@ -112,14 +112,14 @@ server.tool(
 
 server.tool(
 	'zu_save_file'
-,	'Save the live diagram to a .zu file under Web/. Writes { model } only; canvas size is derived on load.'
+,	'Save the live diagram to a .zu file under Web/. Writes { model } ( + prompt when set ); canvas size is derived on load.'
 ,	{
 		path	: z.string()
 	}
 ,	async ( { path: rel } ) => {
 		const	{ rel: clean, abs } = resolveZuPath( rel )
 		,	snap = await zuGetModel()
-		,	doc = { model: snap.model }
+		,	doc = { model: snap.model, ...( snap.prompt ? { prompt: snap.prompt } : {} ) }
 		,	issues = validateModel( doc.model )
 		if	( issues.length ) return textResult( { saved: false, issues } )
 		await writeFile( abs, formatZuDoc( doc ) + '\n', 'utf8' )

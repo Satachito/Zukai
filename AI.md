@@ -134,8 +134,10 @@ ZU.setModel({ nodes, links })
 | `removeLink` | `from`, `to` |
 | `autoLayout` | grid options |
 | `setCanvas` | `width`, `height` |
+| `setPrompt` | `text` — the `.zu`'s top-level `prompt` note (`""` clears it) |
 
 `area` = **`shape`** object above. `ends` = link **`attributes`**.
+`ZU.getPrompt()` / `ZU.setPrompt( text )` read and write the same field directly.
 
 ### MCP — `zukai` server (`tools/zu-mcp.mjs`)
 

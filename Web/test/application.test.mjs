@@ -20,6 +20,7 @@ globalThis.MAIN_EDITOR	= {
 ,	setCanvasSize		: () => {}
 }
 globalThis.LINK_EDITOR	= { Sync: () => {} }
+globalThis.PROMPT_TEXT	= { Sync: () => {} }
 
 const {
 	DoTypical
@@ -29,6 +30,8 @@ const {
 ,	FindNode
 ,	Link
 ,	EditLink
+,	SetPrompt
+,	JSONString
 }	= await import( '../Application.js' )
 
 import { dones, todos }	from '../Jobs.js'
@@ -37,6 +40,7 @@ const
 resetApp	= () => {
 	app.model	= { nodes: [], links: [] }
 	app.reforms	= []
+	app.prompt	= undefined
 	dones.length = 0
 	todos.length = 0
 	store.clear()
@@ -111,4 +115,25 @@ test( 'EditLink can keep existing ends while changing paint', async () => {
 	await EditLink( [ 'A', 'B' ], [ [ 'A', 'B' ], ends, { stroke: 'crimson' } ] )
 	assert.deepEqual( app.model.links[ 0 ][ 1 ], ends )
 	assert.equal( app.model.links[ 0 ][ 2 ].stroke, 'crimson' )
+} )
+
+test( 'SetPrompt is one undoable step and serializes into the .zu', async () => {
+	await SetPrompt( 'draw a floor plan' )
+	assert.equal( app.prompt, 'draw a floor plan' )
+	assert.equal( dones.length, 1 )
+	assert.equal( JSON.parse( JSONString() ).prompt, 'draw a floor plan' )
+
+	const { Undo, Redo } = await import( '../Jobs.js' )
+	await Undo()
+	assert.equal( app.prompt, undefined )
+	assert.equal( 'prompt' in JSON.parse( JSONString() ), false )
+	await Redo()
+	assert.equal( app.prompt, 'draw a floor plan' )
+} )
+
+test( 'SetPrompt with an empty string clears the key', async () => {
+	await SetPrompt( 'note' )
+	await SetPrompt( '' )
+	assert.equal( app.prompt, undefined )
+	assert.equal( 'prompt' in JSON.parse( JSONString() ), false )
 } )
