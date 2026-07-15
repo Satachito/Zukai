@@ -668,27 +668,32 @@ aside input[type=checkbox]
 ;	margin-bottom		: 3px
 }
 
-.file-bar {
-;	display				: grid
-;	grid-template-columns	: auto 1fr
-;	gap					: 4px
-;	align-items			: stretch
+.topbar > header.file-panel {
+;	flex-shrink		: 0
+;	display			: flex
+;	flex-direction	: column
+;	justify-content	: center
+;	gap				: 4px
+;	width			: 340px
 }
-.file-bar .file-btn-upload {
-;	width				: auto
-;	flex-shrink			: 0
-;	justify-self		: start
-;	padding				: 5px
+.file-panel .file-row {
+;	display			: flex
+;	align-items		: center
+;	gap				: 4px
 }
-.export-bar {
-;	display				: grid
-;	grid-template-columns	: 1fr 1fr
-;	gap					: 4px
-;	align-items			: stretch
-;	margin-top			: 4px
+.file-panel .file-row .file-btn {
+;	flex			: 1 1 0
+;	width			: auto
+;	white-space		: nowrap
 }
-.file-section {
-;	margin-bottom		: 4px
+.file-panel .file-btn-upload {
+;	flex			: 0 0 auto
+;	padding			: 5px
+}
+.file-panel .file-name {
+;	flex			: 1 1 auto
+;	width			: auto
+;	min-width		: 0
 }
 .file-btn {
 ;	display				: inline-flex
@@ -759,6 +764,33 @@ aside input[type=checkbox]
 		Cloud · Mind map · Sequence · JSON .zu
 	</div>
 </header>
+<header class=file-panel>
+	<div class=file-row>
+		<label class="file-btn file-btn-upload" title="Open .zu file" aria-label="Open .zu file">
+			<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M8 12V4M5 7l3-3 3 3"/><path d="M3 13h10"/></svg>
+			<input id=UPLOAD type=file accept=".zu,.json,application/json,text/plain,application/octet-stream" hidden>
+		</label>
+		<input id=FILE_NAME class=file-name placeholder=Untitled spellcheck=false>
+	</div>
+	<div class=file-row>
+		<button id=DOWNLOAD class="file-btn file-btn-download" title="Download .zu">
+			<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M8 4v8M5 9l3 3 3-3"/><path d="M3 13h10"/></svg>
+			<span>Save</span>
+		</button>
+		<button id=EXPORT_SVG class="file-btn file-btn-export" title="Export SVG">
+			<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M4 2.5h5.5L13 6v7.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z"/><path d="M9 2.5V6H12.5"/><path d="M5.5 9.5h5M5.5 11.5h3"/></svg>
+			<span>Export SVG</span>
+		</button>
+		<button id=EXPORT_PDF class="file-btn file-btn-export" title="Export PDF (print → Save as PDF)">
+			<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M4 2.5h5.5L13 6v7.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z"/><path d="M9 2.5V6H12.5"/><path d="M5.5 9.5h6"/></svg>
+			<span>Export PDF</span>
+		</button>
+		<button id=COPY_SVG class="file-btn file-btn-export" title="Copy SVG to clipboard (paste into Figma / Illustrator / editors)">
+			<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><rect x="5" y="5" width="8" height="9" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h6"/></svg>
+			<span>Copy SVG</span>
+		</button>
+	</div>
+</header>
 <header class=controls>
 	<label style="display:inline-flex; align-items:center; gap:4px;font-size:12px">
 		<input id=CREATE_NODE type=checkbox>Create node <span style="opacity:.55">/ select area</span>
@@ -813,34 +845,6 @@ aside input[type=checkbox]
 </div>
 
 <aside>
-	<div class=file-section>
-		<div class=file-bar>
-			<label class="file-btn file-btn-upload" title="Open .zu file" aria-label="Open .zu file">
-				<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M8 12V4M5 7l3-3 3 3"/><path d="M3 13h10"/></svg>
-				<input id=UPLOAD type=file accept=".zu,.json,application/json,text/plain,application/octet-stream" hidden>
-			</label>
-			<input id=FILE_NAME class=file-name placeholder=Untitled spellcheck=false>
-		</div>
-		<div class=export-bar>
-			<button id=DOWNLOAD class="file-btn file-btn-download" title="Download .zu">
-				<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M8 4v8M5 9l3 3 3-3"/><path d="M3 13h10"/></svg>
-				<span>Save</span>
-			</button>
-			<button id=EXPORT_SVG class="file-btn file-btn-export" title="Export SVG">
-				<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M4 2.5h5.5L13 6v7.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z"/><path d="M9 2.5V6H12.5"/><path d="M5.5 9.5h5M5.5 11.5h3"/></svg>
-				<span>Export SVG</span>
-			</button>
-			<button id=EXPORT_PDF class="file-btn file-btn-export" title="Export PDF (print → Save as PDF)">
-				<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M4 2.5h5.5L13 6v7.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z"/><path d="M9 2.5V6H12.5"/><path d="M5.5 9.5h6"/></svg>
-				<span>Export PDF</span>
-			</button>
-			<button id=COPY_SVG class="file-btn file-btn-export" title="Copy SVG to clipboard (paste into Figma / Illustrator / editors)">
-				<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><rect x="5" y="5" width="8" height="9" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h6"/></svg>
-				<span>Copy SVG</span>
-			</button>
-		</div>
-	</div>
-	<hr>
 	<details open>
 		<summary>Prompt</summary>
 		<textarea id=PROMPT_TEXT class=prompt-text placeholder="Prompt carried in the .zu (saved on blur)" spellcheck=false></textarea>
