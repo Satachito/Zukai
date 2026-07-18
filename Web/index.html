@@ -336,19 +336,6 @@ aside button:not( .file-btn ):active {
 aside details {
 ;	margin-top				: 5px
 }
-.prompt-text {
-;	width					: 100%
-;	min-height				: 90px
-;	box-sizing				: border-box
-;	resize					: vertical
-;	padding					: 6px 8px
-;	font-family				: inherit
-;	font-size				: 12px
-;	border					: 1px solid var( --color-popup-border )
-;	border-radius			: 4px
-;	background				: var( --color-popup-bg )
-;	color					: inherit
-}
 .ai-panel {
 ;	display					: flex
 ;	flex-direction			: column
@@ -842,11 +829,6 @@ aside input[type=checkbox]
 
 <aside>
 	<details open>
-		<summary>Prompt</summary>
-		<textarea id=PROMPT_TEXT class=prompt-text placeholder="Prompt carried in the .zu (saved on blur)" spellcheck=false></textarea>
-	</details>
-	<hr>
-	<details open>
 		<summary>Claude assistant</summary>
 		<ai-assistant
 			id=AI_PANEL
@@ -982,7 +964,6 @@ import {
 ,	Link
 ,	JSONString
 ,	Load
-,	SetPrompt
 ,	STORAGE_KEY
 } from './Application.js'
 
@@ -1063,15 +1044,6 @@ FORCE_DRAW		.onclick = () => MAIN_EDITOR.Draw()
 
 NODE			.onclick = () => Node( [ NODE_ID.value, ...NODE_EDITOR.$ ] )
 LINK			.onclick = () => Link( LINK_EDITOR.$ )
-
-//	Application.js RestoreApp calls PROMPT_TEXT.Sync() after every model change
-//	( load / undo / redo included ), mirroring LINK_EDITOR.Sync
-PROMPT_TEXT.Sync = () => {
-	const
-	$ = app.prompt ?? ''
-	PROMPT_TEXT.value !== $ && ( PROMPT_TEXT.value = $ )
-}
-PROMPT_TEXT		.onchange = () => SetPrompt( PROMPT_TEXT.value )
 
 const
 initAIPanels = () => {

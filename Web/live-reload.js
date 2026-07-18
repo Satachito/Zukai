@@ -20,7 +20,6 @@ snapshot	= () => {
 	[ width, height ] = CanvasSize()
 	return	{
 		model			: window.ZU.getModel()
-	,	prompt			: window.ZU.getPrompt()
 	,	canvas			: { width, height }
 	,	watchPath
 	}
@@ -33,7 +32,7 @@ pushSnapshot	= () => {
 }
 
 const
-MUTATING	= new Set( [ 'apply', 'setModel', 'setPrompt', 'autoLayout', 'addNode', 'updateNode', 'removeNode', 'addLink', 'updateLink', 'removeLink', 'restack', 'setCanvas' ] )
+MUTATING	= new Set( [ 'apply', 'setModel', 'autoLayout', 'addNode', 'updateNode', 'removeNode', 'addLink', 'updateLink', 'removeLink', 'restack', 'setCanvas' ] )
 
 const
 runRpc	= async ( method, params ) => {

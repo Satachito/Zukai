@@ -3,13 +3,8 @@
 A `.zu` file is the JSON of the diagram model, tab-indented:
 
 ```json
-{ "model": { "nodes": [ ... ], "links": [ ... ] }, "prompt": "optional" }
+{ "model": { "nodes": [ ... ], "links": [ ... ] } }
 ```
-
-`prompt` is an optional top-level string — typically the generation prompt the
-diagram was produced from. It is editable in the aside's **Prompt** panel (and
-via `ZU.setPrompt` / the `setPrompt` op), rides along with save/load and undo,
-and the key is omitted when empty.
 
 `index.html` loads it via the `↑` upload button, and the last session is
 auto-restored from `localStorage` (`tokyo.828.zukai`). The canvas origin
