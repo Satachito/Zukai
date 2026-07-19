@@ -336,12 +336,8 @@ aside button:not( .file-btn ):active {
 aside details {
 ;	margin-top				: 5px
 }
-.ai-panel {
-;	display					: flex
-;	flex-direction			: column
-;	gap						: 4px
-}
-ai-assistant {
+ai-assistant
+,	float-panel {
 ;	display					: flex
 ;	flex-direction			: column
 ;	gap						: 4px
@@ -407,18 +403,19 @@ ai-assistant {
 ;	font-family				: inherit
 ;	font-size				: 12px
 }
-.ai-head {
+.float-head {
 ;	display					: flex
 ;	align-items				: center
 ;	gap						: 4px
 }
-.ai-head-title {
+.float-head-title {
 ;	display					: none
 ;	font-weight				: 600
 ;	font-size				: 12px
 ;	white-space				: nowrap
 }
-.ai-head .ai-float-btn {
+.float-head .float-btn
+,	aside summary .float-btn {
 ;	display					: inline-flex
 ;	align-items				: center
 ;	justify-content			: center
@@ -431,7 +428,7 @@ ai-assistant {
 ;	line-height				: 1
 ;	cursor					: pointer
 }
-.ai-panel.floating {
+.float-panel.floating {
 ;	position				: fixed
 ;	top						: 50%
 ;	left					: 50%
@@ -451,10 +448,37 @@ ai-assistant {
 ;	color					: var( --color-popup-fg )
 ;	box-shadow				: 0 8px 28px var( --color-shadow )
 }
-.ai-panel.floating .ai-head			{ cursor: move }
-.ai-panel.floating .ai-head-title	{ display: block }
-.ai-panel.floating .ai-log			{ max-height: none; flex: 1 1 auto }
+.float-panel.floating .float-head		{ cursor: move }
+.float-panel.floating .float-head-title	{ display: block }
+.float-panel.floating .ai-log			{ max-height: none; flex: 1 1 auto }
+/*	<float-panel> puts its float button in the <summary>; the in-panel head
+	only appears while floating ( title + drag handle ). Absolute, not float:
+	a float would shrink the flex panel below and sit low in the line box. */
+aside summary .float-btn {
+;	position				: absolute
+;	right					: 0
+;	top						: 50%
+;	transform				: translateY( -50% )
+}
+aside summary .float-btn:hover	{ transform: translateY( calc( -50% - 1px ) ) }
+aside summary .float-btn:active	{ transform: translateY( -50% ) }
+.float-panel:not( .floating ) > .float-head {
+;	display					: none
+}
+/*	link / node editor panels: size to content, scroll the editor body	*/
+#LINK_PANEL.floating
+,	#NODE_PANEL.floating {
+;	height					: auto
+;	max-height				: min( 80vh, 700px )
+}
+#LINK_PANEL.floating #LINK_EDITOR_HOME
+,	#NODE_PANEL.floating #NODE_EDITOR_HOME {
+;	flex					: 1 1 auto
+;	min-height				: 0
+;	overflow-y				: auto
+}
 aside summary {
+;	position				: relative
 ;	cursor					: pointer
 ;	font-size				: 13px
 ;	margin-bottom			: 3px
@@ -856,21 +880,25 @@ aside input[type=checkbox]
 	<hr>
 	<details open>
 		<summary>Link editor</summary>
-		<div			id=LINK_EDITOR_HOME	>
-			<link-editor	id=LINK_EDITOR		></link-editor>
-		</div>
-		<button			id=LINK				>Apply/Create Link	</button>
+		<float-panel id=LINK_PANEL title="Link editor" float-store=zu-link-float>
+			<div			id=LINK_EDITOR_HOME	>
+				<link-editor	id=LINK_EDITOR		></link-editor>
+			</div>
+			<button			id=LINK				>Apply/Create Link	</button>
+		</float-panel>
 	</details>
 	<hr>
 	<details open>
 		<summary>Node editor</summary>
-		<div			id=NODE_EDITOR_HOME	>
-			<div id=NODE_ID_ROW class=node-id-row>
-				<input id=NODE_ID>
+		<float-panel id=NODE_PANEL title="Node editor" float-store=zu-node-float>
+			<div			id=NODE_EDITOR_HOME	>
+				<div id=NODE_ID_ROW class=node-id-row>
+					<input id=NODE_ID>
+				</div>
+				<node-editor	id=NODE_EDITOR		></node-editor>
 			</div>
-			<node-editor	id=NODE_EDITOR		></node-editor>
-		</div>
-		<button			id=NODE				>Apply/Create Node	</button>
+			<button			id=NODE				>Apply/Create Node	</button>
+		</float-panel>
 	</details>
 </aside>
 
@@ -973,6 +1001,7 @@ import './link-editor.js'
 import './cloud-icons.js'
 import { CanvasSize, SetCanvasSize } from './main-editor.js'
 import './ai-api.js'
+import './SAT/float-panel.js'
 import './SAT/ai/ai-assistant.js'
 import { systemWithModel } from './ai-system.js'
 import { loadZuFile, initLiveReload, setWatchPath } from './live-reload.js'
