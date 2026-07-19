@@ -51,6 +51,13 @@ Open `http://localhost:8281/?zu=Samples/MultiCloud.zu` and enable the **`zukai`*
 
 Full setup, Phase 2/3/4 explanation, MCP tools, and troubleshooting: **[USAGE.md](USAGE.md)**
 
+## Feedback
+
+Found a bug or have an idea for a diagramming workflow? Please use the
+[feedback form on GitHub](https://github.com/Satachito/Zukai/issues/new/choose).
+Issue forms are available in English and Japanese. Do not include API keys or
+other secrets.
+
 ## `.zu` format
 
 A saved `.zu` file is JSON:

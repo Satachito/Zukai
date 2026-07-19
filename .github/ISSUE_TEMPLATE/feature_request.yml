@@ -1,0 +1,43 @@
+name: Feature request
+description: Suggest an improvement or a new diagramming workflow.
+title: "feature: "
+labels: [ enhancement ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing an idea. Please do not include API keys or other secrets.
+        アイデアの共有ありがとうございます。APIキーなどの秘密情報は書かないでください。
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or workflow
+      description: What are you trying to do, and where does Zukai get in the way? / どんな作業をしていて、どこが困るか教えてください。
+      placeholder: I want to update a cloud diagram from a pull request review comment.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would make this easier? / どうなると使いやすいですか？
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Canvas editing
+        - Cloud icons
+        - Links and routing
+        - Import or export
+        - AI editing
+        - ".zu format or MCP"
+        - Documentation
+        - Other
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Examples, mockups, or related tools are welcome. / 参考例、モックアップ、関連ツールなど。

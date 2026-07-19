@@ -1,0 +1,46 @@
+name: Bug report
+description: Tell us what did not work as expected.
+title: "bug: "
+labels: [ bug ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Zukai. Please do not include API keys or other secrets.
+        Zukaiの改善にご協力ありがとうございます。APIキーなどの秘密情報は書かないでください。
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead? / 期待した結果と実際の結果を教えてください。
+      placeholder: The SVG export is blank after loading a sample.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps, sample name, or a sanitized `.zu` file. / 再現手順、サンプル名、または秘密情報を除いた`.zu`ファイルを教えてください。
+      placeholder: |
+        1. Open MultiCloud
+        2. Click Export SVG
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: The URL where this happened, if applicable. / 発生したページのURL（該当する場合）。
+      placeholder: https://satachito.github.io/Zukai/
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, version, OS, and device. / ブラウザ、バージョン、OS、端末。
+      placeholder: Chrome 140, macOS 15, desktop
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots or anything else that may help. / スクリーンショットなど補足情報。

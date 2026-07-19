@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Usage and AI workflow
+    url: https://github.com/Satachito/Zukai/blob/main/USAGE.md
+    about: Setup, MCP, and in-app AI usage documentation.
