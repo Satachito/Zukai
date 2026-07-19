@@ -54,9 +54,9 @@
 		s.src = `https://www.googletagmanager.com/gtag/js?id=${ id }`
 		document.head.appendChild( s )
 		window.dataLayer = window.dataLayer || []
-		function gtag(){ dataLayer.push( arguments ) }
-		gtag( 'js', new Date() )
-		gtag( 'config', id )
+		window.gtag = function(){ dataLayer.push( arguments ) }
+		window.gtag( 'js', new Date() )
+		window.gtag( 'config', id )
 	}
 }
 </script>
@@ -1006,6 +1006,7 @@ import './SAT/ai/ai-assistant.js'
 import { systemWithModel } from './ai-system.js'
 import { loadZuFile, initLiveReload, setWatchPath } from './live-reload.js'
 import { saveSVG, printPDF, copySVG, baseName, downloadBlob } from './Export.js'
+import { track } from './Analytics.js'
 
 const
 isLocalDev = /^(localhost|127\.0\.0\.1|\[::1\])$/.test( location.hostname )
@@ -1024,6 +1025,7 @@ const
 LoadSample = async path => {
 	try {
 		await loadZuFile( path, { SyncCanvasInputs, FILE_NAME } )
+		track( 'sample_open' )
 	} catch ( er ) {
 		throw new Error( `${ er.message || er }` )
 	}
@@ -1079,17 +1081,23 @@ initAIPanels = () => {
 	for ( const el of [ AI_PANEL, OAI_PANEL ] ) {
 		el.systemWithModel	= systemWithModel
 		el.applyOps			= ops => window.ZU.apply( ops )
+		el.onSend			= () => track( 'ai_send' )
 	}
 }
 initAIPanels()
 
-DOWNLOAD		.onclick = () => downloadBlob(
-	new Blob( [ JSONString() ], { type: 'application/json' } )
-,	`${ baseName( FILE_NAME.value ) }.zu`
-)
+DOWNLOAD		.onclick = () => {
+	downloadBlob(
+		new Blob( [ JSONString() ], { type: 'application/json' } )
+	,	`${ baseName( FILE_NAME.value ) }.zu`
+	)
+	track( 'export_zu' )
+}
 
-EXPORT_SVG		.onclick = () => saveSVG( MAIN_EDITOR, FILE_NAME.value ).catch( Report )
-EXPORT_PDF		.onclick = () => { try { printPDF( FILE_NAME.value ) } catch ( er ) { Report( er ) } }
+EXPORT_SVG		.onclick = () => saveSVG( MAIN_EDITOR, FILE_NAME.value ).then(
+	() => track( 'export_svg' )
+).catch( Report )
+EXPORT_PDF		.onclick = () => { try { printPDF( FILE_NAME.value ); track( 'export_pdf' ) } catch ( er ) { Report( er ) } }
 COPY_SVG		.onclick = async () => {
 	const	label = COPY_SVG.querySelector( 'span' )
 	try {
