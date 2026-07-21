@@ -106,6 +106,36 @@ Example:
   { "stroke": "gray", "lineWidth": 2 } ]
 ```
 
+## `model.meta` (optional)
+
+Free-form metadata carried alongside `nodes` / `links`. The editor never renders
+or edits it, but it **round-trips**: load, editing, undo/redo, `zu_save_file`,
+and `autoLayout` all preserve it. `SetModel` / `ZU.setModel` replace the whole
+model — `meta` survives only if the passed model includes it.
+
+Reserved keys:
+
+- **`meta.sources`** — map of *filename → original source text* for diagrams
+  derived from external sources (e.g. Terraform HCL). Store each source file
+  **once** here, verbatim; never duplicate source text per node.
+- **`meta.mapped`** — array of the source addresses that were given nodes at
+  conversion time. Convert-back uses it to tell *deleted from the diagram*
+  (in `mapped`, no node) apart from *supporting resource never drawn*
+  (in sources only — leave it alone).
+
+```json
+{ "model": {
+	"meta": { "sources": { "main.tf": "resource \"aws_s3_bucket\" \"logs\" { … }" } },
+	"nodes": [ … ], "links": [ … ] } }
+```
+
+Convention for source-derived diagrams: a node that represents a source entity
+uses the **source address as its ID** (e.g. `aws_s3_bucket.logs`,
+`module.vpc.aws_subnet.private[0]`). Combined with the "keep IDs stable" rule
+below, the ID is the traceability key back to the source — no extra field
+needed. Nodes whose IDs are not source addresses are diagram-only (or represent
+resources to be added on convert-back).
+
 ## Authoring rules (for AI edits)
 
 - **Prefer `rect` / `ellipse` / `rhombus`.** They are tiny vector primitives.

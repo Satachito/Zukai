@@ -29,5 +29,15 @@ Rules:
 - On failure the document is unchanged and the tool returns an error; fix and call apply_ops again. After a successful apply, the tool may still return validation issues — fix those and call apply_ops again.
 - When the request is done, reply with a one-line summary of what you changed. Do not ask for confirmation before editing.`
 
+//	model.meta ( e.g. meta.sources holding original IaC text ) can be large and
+//	apply_ops cannot touch it anyway, so it is omitted from the prompt.
 export const
-systemWithModel	= () => `${ SYSTEM }\n\nCurrent model ( JSON ):\n${ JSON.stringify( window.ZU.getModel() ) }`
+systemWithModel	= () => {
+	const
+	{ meta, ...model } = window.ZU.getModel()
+	return	`${ SYSTEM }\n\nCurrent model ( JSON ):\n${ JSON.stringify( model ) }${
+		meta !== undefined
+	?	`\n\nmodel.meta exists ( keys: ${ Object.keys( meta ).join( ', ' ) } ) but is omitted here. It is preserved by the editor and cannot be edited via apply_ops.`
+	:	''
+	}`
+}

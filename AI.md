@@ -27,6 +27,7 @@ Implementation-accurate contract for agents (Cursor, MCP, scripts) working on Zu
 |-------|-------------|
 | **`model.nodes`** | Node array (draw order ≈ z-order; later entries on top) |
 | **`model.links`** | Link array |
+| **`model.meta`** | Optional free-form metadata; round-trips untouched (see **Source round-trip** below) |
 
 Coordinate system: origin top-left, **Y axis downward**.
 
@@ -95,6 +96,54 @@ Duplicate `[ from, to ]` pairs are merged by `Link()` / `EditLink()`. Avoid dupl
 3. **Keep node IDs stable.** Every link must reference existing IDs.
 4. **Band layouts** (VPN, Internet, …): changing `rV` often requires updating **`cY` and nodes below** to stay flush with neighbours.
 5. **`updateNode` / `updateLink`:** omitted `area` / `paint` / `ends` keep the current values. When you *do* pass `area` or `paint`, that object replaces the whole field (not a deep merge of e.g. only `fill`).
+
+---
+
+## Source round-trip (`model.meta.sources`)
+
+For diagrams converted **from** external sources (Terraform, CloudFormation, …)
+that must convert **back** without loss.
+
+**Forward (source → `.zu`):**
+
+1. Store every original source file verbatim in `model.meta.sources`
+   (map: filename → text). Once, at file level — never per node.
+2. A node representing a source entity gets the **source address as its ID**
+   (e.g. `aws_s3_bucket.logs`, `module.vpc.aws_subnet.private[0]`). The ID is
+   the only mapping — no per-node source field.
+3. Diagram-only decoration (frames, labels, bands) gets ordinary non-address IDs.
+4. Record every address you gave a node in **`meta.mapped`** (array). Supporting
+   resources that stay in the sources but are not drawn (subnets, listeners,
+   IAM, …) are *not* listed.
+
+**Back (`.zu` → source):**
+
+1. Start from `meta.sources` **verbatim** — do not regenerate from scratch.
+   Comments, variables, `locals`, formatting all come from the stored text.
+2. Apply only the diagram's diffs as edits to that text:
+   - address in **`meta.mapped`** but **no node with that ID** → the resource
+     was deleted (addresses only in the sources were never drawn — keep them)
+   - node ID renamed to another address → the resource was renamed/moved
+   - node with a **non-address ID** (and not obvious decoration) → a new
+     resource; ask or infer its type from the label
+3. Links express references/dependencies; only change code for them when the
+   request says so.
+4. When the sources change as part of the request, write the updated text back
+   into `meta.sources` — and keep `meta.mapped` in sync — so the file stays
+   round-trippable.
+
+**Preservation semantics:** `meta` survives load/save, undo/redo, `apply` ops
+(they cannot touch it), `autoLayout`, and `zu_save_file`. `SetModel` /
+`ZU.setModel` replace the whole model — include `meta` in the passed model or it
+is dropped. The in-app AI panel omits `meta` from its prompt context
+(`ai-system.js`); read it via `ZU.getModel()` / `zu_get_model` / the file.
+
+**Extract without AI:** `node tools/zu-sources.mjs <file.zu> [outDir]` writes
+`meta.sources` back to disk as files.
+
+**Examples:** `Samples/AWS.zu` / `GCP.zu` / `Azure.zu` each embed a
+`terraform validate`-clean `main.tf` and use Terraform addresses as the IDs of
+their resource nodes.
 
 ---
 
@@ -186,6 +235,7 @@ Phase 4 changes stay **in memory** until `zu_save_file`.
 | `tools/zu-server.mjs` | Static serve + live reload + RPC |
 | `tools/zu-mcp.mjs` | Cursor MCP |
 | `tools/zu-validate.mjs` | File / MCP validation |
+| `tools/zu-sources.mjs` | Extract `meta.sources` to files |
 
 ---
 
