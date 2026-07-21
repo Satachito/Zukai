@@ -5,191 +5,12 @@
 				"title",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 36,
-					"rH": 300,
-					"rV": 16,
-					"html": "<b>Multi-cloud architecture</b>",
-					"style": ";display:grid\n;place-items:center\n;font-size:15px\n;letter-spacing:.06em\n;color:light-dark(#334155,#cbd5e1)"
-				},
-				{}
-			],
-			[
-				"VPN",
-				{
-					"type": "rhombus",
-					"cX": 960,
-					"cY": 520,
-					"rH": 460,
-					"rV": 42,
-					"html": "VPN",
-					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.1em\n;text-transform:uppercase\n;color:light-dark(#6d28d9,#c4b5fd)"
-				},
-				{
-					"fill": "none",
-					"stroke": "#a78bfa",
-					"lineWidth": 2
-				}
-			],
-			[
-				"VPN Icon",
-				{
-					"type": "SVG",
-					"cX": 720,
-					"cY": 520,
-					"rH": 13,
-					"rV": 13,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHJlY3QgeD0iOSIgeT0iMTEiIHdpZHRoPSI2IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHBhdGggZD0iTTEyIDExVjlhMiAyIDAgMCAxIDQgMHYyIi8+PC9zdmc+"
-				},
-				{}
-			],
-			[
-				"Cloud",
-				{
-					"type": "rect",
-					"cX": 960,
-					"cY": 320,
-					"rH": 440,
-					"rV": 140,
-					"radii": 18,
-					"html": "Cloud",
-					"style": ";padding:12px 14px 8px 44px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#1d4ed8,#93c5fd)\n;align-items:start"
-				},
-				{
-					"fill": "none",
-					"stroke": "#60a5fa",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Cloud Icon",
-				{
-					"type": "SVG",
-					"cX": 560,
-					"cY": 210,
-					"rH": 14,
-					"rV": 14,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTcuNSAxOUg5YTcgNyAwIDEgMSA2LjcxLTloMS43OWE0LjUgNC41IDAgMSAxIDAgOVoiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
-				"Private WAF",
-				{
-					"type": "rect",
-					"cX": 740,
-					"cY": 270,
-					"rH": 118,
-					"rV": 28,
-					"html": "Private WAF",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#14b8a6",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Private WAF Icon",
-				{
-					"type": "SVG",
-					"cX": 640,
-					"cY": 270,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PC9zdmc+"
-				},
-				{}
-			],
-			[
-				"Public WAF",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 270,
-					"rH": 118,
-					"rV": 28,
-					"html": "Public WAF",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#f97316",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Public WAF Icon",
-				{
-					"type": "SVG",
 					"cX": 1080,
-					"cY": 270,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg=="
-				},
-				{}
-			],
-			[
-				"Private Application",
-				{
-					"type": "rect",
-					"cX": 740,
-					"cY": 370,
-					"rH": 118,
-					"rV": 28,
-					"html": "Private App",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#22c55e",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Private Application Icon",
-				{
-					"type": "SVG",
-					"cX": 640,
-					"cY": 370,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz48cGF0aCBkPSJNNyAxMFY3YTUgNSAwIDAgMSAxMCAwdjMiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
-				"Public Application",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 370,
-					"rH": 118,
-					"rV": 28,
-					"html": "Public App",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#ef4444",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Public Application Icon",
-				{
-					"type": "SVG",
-					"cX": 1080,
-					"cY": 370,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIyIiB5PSI0IiB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHJ4PSIyIi8+PHBhdGggZD0iTTEwIDR2NCIvPjxwYXRoIGQ9Ik0yIDhoMjAiLz48cGF0aCBkPSJNNiA0djQiLz48L3N2Zz4="
+					"cY": 40,
+					"rH": 760,
+					"rV": 18,
+					"html": "<b>Portal + Multi-cloud Integrated Architecture (Data Sovereignty Ready)</b>",
+					"style": ";display:grid\n;place-items:center\n;font-size:16px\n;letter-spacing:.04em\n;color:light-dark(#334155,#cbd5e1)"
 				},
 				{}
 			],
@@ -197,12 +18,12 @@
 				"Internet",
 				{
 					"type": "ellipse",
-					"cX": 960,
-					"cY": 110,
-					"rH": 460,
+					"cX": 1080,
+					"cY": 120,
+					"rH": 540,
 					"rV": 40,
-					"html": "Internet",
-					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.1em\n;text-transform:uppercase\n;color:light-dark(#0369a1,#7dd3fc)"
+					"html": "Internet / Users",
+					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#0369a1,#7dd3fc)"
 				},
 				{
 					"fill": "none",
@@ -214,8 +35,8 @@
 				"Internet Icon",
 				{
 					"type": "SVG",
-					"cX": 720,
-					"cY": 110,
+					"cX": 620,
+					"cY": 120,
 					"rH": 13,
 					"rV": 13,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0yIDEyaDIwIi8+PHBhdGggZD0iTTEyIDJhMTUuMyAxNS4zIDAgMCAxIDQgMTAgMTUuMyAxNS4zIDAgMCAxLTQgMTAgMTUuMyAxNS4zIDAgMCAxLTQtMTAgMTUuMyAxNS4zIDAgMCAxIDQtMTB6Ii8+PC9zdmc+"
@@ -223,16 +44,77 @@
 				{}
 			],
 			[
-				"Inhouse",
+				"VPN Shadow",
+				{
+					"type": "rhombus",
+					"cX": 1090,
+					"cY": 710,
+					"rH": 540,
+					"rV": 44
+				},
+				{
+					"fill": "none",
+					"stroke": "#a78bfa",
+					"lineWidth": 2,
+					"lineDash": [
+						6,
+						4
+					]
+				}
+			],
+			[
+				"VPN",
+				{
+					"type": "rhombus",
+					"cX": 1080,
+					"cY": 700,
+					"rH": 540,
+					"rV": 44,
+					"html": "VPN (Redundant Tunnels ×2)",
+					"style": ";display:grid\n;place-items:center\n;font-size:13px\n;font-weight:700\n;letter-spacing:.08em\n;color:light-dark(#6d28d9,#c4b5fd)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#a78bfa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"VPN Icon",
+				{
+					"type": "SVG",
+					"cX": 620,
+					"cY": 700,
+					"rH": 13,
+					"rV": 13,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHJlY3QgeD0iOSIgeT0iMTEiIHdpZHRoPSI2IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHBhdGggZD0iTTEyIDExVjlhMiAyIDAgMCAxIDQgMHYyIi8+PC9zdmc+"
+				},
+				{}
+			],
+			[
+				"VPN Note",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 780,
-					"rH": 440,
+					"cX": 1080,
+					"cY": 752,
+					"rH": 640,
+					"rV": 16,
+					"html": "OIDC / OAuth2 auth delegation & data sync — only tokens / encrypted traffic cross this link ( redundant tunnels, active-active )",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			],
+			[
+				"Onprem",
+				{
+					"type": "rect",
+					"cX": 1080,
+					"cY": 980,
+					"rH": 1000,
 					"rV": 180,
 					"radii": 18,
-					"html": "In-house",
-					"style": ";padding:12px 14px 8px 44px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#c2410c,#fdba74)\n;align-items:start"
+					"html": "On-premises (Data sovereignty boundary — credentials, PII and master data never leave)",
+					"style": ";padding:12px 14px 8px 46px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.06em\n;color:light-dark(#c2410c,#fdba74)\n;align-items:start"
 				},
 				{
 					"fill": "none",
@@ -241,11 +123,11 @@
 				}
 			],
 			[
-				"Inhouse Icon",
+				"Onprem Icon",
 				{
 					"type": "SVG",
-					"cX": 560,
-					"cY": 630,
+					"cX": 98,
+					"cY": 818,
 					"rH": 14,
 					"rV": 14,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNiAyMlY0YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAydjE4WiIvPjxwYXRoIGQ9Ik02IDEySDRhMiAyIDAgMCAwLTIgMnY2YTIgMiAwIDAgMCAyIDJoMiIvPjxwYXRoIGQ9Ik0xOCA5aDJhMiAyIDAgMCAxIDIgMnY5YTIgMiAwIDAgMS0yIDJoLTIiLz48cGF0aCBkPSJNMTAgNmg0Ii8+PHBhdGggZD0iTTEwIDEwaDQiLz48cGF0aCBkPSJNMTAgMTRoNCIvPjxwYXRoIGQ9Ik0xMCAxOGg0Ii8+PC9zdmc+"
@@ -253,16 +135,106 @@
 				{}
 			],
 			[
+				"IdP",
+				{
+					"type": "rect",
+					"cX": 420,
+					"cY": 910,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "IdP (Ory Hydra + Kratos)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#22c55e",
+					"lineWidth": 2
+				}
+			],
+			[
+				"IdP Icon",
+				{
+					"type": "SVG",
+					"cX": 305,
+					"cY": 895,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz48cGF0aCBkPSJNNyAxMFY3YTUgNSAwIDAgMSAxMCAwdjMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"MFA",
+				{
+					"type": "rect",
+					"cX": 270,
+					"cY": 1060,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "MFA / Passkeys (Kratos)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#14b8a6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"MFA Icon",
+				{
+					"type": "SVG",
+					"cX": 155,
+					"cY": 1045,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"ID Store",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 1060,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "ID / User DB (sensitive data)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#ef4444",
+					"lineWidth": 2
+				}
+			],
+			[
+				"ID Store Icon",
+				{
+					"type": "SVG",
+					"cX": 455,
+					"cY": 1045,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOSIgcnk9IjMiLz48cGF0aCBkPSJNMyA1djE0YzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTNWNSIvPjxwYXRoIGQ9Ik0zIDEyYzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
 				"Writer API",
 				{
 					"type": "rect",
-					"cX": 740,
-					"cY": 690,
-					"rH": 118,
-					"rV": 28,
+					"cX": 900,
+					"cY": 910,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Writer API",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -274,8 +246,8 @@
 				"Writer API Icon",
 				{
 					"type": "SVG",
-					"cX": 640,
-					"cY": 690,
+					"cX": 785,
+					"cY": 895,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjBoOSIvPjxwYXRoIGQ9Ik0xNi41IDMuNWEyLjEyIDIuMTIgMCAwIDEgMyAzTDcgMTlsLTQgMSAxLTRaIi8+PC9zdmc+"
@@ -283,46 +255,16 @@
 				{}
 			],
 			[
-				"Sanitized Reader",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 690,
-					"rH": 118,
-					"rV": 28,
-					"html": "Sanitized Reader",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#a855f7",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Sanitized Reader Icon",
-				{
-					"type": "SVG",
-					"cX": 1080,
-					"cY": 690,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgN3YxNCIvPjxwYXRoIGQ9Ik0zIDE4YTEgMSAwIDAgMS0xLTFWNGExIDEgMCAwIDEgMS0xaDVhNCA0IDAgMCAxIDQgNCA0IDQgMCAwIDEgNC00aDVhMSAxIDAgMCAxIDEgMXYxM2ExIDEgMCAwIDEtMSAxaC02YTMgMyAwIDAgMC0zIDMgMyAzIDAgMCAwLTMtM3oiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
 				"Audit Log",
 				{
 					"type": "rect",
-					"cX": 700,
-					"cY": 810,
-					"rH": 118,
-					"rV": 28,
+					"cX": 900,
+					"cY": 1060,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Audit Log",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -334,8 +276,8 @@
 				"Audit Log Icon",
 				{
 					"type": "SVG",
-					"cX": 600,
-					"cY": 810,
+					"cX": 785,
+					"cY": 1045,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI0IiB4PSI4IiB5PSIyIiByeD0iMSIvPjxwYXRoIGQ9Ik0xNiA0aDJhMiAyIDAgMCAxIDIgMnYxNGEyIDIgMCAwIDEtMiAySDZhMiAyIDAgMCAxLTItMlY2YTIgMiAwIDAgMSAyLTJoMiIvPjxwYXRoIGQ9Ik0xMiAxMWg0Ii8+PHBhdGggZD0iTTEyIDE2aDQiLz48cGF0aCBkPSJNOCAxMWguMDEiLz48cGF0aCBkPSJNOCAxNmguMDEiLz48L3N2Zz4="
@@ -346,13 +288,13 @@
 				"Core Data",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 810,
-					"rH": 118,
-					"rV": 28,
+					"cX": 1340,
+					"cY": 1060,
+					"rH": 130,
+					"rV": 30,
 					"radii": 10,
-					"html": "Core Data",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+					"html": "Core Data (source of truth)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -364,8 +306,8 @@
 				"Core Data Icon",
 				{
 					"type": "SVG",
-					"cX": 860,
-					"cY": 810,
+					"cX": 1225,
+					"cY": 1045,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOSIgcnk9IjMiLz48cGF0aCBkPSJNMyA1djE0YzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTNWNSIvPjxwYXRoIGQ9Ik0zIDEyYzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTMiLz48L3N2Zz4="
@@ -373,16 +315,46 @@
 				{}
 			],
 			[
+				"Sanitized Reader",
+				{
+					"type": "rect",
+					"cX": 1340,
+					"cY": 910,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Sanitized Reader",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#a855f7",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Sanitized Reader Icon",
+				{
+					"type": "SVG",
+					"cX": 1225,
+					"cY": 895,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgN3YxNCIvPjxwYXRoIGQ9Ik0zIDE4YTEgMSAwIDAgMS0xLTFWNGExIDEgMCAwIDEgMS0xaDVhNCA0IDAgMCAxIDQgNCA0IDQgMCAwIDEgNC00aDVhMSAxIDAgMCAxIDEgMXYxM2ExIDEgMCAwIDEtMSAxaC02YTMgMyAwIDAgMC0zIDMgMyAzIDAgMCAwLTMtM3oiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
 				"Importer",
 				{
 					"type": "rect",
-					"cX": 960,
+					"cX": 1780,
 					"cY": 910,
-					"rH": 118,
-					"rV": 28,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Importer",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -394,8 +366,8 @@
 				"Importer Icon",
 				{
 					"type": "SVG",
-					"cX": 860,
-					"cY": 910,
+					"cX": 1665,
+					"cY": 895,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTdWMyIvPjxwYXRoIGQ9Im02IDExIDYgNiA2LTYiLz48cGF0aCBkPSJNMTkgMjFINSIvPjwvc3ZnPg=="
@@ -406,13 +378,13 @@
 				"Analysis",
 				{
 					"type": "rect",
-					"cX": 1220,
-					"cY": 910,
-					"rH": 118,
-					"rV": 28,
+					"cX": 1780,
+					"cY": 1060,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Analysis",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -424,31 +396,425 @@
 				"Analysis Icon",
 				{
 					"type": "SVG",
-					"cX": 1120,
-					"cY": 910,
+					"cX": 1665,
+					"cY": 1045,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMyAzdjE2YTIgMiAwIDAgMCAyIDJoMTYiLz48cGF0aCBkPSJNMTggMTdWOSIvPjxwYXRoIGQ9Ik0xMyAxN1Y1Ii8+PHBhdGggZD0iTTggMTd2LTMiLz48L3N2Zz4="
 				},
 				{}
-			]
-		],
-		"links": [
+			],
 			[
-				[
-					"Core Data",
-					"Analysis"
-				],
+				"Legend",
 				{
-					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
+					"type": "rect",
+					"cX": 802,
+					"cY": 1314.29296875,
+					"rH": 722,
+					"rV": 114,
+					"radii": 14,
+					"html": "Legend — link color coding",
+					"style": ";padding:10px 14px 8px 20px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.04em\n;color:light-dark(#334155,#cbd5e1)\n;align-items:start"
 				},
 				{
-					"stroke": "#f9a8d4",
+					"fill": "none",
+					"stroke": "#94a3b8",
+					"lineWidth": 1.5
+				}
+			],
+			[
+				"lg-user-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1270.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#06b6d4",
+					"stroke": "#06b6d4",
 					"lineWidth": 2
 				}
 			],
+			[
+				"lg-user",
+				{
+					"cX": 470.4375,
+					"cY": 1270.29296875,
+					"rH": 190,
+					"rV": 16,
+					"type": "rect",
+					"html": "Data (Read, Write)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-auth-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1310.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#8b5cf6",
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-auth",
+				{
+					"type": "rect",
+					"cX": 470.4375,
+					"cY": 1310.29296875,
+					"rH": 190,
+					"rV": 16,
+					"html": "Auth delegation (OIDC / OAuth2)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-write-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1350.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#22c55e",
+					"stroke": "#22c55e",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-write",
+				{
+					"type": "rect",
+					"cX": 470.4375,
+					"cY": 1350.29296875,
+					"rH": 190,
+					"rV": 16,
+					"html": "Write",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-read-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1270.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#f97316",
+					"stroke": "#f97316",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-read",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1270.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Read",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-audit-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1310.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#eab308",
+					"stroke": "#eab308",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-audit",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1310.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Audit log",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-data-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1350.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#ec4899",
+					"stroke": "#ec4899",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-data",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1350.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Import / Analytics",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-note",
+				{
+					"type": "rect",
+					"cX": 802,
+					"cY": 1390.29296875,
+					"rH": 578,
+					"rV": 16,
+					"html": "Cyan = transport channels ( user ⇄ portal ⇄ VPN ) carrying the multiplexed Read / Write traffic; green / orange = the logical Write / Read paths inside the sovereignty boundary.",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			],
+			[
+				"Caveats",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 1314.29296875,
+					"rH": 260,
+					"rV": 114,
+					"radii": 6,
+					"html": "Caveats — known trade-offs",
+					"style": ";padding:10px 14px 8px 20px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.04em\n;color:light-dark(#b45309,#fcd34d)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#f59e0b",
+					"lineWidth": 1.5,
+					"lineDash": [
+						4,
+						3
+					]
+				}
+			],
+			[
+				"Caveats Text",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 1337.29296875,
+					"rH": 244,
+					"rV": 83,
+					"html": "• Every login and read crosses the VPN — an on-prem outage stalls the whole portal ( tunnels are redundant, the site is not )<br>• Throughput is capped by the IdP and the Sanitized Reader<br>• Sanitization <i>is</i> the sovereignty guarantee — allowlist fields only; joins / aggregates can re-identify<br>• Caching sanitized data cloud-side would ease load, at the cost of the sovereignty claim",
+					"style": ";display:grid\n;place-items:start\n;padding:0 6px\n;font-size:11px\n;line-height:1.5\n;color:light-dark(#475569,#94a3b8)\n;text-align:left"
+				},
+				{}
+			],
+			[
+				"Cloud",
+				{
+					"type": "rect",
+					"cX": 1080.14453125,
+					"cY": 410,
+					"rH": 980,
+					"rV": 210,
+					"radii": 18,
+					"html": "Cloud (portal & app layer — non-sensitive only)",
+					"style": ";padding:12px 14px 8px 46px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.06em\n;color:light-dark(#1d4ed8,#93c5fd)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#60a5fa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Cloud Icon",
+				{
+					"type": "SVG",
+					"cX": 118.14453125,
+					"cY": 218,
+					"rH": 14,
+					"rV": 14,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTcuNSAxOUg5YTcgNyAwIDEgMSA2LjcxLTloMS43OWE0LjUgNC41IDAgMSAxIDAgOVoiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"Private WAF",
+				{
+					"type": "rect",
+					"cX": 1240.14453125,
+					"cY": 310,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Private WAF",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#14b8a6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Private WAF Icon",
+				{
+					"type": "SVG",
+					"cX": 1125.14453125,
+					"cY": 295,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PC9zdmc+"
+				},
+				{}
+			],
+			[
+				"Portal UI",
+				{
+					"type": "rect",
+					"cX": 900.14453125,
+					"cY": 310,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal UI (SPA)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#6366f1",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Portal UI Icon",
+				{
+					"type": "SVG",
+					"cX": 785.14453125,
+					"cY": 295,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIyIiB5PSI0IiB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHJ4PSIyIi8+PHBhdGggZD0iTTEwIDR2NCIvPjxwYXRoIGQ9Ik0yIDhoMjAiLz48cGF0aCBkPSJNNiA0djQiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"Portal API",
+				{
+					"type": "rect",
+					"cX": 900.14453125,
+					"cY": 460,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal API / BFF",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Portal API Icon",
+				{
+					"type": "SVG",
+					"cX": 785.14453125,
+					"cY": 445,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjBoOSIvPjxwYXRoIGQ9Ik0xNi41IDMuNWEyLjEyIDIuMTIgMCAwIDEgMyAzTDcgMTlsLTQgMSAxLTRaIi8+PC9zdmc+"
+				},
+				{}
+			],
+			[
+				"Private App",
+				{
+					"type": "rect",
+					"cX": 1240.14453125,
+					"cY": 460,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Private App",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#22c55e",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Private App Icon",
+				{
+					"type": "SVG",
+					"cX": 1125.14453125,
+					"cY": 445,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz48cGF0aCBkPSJNNyAxMFY3YTUgNSAwIDAgMSAxMCAwdjMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"Cloud Note",
+				{
+					"type": "rect",
+					"cX": 1080.14453125,
+					"cY": 560,
+					"rH": 900,
+					"rV": 16,
+					"html": "Non-sensitive data only / No PII in JWTs (reference-ID scheme) / Logs are masked",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			]
+		],
+		"links": [
 			[
 				[
 					"Internet",
@@ -460,29 +826,14 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#38bdf8",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Private WAF",
-					"Private Application"
-				],
-				{
-					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#86efac",
+					"stroke": "#06b6d4",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
 					"Internet",
-					"Public WAF"
+					"Portal UI"
 				],
 				{
 					"headF": "triangle",
@@ -490,14 +841,14 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#fdba74",
+					"stroke": "#06b6d4",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
-					"Public WAF",
-					"Public Application"
+					"Private WAF",
+					"Private App"
 				],
 				{
 					"headF": "triangle",
@@ -505,14 +856,43 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#fdba74",
+					"stroke": "#06b6d4",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
-					"Importer",
-					"Core Data"
+					"Portal UI",
+					"Portal API"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Portal API",
+					"VPN"
+				],
+				{
+					"headT": "triangle",
+					"anchorF": "B"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"VPN",
+					"IdP"
 				],
 				{
 					"headF": false,
@@ -520,13 +900,58 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#67e8f9",
+					"stroke": "#8b5cf6",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
-					"Private Application",
+					"IdP",
+					"MFA"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"IdP",
+					"ID Store"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"IdP",
+					"Audit Log"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#eab308",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"VPN",
 					"Writer API"
 				],
 				{
@@ -535,22 +960,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#86efac",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Public Application",
-					"Writer API"
-				],
-				{
-					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#fca5a5",
+					"stroke": "#22c55e",
 					"lineWidth": 2
 				}
 			],
@@ -565,7 +975,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#93c5fd",
+					"stroke": "#22c55e",
 					"lineWidth": 2
 				}
 			],
@@ -580,22 +990,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#fde047",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Sanitized Reader",
-					"Public Application"
-				],
-				{
-					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#d8b4fe",
+					"stroke": "#eab308",
 					"lineWidth": 2
 				}
 			],
@@ -610,7 +1005,82 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#d8b4fe",
+					"stroke": "#f97316",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Sanitized Reader",
+					"VPN"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#f97316",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"VPN",
+					"Portal API"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"VPN",
+					"Private App"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"Importer",
+					"Core Data"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#ec4899",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Core Data",
+					"Analysis"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#ec4899",
 					"lineWidth": 2
 				}
 			]
