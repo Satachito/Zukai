@@ -22,7 +22,7 @@
 					"cY": 120,
 					"rH": 540,
 					"rV": 40,
-					"html": "Internet / Users ( DNS / GSLB → either cloud )",
+					"html": "Internet / Users ( neutral GSLB, health-checked → either cloud )",
 					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#0369a1,#7dd3fc)"
 				},
 				{
@@ -620,9 +620,9 @@
 				{
 					"type": "rect",
 					"cX": 1820,
-					"cY": 1370.29296875,
+					"cY": 1400.29296875,
 					"rH": 260,
-					"rV": 114,
+					"rV": 144,
 					"radii": 6,
 					"html": "Caveats — known trade-offs",
 					"style": ";padding:10px 14px 8px 20px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.04em\n;color:light-dark(#b45309,#fcd34d)\n;align-items:start"
@@ -642,10 +642,10 @@
 				{
 					"type": "rect",
 					"cX": 1820,
-					"cY": 1393.29296875,
+					"cY": 1418.29296875,
 					"rH": 244,
-					"rV": 83,
-					"html": "• Every login and read crosses the VPN — an on-prem outage stalls the whole portal ( tunnels are redundant, the site is not )<br>• Throughput is capped by the IdP and the Sanitized Reader<br>• Sanitization <i>is</i> the sovereignty guarantee — allowlist fields only; joins / aggregates can re-identify<br>• Caching sanitized data cloud-side would ease load, at the cost of the sovereignty claim",
+					"rV": 108,
+					"html": "• Every login and read crosses the VPN — an on-prem outage stalls the whole portal ( tunnels are redundant, the site is not )<br>• Throughput is capped by the IdP and the Sanitized Reader<br>• Sanitization <i>is</i> the sovereignty guarantee — allowlist fields only; joins / aggregates can re-identify<br>• Caching sanitized data cloud-side would ease load, at the cost of the sovereignty claim<br>• Active-active holds only with: a neutral GSLB, each cloud sized for 100% of traffic, both stacks always hot, and no single-cloud dependencies ( payments, push, registry, monitoring )",
 					"style": ";display:grid\n;place-items:start\n;padding:0 6px\n;font-size:11px\n;line-height:1.5\n;color:light-dark(#475569,#94a3b8)\n;text-align:left"
 				},
 				{}
