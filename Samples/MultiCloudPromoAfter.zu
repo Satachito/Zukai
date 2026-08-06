@@ -5,191 +5,12 @@
 				"title",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 36,
-					"rH": 300,
-					"rV": 16,
-					"html": "<b>Multi-cloud architecture</b>",
-					"style": ";display:grid\n;place-items:center\n;font-size:15px\n;letter-spacing:.06em\n;color:light-dark(#334155,#cbd5e1)"
-				},
-				{}
-			],
-			[
-				"VPN",
-				{
-					"type": "rhombus",
-					"cX": 960,
-					"cY": 520,
-					"rH": 460,
-					"rV": 50.4,
-					"html": "VPN",
-					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.1em\n;text-transform:uppercase\n;color:light-dark(#6d28d9,#c4b5fd)"
-				},
-				{
-					"fill": "none",
-					"stroke": "#a78bfa",
-					"lineWidth": 2
-				}
-			],
-			[
-				"VPN Icon",
-				{
-					"type": "SVG",
-					"cX": 720,
-					"cY": 520,
-					"rH": 13,
-					"rV": 13,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHJlY3QgeD0iOSIgeT0iMTEiIHdpZHRoPSI2IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHBhdGggZD0iTTEyIDExVjlhMiAyIDAgMCAxIDQgMHYyIi8+PC9zdmc+"
-				},
-				{}
-			],
-			[
-				"Cloud",
-				{
-					"type": "rect",
-					"cX": 960,
-					"cY": 320,
-					"rH": 440,
-					"rV": 140,
-					"radii": 18,
-					"html": "Cloud",
-					"style": ";padding:12px 14px 8px 44px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#1d4ed8,#93c5fd)\n;align-items:start"
-				},
-				{
-					"fill": "none",
-					"stroke": "#60a5fa",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Cloud Icon",
-				{
-					"type": "SVG",
-					"cX": 560,
-					"cY": 210,
-					"rH": 14,
-					"rV": 14,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTcuNSAxOUg5YTcgNyAwIDEgMSA2LjcxLTloMS43OWE0LjUgNC41IDAgMSAxIDAgOVoiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
-				"Private WAF",
-				{
-					"type": "rect",
-					"cX": 740,
-					"cY": 270,
-					"rH": 118,
-					"rV": 28,
-					"html": "Private WAF",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#14b8a6",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Private WAF Icon",
-				{
-					"type": "SVG",
-					"cX": 640,
-					"cY": 270,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PC9zdmc+"
-				},
-				{}
-			],
-			[
-				"Public WAF",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 270,
-					"rH": 118,
-					"rV": 28,
-					"html": "Public WAF",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#f97316",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Public WAF Icon",
-				{
-					"type": "SVG",
 					"cX": 1080,
-					"cY": 270,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg=="
-				},
-				{}
-			],
-			[
-				"Private Application",
-				{
-					"type": "rect",
-					"cX": 740,
-					"cY": 370,
-					"rH": 118,
-					"rV": 28,
-					"html": "Private App",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#22c55e",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Private Application Icon",
-				{
-					"type": "SVG",
-					"cX": 640,
-					"cY": 370,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz48cGF0aCBkPSJNNyAxMFY3YTUgNSAwIDAgMSAxMCAwdjMiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
-				"Public Application",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 370,
-					"rH": 118,
-					"rV": 28,
-					"html": "Public App",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#ef4444",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Public Application Icon",
-				{
-					"type": "SVG",
-					"cX": 1080,
-					"cY": 370,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIyIiB5PSI0IiB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHJ4PSIyIi8+PHBhdGggZD0iTTEwIDR2NCIvPjxwYXRoIGQ9Ik0yIDhoMjAiLz48cGF0aCBkPSJNNiA0djQiLz48L3N2Zz4="
+					"cY": 40,
+					"rH": 760,
+					"rV": 18,
+					"html": "<b>Portal + Multi-cloud Integrated Architecture (Data Sovereignty Ready)</b>",
+					"style": ";display:grid\n;place-items:center\n;font-size:16px\n;letter-spacing:.04em\n;color:light-dark(#334155,#cbd5e1)"
 				},
 				{}
 			],
@@ -197,12 +18,12 @@
 				"Internet",
 				{
 					"type": "ellipse",
-					"cX": 960,
-					"cY": 110,
-					"rH": 460,
+					"cX": 1080,
+					"cY": 120,
+					"rH": 540,
 					"rV": 40,
-					"html": "Internet",
-					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.1em\n;text-transform:uppercase\n;color:light-dark(#0369a1,#7dd3fc)"
+					"html": "Internet / Users ( neutral dual-provider GSLB, health-checked → either cloud )",
+					"style": ";display:grid\n;place-items:center\n;font-size:14px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#0369a1,#7dd3fc)"
 				},
 				{
 					"fill": "none",
@@ -214,8 +35,8 @@
 				"Internet Icon",
 				{
 					"type": "SVG",
-					"cX": 720,
-					"cY": 110,
+					"cX": 620,
+					"cY": 120,
 					"rH": 13,
 					"rV": 13,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0yIDEyaDIwIi8+PHBhdGggZD0iTTEyIDJhMTUuMyAxNS4zIDAgMCAxIDQgMTAgMTUuMyAxNS4zIDAgMCAxLTQgMTAgMTUuMyAxNS4zIDAgMCAxLTQtMTAgMTUuMyAxNS4zIDAgMCAxIDQtMTB6Ii8+PC9zdmc+"
@@ -223,16 +44,77 @@
 				{}
 			],
 			[
-				"Inhouse",
+				"VPN Shadow",
+				{
+					"type": "rhombus",
+					"cX": 1090,
+					"cY": 766,
+					"rH": 540,
+					"rV": 44
+				},
+				{
+					"fill": "none",
+					"stroke": "#a78bfa",
+					"lineWidth": 2,
+					"lineDash": [
+						6,
+						4
+					]
+				}
+			],
+			[
+				"VPN",
+				{
+					"type": "rhombus",
+					"cX": 1080,
+					"cY": 756,
+					"rH": 540,
+					"rV": 52.8,
+					"html": "VPN (Redundant Tunnels ×2)",
+					"style": ";display:grid\n;place-items:center\n;font-size:13px\n;font-weight:700\n;letter-spacing:.08em\n;color:light-dark(#6d28d9,#c4b5fd)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#a78bfa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"VPN Icon",
+				{
+					"type": "SVG",
+					"cX": 620,
+					"cY": 756,
+					"rH": 13,
+					"rV": 13,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHJlY3QgeD0iOSIgeT0iMTEiIHdpZHRoPSI2IiBoZWlnaHQ9IjQiIHJ4PSIxIi8+PHBhdGggZD0iTTEyIDExVjlhMiAyIDAgMCAxIDQgMHYyIi8+PC9zdmc+"
+				},
+				{}
+			],
+			[
+				"VPN Note",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 780,
-					"rH": 440,
+					"cX": 1080,
+					"cY": 808,
+					"rH": 640,
+					"rV": 16,
+					"html": "OIDC / OAuth2 auth delegation & data sync — only tokens / encrypted traffic cross this link ( redundant tunnels, active-active )",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			],
+			[
+				"Onprem",
+				{
+					"type": "rect",
+					"cX": 1080,
+					"cY": 1036,
+					"rH": 1000,
 					"rV": 180,
 					"radii": 18,
-					"html": "In-house",
-					"style": ";padding:12px 14px 8px 44px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.08em\n;text-transform:uppercase\n;color:light-dark(#c2410c,#fdba74)\n;align-items:start"
+					"html": "On-premises (Data sovereignty boundary — credentials, PII and master data never leave)",
+					"style": ";padding:12px 14px 8px 46px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.06em\n;color:light-dark(#c2410c,#fdba74)\n;align-items:start"
 				},
 				{
 					"fill": "none",
@@ -241,11 +123,11 @@
 				}
 			],
 			[
-				"Inhouse Icon",
+				"Onprem Icon",
 				{
 					"type": "SVG",
-					"cX": 560,
-					"cY": 630,
+					"cX": 98,
+					"cY": 874,
 					"rH": 14,
 					"rV": 14,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNiAyMlY0YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAydjE4WiIvPjxwYXRoIGQ9Ik02IDEySDRhMiAyIDAgMCAwLTIgMnY2YTIgMiAwIDAgMCAyIDJoMiIvPjxwYXRoIGQ9Ik0xOCA5aDJhMiAyIDAgMCAxIDIgMnY5YTIgMiAwIDAgMS0yIDJoLTIiLz48cGF0aCBkPSJNMTAgNmg0Ii8+PHBhdGggZD0iTTEwIDEwaDQiLz48cGF0aCBkPSJNMTAgMTRoNCIvPjxwYXRoIGQ9Ik0xMCAxOGg0Ii8+PC9zdmc+"
@@ -253,16 +135,106 @@
 				{}
 			],
 			[
+				"IdP",
+				{
+					"type": "rect",
+					"cX": 420,
+					"cY": 966,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "IdP (Ory Hydra + Kratos)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#22c55e",
+					"lineWidth": 2
+				}
+			],
+			[
+				"IdP Icon",
+				{
+					"type": "SVG",
+					"cX": 305,
+					"cY": 951,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSIxIi8+PHJlY3QgeD0iMyIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiLz48cGF0aCBkPSJNNyAxMFY3YTUgNSAwIDAgMSAxMCAwdjMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"MFA",
+				{
+					"type": "rect",
+					"cX": 270,
+					"cY": 1116,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "MFA / Passkeys (Kratos)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#14b8a6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"MFA Icon",
+				{
+					"type": "SVG",
+					"cX": 155,
+					"cY": 1101,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"ID Store",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 1116,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "ID / User DB (sensitive data)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#ef4444",
+					"lineWidth": 2
+				}
+			],
+			[
+				"ID Store Icon",
+				{
+					"type": "SVG",
+					"cX": 455,
+					"cY": 1101,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOSIgcnk9IjMiLz48cGF0aCBkPSJNMyA1djE0YzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTNWNSIvPjxwYXRoIGQ9Ik0zIDEyYzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
 				"Writer API",
 				{
 					"type": "rect",
-					"cX": 740,
-					"cY": 690,
-					"rH": 118,
-					"rV": 28,
+					"cX": 900,
+					"cY": 966,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Writer API",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -274,8 +246,8 @@
 				"Writer API Icon",
 				{
 					"type": "SVG",
-					"cX": 640,
-					"cY": 690,
+					"cX": 785,
+					"cY": 951,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjBoOSIvPjxwYXRoIGQ9Ik0xNi41IDMuNWEyLjEyIDIuMTIgMCAwIDEgMyAzTDcgMTlsLTQgMSAxLTRaIi8+PC9zdmc+"
@@ -283,46 +255,16 @@
 				{}
 			],
 			[
-				"Sanitized Reader",
-				{
-					"type": "rect",
-					"cX": 1180,
-					"cY": 690,
-					"rH": 118,
-					"rV": 28,
-					"html": "Sanitized Reader",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
-				},
-				{
-					"fill": "none",
-					"stroke": "#a855f7",
-					"lineWidth": 2
-				}
-			],
-			[
-				"Sanitized Reader Icon",
-				{
-					"type": "SVG",
-					"cX": 1080,
-					"cY": 690,
-					"rH": 11,
-					"rV": 11,
-					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgN3YxNCIvPjxwYXRoIGQ9Ik0zIDE4YTEgMSAwIDAgMS0xLTFWNGExIDEgMCAwIDEgMS0xaDVhNCA0IDAgMCAxIDQgNCA0IDQgMCAwIDEgNC00aDVhMSAxIDAgMCAxIDEgMXYxM2ExIDEgMCAwIDEtMSAxaC02YTMgMyAwIDAgMC0zIDMgMyAzIDAgMCAwLTMtM3oiLz48L3N2Zz4="
-				},
-				{}
-			],
-			[
 				"Audit Log",
 				{
 					"type": "rect",
-					"cX": 700,
-					"cY": 810,
-					"rH": 118,
-					"rV": 28,
+					"cX": 900,
+					"cY": 1116,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Audit Log",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -334,8 +276,8 @@
 				"Audit Log Icon",
 				{
 					"type": "SVG",
-					"cX": 600,
-					"cY": 810,
+					"cX": 785,
+					"cY": 1101,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI0IiB4PSI4IiB5PSIyIiByeD0iMSIvPjxwYXRoIGQ9Ik0xNiA0aDJhMiAyIDAgMCAxIDIgMnYxNGEyIDIgMCAwIDEtMiAySDZhMiAyIDAgMCAxLTItMlY2YTIgMiAwIDAgMSAyLTJoMiIvPjxwYXRoIGQ9Ik0xMiAxMWg0Ii8+PHBhdGggZD0iTTEyIDE2aDQiLz48cGF0aCBkPSJNOCAxMWguMDEiLz48cGF0aCBkPSJNOCAxNmguMDEiLz48L3N2Zz4="
@@ -346,13 +288,13 @@
 				"Core Data",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 810,
-					"rH": 118,
-					"rV": 28,
+					"cX": 1340,
+					"cY": 1116,
+					"rH": 130,
+					"rV": 30,
 					"radii": 10,
-					"html": "Core Data",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+					"html": "Core Data (source of truth)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -364,8 +306,8 @@
 				"Core Data Icon",
 				{
 					"type": "SVG",
-					"cX": 860,
-					"cY": 810,
+					"cX": 1225,
+					"cY": 1101,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOSIgcnk9IjMiLz48cGF0aCBkPSJNMyA1djE0YzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTNWNSIvPjxwYXRoIGQ9Ik0zIDEyYzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTMiLz48L3N2Zz4="
@@ -373,16 +315,46 @@
 				{}
 			],
 			[
+				"Sanitized Reader",
+				{
+					"type": "rect",
+					"cX": 1340,
+					"cY": 966,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Sanitized Reader",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#a855f7",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Sanitized Reader Icon",
+				{
+					"type": "SVG",
+					"cX": 1225,
+					"cY": 951,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgN3YxNCIvPjxwYXRoIGQ9Ik0zIDE4YTEgMSAwIDAgMS0xLTFWNGExIDEgMCAwIDEgMS0xaDVhNCA0IDAgMCAxIDQgNCA0IDQgMCAwIDEgNC00aDVhMSAxIDAgMCAxIDEgMXYxM2ExIDEgMCAwIDEtMSAxaC02YTMgMyAwIDAgMC0zIDMgMyAzIDAgMCAwLTMtM3oiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
 				"Importer",
 				{
 					"type": "rect",
-					"cX": 960,
-					"cY": 910,
-					"rH": 118,
-					"rV": 28,
+					"cX": 1780,
+					"cY": 966,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Importer",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -394,8 +366,8 @@
 				"Importer Icon",
 				{
 					"type": "SVG",
-					"cX": 860,
-					"cY": 910,
+					"cX": 1665,
+					"cY": 951,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTdWMyIvPjxwYXRoIGQ9Im02IDExIDYgNiA2LTYiLz48cGF0aCBkPSJNMTkgMjFINSIvPjwvc3ZnPg=="
@@ -406,13 +378,13 @@
 				"Analysis",
 				{
 					"type": "rect",
-					"cX": 1220,
-					"cY": 910,
-					"rH": 118,
-					"rV": 28,
+					"cX": 1780,
+					"cY": 1116,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
 					"html": "Analysis",
-					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 36px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)",
-					"radii": 10
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
 				},
 				{
 					"fill": "none",
@@ -424,11 +396,510 @@
 				"Analysis Icon",
 				{
 					"type": "SVG",
-					"cX": 1120,
-					"cY": 910,
+					"cX": 1665,
+					"cY": 1101,
 					"rH": 11,
 					"rV": 11,
 					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMS43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMyAzdjE2YTIgMiAwIDAgMCAyIDJoMTYiLz48cGF0aCBkPSJNMTggMTdWOSIvPjxwYXRoIGQ9Ik0xMyAxN1Y1Ii8+PHBhdGggZD0iTTggMTd2LTMiLz48L3N2Zz4="
+				},
+				{}
+			],
+			[
+				"Legend",
+				{
+					"type": "rect",
+					"cX": 802,
+					"cY": 1370.29296875,
+					"rH": 722,
+					"rV": 114,
+					"radii": 14,
+					"html": "Legend — link color coding",
+					"style": ";padding:10px 14px 8px 20px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.04em\n;color:light-dark(#334155,#cbd5e1)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#94a3b8",
+					"lineWidth": 1.5
+				}
+			],
+			[
+				"lg-user-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1326.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#06b6d4",
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-user",
+				{
+					"cX": 470.4375,
+					"cY": 1326.29296875,
+					"rH": 190,
+					"rV": 16,
+					"type": "rect",
+					"html": "Data (Read, Write)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-auth-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1366.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#8b5cf6",
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-auth",
+				{
+					"type": "rect",
+					"cX": 470.4375,
+					"cY": 1366.29296875,
+					"rH": 190,
+					"rV": 16,
+					"html": "Auth delegation (OIDC / OAuth2)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-write-sw",
+				{
+					"type": "rect",
+					"cX": 250.4375,
+					"cY": 1406.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#22c55e",
+					"stroke": "#22c55e",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-write",
+				{
+					"type": "rect",
+					"cX": 470.4375,
+					"cY": 1406.29296875,
+					"rH": 190,
+					"rV": 16,
+					"html": "Write",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-read-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1326.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#f97316",
+					"stroke": "#f97316",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-read",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1326.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Read",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-audit-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1366.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#eab308",
+					"stroke": "#eab308",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-audit",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1366.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Audit log",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-data-sw",
+				{
+					"type": "rect",
+					"cX": 950.4375,
+					"cY": 1406.29296875,
+					"rH": 26,
+					"rV": 4,
+					"radii": 2,
+					"html": ""
+				},
+				{
+					"fill": "#ec4899",
+					"stroke": "#ec4899",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lg-data",
+				{
+					"type": "rect",
+					"cX": 1180.4375,
+					"cY": 1406.29296875,
+					"rH": 200,
+					"rV": 16,
+					"html": "Import / Analytics",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 0 0 8px\n;font-size:12px\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{}
+			],
+			[
+				"lg-note",
+				{
+					"type": "rect",
+					"cX": 802,
+					"cY": 1446.29296875,
+					"rH": 578,
+					"rV": 16,
+					"html": "Cyan = transport channels ( user ⇄ portal ⇄ VPN ) carrying the multiplexed Read / Write traffic; green / orange = the logical Write / Read paths inside the sovereignty boundary.",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			],
+			[
+				"Caveats",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 1412.29296875,
+					"rH": 260,
+					"rV": 156,
+					"radii": 6,
+					"html": "Caveats — known trade-offs",
+					"style": ";padding:10px 14px 8px 20px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.04em\n;color:light-dark(#b45309,#fcd34d)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#f59e0b",
+					"lineWidth": 1.5,
+					"lineDash": [
+						4,
+						3
+					]
+				}
+			],
+			[
+				"Caveats Text",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 1426.29296875,
+					"rH": 244,
+					"rV": 116,
+					"html": "• Every login and read crosses the VPN — an on-prem outage stalls the whole portal ( tunnels are redundant, the site is not )<br>• Throughput is capped by the IdP and the Sanitized Reader<br>• Sanitization <i>is</i> the sovereignty guarantee — allowlist fields only; joins / aggregates can re-identify<br>• Caching sanitized data cloud-side would ease load, at the cost of the sovereignty claim<br>• Active-active holds only with: a neutral <b>dual-provider</b> GSLB ( DNS outages have repeatedly taken whole fleets down — Dyn 2016, Akamai 2021 ) or client-side fallback across clouds, each cloud sized for 100% of traffic, both stacks always hot, and no single-cloud dependencies ( payments, push, registry, monitoring )",
+					"style": ";display:grid\n;place-items:start\n;padding:0 6px\n;font-size:11px\n;line-height:1.5\n;color:light-dark(#475569,#94a3b8)\n;text-align:left"
+				},
+				{}
+			],
+			[
+				"Cloud A",
+				{
+					"type": "rect",
+					"cX": 570,
+					"cY": 410,
+					"rH": 430,
+					"rV": 210,
+					"radii": 18,
+					"html": "Cloud A — GCP (portal stack — active-active, non-sensitive only)",
+					"style": ";padding:12px 14px 8px 46px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.06em\n;color:light-dark(#1d4ed8,#93c5fd)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#60a5fa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Cloud A Icon",
+				{
+					"type": "SVG",
+					"cX": 158,
+					"cY": 218,
+					"rH": 14,
+					"rV": 14,
+					"SVG": "PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAxLjAwMDAwMCkiPgoJPGcgPgoJCTxyZWN0IHk9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIvPgoJCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIuMDAwMDAwLCA3LjAwMDAwMCkiPgoJCQk8ZyA+CgkJCTwvZz4KCQkJPGRlZnM+CgkJCQk8ZmlsdGVyIGlkPSJBZG9iZV9PcGFjaXR5TWFza0ZpbHRlciIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItMiIgeT0iLTciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+CgkJCQkJPGZlQ29sb3JNYXRyaXggIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIxIDAgMCAwIDAgIDAgMSAwIDAgMCAgMCAwIDEgMCAwICAwIDAgMCAxIDAiLz4KCQkJCTwvZmlsdGVyPgoJCQk8L2RlZnM+CgkJCQk8bWFzayBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItMiIgeT0iLTciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgaWQ9Im1hc2stMl8wMDAwMDA2MDcxMTgyODczODI1MjMxMjQ5MDAwMDAxMzgwNzE1NDEwNTg2NjU1OTY0M18iPgoJCQkJPGcgZmlsdGVyPSJ1cmwoI0Fkb2JlX09wYWNpdHlNYXNrRmlsdGVyKSI+CgkJCQkJCTxwYXRoIGlkPSJwYXRoLTFfMDAwMDAxMDc1NDcxMzE5NDE1MDI0MDI4MzAwMDAwMDMwNDkzOTQ2Njk1MTY5NDg0MTJfIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iCgkJCQkJCU0xNi40LDMuNWMyLjMsMC4yLDQuMSwyLDQuMSw0LjNjMCwyLjQtMiw0LjMtNC40LDQuM0g0LjhjLTIuOSwwLTUuMi0yLjMtNS4yLTUuMmMwLTIuNywyLTQuOSw0LjctNS4xQzUuMy0wLjMsNy41LTEuOCwxMC0xLjgKCQkJCQkJQzEzLjItMS44LDE1LjgsMC41LDE2LjQsMy41eiBNMTYuMSwxMC4zYzEuNSwwLDIuNi0xLjIsMi42LTIuNnMtMS4yLTIuNi0yLjYtMi42aC0xLjNWNC43QzE0LjgsMi4xLDEyLjcsMCwxMCwwCgkJCQkJCUM3LjgsMCw1LjksMS40LDUuNCwzLjRINC44QzIuOCwzLjQsMS4yLDUsMS4yLDYuOXMxLjYsMy40LDMuNSwzLjRIMTYuMXoiLz4KCQkJCTwvZz4KCQkJPC9tYXNrPgoJCQkJPHBvbHlnb24gaWQ9IkZpbGwtNSIgbWFzaz0idXJsKCNtYXNrLTJfMDAwMDAwNjA3MTE4Mjg3MzgyNTIzMTI0OTAwMDAwMTM4MDcxNTQxMDU4NjY1NTk2NDNfKSIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiM1Qzg1REUiIHBvaW50cz0iCgkJCQktMiwxNyAyMiwxNyAyMiwtNyAtMiwtNyAJCQkiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPC9zdmc+Cg=="
+				},
+				{}
+			],
+			[
+				"Cloud B",
+				{
+					"type": "rect",
+					"cX": 1590,
+					"cY": 410,
+					"rH": 430,
+					"rV": 210,
+					"radii": 18,
+					"html": "Cloud B — AWS (portal stack — active-active, non-sensitive only)",
+					"style": ";padding:12px 14px 8px 46px\n;font-size:12px\n;font-weight:700\n;letter-spacing:.06em\n;color:light-dark(#1d4ed8,#93c5fd)\n;align-items:start"
+				},
+				{
+					"fill": "none",
+					"stroke": "#60a5fa",
+					"lineWidth": 2
+				}
+			],
+			[
+				"Cloud B Icon",
+				{
+					"type": "SVG",
+					"cX": 1178,
+					"cY": 218,
+					"rH": 14,
+					"rV": 14,
+					"SVG": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUtR3JvdXAvMzIvQVdTLUNsb3VkXzMyPC90aXRsZT4KICAgIDxnIGlkPSJJY29uLUFyY2hpdGVjdHVyZS1Hcm91cC8zMi9BV1MtQ2xvdWRfMzIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUiIGZpbGw9IiMyNDJGM0UiIHg9IjAiIHk9IjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PC9yZWN0PgogICAgICAgIDxwYXRoIGQ9Ik0yOC45OTMsMjcuOTk1MjY4OSBMMTEuNDg3LDI3Ljk3NjI2ODkgQzkuMTIxLDI3Ljk3NDI2ODkgNy4xNTQsMjYuMTI5MjY4OSA3LjAxMiwyMy43NzUyNjg5IEM3LjAwNCwyMy42NTIyNjg5IDcsMjMuNTI2MjY4OSA3LDIzLjM5NzI2ODkgQzcsMjAuMjk5MjY4OSA5LjA5MSwxOS4yODcyNjg5IDEwLjMzNywxOC45NTkyNjg5IEMxMC41NzcsMTguODk2MjY4OSAxMC43MzUsMTguNjY2MjY4OSAxMC43MDcsMTguNDE5MjY4OSBDMTAuNjc2LDE4LjE0OTI2ODkgMTAuNjU5LDE3Ljg3NTI2ODkgMTAuNjU5LDE3LjU5NjI2ODkgQzEwLjY1OSwxNS4xMzIyNjg5IDEyLjMwOCwxMi40ODIyNjg5IDE0LjQxNSwxMS41NjMyNjg5IEMxNS4zNTksMTEuMTUwMjY4OSAxNi4yMzIsMTAuOTg2MjY4OSAxNy4wMjMsMTAuOTg2MjY4OSBDMTkuMjc2LDEwLjk4NjI2ODkgMjAuODY3LDEyLjMxNTI2ODkgMjEuNTYxLDEzLjAzMzI2ODkgQzIyLjMyOSwxMy44MjYyNjg5IDIyLjkyNywxNC44MzgyNjg5IDIzLjM0LDE2LjA0MjI2ODkgQzIzLjQsMTYuMjE5MjY4OSAyMy41NTUsMTYuMzQ3MjY4OSAyMy43NCwxNi4zNzQyNjg5IEMyMy45MTgsMTYuNDAxMjY4OSAyNC4xMDksMTYuMzIzMjY4OSAyNC4yMTksMTYuMTcxMjY4OSBDMjQuODA3LDE1LjM1MDI2ODkgMjUuNzY2LDE0Ljk4MjI2ODkgMjYuNjU5LDE1LjIzOTI2ODkgQzI3Ljc4MiwxNS41NjAyNjg5IDI4LjUxNiwxNi43MjcyNjg5IDI4LjYyLDE4LjMwNzI2ODkgQzI4LjU3OCwxOC41NzYyNjg5IDI4Ljc1OSwxOC44MjkyNjg5IDI5LjAyNywxOC44NzcyNjg5IEMzMC4yMjIsMTkuMDg5MjY4OSAzMywxOS45NTcyNjg5IDMzLDIzLjQ0MDI2ODkgQzMzLDI3LjU4OTI2ODkgMjkuMTE0LDI3Ljk4MjI2ODkgMjguOTkzLDI3Ljk5NTI2ODkgTTI5LjU5NCwxNy45NzQyNjg5IEMyOS4zNzksMTYuMDY3MjY4OSAyOC40LDE0LjY5NjI2ODkgMjYuOTM0LDE0LjI3ODI2ODkgQzI1Ljg5OSwxMy45ODIyNjg5IDI0LjgxMSwxNC4yNDUyNjg5IDIzLjk4OSwxNC45NTAyNjg5IEMyMy41NTMsMTMuOTM2MjY4OSAyMi45NzksMTMuMDYwMjY4OSAyMi4yOCwxMi4zMzgyNjg5IEMyMC4wMjMsMTAuMDA1MjY4OSAxNi45MzMsOS4zNzIyNjg4OSAxNC4wMTQsMTAuNjQ2MjY4OSBDMTEuNTMxLDExLjczMDI2ODkgOS42NTksMTQuNzE4MjY4OSA5LjY1OSwxNy41OTYyNjg5IEM5LjY1OSwxNy43NzAyNjg5IDkuNjY1LDE3Ljk0MzI2ODkgOS42NzYsMTguMTE0MjY4OSBDOC4zMTksMTguNTczMjY4OSA2LDE5Ljg3NTI2ODkgNiwyMy4zOTcyNjg5IEM2LDIzLjU0OTI2ODkgNi4wMDQsMjMuNjk2MjY4OSA2LjAxNCwyMy44MzgyNjg5IEM2LjE4OCwyNi43MTYyNjg5IDguNTkzLDI4Ljk3MzI2ODkgMTEuNDg2LDI4Ljk3NjI2ODkgTDI5LjAzNCwyOC45OTMyNjg5IEMyOS4wODQsMjguOTg5MjY4OSAzNCwyOC41MTkyNjg5IDM0LDIzLjQ0MDI2ODkgQzM0LDE5LjUwMjI2ODkgMzEuMDAzLDE4LjMxNDI2ODkgMjkuNTk0LDE3Ljk3NDI2ODkiIGlkPSJGaWxsLTEiIGZpbGw9IiNGRkZGRkYiPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+"
+				},
+				{}
+			],
+			[
+				"aws_wafv2_web_acl.portal",
+				{
+					"type": "rect",
+					"cX": 1590.14453125,
+					"cY": 310,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "AWS WAF",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#14b8a6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"aws_wafv2_web_acl.portal Icon",
+				{
+					"type": "SVG",
+					"cX": 1475.14453125,
+					"cY": 295,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUvMzIvQXJjaF9BV1MtV0FGXzMyPC90aXRsZT4KICAgIDxnIGlkPSJJY29uLUFyY2hpdGVjdHVyZS8zMi9BcmNoX0FXUy1XQUZfMzIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJJY29uLUFyY2hpdGVjdHVyZS1CRy8zMi9TZWN1cml0eS1JZGVudGl0eS1Db21wbGlhbmNlIiBmaWxsPSIjREQzNDRDIj4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48L3JlY3Q+CiAgICAgICAgPC9nPgogICAgICAgIDxnIGlkPSJJY29uLVNlcnZpY2UvMzIvQVdTLVdBRl8zMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wMDAwMDAsIDcuMDAwMDAwKSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xLjEzOCwxNCBMMCwxNCBMMCwxMyBMMS4xMzksMTMgQzEuMjQsMTAuNTY0IDIuMDMxLDguMjQ2IDMuNDYxLDYuMjcgTDQuMjcyLDYuODU1IEMyLjk2NSw4LjY2MSAyLjIzOSwxMC43NzYgMi4xMzksMTMgTDQsMTMgTDQsMTQgTDIuMTM4LDE0IEMyLjIzMSwxNi4yMzcgMi45NTgsMTguMzY1IDQuMjcyLDIwLjE4IEwzLjQ2MSwyMC43NjYgQzIuMDI0LDE4Ljc4IDEuMjMyLDE2LjQ0OSAxLjEzOCwxNCBMMS4xMzgsMTQgWiBNMjAuNzQ3LDIzLjU1NiBDMTguNzY4LDI0Ljk5IDE2LjQ0MywyNS43ODIgMTQsMjUuODc4IEwxNCwyNyBMMTMsMjcgTDEzLDI1Ljg3OSBDMTAuNTU4LDI1Ljc4MiA4LjIzMywyNC45OTEgNi4yNTEsMjMuNTU3IEw2LjgzNywyMi43NDYgQzguNjQ4LDI0LjA1NiAxMC43NywyNC43ODMgMTMsMjQuODc5IEwxMywyMyBMMTQsMjMgTDE0LDI0Ljg3OCBDMTYuMjMxLDI0Ljc4MyAxOC4zNTMsMjQuMDU2IDIwLjE2MSwyMi43NDcgTDIwLjc0NywyMy41NTYgWiBNNi4yNTEsMy40NzkgQzguMjMzLDIuMDQ1IDEwLjU1OCwxLjI1MyAxMywxLjE1NyBMMTMsMCBMMTQsMCBMMTQsMS4xNTcgQzE2LjQ0MywxLjI1NCAxOC43NjgsMi4wNDUgMjAuNzQ3LDMuNDc5IEwyMC4xNjEsNC4yODkgQzE4LjM1MywyLjk4IDE2LjIzMSwyLjI1MyAxNCwyLjE1NyBMMTQsNCBMMTMsNCBMMTMsMi4xNTcgQzEwLjc3LDIuMjUzIDguNjQ4LDIuOTc5IDYuODM3LDQuMjkgTDYuMjUxLDMuNDc5IFogTTI3LDEzIEwyNywxNCBMMjUuODYxLDE0IEMyNS43NjgsMTYuNDUgMjQuOTc1LDE4Ljc4MSAyMy41MzgsMjAuNzY2IEwyMi43MjgsMjAuMTggQzI0LjA0MSwxOC4zNjYgMjQuNzY4LDE2LjIzNyAyNC44NjEsMTQgTDIzLDE0IEwyMywxMyBMMjQuODYsMTMgQzI0Ljc2LDEwLjc3NSAyNC4wMzQsOC42NiAyMi43MjgsNi44NTUgTDIzLjUzOCw2LjI3IEMyNC45NjgsOC4yNDUgMjUuNzYsMTAuNTYzIDI1Ljg2LDEzIEwyNywxMyBaIE0yMC43MDYsNS42MDQgTDI0LjQ4NiwxLjgyNCBMMjUuMTkzLDIuNTMxIEwyMS40MTMsNi4zMTIgTDIwLjcwNiw1LjYwNCBaIE02LjI5MywyMS40MzEgTDIuNTEzLDI1LjIxMSBMMS44MDYsMjQuNTA0IEw1LjU4NiwyMC43MjQgTDYuMjkzLDIxLjQzMSBaIE03LjM0MSw4LjA0OCBMMC4xODYsMC44OTQgTDAuODkzLDAuMTg3IEw4LjA0OCw3LjM0MSBMNy4zNDEsOC4wNDggWiBNMjAuMzU2LDE5LjY0OSBMMjYuODEzLDI2LjEwNiBMMjYuMTA2LDI2LjgxMyBMMTkuNjQ5LDIwLjM1NiBMMjAuMzU2LDE5LjY0OSBaIE04Ljk0MSwxNC4zNjQgQzguOTgzLDE0LjI5IDkuMDI4LDE0LjIxNiA5LjA3NCwxNC4xNDQgQzEwLjAwMSwxMi42ODUgOS42OTksMTAuNjc2IDkuNDAzLDkuNTE5IEMxMC4yMiwxMC4wMDQgMTAuOTU2LDExLjExIDExLjIyNCwxMS42MDcgQzExLjMxOSwxMS43ODEgMTEuNDksMTEuODkzIDExLjcwMywxMS44NjggQzExLjkwMSwxMS44NTMgMTIuMDcxLDExLjcyMyAxMi4xMzYsMTEuNTM2IEMxMi45NjYsOS4xNzggMTIuNDk4LDcuNDI5IDExLjkwNCw2LjMyNyBDMTIuNjU3LDYuNzMzIDEzLjIzNyw3LjMzOSAxMy42MTQsOC4xMjMgQzE0LjM4NSw5LjcyNiAxNC4yMTQsMTEuOTE3IDEzLjE2NywxMy44NDEgQzExLjcyNywxNi40OTEgMTIuMDQ2LDE5LjI3MiAxMi4zNzUsMjAuNzIxIEMxMS41MzIsMjAuMzYyIDEwLjc4MywxOS45NTUgMTAuMTM5LDE5LjUwNiBDOC40ODUsMTguMzU0IDcuOTU4LDE2LjA5NSA4Ljk0MSwxNC4zNjQgTDguOTQxLDE0LjM2NCBaIE0xNi4yNzksMTQuMjA3IEMxNi4yNDYsMTQuNDExIDE2LjM0MywxNC42MTQgMTYuNTIyLDE0LjcxOCBDMTYuNywxNC44MjEgMTYuOTI0LDE0LjgwNiAxNy4wODYsMTQuNjc1IEMxNy4xMywxNC42NCAxOC4wMzUsMTMuODkyIDE4LjQ1MiwxMi4wNzIgQzE4Ljk5MSwxMi44MDYgMTkuNTk3LDE0LjM0MyAxOC44NDksMTcuMjQgQzE4LjEyMywyMC4wNTQgMTQuNjU5LDIwLjgyMSAxMy40ODIsMjEuMDAyIEMxMy4xOTQsMTkuOTc3IDEyLjU3NiwxNy4wMjIgMTQuMDQ2LDE0LjMxOSBDMTUuMTA4LDEyLjM2NyAxNS4zNjUsMTAuMTUyIDE0Ljc3OSw4LjM1OSBDMTUuODE2LDkuNTA3IDE2LjczNiwxMS4zNiAxNi4yNzksMTQuMjA3IEwxNi4yNzksMTQuMjA3IFogTTguMDcyLDEzLjg3IEM2LjgzNiwxNi4wNDYgNy40OTMsMTguODgyIDkuNTY3LDIwLjMyNyBDMTAuNTA5LDIwLjk4NCAxMS42NTIsMjEuNTU1IDEyLjk2MiwyMi4wMjQgQzEzLjAxOCwyMi4wNDMgMTMuMDc1LDIyLjA1MyAxMy4xMzEsMjIuMDUzIEMxMy4xNDEsMjIuMDUzIDEzLjE1MSwyMi4wNDggMTMuMTYsMjIuMDQ3IEwxMy4xNiwyMi4wNTIgQzEzLjM4OSwyMi4wMzQgMTguNzY1LDIxLjU2NyAxOS44MTgsMTcuNDkgQzIxLjE3MiwxMi4yNDEgMTguNDY5LDEwLjY4OSAxOC4zNTMsMTAuNjI1IEMxOC4yMDYsMTAuNTQ0IDE4LjAyOSwxMC41NDMgMTcuODgsMTAuNjIxIEMxNy43MzMsMTAuNjk5IDE3LjYzMywxMC44NDYgMTcuNjE2LDExLjAxMiBDMTcuNTY3LDExLjQ3NCAxNy40ODMsMTEuODc0IDE3LjM4MSwxMi4yMTUgQzE3LjExMSw3LjkwOSAxMy43MDcsNi4xNzkgMTMuMDU2LDUuODg3IEMxMi4zNzksNS4zNjggMTEuNTU3LDUuMDEyIDEwLjYwMiw0Ljg0MiBDMTAuMzg3LDQuODAzIDEwLjE1OSw0LjkxOCAxMC4wNjMsNS4xMjQgQzkuOTY3LDUuMzI4IDEwLjAyMiw1LjU3MyAxMC4xOTUsNS43MTkgQzEwLjI3OCw1Ljc4OCAxMi4wMTYsNy4yOTMgMTEuNDc3LDEwLjE1NyBDMTAuODYsOS4zMjcgOS44NDYsOC4yODMgOC42NTIsOC4yODMgQzguNDg3LDguMjgzIDguMzMyLDguMzY1IDguMjQsOC41IEM4LjE0Niw4LjYzNyA4LjEyNiw4LjgxIDguMTg2LDguOTY0IEM4LjE5Nyw4Ljk5MyA5LjMwNiwxMS45MTYgOC4yMywxMy42MDcgQzguMTc0LDEzLjY5NCA4LjEyMSwxMy43ODEgOC4wNzIsMTMuODcgTDguMDcyLDEzLjg3IFoiIGlkPSJBV1MtV0FGX0ljb25fMzJfU3F1aWQiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"google_storage_bucket.portal_ui",
+				{
+					"type": "rect",
+					"cX": 570.14453125,
+					"cY": 430,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal UI (SPA) — Cloud Storage",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#6366f1",
+					"lineWidth": 2
+				}
+			],
+			[
+				"google_storage_bucket.portal_ui Icon",
+				{
+					"type": "SVG",
+					"cX": 455.14453125,
+					"cY": 415,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNhZWNiZmE7fS5jbHMtMntmaWxsOiM2NjlkZjY7fS5jbHMtM3tmaWxsOiM0Mjg1ZjQ7fS5jbHMtNHtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5JY29uXzI0cHhfQ2xvdWRTdG9yYWdlX0NvbG9yPC90aXRsZT48ZyBkYXRhLW5hbWU9IlByb2R1Y3QgSWNvbnMiPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMiIgeT0iNCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjciLz48cmVjdCBjbGFzcz0iY2xzLTIiIHg9IjIwIiB5PSI0IiB3aWR0aD0iMiIgaGVpZ2h0PSI3Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0zIiBwb2ludHM9IjIyIDQgMjAgNCAyMCAxMSAyMiA0Ii8+PHJlY3QgY2xhc3M9ImNscy0yIiB4PSIyIiB5PSI0IiB3aWR0aD0iMiIgaGVpZ2h0PSI3Ii8+PHJlY3QgY2xhc3M9ImNscy00IiB4PSI2IiB5PSI3IiB3aWR0aD0iNiIgaGVpZ2h0PSIxIi8+PHJlY3QgY2xhc3M9ImNscy00IiB4PSIxNSIgeT0iNiIgd2lkdGg9IjMiIGhlaWdodD0iMyIgcng9IjEuNSIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMiIgeT0iMTMiIHdpZHRoPSIyMCIgaGVpZ2h0PSI3Ii8+PHJlY3QgY2xhc3M9ImNscy0yIiB4PSIyMCIgeT0iMTMiIHdpZHRoPSIyIiBoZWlnaHQ9IjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTMiIHBvaW50cz0iMjIgMTMgMjAgMTMgMjAgMjAgMjIgMTMiLz48cmVjdCBjbGFzcz0iY2xzLTIiIHg9IjIiIHk9IjEzIiB3aWR0aD0iMiIgaGVpZ2h0PSI3Ii8+PHJlY3QgY2xhc3M9ImNscy00IiB4PSI2IiB5PSIxNiIgd2lkdGg9IjYiIGhlaWdodD0iMSIvPjxyZWN0IGNsYXNzPSJjbHMtNCIgeD0iMTUiIHk9IjE1IiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiByeD0iMS41Ii8+PC9nPjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"google_cloud_run_v2_service.portal_api",
+				{
+					"type": "rect",
+					"cX": 570.14453125,
+					"cY": 550,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal API / BFF — Cloud Run",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"google_cloud_run_v2_service.portal_api Icon",
+				{
+					"type": "SVG",
+					"cX": 455.14453125,
+					"cY": 535,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNhZWNiZmE7fS5jbHMtMSwuY2xzLTJ7ZmlsbC1ydWxlOmV2ZW5vZGQ7fS5jbHMtMntmaWxsOiM0Mjg1ZjQ7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5JY29uXzI0cHhfQ2xvdWRSdW5fQ29sb3I8L3RpdGxlPjxnIGRhdGEtbmFtZT0iUHJvZHVjdCBJY29ucyI+PGcgPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4LjkgMi42MyAxMi4wMiAxMiAyMS4zOCAxMiA4LjkgMi42MyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyMS4zOCAxMiAxMi4wMiAxMiA4LjkgMjEuMzggMjEuMzggMTIiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy40NCAyMS4zOCA2LjU3IDE5LjgxIDguOSAxMiA1Ljc4IDEyIDMuNDQgMjEuMzgiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMy40NCAyLjYzIDUuNzggMTIgOC45IDEyIDYuNTcgNC4xOSAzLjQ0IDIuNjMiLz48L2c+PC9nPjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"Cloud Note",
+				{
+					"type": "rect",
+					"cX": 1080.14453125,
+					"cY": 660,
+					"rH": 900,
+					"rV": 16,
+					"html": "Both clouds: non-sensitive data only / No PII in JWTs (reference-ID scheme) / Logs are masked",
+					"style": ";display:grid\n;place-items:center\n;font-size:11px\n;font-style:italic\n;color:light-dark(#64748b,#94a3b8)"
+				},
+				{}
+			],
+			[
+				"google_compute_security_policy.portal",
+				{
+					"type": "rect",
+					"cX": 570.14453125,
+					"cY": 310,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Cloud Armor (WAF)",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#14b8a6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"google_compute_security_policy.portal Icon",
+				{
+					"type": "SVG",
+					"cX": 455.14453125,
+					"cY": 295,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNhZWNiZmE7fS5jbHMtMntmaWxsOiM2NjlkZjY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5JY29uXzI0cHhfQ2xvdWRBcm1vcl9Db2xvcjwvdGl0bGU+PGcgZGF0YS1uYW1lPSJQcm9kdWN0IEljb25zIj48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iOS43NiAyMC42IDguNzIgMTkuNTUgMTQuMTcgMTQuMDcgMTUuMjEgMTUuMTIgOS43NiAyMC42Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjcuMDMgMTguMzIgNS45OSAxNy4yNyAxMy4zNCA5Ljg4IDE0LjM4IDEwLjkzIDcuMDMgMTguMzIiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNS4zNCAxNC45OCA0LjMgMTMuOTMgOS4xOCA5LjAzIDEwLjIyIDEwLjA4IDUuMzQgMTQuOTgiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xMiwzLjYxbDYuNzgsM3Y0LjU1QTkuNzEsOS43MSwwLDAsMSwxMiwyMC40OGE5LjcsOS43LDAsMCwxLTYuNzgtOS4zMVY2LjYzbDYuNzgtM00xMiwyLDMuNzUsNS42OHY1LjQ5QTExLjE3LDExLjE3LDAsMCwwLDExLjg1LDIyTDEyLDIybC4xNSwwYTExLjE3LDExLjE3LDAsMCwwLDguMS0xMC43OFY1LjY4TDEyLDJaIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIxNC42OSIgY3k9IjE0LjYyIiByPSIxLjQyIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIxMy44NSIgY3k9IjEwLjQ1IiByPSIxLjQyIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSI5LjY5IiBjeT0iOS42IiByPSIxLjQyIi8+PC9nPjwvc3ZnPg=="
+				},
+				{}
+			],
+			[
+				"aws_s3_bucket.portal_ui",
+				{
+					"type": "rect",
+					"cX": 1590.14453125,
+					"cY": 430,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal UI (SPA) — Amazon S3",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#6366f1",
+					"lineWidth": 2
+				}
+			],
+			[
+				"aws_s3_bucket.portal_ui Icon",
+				{
+					"type": "SVG",
+					"cX": 1475.14453125,
+					"cY": 415,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUvMzIvQXJjaF9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV8zMjwvdGl0bGU+CiAgICA8ZyBpZD0iSWNvbi1BcmNoaXRlY3R1cmUvMzIvQXJjaF9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV8zMiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ikljb24tQXJjaGl0ZWN0dXJlLUJHLzMyL1N0b3JhZ2UiIGZpbGw9IiM3QUExMTYiPgogICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICAgICAgPGcgaWQ9Ikljb24tU2VydmljZS8zMi9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV8zMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wMDAyMDAsIDYuMDAwMTAwKSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMy41MzIsMTUuMzkxIEwyMy43MjksMTMuOTMyIEMyNS44MjEsMTUuMTMxIDI1Ljg2NCwxNS42MjYgMjUuODYzMDE0OSwxNS42NCBDMjUuODU5LDE1LjY0MyAyNS41MDksMTUuOTIzIDIzLjUzMiwxNS4zOTEgTDIzLjUzMiwxNS4zOTEgWiBNMjIuNTY0LDE1LjEwMyBDMTkuNzIyLDE0LjIwNiAxNS45MDQsMTIuNTMxIDEzLjcyMywxMS41MDQgQzEzLjcyMywxMS40OTcgMTMuNzI3LDExLjQ5MSAxMy43MjcsMTEuNDg0IEMxMy43MjcsMTAuODIxIDEzLjE4NywxMC4yODEgMTIuNTI0LDEwLjI4MSBDMTEuODYxLDEwLjI4MSAxMS4zMjEsMTAuODIxIDExLjMyMSwxMS40ODQgQzExLjMyMSwxMi4xNDggMTEuODYxLDEyLjY4NyAxMi41MjQsMTIuNjg3IEMxMi44MTQsMTIuNjg3IDEzLjA3LDEyLjU3MSAxMy4yNzgsMTIuNCBDMTQuNTQ3LDEyLjk5NCAxOS4wNzUsMTUuMDc2IDIyLjQyOCwxNi4xMTMgTDIxLjI0OSwyNC44NSBDMjEuMjQ5LDI1LjcxNiAxNy41NzUsMjcgMTIuNSwyNyBDNy40MjUsMjcgMy43NTEsMjUuNzE2IDMuNzQ2LDI0Ljc4NCBMMS4yODMsNi41NjMgQzMuNDU4LDguMTU1IDguMDc0LDkgMTIuNSw5IEMxNi45MjYsOSAyMS41NDMsOC4xNTUgMjMuNzE4LDYuNTYzIEwyMi41NjQsMTUuMTAzIFogTTEuMDAzLDQuNDg5IEMxLjAzMiwzLjYwOSA1LjEwNCwxIDEyLjUsMSBDMTkuODk1LDEgMjMuOTcsMy42MDkgMjQsNC40ODkgTDI0LDQuNjAzIEMyMy44MSw2LjIzMSAxOS4xMzcsOCAxMi41LDggQzUuODYzLDggMS4yMDksNi4yMzEgMS4wMTgsNC42MDQgTDEuMDAzLDQuNDg5IFogTTI1LDQuNSBDMjUsMi42NjUgMjAuMTMxLDAgMTIuNSwwIEM0Ljg2OSwwIDAsMi42NjUgMCw0LjUgTDAsNC41NjcgTDIuNzUxLDI0Ljg1IEMyLjc1MSwyNi44OTYgNy43NzMsMjggMTIuNSwyOCBDMTcuMjI2LDI4IDIyLjI0OSwyNi44OTYgMjIuMjQ0LDI0LjkxNyBMMjMuMzk2LDE2LjM5IEMyNC4yMTcsMTYuNjA0IDI0Ljg4MSwxNi43MTggMjUuMzkyLDE2LjcxOCBDMjUuOTg1LDE2LjcxOCAyNi4zODYsMTYuNTc0IDI2LjYyOCwxNi4yODUgQzI2LjgyNywxNi4wNDcgMjYuOTAzLDE1Ljc2IDI2Ljg0NSwxNS40NTQgQzI2LjcwOCwxNC43MTYgMjUuNzk3LDEzLjkxOSAyMy44OSwxMi44NyBMMjMuODY5LDEyLjg5NiBMMjUsNC41NjcgTDI1LDQuNSBaIiBpZD0iQW1hem9uLVNpbXBsZS1TdG9yYWdlLVNlcnZpY2UtSWNvbl8zMl9TcXVpZCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+"
+				},
+				{}
+			],
+			[
+				"aws_apprunner_service.portal_api",
+				{
+					"type": "rect",
+					"cX": 1590.14453125,
+					"cY": 550,
+					"rH": 130,
+					"rV": 30,
+					"radii": 10,
+					"html": "Portal API / BFF — App Runner",
+					"style": ";display:grid\n;place-items:center start\n;padding:0 10px 0 38px\n;font-size:12px\n;font-weight:600\n;color:light-dark(#0f172a,#e2e8f0)"
+				},
+				{
+					"fill": "none",
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				"aws_apprunner_service.portal_api Icon",
+				{
+					"type": "SVG",
+					"cX": 1475.14453125,
+					"cY": 535,
+					"rH": 11,
+					"rV": 11,
+					"SVG": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUvMzIvQXJjaF9BbWF6b24tRUNTLUFueXdoZXJlXzMyPC90aXRsZT4KICAgIDxnIGlkPSJJY29uLUFyY2hpdGVjdHVyZS8zMi9BcmNoX0FtYXpvbi1FQ1MtQW55d2hlcmVfMzIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJJY29uLUFyY2hpdGVjdHVyZS1CRy8zMi9Db250YWluZXJzIiBmaWxsPSIjRUQ3MTAwIj4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48L3JlY3Q+CiAgICAgICAgPC9nPgogICAgICAgIDxnIGlkPSJJY29uLVNlcnZpY2UvMzIvQW1hem9uLUVDUy1Bbnl3aGVyZV8zMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4wMDAwMDAsIDUuOTk5ODk4KSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMi45OTksMTcuNzg5MzAxNSBMMTkuNjEyLDE1LjkzMzMwMTUgQzE5Ljg2MSwxNS4xNjAzMDE1IDE5Ljk5OSwxNC4zMzgzMDE1IDE5Ljk5OSwxMy40ODMzMDE1IEMxOS45OTksOS43NjQzMDE1MiAxNy40NDQsNi42MzgzMDE1MiAxNCw1Ljc0NjMwMTUyIEwxNCwxLjM4ODMwMTUyIEwyMi45OTksNi44NDQzMDE1MiBMMjIuOTk5LDE3Ljc4OTMwMTUgWiBNMTEuODQzLDI1Ljk5MzMwMTUgTDEsMTkuNzAyMzAxNSBMMSw2LjgxNTMwMTUyIEw5Ljk5OSwxLjM4NjMwMTUyIEw5Ljk5OSw1Ljc0NjMwMTUyIEM2LjU1NCw2LjYzODMwMTUyIDMuOTk5LDkuNzYzMzAxNTIgMy45OTksMTMuNDgzMzAxNSBDMy45OTksMTcuODk0MzAxNSA3LjU4OCwyMS40ODMzMDE1IDExLjk5OSwyMS40ODMzMDE1IEMxNC4wODMsMjEuNDgzMzAxNSAxNS45NzgsMjAuNjc1MzAxNSAxNy40MDQsMTkuMzY0MzAxNSBMMjAuNTg5LDIxLjE4MjMwMTUgTDExLjg0MywyNS45OTMzMDE1IFogTTEyLjc4Myw2LjUzMDMwMTUyIEMxMy43NzUsNy42NjkzMDE1MiAxNC4zODMsMTAuMjYxMzAxNSAxNC40NzYsMTIuOTk2MzAxNSBMOS41MjksMTIuOTk2MzAxNSBDOS42MzcsMTAuNDE4MzAxNSAxMC4yMTYsNy45MTEzMDE1MiAxMS4yNSw2LjUyNDMwMTUyIEMxMS40OTYsNi40OTgzMDE1MiAxMS43NDYsNi40ODMzMDE1MiAxMS45OTksNi40ODMzMDE1MiBDMTIuMjY0LDYuNDgzMzAxNTIgMTIuNTI1LDYuNTAxMzAxNTIgMTIuNzgzLDYuNTMwMzAxNTIgTDEyLjc4Myw2LjUzMDMwMTUyIFogTTE1LjQ4LDEyLjk5NjMwMTUgQzE1LjQxOSwxMC42NDgzMDE1IDE0Ljk4Nyw4LjM2OTMwMTUyIDE0LjE4OSw2LjgzOTMwMTUyIEMxNi44Myw3LjcxMjMwMTUyIDE4Ljc3NSwxMC4xMTYzMDE1IDE4Ljk3NCwxMi45OTYzMDE1IEwxNS40OCwxMi45OTYzMDE1IFogTTE1LjQ4MiwxMy45OTYzMDE1IEwxOC45NzMsMTMuOTk2MzAxNSBDMTguNzY2LDE2LjgyODMwMTUgMTYuODcxLDE5LjE5MzMwMTUgMTQuMjksMjAuMDkxMzAxNSBDMTUuMDQ0LDE4LjUwNjMwMTUgMTUuNDM4LDE2LjI3NDMwMTUgMTUuNDgyLDEzLjk5NjMwMTUgTDE1LjQ4MiwxMy45OTYzMDE1IFogTTExLjAxMywyMC40MDYzMDE1IEMxMC4wMiwxOS4wODMzMDE1IDkuNTI1LDE2LjU4OTMwMTUgOS41MSwxMy45OTYzMDE1IEwxNC40ODYsMTMuOTk2MzAxNSBDMTQuNDU1LDE2LjUxOTMwMTUgMTMuOTc2LDE4Ljk5NDMwMTUgMTIuOTU1LDIwLjQxMDMwMTUgQzEyLjY0MSwyMC40NTMzMDE1IDEyLjMyNCwyMC40ODMzMDE1IDExLjk5OSwyMC40ODMzMDE1IEMxMS42NjMsMjAuNDgzMzAxNSAxMS4zMzYsMjAuNDUxMzAxNSAxMS4wMTMsMjAuNDA2MzAxNSBMMTEuMDEzLDIwLjQwNjMwMTUgWiBNOC40OTgsMTMuOTk2MzAxNSBDOC41MTQsMTYuMjgxMzAxNSA4Ljg5NCwxOC41MDMzMDE1IDkuNjUsMjAuMDY5MzAxNSBDNy4wOTgsMTkuMTU2MzAxNSA1LjIzLDE2LjgwNjMwMTUgNS4wMjUsMTMuOTk2MzAxNSBMOC40OTgsMTMuOTk2MzAxNSBaIE01LjAyNCwxMi45OTYzMDE1IEM1LjIyNiwxMC4wODAzMDE1IDcuMjE2LDcuNjQ4MzAxNTIgOS45MDcsNi44MDMzMDE1MiBDOS4wNzUsOC40MTEzMDE1MiA4LjYwOCwxMC42NzkzMDE1IDguNTE1LDEyLjk5NjMwMTUgTDUuMDI0LDEyLjk5NjMwMTUgWiBNMjMuNzU4LDYuMTM0MzAxNTIgTDEzLjc1OSwwLjA3MjMwMTUxNjIgQzEzLjYwNCwtMC4wMjE2OTg0ODM4IDEzLjQxMSwtMC4wMjM2OTg0ODM4IDEzLjI1NSwwLjA2NDMwMTUxNjIgQzEzLjA5OCwwLjE1MzMwMTUxNiAxMywwLjMxOTMwMTUxNiAxMywwLjUwMDMwMTUxNiBMMTMsNS41NTIzMDE1MiBDMTIuNjcxLDUuNTExMzAxNTIgMTIuMzM5LDUuNDgzMzAxNTIgMTEuOTk5LDUuNDgzMzAxNTIgQzExLjY2LDUuNDgzMzAxNTIgMTEuMzI3LDUuNTExMzAxNTIgMTAuOTk5LDUuNTUyMzAxNTIgTDEwLjk5OSwwLjUwMDMwMTUxNiBDMTAuOTk5LDAuMzIwMzAxNTE2IDEwLjkwMiwwLjE1MzMwMTUxNiAxMC43NDUsMC4wNjQzMDE1MTYyIEMxMC41ODksLTAuMDIzNjk4NDgzOCAxMC4zOTUsLTAuMDIxNjk4NDgzOCAxMC4yNDEsMC4wNzIzMDE1MTYyIEwwLjI0Miw2LjEwNDMwMTUyIEMwLjA5Miw2LjE5NTMwMTUyIC0xLjc3NjM1Njg0ZS0xNSw2LjM1NzMwMTUyIC0xLjc3NjM1Njg0ZS0xNSw2LjUzMzMwMTUyIEwtMS43NzYzNTY4NGUtMTUsMTkuOTkwMzAxNSBDLTEuNzc2MzU2ODRlLTE1LDIwLjE2ODMwMTUgMC4wOTUsMjAuMzMzMzAxNSAwLjI0OSwyMC40MjMzMDE1IEwxMS41ODUsMjYuOTk5MzAxNSBDMTEuNjYyLDI3LjA0NDMwMTUgMTEuNzQ5LDI3LjA2NzMwMTUgMTEuODM2LDI3LjA2NzMwMTUgQzExLjkxOSwyNy4wNjczMDE1IDEyLjAwMiwyNy4wNDYzMDE1IDEyLjA3NywyNy4wMDUzMDE1IEwyMS44NTMsMjEuNjI3MzAxNSBDMjIuMDExLDIxLjU0MDMwMTUgMjIuMTEsMjEuMzc0MzAxNSAyMi4xMTEsMjEuMTkzMzAxNSBDMjIuMTEyLDIxLjAxMjMwMTUgMjIuMDE3LDIwLjg0NTMwMTUgMjEuODU5LDIwLjc1NTMwMTUgTDE4LjEyMSwxOC42MjMzMDE1IEMxOC41NjcsMTguMDkzMzAxNSAxOC45NCwxNy41MDIzMDE1IDE5LjIzNywxNi44NjgzMDE1IEwyMy4yNTksMTkuMDcyMzAxNSBDMjMuMzM0LDE5LjExMzMwMTUgMjMuNDE2LDE5LjEzMzMwMTUgMjMuNDk5LDE5LjEzMzMwMTUgQzIzLjU4NywxOS4xMzMzMDE1IDIzLjY3NiwxOS4xMTAzMDE1IDIzLjc1NCwxOS4wNjMzMDE1IEMyMy45MDYsMTguOTc0MzAxNSAyMy45OTksMTguODEwMzAxNSAyMy45OTksMTguNjMzMzAxNSBMMjMuOTk5LDYuNTYyMzAxNTIgQzIzLjk5OSw2LjM4NzMwMTUyIDIzLjkwOCw2LjIyNTMwMTUyIDIzLjc1OCw2LjEzNDMwMTUyIEwyMy43NTgsNi4xMzQzMDE1MiBaIiBpZD0iRmlsbC0xIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
 				},
 				{}
 			]
@@ -436,8 +907,82 @@
 		"links": [
 			[
 				[
-					"Core Data",
-					"Analysis"
+					"Internet",
+					"aws_wafv2_web_acl.portal"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Internet",
+					"google_compute_security_policy.portal"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"aws_wafv2_web_acl.portal",
+					"aws_s3_bucket.portal_ui"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"google_storage_bucket.portal_ui",
+					"google_cloud_run_v2_service.portal_api"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"google_cloud_run_v2_service.portal_api",
+					"VPN"
+				],
+				{
+					"headT": "triangle",
+					"anchorF": "B"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"VPN",
+					"IdP"
 				],
 				{
 					"headF": false,
@@ -445,74 +990,14 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#f9a8d4",
+					"stroke": "#8b5cf6",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
-					"Internet",
-					"Private WAF"
-				],
-				{
-					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#38bdf8",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Private WAF",
-					"Private Application"
-				],
-				{
-					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#86efac",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Internet",
-					"Public WAF"
-				],
-				{
-					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#fdba74",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Public WAF",
-					"Public Application"
-				],
-				{
-					"headF": "triangle",
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#fdba74",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Importer",
-					"Core Data"
+					"IdP",
+					"MFA"
 				],
 				{
 					"headF": false,
@@ -520,13 +1005,43 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#67e8f9",
+					"stroke": "#8b5cf6",
 					"lineWidth": 2
 				}
 			],
 			[
 				[
-					"Private Application",
+					"IdP",
+					"ID Store"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"IdP",
+					"Audit Log"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#eab308",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"VPN",
 					"Writer API"
 				],
 				{
@@ -535,22 +1050,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#86efac",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Public Application",
-					"Writer API"
-				],
-				{
-					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#fca5a5",
+					"stroke": "#22c55e",
 					"lineWidth": 2
 				}
 			],
@@ -565,7 +1065,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#93c5fd",
+					"stroke": "#22c55e",
 					"lineWidth": 2
 				}
 			],
@@ -580,22 +1080,7 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#fde047",
-					"lineWidth": 2
-				}
-			],
-			[
-				[
-					"Sanitized Reader",
-					"Public Application"
-				],
-				{
-					"headF": false,
-					"headT": "triangle",
-					"corner": "curve"
-				},
-				{
-					"stroke": "#d8b4fe",
+					"stroke": "#eab308",
 					"lineWidth": 2
 				}
 			],
@@ -610,8 +1095,127 @@
 					"corner": "curve"
 				},
 				{
-					"stroke": "#d8b4fe",
+					"stroke": "#f97316",
 					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Sanitized Reader",
+					"VPN"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#f97316",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"VPN",
+					"google_cloud_run_v2_service.portal_api"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"VPN",
+					"aws_apprunner_service.portal_api"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": "2"
+				}
+			],
+			[
+				[
+					"Importer",
+					"Core Data"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#ec4899",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"Core Data",
+					"Analysis"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#ec4899",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"google_compute_security_policy.portal",
+					"google_storage_bucket.portal_ui"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"aws_s3_bucket.portal_ui",
+					"aws_apprunner_service.portal_api"
+				],
+				{
+					"headF": "triangle",
+					"headT": "triangle",
+					"corner": "curve"
+				},
+				{
+					"stroke": "#06b6d4",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"aws_apprunner_service.portal_api",
+					"VPN"
+				],
+				{
+					"headT": "triangle",
+					"anchorF": "B"
+				},
+				{
+					"stroke": "#8b5cf6",
+					"lineWidth": "2"
 				}
 			]
 		]
