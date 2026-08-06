@@ -109,7 +109,7 @@ autoLayout		= ( { algorithm = 'grid', cols, gap = 48, startX = 200, startY = 200
 			,	row = ( i / c ) | 0
 			return	[ node[ 0 ], { ...node[ 1 ], cX: startX + col * cellW, cY: startY + row * cellH }, node[ 2 ] ]
 		} )
-		return	SetModel( { nodes, links: structuredClone( app.model.links ), meta: structuredClone( app.model.meta ) } )
+		return	SetModel( { nodes, links: structuredClone( app.model.links ) } )
 	}
 	default:
 		throw new Error( `unknown layout algorithm "${ algorithm }"` )

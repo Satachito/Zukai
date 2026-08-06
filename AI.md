@@ -27,7 +27,6 @@ Implementation-accurate contract for agents (Cursor, MCP, scripts) working on Zu
 |-------|-------------|
 | **`model.nodes`** | Node array (draw order ≈ z-order; later entries on top) |
 | **`model.links`** | Link array |
-| **`model.meta`** | Optional free-form metadata; round-trips untouched (see **Source round-trip** below) |
 
 Coordinate system: origin top-left, **Y axis downward**.
 
@@ -53,17 +52,22 @@ separately from the file format.
 | **`type`** | ✓ | `"rect"` \| `"ellipse"` \| `"rhombus"` \| `"SVG"` \| `"PNG"` |
 | **`cX`, `cY`** | ✓ | Center (numbers). **Not** `cx`/`cy` |
 | **`rH`, `rV`** | ✓ | Half-width / half-height. Size ≈ `2×|rH|` × `2×|rV|` |
-| **`radii`** | — | Corner radius for `rect` |
+| **`radii`** | — | Corner radius. **`rect` only** — silently ignored on every other type (the shape editor offers the field regardless) |
 | **`html`** | — | Label HTML (live `foreignObject`, unsanitized). Export sanitizes. Field name is `html`, **not** `innerHTML` |
 | **`style`** | — | Label CSS fragments (`;prop : value`, newline-separated) |
-| **`SVG`** | when type=SVG | SVG source string (encoded to base64 at draw time) |
+| **`SVG`** | when type=SVG | **base64** of the SVG source (decoded at draw time). Not raw `<svg>` markup |
 | **`PNG`** | when type=PNG | PNG base64 |
+
+`SVG` / `PNG` nodes are outlined as their bounding box (like `rect`) for link
+attachment and hit-testing.
 
 Geometry: `x = cX − rH`, `y = cY − rV`, `width = 2×rH`, `height = 2×rV`.
 
 ### `paint` (nodes and links)
 
-Recognized keys: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `miterLimit`, `lineDash`, `lineDashOffset`.
+Applied when drawing: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `miterLimit`, `lineDash`, `lineDashOffset`. Omitted / empty keys are simply not applied (no `fill` → `none`).
+
+`miterLimit` only has a visible effect where `lineJoin` is `miter` (the default join for node shapes; links default to `round`).
 
 ---
 
@@ -85,7 +89,12 @@ Recognized keys: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `miterLim
 | **`anchorF`, `anchorT`** | `T` `B` `L` `R` `TL` `TR` `BL` `BR` / omit | Attachment point. Omit = outline hit toward the other node's center |
 | **`corner`** | undefined(default direct line) / `sharp` / `arc` / `curve` | Set only for orthogonal routing; see SCHEMA.md |
 
-Duplicate `[ from, to ]` pairs are merged by `Link()` / `EditLink()`. Avoid duplicates (`validate` reports them).
+Routing always produces one or two bend points, so `curve` draws a quadratic
+(one bend) or cubic (two) Bézier.
+
+`Link()` overwrites the `attributes` / `paint` of an existing `[ from, to ]`
+pair instead of adding a second link, so re-adding the same pair edits it.
+`validate` reports duplicates if a file contains them.
 
 ---
 
@@ -99,51 +108,20 @@ Duplicate `[ from, to ]` pairs are merged by `Link()` / `EditLink()`. Avoid dupl
 
 ---
 
-## Source round-trip (`model.meta.sources`)
+## Diagrams derived from source
 
-For diagrams converted **from** external sources (Terraform, CloudFormation, …)
-that must convert **back** without loss.
+`Samples/AWS.zu` / `GCP.zu` / `Azure.zu` / `MultiCloud.zu` each mirror a
+`terraform validate`-clean configuration kept in a sibling directory
+(`Samples/AWS/main.tf`, `Samples/MultiCloud/{main,gcp,aws}.tf`, …).
 
-**Forward (source → `.zu`):**
+The two are linked only by convention: a node representing a resource uses its
+**Terraform address as the node ID** (e.g. `aws_s3_bucket.assets`,
+`google_cloud_run_v2_service.portal_api`); nodes with ordinary IDs are diagram
+decoration. Supporting resources (subnets, listeners, IAM, …) exist in the HCL
+without being drawn.
 
-1. Store every original source file verbatim in `model.meta.sources`
-   (map: filename → text). Once, at file level — never per node.
-2. A node representing a source entity gets the **source address as its ID**
-   (e.g. `aws_s3_bucket.logs`, `module.vpc.aws_subnet.private[0]`). The ID is
-   the only mapping — no per-node source field.
-3. Diagram-only decoration (frames, labels, bands) gets ordinary non-address IDs.
-4. Record every address you gave a node in **`meta.mapped`** (array). Supporting
-   resources that stay in the sources but are not drawn (subnets, listeners,
-   IAM, …) are *not* listed.
-
-**Back (`.zu` → source):**
-
-1. Start from `meta.sources` **verbatim** — do not regenerate from scratch.
-   Comments, variables, `locals`, formatting all come from the stored text.
-2. Apply only the diagram's diffs as edits to that text:
-   - address in **`meta.mapped`** but **no node with that ID** → the resource
-     was deleted (addresses only in the sources were never drawn — keep them)
-   - node ID renamed to another address → the resource was renamed/moved
-   - node with a **non-address ID** (and not obvious decoration) → a new
-     resource; ask or infer its type from the label
-3. Links express references/dependencies; only change code for them when the
-   request says so.
-4. When the sources change as part of the request, write the updated text back
-   into `meta.sources` — and keep `meta.mapped` in sync — so the file stays
-   round-trippable.
-
-**Preservation semantics:** `meta` survives load/save, undo/redo, `apply` ops
-(they cannot touch it), `autoLayout`, and `zu_save_file`. `SetModel` /
-`ZU.setModel` replace the whole model — include `meta` in the passed model or it
-is dropped. The in-app AI panel omits `meta` from its prompt context
-(`ai-system.js`); read it via `ZU.getModel()` / `zu_get_model` / the file.
-
-**Extract without AI:** `node tools/zu-sources.mjs <file.zu> [outDir]` writes
-`meta.sources` back to disk as files.
-
-**Examples:** `Samples/AWS.zu` / `GCP.zu` / `Azure.zu` each embed a
-`terraform validate`-clean `main.tf` and use Terraform addresses as the IDs of
-their resource nodes.
+Nothing is stored in the `.zu` about the source and nothing keeps them in sync —
+when you change one, update the other in the same edit.
 
 ---
 
@@ -168,7 +146,11 @@ ZU.validate(model?)     // array of issue strings (empty = OK)
 ZU.apply([ { op: '…', … }, … ])
 ZU.autoLayout({ algorithm: 'grid', cols, gap, startX, startY })
 ZU.setModel({ nodes, links })
+ZU.canvasSize()         // [ width, height ]
+ZU.draw()               // force a redraw
 ```
+
+Every op is also exposed directly (`ZU.addNode({ … })`, `ZU.removeLink({ … })`, …).
 
 **`apply` ops:**
 
@@ -235,7 +217,6 @@ Phase 4 changes stay **in memory** until `zu_save_file`.
 | `tools/zu-server.mjs` | Static serve + live reload + RPC |
 | `tools/zu-mcp.mjs` | Cursor MCP |
 | `tools/zu-validate.mjs` | File / MCP validation |
-| `tools/zu-sources.mjs` | Extract `meta.sources` to files |
 
 ---
 

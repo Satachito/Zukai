@@ -45,7 +45,8 @@ manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the sess
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors
-  - `lineWidth`, `lineCap`, `lineJoin`, `miterLimit`
+  - `lineWidth`, `lineCap`, `lineJoin`
+  - `miterLimit` — visible only where `lineJoin` is `miter`
   - `lineDash`, `lineDashOffset`
 
 Example:
@@ -88,11 +89,13 @@ Example:
     only to `rect` / `SVG` / `PNG` ends, not to `ellipse` / `rhombus`.
   - `corner` — shaft routing / corner style. When set, it routes the link
     **orthogonally** (right-angle bends), whatever its anchors; the value only
-    changes how that multi-point shaft is drawn:
+    changes how that multi-point shaft is drawn. Routing yields one or two bend
+    points, so:
     - `"sharp"` — polyline with right-angle corners (orthogonal)
-    - `"arc"` — straight runs joined by quarter-circle fillets
-    - `"curve"` — smooth Bézier that leaves each node perpendicular and rounds
-      the corners
+    - `"arc"` — straight runs joined by fillets (radius: up to 48px, capped at
+      half the shorter adjoining run)
+    - `"curve"` — a single Bézier through the bends — quadratic for one bend,
+      cubic for two — leaving each node perpendicular
     - omitted/default — a direct 2-point line instead of the orthogonal route. With
       exactly one end anchored, the auto end attaches *perpendicular* to the
       anchored edge, so the line snaps to horizontal / vertical when the ends
@@ -106,35 +109,14 @@ Example:
   { "stroke": "gray", "lineWidth": 2 } ]
 ```
 
-## `model.meta` (optional)
+## Diagrams derived from source
 
-Free-form metadata carried alongside `nodes` / `links`. The editor never renders
-or edits it, but it **round-trips**: load, editing, undo/redo, `zu_save_file`,
-and `autoLayout` all preserve it. `SetModel` / `ZU.setModel` replace the whole
-model — `meta` survives only if the passed model includes it.
-
-Reserved keys:
-
-- **`meta.sources`** — map of *filename → original source text* for diagrams
-  derived from external sources (e.g. Terraform HCL). Store each source file
-  **once** here, verbatim; never duplicate source text per node.
-- **`meta.mapped`** — array of the source addresses that were given nodes at
-  conversion time. Convert-back uses it to tell *deleted from the diagram*
-  (in `mapped`, no node) apart from *supporting resource never drawn*
-  (in sources only — leave it alone).
-
-```json
-{ "model": {
-	"meta": { "sources": { "main.tf": "resource \"aws_s3_bucket\" \"logs\" { … }" } },
-	"nodes": [ … ], "links": [ … ] } }
-```
-
-Convention for source-derived diagrams: a node that represents a source entity
-uses the **source address as its ID** (e.g. `aws_s3_bucket.logs`,
-`module.vpc.aws_subnet.private[0]`). Combined with the "keep IDs stable" rule
-below, the ID is the traceability key back to the source — no extra field
-needed. Nodes whose IDs are not source addresses are diagram-only (or represent
-resources to be added on convert-back).
+Some samples mirror an infrastructure definition kept beside them (e.g.
+`Samples/AWS.zu` and `Samples/AWS/main.tf`). By convention a node that
+represents a source entity uses the **source address as its ID** (e.g.
+`aws_s3_bucket.assets`, `module.vpc.aws_subnet.private[0]`), so the ID is the
+link back to the definition. Nodes whose IDs are not addresses are diagram-only
+decoration. Nothing enforces this — keep the two in sync by hand.
 
 ## Authoring rules (for AI edits)
 

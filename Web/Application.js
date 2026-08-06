@@ -181,7 +181,7 @@ export	const
 SetModel	= model => DoTypical(
 	'SetModel'
 ,	() => {
-		app.model	= { nodes: model.nodes ?? [], links: model.links ?? [], ...( model.meta !== undefined ? { meta: model.meta } : {} ) }
+		app.model	= { nodes: model.nodes ?? [], links: model.links ?? [] }
 		app.reforms	= []
 	}
 )
