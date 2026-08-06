@@ -127,6 +127,7 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	P.lineWidth			&& ( c2D.lineWidth		= P.lineWidth		)
 	P.lineCap			&& ( c2D.lineCap		= P.lineCap			)
 	P.lineJoin			&& ( c2D.lineJoin		= P.lineJoin		)
+	P.miterLimit		&& ( c2D.miterLimit		= P.miterLimit		)
 	P.lineDashOffset	&& ( c2D.lineDashOffset = P.lineDashOffset	)
 	P.lineDash			&& c2D.setLineDash( P.lineDash )
 	c2D.stroke( shaftPath )

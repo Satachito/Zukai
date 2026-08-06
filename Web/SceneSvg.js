@@ -27,6 +27,7 @@ paintAttrs	= P => {
 	P.lineWidth			&& ( a[ 'stroke-width' ] = P.lineWidth )
 	P.lineCap			&& ( a[ 'stroke-linecap' ] = P.lineCap )
 	P.lineJoin			&& ( a[ 'stroke-linejoin' ] = P.lineJoin )
+	P.miterLimit		&& ( a[ 'stroke-miterlimit' ] = P.miterLimit )
 	P.lineDash			&& ( a[ 'stroke-dasharray' ] = P.lineDash.join( ' ' ) )
 	P.lineDashOffset	&& ( a[ 'stroke-dashoffset' ] = P.lineDashOffset )
 	return a
@@ -125,6 +126,7 @@ appendLink	= ( parent, link ) => {
 		,	'stroke-linejoin'	: P.lineJoin || 'round'
 		}
 	P.lineWidth			&& ( a[ 'stroke-width' ] = P.lineWidth )
+	P.miterLimit		&& ( a[ 'stroke-miterlimit' ] = P.miterLimit )
 	P.lineDash			&& ( a[ 'stroke-dasharray' ] = P.lineDash.join( ' ' ) )
 	P.lineDashOffset	&& ( a[ 'stroke-dashoffset' ] = P.lineDashOffset )
 

@@ -37,6 +37,7 @@ DrawLinkSvg		= ( parts, X, Y, link ) => {
 	,	`stroke-linejoin="${ P.lineJoin || 'round' }"`
 	]
 	P.lineWidth			&& a.push( `stroke-width="${ P.lineWidth }"` )
+	P.miterLimit		&& a.push( `stroke-miterlimit="${ P.miterLimit }"` )
 	P.lineDash			&& a.push( `stroke-dasharray="${ P.lineDash.join( ' ' ) }"` )
 	P.lineDashOffset	&& a.push( `stroke-dashoffset="${ P.lineDashOffset }"` )
 
@@ -75,6 +76,7 @@ paintAttrs		= P => {
 	P.lineWidth			&& ( $ += ` stroke-width="${ P.lineWidth }"`				)
 	P.lineCap			&& ( $ += ` stroke-linecap="${ P.lineCap }"`				)
 	P.lineJoin			&& ( $ += ` stroke-linejoin="${ P.lineJoin }"`				)
+	P.miterLimit		&& ( $ += ` stroke-miterlimit="${ P.miterLimit }"`			)
 	P.lineDash			&& ( $ += ` stroke-dasharray="${ P.lineDash.join( ' ' ) }"`	)
 	P.lineDashOffset	&& ( $ += ` stroke-dashoffset="${ P.lineDashOffset }"`		)
 	return	$
