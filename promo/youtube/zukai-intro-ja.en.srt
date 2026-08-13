@@ -1,0 +1,83 @@
+1
+00:00:00,800 --> 00:00:04,160
+This is Zukai — build cloud diagrams with AI.
+
+2
+00:00:04,160 --> 00:00:09,387
+A free, open source diagram editor that runs entirely in your browser.
+
+3
+00:00:10,737 --> 00:00:12,761
+No sign-up, no install.
+
+4
+00:00:12,761 --> 00:00:15,576
+Open the page and start drawing.
+
+5
+00:00:15,576 --> 00:00:23,494
+Cloud architecture, mind maps, sequence diagrams — every sample loads with a single click.
+
+6
+00:00:24,744 --> 00:00:31,099
+AWS, Azure, Google Cloud and Lucide line icons are built in.
+
+7
+00:00:31,099 --> 00:00:39,784
+Pick one from the left panel and the official icon drops straight onto the canvas.
+
+8
+00:00:41,034 --> 00:00:45,374
+Drag to create a shape, then drag to connect it.
+
+9
+00:00:45,374 --> 00:00:54,325
+Arrowheads, anchor points and orthogonal routing are all adjustable, on a canvas up to 4096 × 4096.
+
+10
+00:00:55,725 --> 00:01:00,355
+Your diagram is saved as plain JSON — a .
+
+11
+00:01:00,355 --> 00:01:01,258
+zu file.
+
+12
+00:01:01,258 --> 00:01:06,904
+Readable by humans and by AI, and diffable in Git.
+
+13
+00:01:06,904 --> 00:01:13,453
+Export to SVG or PDF, or copy the SVG straight into Figma.
+
+14
+00:01:14,703 --> 00:01:16,691
+And then, AI editing.
+
+15
+00:01:16,691 --> 00:01:27,863
+Paste your own API key into the built-in Claude or OpenAI panel, and simply describe the change: “Make the VPN band 1.
+
+16
+00:01:27,863 --> 00:01:28,809
+2× taller.
+
+17
+00:01:28,809 --> 00:01:30,419
+” Just like that.
+
+18
+00:01:30,419 --> 00:01:34,490
+You can also drive it from Cursor over MCP.
+
+19
+00:01:35,790 --> 00:01:36,418
+Zukai.
+
+20
+00:01:36,418 --> 00:01:39,559
+Free, open source, no sign-up.
+
+21
+00:01:39,559 --> 00:01:42,595
+Try it in your browser today.

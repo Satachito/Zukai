@@ -6,3 +6,6 @@ macOS.xcodeproj
 DebugAssets/
 DebugData/
 node_modules/
+
+#	Rendered promo videos — rebuild with tools/make-intro-video.mjs
+promo/youtube/*.mp4
