@@ -1,0 +1,443 @@
+{
+	"lang": "ja",
+	"prompts": [
+		"zukai MCP のツールだけを使って、ブラウザで開いている図に AWS の 3 層構成を描いてください。ALB → API ( ECS Fargate ) → RDS の 3 ノードを縦に並べ、上から下へリンクでつなぎます。ノードは rect ( rH 120 / rV 48 )、cX は 640 で揃え、cY は 220 / 460 / 700。ラベルは area の html に入れ、paint には lineWidth 2 と、暗い背景でもはっきり見える明るい色の stroke を必ず指定してください。最後に zu_validate で確認を。",
+		"ALB と API を囲む「Public Subnet」と、RDS を囲む「Private Subnet」の枠を rect で追加して、背面に置いてください。枠には薄い色の stroke を付けて、ラベルも入れて。"
+	],
+	"events": [
+		{
+			"at": 0,
+			"kind": "prompt",
+			"text": "zukai MCP のツールだけを使って、ブラウザで開いている図に AWS の 3 層構成を描いてください。ALB → API ( ECS Fargate ) → RDS の 3 ノードを縦に並べ、上から下へリンクでつなぎます。ノードは rect ( rH 120 / rV 48 )、cX は 640 で揃え、cY は 220 / 460 / 700。ラベルは area の html に入れ、paint には lineWidth 2 と、暗い背景でもはっきり見える明るい色の stroke を必ず指定してください。最後に zu_validate で確認を。"
+		},
+		{
+			"at": 5567,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_status",
+			"input": {}
+		},
+		{
+			"at": 7804,
+			"kind": "text",
+			"text": "ブラウザ接続を確認しました。3つのノードとリンクを追加します。"
+		},
+		{
+			"at": 10584,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_apply",
+			"input": {
+				"ops": [
+					{
+						"op": "addNode",
+						"id": "ALB",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 220,
+							"rH": 120,
+							"rV": 48,
+							"html": "ALB"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addNode",
+						"id": "API",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 460,
+							"rH": 120,
+							"rV": 48,
+							"html": "API (ECS Fargate)"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addNode",
+						"id": "RDS",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 700,
+							"rH": 120,
+							"rV": 48,
+							"html": "RDS"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addLink",
+						"id": "ALB_API",
+						"from": "ALB",
+						"to": "API",
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addLink",
+						"id": "API_RDS",
+						"from": "API",
+						"to": "RDS",
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					}
+				]
+			}
+		},
+		{
+			"at": 12370,
+			"kind": "text",
+			"text": "問題なく反映されました。最後に検証します。"
+		},
+		{
+			"at": 12372,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_validate",
+			"input": {}
+		},
+		{
+			"at": 14676,
+			"kind": "text",
+			"text": "ALB → API (ECS Fargate) → RDS の3層構成を縦に配置し、明るい水色 (`#7DD3FC`, lineWidth 2) のノード枠・リンクで描画しました。`zu_validate` の結果は `ok: true` で問題なしです。"
+		},
+		{
+			"at": 16397,
+			"kind": "result",
+			"turns": 4,
+			"cost": 0.1432326
+		},
+		{
+			"at": 16751,
+			"kind": "prompt",
+			"text": "ALB と API を囲む「Public Subnet」と、RDS を囲む「Private Subnet」の枠を rect で追加して、背面に置いてください。枠には薄い色の stroke を付けて、ラベルも入れて。"
+		},
+		{
+			"at": 28100,
+			"kind": "text",
+			"text": "まず既存のサンプルで「囲み枠+ラベル」の描き方を確認します。"
+		},
+		{
+			"at": 28307,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_read_file",
+			"input": {
+				"path": "Samples/MultiCloud.zu"
+			}
+		},
+		{
+			"at": 29631,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_get_model",
+			"input": {}
+		},
+		{
+			"at": 75230,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_apply",
+			"input": {
+				"ops": [
+					{
+						"op": "addNode",
+						"id": "PublicSubnet",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 340,
+							"rH": 160,
+							"rV": 208,
+							"html": "<div style=\"position:absolute;top:6px;left:10px;font-size:13px;color:#94A3B8;\">Public Subnet</div>"
+						},
+						"paint": {
+							"lineWidth": 1,
+							"stroke": "#475569"
+						}
+					},
+					{
+						"op": "addNode",
+						"id": "PrivateSubnet",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 700,
+							"rH": 160,
+							"rV": 88,
+							"html": "<div style=\"position:absolute;top:6px;left:10px;font-size:13px;color:#94A3B8;\">Private Subnet</div>"
+						},
+						"paint": {
+							"lineWidth": 1,
+							"stroke": "#475569"
+						}
+					},
+					{
+						"op": "restack",
+						"ids": [
+							"PublicSubnet",
+							"PrivateSubnet",
+							"ALB",
+							"API",
+							"RDS"
+						]
+					}
+				]
+			}
+		},
+		{
+			"at": 83468,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_get_model",
+			"input": {}
+		},
+		{
+			"at": 87474,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_apply",
+			"input": {
+				"ops": [
+					{
+						"op": "restack",
+						"order": [
+							"PublicSubnet",
+							"PrivateSubnet",
+							"ALB",
+							"API",
+							"RDS"
+						]
+					}
+				]
+			}
+		},
+		{
+			"at": 102690,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_apply",
+			"input": {
+				"ops": [
+					{
+						"op": "removeNode",
+						"id": "ALB"
+					},
+					{
+						"op": "removeNode",
+						"id": "API"
+					},
+					{
+						"op": "removeNode",
+						"id": "RDS"
+					},
+					{
+						"op": "addNode",
+						"id": "ALB",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 220,
+							"rH": 120,
+							"rV": 48,
+							"html": "ALB"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addNode",
+						"id": "API",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 460,
+							"rH": 120,
+							"rV": 48,
+							"html": "API (ECS Fargate)"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addNode",
+						"id": "RDS",
+						"area": {
+							"type": "rect",
+							"cX": 640,
+							"cY": 700,
+							"rH": 120,
+							"rV": 48,
+							"html": "RDS"
+						},
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addLink",
+						"id": "ALB_API",
+						"from": "ALB",
+						"to": "API",
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					},
+					{
+						"op": "addLink",
+						"id": "API_RDS",
+						"from": "API",
+						"to": "RDS",
+						"paint": {
+							"lineWidth": 2,
+							"stroke": "#7DD3FC"
+						}
+					}
+				]
+			}
+		},
+		{
+			"at": 106930,
+			"kind": "text",
+			"text": "Nodeの順序が Public/Private Subnet → ALB/API/RDS となり、サブネット枠が背面に配置されました。最後に検証します。"
+		},
+		{
+			"at": 106971,
+			"kind": "tool",
+			"name": "mcp__zukai__zu_validate",
+			"input": {}
+		},
+		{
+			"at": 109694,
+			"kind": "text",
+			"text": "Public Subnet(ALB・APIを内包)と Private Subnet(RDSを内包)の枠を背面に追加しました。stroke は薄いスレートグレー(`#475569`, lineWidth 1)、ラベルは各枠の左上に配置しています。`zu_validate` は `ok: true` で問題なしです。"
+		},
+		{
+			"at": 111301,
+			"kind": "result",
+			"turns": 8,
+			"cost": 0.3279531
+		}
+	],
+	"model": {
+		"nodes": [
+			[
+				"PublicSubnet",
+				{
+					"type": "rect",
+					"cX": 640,
+					"cY": 340,
+					"rH": 160,
+					"rV": 208,
+					"html": "<div style=\"position:absolute;top:6px;left:10px;font-size:13px;color:#94A3B8;\">Public Subnet</div>"
+				},
+				{
+					"lineWidth": 1,
+					"stroke": "#475569"
+				}
+			],
+			[
+				"PrivateSubnet",
+				{
+					"type": "rect",
+					"cX": 640,
+					"cY": 700,
+					"rH": 160,
+					"rV": 88,
+					"html": "<div style=\"position:absolute;top:6px;left:10px;font-size:13px;color:#94A3B8;\">Private Subnet</div>"
+				},
+				{
+					"lineWidth": 1,
+					"stroke": "#475569"
+				}
+			],
+			[
+				"ALB",
+				{
+					"type": "rect",
+					"cX": 640,
+					"cY": 220,
+					"rH": 120,
+					"rV": 48,
+					"html": "ALB"
+				},
+				{
+					"lineWidth": 2,
+					"stroke": "#7DD3FC"
+				}
+			],
+			[
+				"API",
+				{
+					"type": "rect",
+					"cX": 640,
+					"cY": 460,
+					"rH": 120,
+					"rV": 48,
+					"html": "API (ECS Fargate)"
+				},
+				{
+					"lineWidth": 2,
+					"stroke": "#7DD3FC"
+				}
+			],
+			[
+				"RDS",
+				{
+					"type": "rect",
+					"cX": 640,
+					"cY": 700,
+					"rH": 120,
+					"rV": 48,
+					"html": "RDS"
+				},
+				{
+					"lineWidth": 2,
+					"stroke": "#7DD3FC"
+				}
+			]
+		],
+		"links": [
+			[
+				[
+					"ALB",
+					"API"
+				],
+				{
+					"headT": "triangle"
+				},
+				{
+					"lineWidth": 2,
+					"stroke": "#7DD3FC"
+				}
+			],
+			[
+				[
+					"API",
+					"RDS"
+				],
+				{
+					"headT": "triangle"
+				},
+				{
+					"lineWidth": 2,
+					"stroke": "#7DD3FC"
+				}
+			]
+		]
+	},
+	"seconds": 111.656
+}

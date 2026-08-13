@@ -1,0 +1,63 @@
+1
+00:00:00,800 --> 00:00:03,433
+Zukai ships an MCP server.
+
+2
+00:00:03,433 --> 00:00:11,840
+Which means the one drawing the diagram does not have to be you — it can be Claude.
+
+3
+00:00:13,340 --> 00:00:28,551
+Start the local dev server, point Claude at the zukai MCP server, and the diagram open in your browser becomes the workbench.
+
+4
+00:00:29,801 --> 00:00:33,717
+Just ask for a three-tier AWS stack.
+
+5
+00:00:33,717 --> 00:00:43,615
+Claude reads the model, works out the nodes and the links, and sends them through zu_apply.
+
+6
+00:00:43,615 --> 00:00:46,878
+The canvas updates as it goes.
+
+7
+00:00:48,128 --> 00:00:50,551
+Then: wrap them in subnet boxes.
+
+8
+00:00:50,551 --> 00:00:56,609
+Claude reads the coordinates it already placed, and adds the frames behind them.
+
+9
+00:00:56,609 --> 00:00:59,637
+The diagram grows with the conversation.
+
+10
+00:01:01,037 --> 00:01:03,602
+What comes out is plain JSON.
+
+11
+00:01:03,602 --> 00:01:08,467
+Keep drawing by hand, or commit it and review the diff.
+
+12
+00:01:08,467 --> 00:01:11,917
+The AI and you edit the very same file.
+
+13
+00:01:13,217 --> 00:01:13,983
+Zukai.
+
+14
+00:01:13,983 --> 00:01:17,813
+Free, open source, no sign-up.
+
+15
+00:01:17,813 --> 00:01:21,133
+The MCP setup is in USAGE.
+
+16
+00:01:21,133 --> 00:01:21,516
+md.
