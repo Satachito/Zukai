@@ -1,4 +1,4 @@
-import { Report, Node	}	from './Application.js'
+import { Report, Node, FindNode	}	from './Application.js'
 import { unzip			}	from './unzip.js'
 import {
 	E
@@ -84,6 +84,20 @@ clearIcons = root => {
 	}
 }
 
+//	Node() upserts by ID, so every placed icon needs its own. The file name
+//	( minus extension ) reads better than a timestamp; on collision it gets
+//	"-2", "-3", … so placing the same icon twice keeps both nodes.
+const
+iconID	= name => {
+	const
+	stem = name.replace( /\.(svg|png)$/i, '' ) || 'icon'
+	if	( !FindNode( stem ) ) return stem
+	let
+	n = 2
+	while	( FindNode( `${ stem }-${ n }` ) )	n++
+	return	`${ stem }-${ n }`
+}
+
 //	build one clickable icon row. the image ( object URL ) is only created when
 //	this runs, so callers can defer it until a folder is actually opened
 const
@@ -111,10 +125,11 @@ iconRow = ( parent, { name, path, bytes } ) => {
 			const
 			rH	= img.naturalWidth	/ 2
 			,	rV	= img.naturalHeight / 2
+			,	ID	= iconID( name )
 			await Node(
 				isSVG
-				?	[ null, { type: 'SVG', cX: rH, cY: rV, rH, rV, SVG: Base64( bytes ) }, {} ]
-				:	[ null, { type: 'PNG', cX: rH, cY: rV, rH, rV, PNG: Base64( bytes ) }, {} ]
+				?	[ ID, { type: 'SVG', cX: rH, cY: rV, rH, rV, SVG: Base64( bytes ) }, {} ]
+				:	[ ID, { type: 'PNG', cX: rH, cY: rV, rH, rV, PNG: Base64( bytes ) }, {} ]
 			)
 		}
 	}
