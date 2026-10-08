@@ -52,6 +52,9 @@ manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the sess
     not be a built-in anchor ( `T` `B` `L` `R` `TL` `TR` `BL` `BR` ). Useful for
     `SVG` symbols whose connection points are not edge midpoints or corners
     ( e.g. an op-amp's two inputs ).
+    An SVG can carry its pins on the root element as
+    `data-zu-pins='{ "name": [ u, v ] }'`; placing it from the left palette
+    copies them into `pins` ( the **Circuit** palette's symbols all do ).
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors
   - `lineWidth`, `lineCap`, `lineJoin`

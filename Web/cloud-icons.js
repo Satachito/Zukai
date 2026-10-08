@@ -98,6 +98,24 @@ iconID	= name => {
 	return	`${ stem }-${ n }`
 }
 
+//	pins an SVG declares on its root as data-zu-pins='{ "name": [ u, v, exit? ] }'
+//	( e.g. the circuit symbols ); undefined when absent or unparsable
+const
+svgPins	= bytes => {
+	const
+	$ = new DOMParser().parseFromString(
+		new TextDecoder().decode( bytes )
+	,	'image/svg+xml'
+	).documentElement.getAttribute( 'data-zu-pins' )
+	if	( !$ ) return undefined
+	try {
+		const	pins = JSON.parse( $ )
+		return	pins && typeof pins === 'object' && !Array.isArray( pins ) ? pins : undefined
+	} catch {
+		return	undefined
+	}
+}
+
 //	build one clickable icon row. the image ( object URL ) is only created when
 //	this runs, so callers can defer it until a folder is actually opened
 const
@@ -120,6 +138,11 @@ iconRow = ( parent, { name, path, bytes } ) => {
 			)
 		)
 	)
+	const
+	pinsOf = () => {
+		const	pins = svgPins( bytes )
+		return	pins ? { pins } : {}
+	}
 	img.onload = () => {
 		row.onclick = async () => {
 			const
@@ -128,7 +151,7 @@ iconRow = ( parent, { name, path, bytes } ) => {
 			,	ID	= iconID( name )
 			await Node(
 				isSVG
-				?	[ ID, { type: 'SVG', cX: rH, cY: rV, rH, rV, SVG: Base64( bytes ) }, {} ]
+				?	[ ID, { type: 'SVG', cX: rH, cY: rV, rH, rV, SVG: Base64( bytes ), ...pinsOf() }, {} ]
 				:	[ ID, { type: 'PNG', cX: rH, cY: rV, rH, rV, PNG: Base64( bytes ) }, {} ]
 			)
 		}
