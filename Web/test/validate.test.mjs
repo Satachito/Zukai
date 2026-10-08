@@ -54,3 +54,32 @@ test( 'parseZuText requires model; formatZuDoc is stable JSON', () => {
 	doc = { model: { nodes: [], links: [] } }
 	assert.deepEqual( parseZuText( formatZuDoc( doc ) ), doc )
 } )
+
+test( 'validateModel accepts pins and pin anchors', () => {
+	assert.deepEqual(
+		validateModel( {
+			nodes	: [
+				okNode( 'A', { pins: { 'in-': [ 0, 0.2 ], out: [ 1, 0.5, 'R' ] } } )
+			,	okNode( 'B', { cX: 300 } )
+			]
+		,	links	: [ [ [ 'A', 'B' ], { anchorF: 'out', anchorT: 'L' }, {} ] ]
+		} )
+	,	[]
+	)
+} )
+
+test( 'validateModel rejects bad pins and unknown anchors', () => {
+	const
+	issues = validateModel( {
+		nodes	: [
+			okNode( 'A', { pins: { T: [ 0, 0 ], p: [ 0 ], q: [ 0, 1, 'X' ] } } )
+		,	okNode( 'B', { cX: 300 } )
+		]
+	,	links	: [ [ [ 'A', 'B' ], { anchorF: 'p', anchorT: 'nope' }, {} ] ]
+	} )
+	assert.ok( issues.some( _ => /pin name "T"/.test( _ ) ) )
+	assert.ok( issues.some( _ => /pin "p" must be/.test( _ ) ) )
+	assert.ok( issues.some( _ => /pin "q" must be/.test( _ ) ) )
+	assert.ok( issues.some( _ => /anchorT "nope" is neither/.test( _ ) ) )
+	assert.ok( !issues.some( _ => /anchorF/.test( _ ) ) )
+} )

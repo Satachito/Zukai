@@ -3,6 +3,8 @@ import {
 ,	LabeledSelect
 }	from './DomUtils.js'
 
+import { ANCHORS }	from './GeoZU.js'
+
 import './paint-editor.js'
 
 const
@@ -20,6 +22,17 @@ RefreshSelect	= _ => {
 	_.value = $
 }
 
+//	built-in anchors plus the pins of the chosen end node
+const
+RefreshAnchor	= ( _, ID ) => {
+	const
+	$ = _.value
+	,	pins = app.model.nodes.find( node => node[ 0 ] === ID )?.[ 1 ].pins ?? {}
+	_.replaceChildren()
+	for ( const name of [ '', ...ANCHORS, ...Object.keys( pins ) ] ) AE( _, 'option' ).textContent = name
+	_.value = $
+}
+
 const
 ADiv			= _ => AE( _, 'div' )
 
@@ -29,20 +42,19 @@ LinkEditor extends HTMLElement {
 	constructor() {
 		super()
 
-		const
-		$	= [ '', 'T', 'L', 'B', 'R', 'TL', 'TR', 'BL', 'BR' ]
-
 		this.CORNER		= LabeledSelect		( this, 'corner'	, ...CORNER_STYLES )
 
 		this.F			= LabeledSelect		( this, 'from' )
 		this.F.onclick	= ev => RefreshSelect( ev.target )
+		this.F.onchange	= () => RefreshAnchor( this.ANCHOR_F, this.F.value )
 		this.HEAD_F		= LabeledSelect		( this, '-head'		, ...HEAD_STYLES )
-		this.ANCHOR_F	= LabeledSelect		( this, '-anchor'	, ...$ )
+		this.ANCHOR_F	= LabeledSelect		( this, '-anchor'	, '', ...ANCHORS )
 
 		this.T			= LabeledSelect		( this, 'to' )
 		this.T.onclick	= ev => RefreshSelect( ev.target )
+		this.T.onchange	= () => RefreshAnchor( this.ANCHOR_T, this.T.value )
 		this.HEAD_T		= LabeledSelect		( this, '-head'		, ...HEAD_STYLES )
-		this.ANCHOR_T	= LabeledSelect		( this, '-anchor'	, ...$ )
+		this.ANCHOR_T	= LabeledSelect		( this, '-anchor'	, '', ...ANCHORS )
 
 		this.PAINT		= AE( this, 'paint-editor' )
 	}
@@ -56,6 +68,8 @@ LinkEditor extends HTMLElement {
 		this.Sync()
 		this.F.value		= F
 		this.T.value		= T
+		RefreshAnchor( this.ANCHOR_F, F )
+		RefreshAnchor( this.ANCHOR_T, T )
 		this.HEAD_F.value	= headF === true ? 'triangle' : ( headF || '' )
 		this.HEAD_T.value	= headT === true ? 'triangle' : ( headT || '' )
 		this.ANCHOR_F.value	= anchorF ?? ''

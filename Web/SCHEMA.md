@@ -43,6 +43,15 @@ manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the sess
     `data-zu-scroll` on an inner element in `html` with `overflow` CSS. The editor
     forwards wheel / pointer events into those areas.
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
+  - `pins` — optional named link attachment points:
+    `{ "name": [ u, v ] }` or `{ "name": [ u, v, exit ] }`.
+    `u` / `v` are fractions of the box ( `0` = left / top, `1` = right / bottom ),
+    so pins follow move and resize. Values outside `0..1` are allowed.
+    `exit` ( `"T"` / `"B"` / `"L"` / `"R"` ) is the side an orthogonally routed
+    link leaves the pin; omitted, it is the box edge nearest the pin. Names must
+    not be a built-in anchor ( `T` `B` `L` `R` `TL` `TR` `BL` `BR` ). Useful for
+    `SVG` symbols whose connection points are not edge midpoints or corners
+    ( e.g. an op-amp's two inputs ).
 - **`paint`** — Canvas 2D fill/stroke. Any omitted/empty key is simply not applied:
   - `fill`, `stroke` — CSS colors
   - `lineWidth`, `lineCap`, `lineJoin`
@@ -56,6 +65,15 @@ Example:
   { "type": "rect", "cX": 960, "cY": 336, "rH": 384, "rV": 176,
     "radii": 18, "html": "Cloud", "style": ";font-weight : 700" },
   { "stroke": "gray", "lineWidth": 2 } ]
+```
+
+Pin example ( op-amp symbol: inputs on the left, output on the right ):
+
+```json
+[ "U1",
+  { "type": "SVG", "cX": 690, "cY": 360, "rH": 90, "rV": 100, "SVG": "…",
+    "pins": { "in-": [ 0, 0.2 ], "in+": [ 0, 0.8 ], "out": [ 1, 0.5 ] } },
+  {} ]
 ```
 
 ## Link
@@ -82,6 +100,8 @@ Example:
     - `"TL"` / `"TR"` / `"BL"` / `"BR"` — that **corner**
     - omit (auto) — the point where the ray toward the **other node's center**
       crosses this node's outline
+    - a **pin name** from that node's `shape.pins` — the pin's exact point, on
+      any shape type. Routing treats it as its `exit` side.
 
     On an `ellipse` / `rhombus`, an anchored point is projected onto the actual
     curved / diagonal outline (a `rect`/`SVG`/`PNG` keeps the box point). The

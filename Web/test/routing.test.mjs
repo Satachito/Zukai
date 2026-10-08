@@ -69,3 +69,38 @@ test( 'unanchored end snaps horizontally onto an ellipse outline', () => {
 	,	r = LinkCoordinates( [ [ nF, nT ], { anchorF: 'R' } ] )
 	assert.deepEqual( r[ 1 ], [ 350, 300 ] )	//	ellipse's leftmost point at cY
 } )
+
+test( 'pin anchor attaches at its box fraction and routes from its nearest edge', () => {
+	const
+	nF = node( 'F', { ...rect( 100, 100, 50, 50 ), pins: { a: [ 0, 0.2 ] } } )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ pF, , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'a', anchorT: 'T', corner: 'sharp' } ] )
+	//	[ 0, 0.2 ] → x = 50, y = 50 + 100 * 0.2 = 70; nearest edge L → routes L -> T ( HV )
+	assert.deepEqual( pF, [ 50, 70 ] )
+	assert.deepEqual( corners, [ [ 400, 70 ] ] )
+} )
+
+test( 'pin exit overrides the nearest edge', () => {
+	const
+	nF = node( 'F', { ...rect( 100, 100, 50, 50 ), pins: { a: [ 0, 0.2, 'T' ] } } )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ , , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'a', anchorT: 'L', corner: 'sharp' } ] )
+	//	T -> L routes VH: up / down from the pin, then across
+	assert.deepEqual( corners, [ [ 50, 300 ] ] )
+} )
+
+test( 'pins on an ellipse keep their exact point', () => {
+	const
+	nF = node( 'F', { ...ellipse( 100, 100, 50, 50 ), pins: { a: [ 0, 0 ] } } )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ pF ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'a', anchorT: 'L' } ] )
+	assert.deepEqual( pF, [ 50, 50 ] )
+} )
+
+test( 'unknown pin name falls back to the auto outline point', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 100, 50, 30 ) )
+	,	[ pF ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'nope' } ] )
+	assert.deepEqual( pF, [ 150, 100 ] )
+} )

@@ -68,6 +68,34 @@ RhombusPath2D	= ( { cX, cY, rH, rV } ) => {
 	return	$
 }
 
+//	built-in anchors; any other anchor name refers to a pin in the node's shape.pins
+export const
+ANCHORS			= [ 'T', 'B', 'L', 'R', 'TL', 'TR', 'BL', 'BR' ]
+
+//	shape.pins = { name: [ u, v, exit? ] }: u / v are box fractions ( 0 = left / top,
+//	1 = right / bottom ) so pins follow resizes; exit ( T / B / L / R ) is the
+//	direction a routed link leaves the pin, defaulting to the nearest box edge.
+export const
+Pin				= ( S, a ) => a && !ANCHORS.includes( a ) && S.pins && Object.hasOwn( S.pins, a )
+?	S.pins[ a ]
+:	undefined
+
+export const
+PinXY			= ( S, [ u, v ] ) => [ S.cX - S.rH + 2 * S.rH * u, S.cY - S.rV + 2 * S.rV * v ]
+
+const
+PinExit			= ( [ u, v, exit ] ) => exit ?? [ [ u, 'L' ], [ 1 - u, 'R' ], [ v, 'T' ], [ 1 - v, 'B' ] ]
+.	reduce( ( m, _ ) => _[ 0 ] < m[ 0 ] ? _ : m )[ 1 ]
+
+//	the anchor as routing sees it: built-ins pass through, a pin becomes its exit,
+//	and an unknown name counts as unanchored ( auto )
+const
+AnchorExit		= ( S, a ) => {
+	if	( ANCHORS.includes( a ) ) return a
+	const	p = Pin( S, a )
+	return	p ? PinExit( p ) : undefined
+}
+
 //	corner anchors ( TL / TR / BL / BR ) each expose two outward edge directions.
 //	the sign pair is [ horizontal, vertical ]: -1 = left / up, +1 = right / down.
 const
@@ -182,6 +210,8 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 	}
 	const
 	$ = ( S, A, s ) => {
+		const	pin = Pin( S, A )
+		if	( pin ) return PinXY( S, pin )	//	pins keep their exact point on every shape type
 		let	P
 		switch	( A ) {
 		case 'TL'	: P = [ L( S ), T( S ) ]; break
@@ -199,10 +229,11 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 		?	onOutline( S, P[ 0 ] - S.cX, P[ 1 ] - S.cY )
 		:	P
 	}
-,	aF = A.anchorF
-,	aT = A.anchorT
-,	pF = $( nF[ 1 ], aF, nT[ 1 ], aT )
-,	pT = $( nT[ 1 ], aT, nF[ 1 ], aF )
+,	pF = $( nF[ 1 ], A.anchorF, nT[ 1 ] )
+,	pT = $( nT[ 1 ], A.anchorT, nF[ 1 ] )
+	//	routing only reasons about built-in anchors: pins fold into their exit side
+,	aF = AnchorExit( nF[ 1 ], A.anchorF )
+,	aT = AnchorExit( nT[ 1 ], A.anchorT )
 
 ,	autoPerp		= ( S, [ px, py ], aOther ) => {
 		const
