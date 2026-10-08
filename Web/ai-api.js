@@ -36,6 +36,37 @@ const
 CORNER_STYLES	= new Set( [ 'sharp', 'arc', 'curve' ] )
 
 const
+ANCHORS			= new Set( [ 'T', 'B', 'L', 'R', 'TL', 'TR', 'BL', 'BR' ] )
+
+const
+EXITS			= new Set( [ 'T', 'B', 'L', 'R' ] )
+
+//	shape.pins = { name: [ u, v, exit? ] } — box fractions plus an optional exit side
+const
+validatePins	= ( ID, pins, issues ) => {
+	if	( pins === undefined ) return
+	if	( !pins || typeof pins !== 'object' || Array.isArray( pins ) ) {
+		issues.push( `node "${ ID }" pins must be an object { name: [ u, v, exit? ] }` )
+		return
+	}
+	for	( const [ name, p ] of Object.entries( pins ) ) {
+		if	( !name || ANCHORS.has( name ) )	issues.push( `node "${ ID }" pin name "${ name }" is empty or a built-in anchor` )
+		if	(	!Array.isArray( p ) || p.length < 2 || p.length > 3
+			||	!isNum( p[ 0 ] ) || !isNum( p[ 1 ] )
+			||	( p.length === 3 && !EXITS.has( p[ 2 ] ) )
+			)	issues.push( `node "${ ID }" pin "${ name }" must be [ u, v ] or [ u, v, T|B|L|R ]` )
+	}
+}
+
+const
+validateAnchor	= ( i, end, ID, a, nodes, issues ) => {
+	if	( a === undefined || ANCHORS.has( a ) ) return
+	const	pins = nodes.get( ID )?.pins
+	if	( !pins || typeof pins !== 'object' || !Object.hasOwn( pins, a ) )
+		issues.push( `link[${ i }] ${ end } "${ a }" is neither a built-in anchor nor a pin of "${ ID }"` )
+}
+
+const
 validateNode	= ( n, ids, issues, i ) => {
 	if	( !Array.isArray( n ) || n.length < 2 ) {
 		issues.push( `node[${ i }] must be [ ID, area, paint? ]` )
@@ -44,7 +75,7 @@ validateNode	= ( n, ids, issues, i ) => {
 	const	[ ID, S ] = n
 	if	( !ID || typeof ID !== 'string' )	issues.push( `node[${ i }] has an empty / non-string ID` )
 	else if	( ids.has( ID ) )				issues.push( `duplicate node ID "${ ID }"` )
-	else									ids.add( ID )
+	else									ids.set( ID, S ?? {} )
 	if	( !S || typeof S !== 'object' ) {
 		issues.push( `node "${ ID }" is missing its area object` )
 		return
@@ -54,6 +85,7 @@ validateNode	= ( n, ids, issues, i ) => {
 		if	( !isNum( S[ k ] ) )	issues.push( `node "${ ID }" ${ k } must be a number` )
 	if	( isNum( S.rH ) && isNum( S.rV ) && !( Math.abs( S.rH ) > 2.5 && Math.abs( S.rV ) > 2.5 ) )
 		issues.push( `node "${ ID }" is too small ( width / height must exceed 5px )` )
+	validatePins( ID, S.pins, issues )
 }
 
 const
@@ -68,6 +100,8 @@ validateLink	= ( l, ids, seen, issues, i ) => {
 	if	( !ids.has( F ) )	issues.push( `link[${ i }] from "${ F }" is not a node` )
 	if	( !ids.has( T ) )	issues.push( `link[${ i }] to "${ T }" is not a node` )
 	if	( A?.corner && !CORNER_STYLES.has( A.corner ) )	issues.push( `link[${ i }] corner must be sharp, arc, or curve` )
+	validateAnchor( i, 'anchorF', F, A?.anchorF, ids, issues )
+	validateAnchor( i, 'anchorT', T, A?.anchorT, ids, issues )
 	const	key = `${ F }\u0000${ T }`
 	if	( seen.has( key ) )	issues.push( `duplicate link ${ F } → ${ T }` )
 	else					seen.add( key )
@@ -78,7 +112,7 @@ export const
 validateModel	= ( model = app.model ) => {
 	const
 	issues = []
-	,	ids = new Set
+	,	ids = new Map
 	;( model.nodes ?? [] ).forEach( ( n, i ) => validateNode( n, ids, issues, i ) )
 	const	seen = new Set
 	;( model.links ?? [] ).forEach( ( l, i ) => validateLink( l, ids, seen, issues, i ) )

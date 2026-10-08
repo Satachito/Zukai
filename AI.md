@@ -57,6 +57,7 @@ separately from the file format.
 | **`style`** | — | Label CSS fragments (`;prop : value`, newline-separated) |
 | **`SVG`** | when type=SVG | **base64** of the SVG source (decoded at draw time). Not raw `<svg>` markup |
 | **`PNG`** | when type=PNG | PNG base64 |
+| **`pins`** | — | Named link attachment points `{ name: [ u, v, exit? ] }` — `u`/`v` box fractions (0 = left/top, 1 = right/bottom), `exit` `T`/`B`/`L`/`R` (default: nearest edge). Names must not be built-in anchors. See SCHEMA.md |
 
 `SVG` / `PNG` nodes are outlined as their bounding box (like `rect`) for link
 attachment and hit-testing.
@@ -86,7 +87,7 @@ Applied when drawing: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `mit
 | Key | Values | Description |
 |-----|--------|-------------|
 | **`headF`, `headT`** | `false` / omit / style name | Arrow at from / to end. Styles: `triangle`, `open`, `hollow`, `diamond`, `diamondHollow`, `circle`, `circleHollow` |
-| **`anchorF`, `anchorT`** | `T` `B` `L` `R` `TL` `TR` `BL` `BR` / omit | Attachment point. Omit = outline hit toward the other node's center |
+| **`anchorF`, `anchorT`** | `T` `B` `L` `R` `TL` `TR` `BL` `BR` / pin name / omit | Attachment point. A pin name refers to that node's `shape.pins`. Omit = outline hit toward the other node's center |
 | **`corner`** | undefined(default direct line) / `sharp` / `arc` / `curve` | Set only for orthogonal routing; see SCHEMA.md |
 
 Routing always produces one or two bend points, so `curve` draws a quadratic
@@ -131,6 +132,7 @@ Same rules in `Web/ai-api.js` and `tools/zu-validate.mjs`:
 
 - Node: `[ ID, shape, paint? ]`, non-empty unique `ID`, `type` set, finite `cX`/`cY`/`rH`/`rV`, width and height > 5px
 - Link: `[ [ from, to ], attrs?, paint? ]`, endpoints exist, no self-links or duplicate pairs
+- Pins: `pins` is an object of `[ u, v ]` / `[ u, v, T|B|L|R ]` with non-built-in names; a link anchor that is not built-in must name a pin of that end's node
 
 ---
 

@@ -4,11 +4,12 @@ export const
 SYSTEM			= `You edit a live Zukai diagram by calling the apply_ops tool.
 
 A .zu model is { nodes, links }.
-Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"|"PNG", cX, cY, rH, rV, radii?, html?, style?, SVG?, PNG? }
+Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"|"PNG", cX, cY, rH, rV, radii?, html?, style?, SVG?, PNG?, pins? }
                                   cX/cY = center, rH/rV = half-width/half-height ( size ≈ 2*rH × 2*rV ). Y axis points down.
+                                  pins: { name: [ u, v, exit? ] } named attachment points; u/v = box fractions ( 0 = left/top, 1 = right/bottom ), exit = T|B|L|R
                                   paint: { fill?, stroke?, lineWidth?, lineDash?, ... } ( optional {} )
 Link  = [ [ fromID, toID ], attributes, paint ]
-                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
+                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR, or a pin name of that node ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
 
 apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the whole batch back ):
   { op:"addNode",    id, area, paint? }
