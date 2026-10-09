@@ -25,6 +25,9 @@ const
 CIRCLE		= ( cx, cy, r ) => `<circle cx="${ cx }" cy="${ cy }" r="${ r }"/>`
 
 const
+TEXT		= ( x, y, s, anchor = 'start', size = 12 ) => `<text x="${ x }" y="${ y }" text-anchor="${ anchor }" font-size="${ size }">${ s }</text>`
+
+const
 ZIGZAG_H	= y => `M0 ${ y }H20l5 -9l10 18l10 -18l10 18l10 -18l10 18l5 -9H100`
 
 const
@@ -112,6 +115,20 @@ SYMBOLS		= [
 ,	[ 'semiconductor/opamp-flipped', 180, 200
 	,	PATH( 'M0 40H30M0 160H30M170 100H180M30 0V200L170 100ZM40 40H52M40 160H52M46 34V46' )
 	,	{ 'in+': [ 0, 0.2 ], 'in-': [ 0, 0.8 ], out: [ 1, 0.5 ] }
+	]
+
+	//	ic: THAT1512 mic preamp ( DIP-8 pin numbers ), gain 0.5 + 5 kΩ / RG across rg1–rg2
+,	[ 'ic/that1512', 200, 320
+	,	'<rect x="30" y="20" width="140" height="280"/>'
+	+	PATH( 'M0 32H30M0 96H30M0 224H30M0 288H30M170 160H200M100 0V20M90 300V320M140 300V320' )
+	+	`<g fill="${ INK }" stroke="none" font-family="sans-serif">`
+	+	TEXT( 36, 36, '+In' ) + TEXT( 36, 100, 'RG1' ) + TEXT( 36, 228, 'RG2' ) + TEXT( 36, 292, '−In' ) + TEXT( 164, 164, 'Out', 'end' )
+	+	TEXT( 100, 38, 'V+', 'middle' ) + TEXT( 90, 292, 'V−', 'middle' ) + TEXT( 140, 292, 'Ref', 'middle' )
+	+	TEXT( 100, 165, 'THAT1512', 'middle', 16 )
+	+	TEXT( 14, 28, '3', 'middle', 11 ) + TEXT( 14, 92, '1', 'middle', 11 ) + TEXT( 14, 220, '8', 'middle', 11 ) + TEXT( 14, 284, '2', 'middle', 11 )
+	+	TEXT( 186, 156, '6', 'middle', 11 ) + TEXT( 108, 14, '7', 'start', 11 ) + TEXT( 96, 316, '4', 'start', 11 ) + TEXT( 146, 316, '5', 'start', 11 )
+	+	'</g>'
+	,	{ 'in+': [ 0, 0.1 ], rg1: [ 0, 0.3 ], rg2: [ 0, 0.7 ], 'in-': [ 0, 0.9 ], out: [ 1, 0.5 ], 'v+': [ 0.5, 0 ], 'v-': [ 0.45, 1 ], ref: [ 0.7, 1 ] }
 	]
 
 	//	source
