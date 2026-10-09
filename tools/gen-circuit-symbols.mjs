@@ -118,7 +118,7 @@ SYMBOLS		= [
 	]
 
 	//	ic: THAT1512 mic preamp ( DIP-8 pin numbers ), gain 0.5 + 5 kΩ / RG across rg1–rg2
-,	[ 'ic/that1512', 200, 320
+,	[ 'ic/audio/that1512', 200, 320
 	,	'<rect x="30" y="20" width="140" height="280"/>'
 	+	PATH( 'M0 32H30M0 96H30M0 224H30M0 288H30M170 160H200M100 0V20M90 300V320M140 300V320' )
 	+	`<g fill="${ INK }" stroke="none" font-family="sans-serif">`
@@ -163,6 +163,186 @@ SYMBOLS		= [
 	,	{ a: [ 0, 0.7 ], b: [ 1, 0.7 ] }
 	]
 ]
+
+//	IC box symbols. Pins are grouped by role, not package position: each side lists
+//	[ pin number, label, pin id ]. A label wrapped in ~ ~ is active low ( overlined ).
+//	Side pins sit IC_PITCH apart and top / bottom pins spread across the box, each
+//	with an IC_STUB lead out to the symbol edge.
+const
+IC_PITCH	= 30
+,	IC_STUB		= 30
+
+const
+IC_LABEL	= s => s.startsWith( '~' ) ? `<tspan text-decoration="overline">${ s.slice( 1, -1 ) }</tspan>` : s
+
+const
+ICBox		= ( name, title, boxW, { left = [], right = [], top = [], bottom = [] } ) => {
+	const
+	boxH	= ( Math.max( left.length, right.length, 1 ) + 1 ) * IC_PITCH + ( top.length && 20 ) + ( bottom.length && 20 )
+	,	W		= boxW + 2 * IC_STUB
+	,	H		= boxH + 2 * IC_STUB
+	,	x0		= IC_STUB
+	,	y0		= IC_STUB
+	,	pins	= {}
+	,	leads	= []
+	,	texts	= []
+	//	side pins fill the band between the top / bottom pin labels
+	,	bandT	= y0 + ( top.length && 20 )
+	,	bandH	= boxH - ( top.length && 20 ) - ( bottom.length && 20 )
+	,	sideY	= ( list, i ) => bandT + bandH * ( i + 1 ) / ( list.length + 1 )
+	,	edgeX	= ( list, i ) => x0 + boxW * ( i + 1 ) / ( list.length + 1 )
+	left.forEach( ( [ no, label, id ], i ) => {
+		const	y = sideY( left, i )
+		leads.push( `M0 ${ y }H${ x0 }` )
+		texts.push( TEXT( x0 - 4, y - 4, no, 'end', 11 ), TEXT( x0 + 6, y + 4, IC_LABEL( label ) ) )
+		pins[ id ] = [ 0, y / H ]
+	} )
+	right.forEach( ( [ no, label, id ], i ) => {
+		const	y = sideY( right, i )
+		leads.push( `M${ x0 + boxW } ${ y }H${ W }` )
+		texts.push( TEXT( x0 + boxW + 4, y - 4, no, 'start', 11 ), TEXT( x0 + boxW - 6, y + 4, IC_LABEL( label ), 'end' ) )
+		pins[ id ] = [ 1, y / H ]
+	} )
+	top.forEach( ( [ no, label, id ], i ) => {
+		const	x = edgeX( top, i )
+		leads.push( `M${ x } 0V${ y0 }` )
+		texts.push( TEXT( x + 4, y0 - 6, no, 'start', 11 ), TEXT( x, y0 + 16, IC_LABEL( label ), 'middle' ) )
+		pins[ id ] = [ x / W, 0 ]
+	} )
+	bottom.forEach( ( [ no, label, id ], i ) => {
+		const	x = edgeX( bottom, i )
+		leads.push( `M${ x } ${ y0 + boxH }V${ H }` )
+		texts.push( TEXT( x + 4, H - 4, no, 'start', 11 ), TEXT( x, y0 + boxH - 8, IC_LABEL( label ), 'middle' ) )
+		pins[ id ] = [ x / W, 1 ]
+	} )
+	return	[
+		name, W, H
+	,	`<rect x="${ x0 }" y="${ y0 }" width="${ boxW }" height="${ boxH }"/>` + PATH( leads.join( '' ) )
+	+	`<g fill="${ INK }" stroke="none" font-family="sans-serif">${ texts.join( '' ) }`
+	+	TEXT( W / 2, H / 2 + 5, title, 'middle', 14 ) + '</g>'
+	,	pins
+	]
+}
+
+//	pinouts checked against the datasheets ( DIP / TO-220 / SOT-223 / TSSOP / QFN numbering )
+SYMBOLS.push(
+	//	op-amps: one symbol per shared pinout
+	ICBox( 'ic/opamp/opamp-single-dip8', 'TL071 / NE5534', 200, {
+		left	: [ [ 3, '+IN', 'in+' ], [ 2, '−IN', 'in-' ] ]
+	,	right	: [ [ 6, 'OUT', 'out' ] ]
+	,	top		: [ [ 7, 'V+', 'v+' ], [ 8, 'NC', 'p8' ] ]
+	,	bottom	: [ [ 1, 'N1', 'p1' ], [ 4, 'V−', 'v-' ], [ 5, 'N2', 'p5' ] ]
+	} )
+,	ICBox( 'ic/opamp/opamp-dual-dip8', 'NE5532 / 4580', 200, {
+		left	: [ [ 3, '+INA', 'in+a' ], [ 2, '−INA', 'in-a' ], [ 5, '+INB', 'in+b' ], [ 6, '−INB', 'in-b' ] ]
+	,	right	: [ [ 1, 'OUTA', 'outa' ], [ 7, 'OUTB', 'outb' ] ]
+	,	top		: [ [ 8, 'V+', 'v+' ] ]
+	,	bottom	: [ [ 4, 'V−', 'v-' ] ]
+	} )
+,	ICBox( 'ic/opamp/opamp-quad-dip14', 'TL074 / LM324', 160, {
+		left	: [	[ 3, '+IN1', 'in+1' ], [ 2, '−IN1', 'in-1' ], [ 5, '+IN2', 'in+2' ], [ 6, '−IN2', 'in-2' ]
+				,	[ 10, '+IN3', 'in+3' ], [ 9, '−IN3', 'in-3' ], [ 12, '+IN4', 'in+4' ], [ 13, '−IN4', 'in-4' ]
+				]
+	,	right	: [ [ 1, 'OUT1', 'out1' ], [ 7, 'OUT2', 'out2' ], [ 8, 'OUT3', 'out3' ], [ 14, 'OUT4', 'out4' ] ]
+	,	top		: [ [ 4, 'V+', 'v+' ] ]
+	,	bottom	: [ [ 11, 'V−', 'v-' ] ]
+	} )
+
+	//	audio / analog
+,	ICBox( 'ic/audio/ina217', 'INA217', 160, {
+		left	: [ [ 3, '+IN', 'in+' ], [ 1, 'RG1', 'rg1' ], [ 8, 'RG2', 'rg2' ], [ 2, '−IN', 'in-' ] ]
+	,	right	: [ [ 6, 'OUT', 'out' ] ]
+	,	top		: [ [ 7, 'V+', 'v+' ] ]
+	,	bottom	: [ [ 4, 'V−', 'v-' ], [ 5, 'REF', 'ref' ] ]
+	} )
+,	ICBox( 'ic/audio/drv134', 'DRV134', 160, {
+		left	: [ [ 4, 'VIN', 'in' ] ]
+	,	right	: [ [ 8, '+VO', 'out+' ], [ 7, '+SENSE', 'sense+' ], [ 2, '−SENSE', 'sense-' ], [ 1, '−VO', 'out-' ] ]
+	,	top		: [ [ 6, 'V+', 'v+' ] ]
+	,	bottom	: [ [ 5, 'V−', 'v-' ], [ 3, 'GND', 'gnd' ] ]
+	} )
+,	ICBox( 'ic/audio/lm386', 'LM386', 160, {
+		left	: [ [ 3, '+IN', 'in+' ], [ 2, '−IN', 'in-' ] ]
+	,	right	: [ [ 5, 'OUT', 'out' ] ]
+	,	top		: [ [ 1, 'GAIN', 'gain1' ], [ 6, 'VS', 'vs' ], [ 8, 'GAIN', 'gain8' ] ]
+	,	bottom	: [ [ 4, 'GND', 'gnd' ], [ 7, 'BYP', 'bypass' ] ]
+	} )
+
+	//	audio ADC / DAC
+,	ICBox( 'ic/audio/pcm1808', 'PCM1808', 200, {
+		left	: [ [ 13, 'VINL', 'vinl' ], [ 14, 'VINR', 'vinr' ], [ 1, 'VREF', 'vref' ] ]
+	,	right	: [	[ 6, 'SCKI', 'scki' ], [ 8, 'BCK', 'bck' ], [ 7, 'LRCK', 'lrck' ], [ 9, 'DOUT', 'dout' ]
+				,	[ 12, 'FMT', 'fmt' ], [ 10, 'MD0', 'md0' ], [ 11, 'MD1', 'md1' ]
+				]
+	,	top		: [ [ 3, 'VCC', 'vcc' ], [ 4, 'VDD', 'vdd' ] ]
+	,	bottom	: [ [ 2, 'AGND', 'agnd' ], [ 5, 'DGND', 'dgnd' ] ]
+	} )
+,	ICBox( 'ic/audio/pcm5102a', 'PCM5102A', 220, {
+		left	: [	[ 12, 'SCK', 'sck' ], [ 13, 'BCK', 'bck' ], [ 15, 'LRCK', 'lrck' ], [ 14, 'DIN', 'din' ]
+				,	[ 16, 'FMT', 'fmt' ], [ 11, 'FLT', 'flt' ], [ 10, 'DEMP', 'demp' ], [ 17, 'XSMT', 'xsmt' ]
+				]
+	,	right	: [	[ 6, 'OUTL', 'outl' ], [ 7, 'OUTR', 'outr' ], [ 2, 'CAPP', 'capp' ], [ 4, 'CAPM', 'capm' ]
+				,	[ 5, 'VNEG', 'vneg' ], [ 18, 'LDOO', 'ldoo' ]
+				]
+	,	top		: [ [ 1, 'CPVDD', 'cpvdd' ], [ 8, 'AVDD', 'avdd' ], [ 20, 'DVDD', 'dvdd' ] ]
+	,	bottom	: [ [ 3, 'CPGND', 'cpgnd' ], [ 9, 'AGND', 'agnd' ], [ 19, 'DGND', 'dgnd' ] ]
+	} )
+	//	QFN-32: inputs named by their differential function ( INnP / INnN double as AINx / GNDx )
+,	ICBox( 'ic/audio/ak4619vn', 'AK4619VN', 300, {
+		left	: [	[ 16, 'IN1P', 'in1p' ], [ 15, 'IN1N', 'in1n' ], [ 14, 'IN2P', 'in2p' ], [ 13, 'IN2N', 'in2n' ]
+				,	[ 12, 'IN3P', 'in3p' ], [ 11, 'IN3N', 'in3n' ], [ 10, 'IN4P', 'in4p' ], [ 9, 'IN4N', 'in4n' ]
+				]
+	,	right	: [	[ 22, 'AOUT1L', 'aout1l' ], [ 23, 'AOUT1R', 'aout1r' ], [ 24, 'AOUT2L', 'aout2l' ], [ 25, 'AOUT2R', 'aout2r' ]
+				,	[ 8, 'MCLK', 'mclk' ], [ 7, 'BICK', 'bick' ], [ 6, 'LRCK', 'lrck' ]
+				,	[ 1, 'SDIN1', 'sdin1' ], [ 2, 'SDIN2', 'sdin2' ], [ 31, 'SDOUT1', 'sdout1' ], [ 32, 'SDOUT2', 'sdout2' ]
+				,	[ 26, 'PDN', 'pdn' ], [ 27, 'CAD/CSN', 'cad' ], [ 28, 'SCL/SCLK', 'scl' ], [ 29, 'SI', 'si' ], [ 30, 'SDA/SO', 'sda' ]
+				]
+	,	top		: [ [ 18, 'AVDD', 'avdd' ], [ 21, 'VREFH', 'vrefh' ], [ 3, 'TVDD', 'tvdd' ] ]
+	,	bottom	: [ [ 19, 'VSS1', 'vss1' ], [ 20, 'VREFL', 'vrefl' ], [ 17, 'VCOM', 'vcom' ], [ 5, 'AVDRV', 'avdrv' ], [ 4, 'VSS2', 'vss2' ] ]
+	} )
+
+	//	power ( TO-220 / SOT-223 numbering )
+,	ICBox( 'ic/power/78xx', '78xx', 160, {
+		left: [ [ 1, 'IN', 'in' ] ], right: [ [ 3, 'OUT', 'out' ] ], bottom: [ [ 2, 'GND', 'gnd' ] ]
+	} )
+,	ICBox( 'ic/power/79xx', '79xx', 160, {
+		left: [ [ 2, 'IN', 'in' ] ], right: [ [ 3, 'OUT', 'out' ] ], bottom: [ [ 1, 'GND', 'gnd' ] ]
+	} )
+,	ICBox( 'ic/power/lm317', 'LM317', 160, {
+		left: [ [ 3, 'IN', 'in' ] ], right: [ [ 2, 'OUT', 'out' ] ], bottom: [ [ 1, 'ADJ', 'adj' ] ]
+	} )
+,	ICBox( 'ic/power/ams1117', 'AMS1117', 160, {
+		left: [ [ 3, 'IN', 'in' ] ], right: [ [ 2, 'OUT', 'out' ] ], bottom: [ [ 1, 'GND/ADJ', 'gnd' ] ]
+	} )
+
+	//	general / logic
+,	ICBox( 'ic/logic/ne555', 'NE555', 160, {
+		left	: [ [ 2, 'TRIG', 'trig' ], [ 6, 'THRES', 'thres' ], [ 7, 'DISCH', 'disch' ], [ 5, 'CTRL', 'ctrl' ] ]
+	,	right	: [ [ 3, 'OUT', 'out' ] ]
+	,	top		: [ [ 8, 'VCC', 'vcc' ], [ 4, '~RESET~', 'reset' ] ]
+	,	bottom	: [ [ 1, 'GND', 'gnd' ] ]
+	} )
+,	ICBox( 'ic/logic/pc817', 'PC817', 140, {
+		left	: [ [ 1, 'A', 'anode' ], [ 2, 'K', 'cathode' ] ]
+	,	right	: [ [ 4, 'C', 'collector' ], [ 3, 'E', 'emitter' ] ]
+	} )
+,	ICBox( 'ic/logic/74hc595', '74HC595', 160, {
+		left	: [ [ 14, 'DS', 'ds' ], [ 11, 'SHCP', 'shcp' ], [ 12, 'STCP', 'stcp' ], [ 10, '~MR~', 'mr' ], [ 13, '~OE~', 'oe' ] ]
+	,	right	: [	[ 15, 'Q0', 'q0' ], [ 1, 'Q1', 'q1' ], [ 2, 'Q2', 'q2' ], [ 3, 'Q3', 'q3' ], [ 4, 'Q4', 'q4' ]
+				,	[ 5, 'Q5', 'q5' ], [ 6, 'Q6', 'q6' ], [ 7, 'Q7', 'q7' ], [ 9, 'Q7S', 'q7s' ]
+				]
+	,	top		: [ [ 16, 'VCC', 'vcc' ] ]
+	,	bottom	: [ [ 8, 'GND', 'gnd' ] ]
+	} )
+,	ICBox( 'ic/logic/cd4051', 'CD4051', 160, {
+		left	: [ [ 11, 'A', 'a' ], [ 10, 'B', 'b' ], [ 9, 'C', 'c' ], [ 6, 'INH', 'inh' ], [ 3, 'COM', 'com' ] ]
+	,	right	: [	[ 13, 'X0', 'x0' ], [ 14, 'X1', 'x1' ], [ 15, 'X2', 'x2' ], [ 12, 'X3', 'x3' ]
+				,	[ 1, 'X4', 'x4' ], [ 5, 'X5', 'x5' ], [ 2, 'X6', 'x6' ], [ 4, 'X7', 'x7' ]
+				]
+	,	top		: [ [ 16, 'VDD', 'vdd' ] ]
+	,	bottom	: [ [ 8, 'VSS', 'vss' ], [ 7, 'VEE', 'vee' ] ]
+	} )
+)
 
 const
 SVG			= ( w, h, body, pins ) => `<svg xmlns="http://www.w3.org/2000/svg" width="${ w }" height="${ h }" viewBox="0 0 ${ w } ${ h }" fill="none" stroke="${ INK }" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-zu-pins='${ JSON.stringify( pins ) }'>${ body }</svg>\n`
