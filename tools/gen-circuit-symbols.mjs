@@ -108,6 +108,11 @@ SYMBOLS		= [
 	,	PATH( 'M0 40H30M0 160H30M170 100H180M30 0V200L170 100ZM40 40H52M40 160H52M46 154V166' )
 	,	{ 'in-': [ 0, 0.2 ], 'in+': [ 0, 0.8 ], out: [ 1, 0.5 ] }
 	]
+	//	+ on top: lets two op-amps face their − inputs ( instrumentation amp input stage )
+,	[ 'semiconductor/opamp-flipped', 180, 200
+	,	PATH( 'M0 40H30M0 160H30M170 100H180M30 0V200L170 100ZM40 40H52M40 160H52M46 34V46' )
+	,	{ 'in+': [ 0, 0.2 ], 'in-': [ 0, 0.8 ], out: [ 1, 0.5 ] }
+	]
 
 	//	source
 ,	[ 'source/ground', 40, 30

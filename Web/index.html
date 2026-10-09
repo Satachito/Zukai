@@ -826,6 +826,7 @@ aside input[type=checkbox]
 		<button id=SAMPLE_MINDMAP	>MindMap	</button>
 		<button id=SAMPLE_SHOWCASE	>Showcase	</button>
 		<button id=SAMPLE_ANCHORMATRIX	>AnchorMx	</button>
+		<button id=SAMPLE_CIRCUIT	>Circuit		</button>
 	</div>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
@@ -1057,6 +1058,7 @@ SAMPLE_SCREENFLOW.onclick = () => LoadSample( 'Samples/ScreenFlow.zu'	).catch( R
 SAMPLE_MINDMAP	.onclick = () => LoadSample( 'Samples/MindMap.zu'	).catch( Report )
 SAMPLE_SHOWCASE		.onclick = () => LoadSample( 'Samples/Showcase.zu'		).catch( Report )
 SAMPLE_ANCHORMATRIX	.onclick = () => LoadSample( 'Samples/AnchorMatrix.zu'	).catch( Report )
+SAMPLE_CIRCUIT		.onclick = () => LoadSample( 'Samples/DiffAmp.zu'		).catch( Report )
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )
 DUMP_JOBS		.onclick = DumpJobs
