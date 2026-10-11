@@ -232,6 +232,71 @@ Corners			= ( aF, aT, [ xF, yF ], [ xT, yT ] ) => {
 	}
 }
 
+//	orthogonal route through waypoints: [ pF, ...via, pT ] joined leg by leg, each
+//	leg that is not already axis-aligned getting one right-angle bend. The first leg
+//	leaves along the from-anchor's exit and the last arrives along the to-anchor's;
+//	legs in between alternate from the segment before them. Returns the bends and
+//	the waypoints in drawing order ( everything between pF and pT ).
+const
+ViaCorners		= ( aF, aT, pF, pT, via ) => {
+	const
+	pts = [ pF, ...via, pT ]
+	,	$ = []
+	let	horizontal = aF === 'L' || aF === 'R'	//	axis the next leg should start on
+	for	( let i = 0; i < pts.length - 1; i++ ) {
+		const
+		[ ax, ay ] = pts[ i ]
+		,	[ bx, by ] = pts[ i + 1 ]
+		,	last = i === pts.length - 2
+		if	( ax === bx || ay === by ) {
+			//	already straight: the next leg starts on the other axis ( a zero-length leg changes nothing )
+			ay === by && ax !== bx && ( horizontal = false )
+			ax === bx && ay !== by && ( horizontal = true )
+		} else {
+			//	the last leg must end on the to-anchor's axis, whatever came before
+			const	startH = last ? !( aT === 'L' || aT === 'R' ) : horizontal
+			$.push( startH ? [ bx, ay ] : [ ax, by ] )
+			horizontal = startH	//	ended on the other axis → next starts on this one again
+		}
+		last || $.push( pts[ i + 1 ] )
+	}
+	return	$
+}
+
+//	which via index a new waypoint dropped at xy belongs at: the position along the
+//	drawn polyline of the segment nearest to it
+export const
+ViaIndex		= ( link, xy ) => {
+	const
+	[ pF, pT, corners = [] ] = LinkCoordinates( link )
+	,	via = link[ 1 ].via ?? []
+	,	poly = [ pF, ...corners, pT ]
+	let	best = 0, bestD = Infinity
+	for	( let i = 0; i < poly.length - 1; i++ ) {
+		const
+		[ ax, ay ] = poly[ i ]
+		,	[ bx, by ] = poly[ i + 1 ]
+		,	L2 = ( bx - ax ) ** 2 + ( by - ay ) ** 2
+		,	t = L2 ? Math.max( 0, Math.min( 1, ( ( xy[ 0 ] - ax ) * ( bx - ax ) + ( xy[ 1 ] - ay ) * ( by - ay ) ) / L2 ) ) : 0
+		,	d = Math.hypot( xy[ 0 ] - ( ax + t * ( bx - ax ) ), xy[ 1 ] - ( ay + t * ( by - ay ) ) )
+		d < bestD && ( bestD = d, best = i )
+	}
+	//	waypoints already passed before that segment
+	return	poly.slice( 1, best + 1 ).filter( p => via.some( v => v[ 0 ] === p[ 0 ] && v[ 1 ] === p[ 1 ] ) ).length
+}
+
+//	a link's attributes with its waypoints carried along when both end nodes moved
+//	by the same offset ( dragging a whole circuit keeps its wiring shape )
+export const
+MovedVia		= ( A, [ F0, T0 ], [ F1, T1 ] ) => {
+	if	( !A.via?.length ) return A
+	const
+	dX = F1.cX - F0.cX
+	,	dY = F1.cY - F0.cY
+	if	( !( dX || dY ) || dX !== T1.cX - T0.cX || dY !== T1.cY - T0.cY ) return A
+	return	{ ...A, via: A.via.map( ( [ x, y ] ) => [ x + dX, y + dY ] ) }
+}
+
 export const
 LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 	const
@@ -275,8 +340,12 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 		?	onOutline( S, P[ 0 ] - S.cX, P[ 1 ] - S.cY )
 		:	P
 	}
-,	pF = $( nF[ 1 ], A.anchorF, nT[ 1 ] )
-,	pT = $( nT[ 1 ], A.anchorT, nF[ 1 ] )
+	//	attributes.via = [ [ x, y ], … ]: waypoints the shaft passes through in order. An
+	//	unanchored end then aims at its nearest waypoint instead of the other node.
+,	via = A.via?.length ? A.via : null
+,	aim = ( [ cX, cY ] ) => ( { cX, cY } )
+,	pF = $( nF[ 1 ], A.anchorF, via ? aim( via[ 0 ] ) : nT[ 1 ] )
+,	pT = $( nT[ 1 ], A.anchorT, via ? aim( via[ via.length - 1 ] ) : nF[ 1 ] )
 	//	routing only reasons about built-in anchors: pins fold into their exit side
 ,	aF = AnchorExit( nF[ 1 ], A.anchorF )
 ,	aT = AnchorExit( nT[ 1 ], A.anchorT )
@@ -334,11 +403,21 @@ LinkCoordinates	= ( [ [ nF, nT ], A ] ) => {
 		?	( dX >= 0 ? 'R' : 'L' )
 		:	( dY >= 0 ? 'B' : 'T' )
 	}
+	if	( via ) {
+		if	( !A.corner ) return [ pF, pT, via ]	//	straight runs from waypoint to waypoint
+		const
+		eF = CardinalExit( aF || sideOf( nF[ 1 ], pF ), pF, via[ 0 ] )
+		,	eT = CardinalExit( aT || sideOf( nT[ 1 ], pT ), pT, via[ via.length - 1 ] )
+		return [ pF, pT, ViaCorners( eF, eT, pF, pT, via ) ]
+	}
 	if	( !A.corner ) {
 		if	( aF && !aT )	return [ pF, autoPerp( nT[ 1 ], pF, aF ) ]
 		if	( aT && !aF )	return [ autoPerp( nF[ 1 ], pT, aT ), pT ]
 	}
-	return [ pF, pT, Corners( aF || sideOf( nF[ 1 ], pF ), aT || sideOf( nT[ 1 ], pT ), pF, pT ) ]
+	//	corners only for an orthogonal route: a direct link is just its two ends
+	return A.corner
+	?	[ pF, pT, Corners( aF || sideOf( nF[ 1 ], pF ), aT || sideOf( nT[ 1 ], pT ), pF, pT ) ]
+	:	[ pF, pT ]
 }
 
 export const
@@ -474,6 +553,14 @@ HeadPathD		= ( head, shaftXY, tipXY, lineWidth ) => {
 }
 
 
+//	how the shaft is drawn: the link's corner style, or a plain polyline when it
+//	has waypoints but no style; undefined = one straight line
+const
+ShaftStyle		= ( A, corners ) => A.corner || ( corners?.length ? 'sharp' : undefined )
+
+const
+MidXY			= ( [ ax, ay ], [ bx, by ] ) => [ ( ax + bx ) / 2, ( ay + by ) / 2 ]
+
 export const
 ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 	void nF
@@ -484,8 +571,8 @@ ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 	$ = new Path2D
 	$.moveTo( ...xyF )
 
-	if	( A.corner ) {
-		switch	( A.corner ) {
+	if	( ShaftStyle( A, corners ) ) {
+		switch	( ShaftStyle( A, corners ) ) {
 		case 'sharp':
 			corners.forEach( _ => $.lineTo( ..._ ) )
 			$.lineTo( ...xyT )
@@ -518,8 +605,8 @@ ShaftPath		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 				$.bezierCurveTo( ...corners[ 0 ], ...corners[ 1 ], ...xyT )
 				break
 			default:
-				console.error( A.corner )
-				$.lineTo( ...xyT )
+				//	three or more control points: quadratics through the midpoints between them
+				corners.forEach( ( C, _ ) => $.quadraticCurveTo( ...C, ...( _ < corners.length - 1 ? MidXY( C, corners[ _ + 1 ] ) : xyT ) ) )
 				break
 			}
 			break
@@ -537,8 +624,8 @@ ShaftPathD		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 	let
 	$ = `M ${ SVGXY( xyF ) }`
 
-	if	( A.corner ) {
-		switch	( A.corner ) {
+	if	( ShaftStyle( A, corners ) ) {
+		switch	( ShaftStyle( A, corners ) ) {
 		case 'sharp':
 			return	$ + corners.map( _ => ` L ${ SVGXY( _ ) }` ).join( '' ) + ` L ${ SVGXY( xyT ) }`
 		case 'arc':
@@ -574,7 +661,9 @@ ShaftPathD		= ( [ [ nF, nT ], A, P], xyF, xyT, corners ) => {
 			case 2:
 				return	$ + ` C ${ SVGXY( corners[ 0 ] ) } ${ SVGXY( corners[ 1 ] ) } ${ SVGXY( xyT ) }`
 			default:
-				return	$ + ` L ${ SVGXY( xyT ) }`
+				return	$ + corners.map(
+					( C, _ ) => ` Q ${ SVGXY( C ) } ${ SVGXY( _ < corners.length - 1 ? MidXY( C, corners[ _ + 1 ] ) : xyT ) }`
+				).join( '' )
 			}
 		}
 	}
@@ -589,13 +678,14 @@ HeadShaftXY		= ( cornerXY, fallbackXY, tipXY ) => {
 const
 ArrowGeometry	= _ => {
 	const
-	[ xyF, xyT, corners ] = LinkCoordinates( _ )
+	[ xyF, xyT, corners = [] ] = LinkCoordinates( _ )
 	const
 	[ , A, P ]		= _
 
 	const
-	shaftF = HeadShaftXY( A.corner && corners[ 0 ], xyT, xyF )
-,	shaftT = HeadShaftXY( A.corner && corners[ corners.length - 1 ], xyF, xyT )
+	style = ShaftStyle( A, corners )
+,	shaftF = HeadShaftXY( style && corners[ 0 ], xyT, xyF )
+,	shaftT = HeadShaftXY( style && corners[ corners.length - 1 ], xyF, xyT )
 ,	trimF = HeadNeck( A.headF, shaftF, xyF, P.lineWidth )
 ,	trimT = HeadNeck( A.headT, shaftT, xyT, P.lineWidth )
 

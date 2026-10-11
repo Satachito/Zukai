@@ -104,6 +104,9 @@ validateLink	= ( l, ids, seen, issues, i ) => {
 	if	( !ids.has( F ) )	issues.push( `link[${ i }] from "${ F }" is not a node` )
 	if	( !ids.has( T ) )	issues.push( `link[${ i }] to "${ T }" is not a node` )
 	if	( A?.corner && !CORNER_STYLES.has( A.corner ) )	issues.push( `link[${ i }] corner must be sharp, arc, or curve` )
+	if	(	A?.via !== undefined
+		&&	!( Array.isArray( A.via ) && A.via.every( _ => Array.isArray( _ ) && _.length === 2 && _.every( isNum ) ) )
+		)	issues.push( `link[${ i }] via must be an array of [ x, y ] points` )
 	validateAnchor( i, 'anchorF', F, A?.anchorF, ids, issues )
 	validateAnchor( i, 'anchorT', T, A?.anchorT, ids, issues )
 	const	key = `${ F }\u0000${ T }`

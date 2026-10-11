@@ -91,3 +91,13 @@ test( 'validateModel accepts quarter-turn rotate and rejects anything else', () 
 		.some( _ => /rotate must be/.test( _ ) )
 	)
 } )
+
+test( 'validateModel checks link via points', () => {
+	const
+	nodes = [ okNode( 'A' ), okNode( 'B', { cX: 300 } ) ]
+	assert.deepEqual( validateModel( { nodes, links: [ [ [ 'A', 'B' ], { via: [ [ 1, 2 ], [ 3, 4 ] ] }, {} ] ] } ), [] )
+	assert.ok(
+		validateModel( { nodes, links: [ [ [ 'A', 'B' ], { via: [ [ 1 ] ] }, {} ] ] } )
+		.some( _ => /via must be/.test( _ ) )
+	)
+} )

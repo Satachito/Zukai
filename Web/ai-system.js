@@ -10,7 +10,7 @@ Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"
                                   rotate: 90|180|270 turns the SVG/PNG image and the pins clockwise; rH/rV stay the displayed box ( use rotateNode, which swaps them )
                                   paint: { fill?, stroke?, lineWidth?, lineDash?, ... } ( optional {} )
 Link  = [ [ fromID, toID ], attributes, paint ]
-                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR, or a pin name of that node ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
+                                  attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR, or a pin name of that node ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ), via? ( [ [ x, y ], … ] waypoints the line passes through; with corner the legs between them are orthogonal ) }
 
 apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the whole batch back ):
   { op:"addNode",    id, area, paint? }

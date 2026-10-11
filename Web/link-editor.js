@@ -64,7 +64,9 @@ LinkEditor extends HTMLElement {
 		RefreshSelect( this.T )
 	}
 
-	set $( [ [ F, T ], { headF, headT, anchorF, anchorT, corner } = {}, P ] ) {
+	set $( [ [ F, T ], { headF, headT, anchorF, anchorT, corner, via } = {}, P ] ) {
+		//	waypoints have no form control: they ride along while the ends stay the same
+		this.VIA = via?.length ? { F, T, via } : null
 		this.Sync()
 		this.F.value		= F
 		this.T.value		= T
@@ -86,6 +88,7 @@ LinkEditor extends HTMLElement {
 		this.ANCHOR_F.value && ( A[ "anchorF"	] = this.ANCHOR_F.value )
 		this.ANCHOR_T.value && ( A[ "anchorT"	] = this.ANCHOR_T.value )
 		this.CORNER.value && ( A[ "corner"		] = this.CORNER.value )
+		this.VIA && this.VIA.F === this.F.value && this.VIA.T === this.T.value && ( A[ 'via' ] = this.VIA.via )
 		return [ [ this.F.value, this.T.value ], A, this.PAINT.$ ]	//	[ [ F, T ], A, P ]
 	}
 }

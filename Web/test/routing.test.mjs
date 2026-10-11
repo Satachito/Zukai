@@ -6,7 +6,7 @@ import assert	from 'node:assert/strict'
 //	null context is enough to import the module in plain Node.
 globalThis.document = { createElement: () => ( { getContext: () => null } ) }
 
-const	{ LinkCoordinates, RotateShape, ImageFrame } = await import( '../GeoZU.js' )
+const	{ LinkCoordinates, RotateShape, ImageFrame, ViaIndex, MovedVia } = await import( '../GeoZU.js' )
 
 const
 node	= ( id, S ) => [ id, S, {} ]
@@ -146,4 +146,68 @@ test( 'ImageFrame draws the unrotated box under a rotate transform', () => {
 		ImageFrame( { cX: 100, cY: 200, rH: 50, rV: 12 } )
 	,	{ x: 50, y: 188, w: 100, h: 24, transform: '' }
 	)
+} )
+
+test( 'via without corner is a polyline through the waypoints', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ pF, pT, corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'R', anchorT: 'L', via: [ [ 200, 50 ], [ 300, 350 ] ] } ] )
+	assert.deepEqual( [ pF, pT ], [ [ 150, 100 ], [ 350, 300 ] ] )
+	assert.deepEqual( corners, [ [ 200, 50 ], [ 300, 350 ] ] )
+} )
+
+test( 'via with corner routes each leg orthogonally from the anchors', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ , , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'R', anchorT: 'L', corner: 'sharp', via: [ [ 250, 200 ] ] } ] )
+	//	leaves F horizontally then drops to the waypoint; arrives at T horizontally
+	assert.deepEqual( corners, [ [ 250, 100 ], [ 250, 200 ], [ 250, 300 ] ] )
+} )
+
+test( 'via legs that are already aligned get no extra bend', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	//	a feedback-style loop: out to the right, over the top, back down into T's top
+	,	[ , , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'R', anchorT: 'T', corner: 'sharp', via: [ [ 200, 100 ], [ 200, 20 ], [ 400, 20 ] ] } ] )
+	assert.deepEqual( corners, [ [ 200, 100 ], [ 200, 20 ], [ 400, 20 ] ] )
+} )
+
+test( 'an unanchored end aims at its nearest waypoint', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 100, 50, 30 ) )
+	,	[ pF, pT ] = LinkCoordinates( [ [ nF, nT ], { via: [ [ 100, 300 ], [ 400, 300 ] ] } ] )
+	assert.deepEqual( [ pF, pT ], [ [ 100, 130 ], [ 400, 130 ] ] )
+} )
+
+test( 'a direct link without waypoints still has no corners', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	assert.equal( LinkCoordinates( [ [ nF, nT ], { anchorF: 'R', anchorT: 'L' } ] ).length, 2 )
+} )
+
+test( 'ViaIndex places a new waypoint by the segment it was dropped on', () => {
+	const
+	nF = node( 'F', rect( 100, 100, 50, 30 ) )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	A = { anchorF: 'R', anchorT: 'L', corner: 'sharp', via: [ [ 250, 200 ] ] }
+	//	polyline: 150,100 → 250,100 → 250,200 ( waypoint ) → 250,300 → 350,300
+	assert.equal( ViaIndex( [ [ nF, nT ], A ], [ 200, 104 ] ), 0 )
+	assert.equal( ViaIndex( [ [ nF, nT ], A ], [ 254, 150 ] ), 0 )
+	assert.equal( ViaIndex( [ [ nF, nT ], A ], [ 254, 260 ] ), 1 )
+	assert.equal( ViaIndex( [ [ nF, nT ], A ], [ 300, 296 ] ), 1 )
+} )
+
+test( 'MovedVia carries waypoints only when both ends move by the same offset', () => {
+	const
+	A = { corner: 'sharp', via: [ [ 10, 20 ] ] }
+	,	F = rect( 0, 0, 10, 10 ), T = rect( 100, 0, 10, 10 )
+	,	moved = S => ( { ...S, cX: S.cX + 5, cY: S.cY - 3 } )
+	assert.deepEqual( MovedVia( A, [ F, T ], [ moved( F ), moved( T ) ] ).via, [ [ 15, 17 ] ] )
+	assert.equal( MovedVia( A, [ F, T ], [ moved( F ), T ] ), A )
+	assert.equal( MovedVia( A, [ F, T ], [ F, T ] ), A )
 } )

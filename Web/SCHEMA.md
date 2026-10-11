@@ -131,6 +131,20 @@ Pin example ( op-amp symbol: inputs on the left, output on the right ):
       exactly one end anchored, the auto end attaches *perpendicular* to the
       anchored edge, so the line snaps to horizontal / vertical when the ends
       line up. (This perpendicular snap happens **only** when `corner` is omitted.)
+  - `via` — optional waypoints `[ [ x, y ], … ]` ( canvas coordinates ) the shaft
+    passes through in order.
+    - With `corner` set, each leg ( end → waypoint → … → end ) is routed
+      orthogonally: a leg that is not already axis-aligned gets one right-angle
+      bend. The first leg leaves along the from-anchor's side and the last
+      arrives along the to-anchor's, so the route stays right-angled when a node
+      moves or rotates. `arc` / `curve` style the resulting corners as usual
+      ( `curve` with three or more corners smooths through their midpoints ).
+    - Without `corner`, the shaft is a plain polyline through the waypoints.
+    - An unanchored end aims at its nearest waypoint instead of the other node.
+    - Waypoints are absolute, but travel with the link when both of its end
+      nodes are moved together. In the editor: **⇧ + drag** a link to add or
+      move a waypoint, **⇧ + click** a waypoint to remove it, and the link
+      menu's *Remove bends* clears them.
 - **`paint`** — same shape as node `paint`.
 
 Example:

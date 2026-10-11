@@ -35,6 +35,7 @@ AvailableLinks	= () => app.model.links.reduce(
 )
 
 import Do from './Jobs.js'
+import { MovedVia } from './GeoZU.js'
 
 const
 RestoreApp	= _ => async () => (
@@ -97,6 +98,16 @@ Reform		= () => {
 	,	() => {
 			const
 			IDs = pendingReforms.map( _ => _[ 0 ] )
+
+			//	waypoints follow a link whose two ends moved together
+			app.model.links.forEach( link => {
+				const
+				[ [ F, T ], A ] = link
+				,	ends = [ F, T ].map( ID => [ FindNode( ID ), pendingReforms.find( _ => _[ 0 ] === ID ) ] )
+				ends.flat().every( _ => _ ) && (
+					link[ 1 ] = MovedVia( A, ends.map( _ => _[ 0 ][ 1 ] ), ends.map( _ => _[ 1 ][ 1 ] ) )
+				)
+			} )
 
 			app.model.nodes = [
 				...app.model.nodes.filter( _ => !IDs.includes( _[ 0 ] ) )

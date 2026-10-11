@@ -75,6 +75,9 @@ import {
 ,	C2D
 ,	ArrowPathes
 ,	RotateShape
+,	LinkCoordinates
+,	ViaIndex
+,	MovedVia
 }	from './GeoZU.js'
 
 const
@@ -144,6 +147,32 @@ DrawLinkCanvas	= ( c2D, _ ) => {
 	headPathT && ( strokeT ? c2D.stroke( headPathT ) : c2D.fill( headPathT ) )
 
 	c2D.restore()
+}
+
+//	small squares on a link's waypoints ( ⇧ + drag moves one, ⇧ + click removes it )
+const
+DrawViaHandles	= ( c2D, via = [] ) => {
+	c2D.save()
+	c2D.fillStyle = '#00ffff'
+	for ( const [ x, y ] of via ) c2D.fillRect( x - 4, y - 4, 8, 8 )
+	c2D.restore()
+}
+
+//	a link's attributes with these waypoints ( no via key at all when there are none )
+const
+WithVia			= ( { via: _, ...A }, via ) => via.length ? { ...A, via } : A
+
+//	pull a dragged waypoint onto the row / column of its neighbours when it is
+//	within reach, so the legs on either side come out straight
+const
+SNAP			= 6
+const
+SnapXY			= ( [ x, y ], neighbours ) => {
+	for ( const [ nx, ny ] of neighbours ) {
+		Math.abs( x - nx ) <= SNAP && ( x = nx )
+		Math.abs( y - ny ) <= SNAP && ( y = ny )
+	}
+	return	[ x, y ]
 }
 
 const
@@ -342,9 +371,15 @@ MainEditor extends HTMLElement {
 			const	rF = FindReform( F )
 			const	rT = FindReform( T )
 			if	( !rF && !rT ) continue
-			const	nF = rF || FindNode( F )
-			const	nT = rT || FindNode( T )
-			nF && nT && DrawLinkCanvas( c2D, [ [ nF, nT ], A, P ] )
+			const	mF = FindNode( F )
+			const	mT = FindNode( T )
+			const	nF = rF || mF
+			const	nT = rT || mT
+			if	( !nF || !nT ) continue
+			//	both ends selected: the waypoints travel with them, as Reform will commit
+			const	a = rF && rT && mF && mT ? MovedVia( A, [ mF[ 1 ], mT[ 1 ] ], [ rF[ 1 ], rT[ 1 ] ] ) : A
+			DrawLinkCanvas( c2D, [ [ nF, nT ], a, P ] )
+			DrawViaHandles( c2D, a.via )
 //			c2D, nF[ 1 ], A, nT[ 1 ], S, { paintF: nF[ 2 ], paintT: nT[ 2 ] }
 		}
 
@@ -399,6 +434,15 @@ MainEditor extends HTMLElement {
 			key = this.linkMenuKey
 			this.hideContextMenus()
 			key && await this.editLink( key )
+		}
+
+		LINK_MENU_STRAIGHTEN.onclick	= async ev => {
+			ev.stopPropagation()
+			const
+			key = this.linkMenuKey
+			,	link = key && app.model.links.find( ( [ [ f, t ] ] ) => f === key[ 0 ] && t === key[ 1 ] )
+			this.hideContextMenus()
+			link && await EditLink( link[ 0 ], [ link[ 0 ], WithVia( link[ 1 ], [] ), link[ 2 ] ] )
 		}
 
 		LINK_MENU_REMOVE.onclick	= ev => (
@@ -747,6 +791,35 @@ MainEditor extends HTMLElement {
 			_ => ContainsTLBR( tlbr, TLBR( _[ 1 ] ) ) && this.registReform( _ )
 		)
 		await this.DrawReforms()
+	}
+
+	//	⇧ + drag on a link bends it: the waypoint under the cursor moves, or a new one
+	//	is added where the link was grabbed. ⇧ + click on a waypoint removes it.
+	bendLink( [ [ nF, nT ], A, P ], xy ) {
+		const
+		key = [ nF[ 0 ], nT[ 0 ] ]
+		,	via = structuredClone( A.via ?? [] )
+		let
+		i = via.findIndex( _ => Math.hypot( _[ 0 ] - xy[ 0 ], _[ 1 ] - xy[ 1 ] ) <= GRAB )
+		const
+		existing = i >= 0
+		existing || ( i = ViaIndex( [ [ nF, nT ], A ], xy ), via.splice( i, 0, [ ...xy ] ) )
+
+		this.gesture.track = ( c2D, _, XY ) => {
+			const
+			[ pF, pT ] = LinkCoordinates( [ [ nF, nT ], WithVia( A, via ) ] )
+			via[ i ] = SnapXY( XY, [ via[ i - 1 ] ?? pF, via[ i + 1 ] ?? pT ] )
+			DrawLinkCanvas( c2D, [ [ nF, nT ], WithVia( A, via ), P ] )
+			DrawViaHandles( c2D, via )
+		}
+		this.gesture.up = async _ => {
+			if	( EqualXY( xy, XY_EV( _ ) ) ) {
+				if	( !existing ) return
+				via.splice( i, 1 )
+			}
+			await EditLink( key, [ key, WithVia( A, via ), P ] )
+			await this.DrawReforms()
+		}
 	}
 
 	//	R: turn every selected node a quarter clockwise about its own center
@@ -1146,6 +1219,16 @@ MainEditor extends HTMLElement {
 					needsRedraw = true
 				}
 				return
+			}
+
+//	BEND ( ⇧ + drag on a link )
+			if	( ev.shiftKey && !LinkMode( ev ) ) {
+				const
+				hit = AvailableLinks().find( _ => HitLink( _, xy ) )
+				if	( hit ) {
+					this.bendLink( hit, xy )
+					return
+				}
 			}
 
 //	SELECTION

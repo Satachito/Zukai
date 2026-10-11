@@ -90,6 +90,7 @@ Applied when drawing: `fill`, `stroke`, `lineWidth`, `lineCap`, `lineJoin`, `mit
 | **`headF`, `headT`** | `false` / omit / style name | Arrow at from / to end. Styles: `triangle`, `open`, `hollow`, `diamond`, `diamondHollow`, `circle`, `circleHollow` |
 | **`anchorF`, `anchorT`** | `T` `B` `L` `R` `TL` `TR` `BL` `BR` / pin name / omit | Attachment point. A pin name refers to that node's `shape.pins`. Omit = outline hit toward the other node's center |
 | **`corner`** | undefined(default direct line) / `sharp` / `arc` / `curve` | Set only for orthogonal routing; see SCHEMA.md |
+| **`via`** | `[ [ x, y ], … ]` / omit | Waypoints the shaft passes through in order. With `corner`, legs between them are routed orthogonally; without, it is a polyline. Travel with the link when both end nodes move together. See SCHEMA.md |
 
 Routing always produces one or two bend points, so `curve` draws a quadratic
 (one bend) or cubic (two) Bézier.
@@ -133,6 +134,7 @@ Same rules in `Web/ai-api.js` and `tools/zu-validate.mjs`:
 
 - Node: `[ ID, shape, paint? ]`, non-empty unique `ID`, `type` set, finite `cX`/`cY`/`rH`/`rV`, width and height > 5px
 - Link: `[ [ from, to ], attrs?, paint? ]`, endpoints exist, no self-links or duplicate pairs
+- Waypoints: `via`, when present, is an array of `[ x, y ]` number pairs
 - Rotation: `rotate`, when present, is `0`, `90`, `180` or `270`
 - Pins: `pins` is an object of `[ u, v ]` / `[ u, v, T|B|L|R ]` with non-built-in names; a link anchor that is not built-in must name a pin of that end's node
 
