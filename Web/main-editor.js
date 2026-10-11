@@ -811,6 +811,8 @@ MainEditor extends HTMLElement {
 	async onKeyDown( ev ) {
 		const	t = ev.target
 		if	( t && ( /^(INPUT|TEXTAREA|SELECT)$/.test( t.tagName ) || t.isContentEditable ) ) return
+		//	a modal dialog ( e.g. Help ) owns the keyboard: no editing shortcuts behind it
+		if	( document.querySelector( 'dialog[open]' ) ) return
 		switch ( ev.key ) {
 		case 'z':	case 'Z':
 			if ( ev.metaKey || ev.ctrlKey ) { ev.preventDefault(); await ( ev.shiftKey ? Redo() : Undo() ) }
