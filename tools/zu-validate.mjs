@@ -56,6 +56,8 @@ validateNode	= ( n, ids, issues, i ) => {
 		if	( !isNum( S[ k ] ) )	issues.push( `node "${ ID }" ${ k } must be a number` )
 	if	( isNum( S.rH ) && isNum( S.rV ) && !( Math.abs( S.rH ) > 2.5 && Math.abs( S.rV ) > 2.5 ) )
 		issues.push( `node "${ ID }" is too small ( width / height must exceed 5px )` )
+	if	( S.rotate !== undefined && ![ 0, 90, 180, 270 ].includes( S.rotate ) )
+		issues.push( `node "${ ID }" rotate must be 0, 90, 180 or 270` )
 	validatePins( ID, S.pins, issues )
 }
 

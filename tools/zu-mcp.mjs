@@ -70,7 +70,7 @@ server.tool(
 server.tool(
 	'zu_apply'
 ,	`Apply one or more ops to the live diagram ( same ops as window.ZU.apply ).
-Ops: addNode, updateNode, removeNode, restack, addLink, updateLink, removeLink, autoLayout, setCanvas.
+Ops: addNode, updateNode, rotateNode, removeNode, restack, addLink, updateLink, removeLink, autoLayout, setCanvas.
 Example updateNode: { "op": "updateNode", "id": "VPN", "area": { "type": "rhombus", "cX": 960, "cY": 584, "rH": 512, "rV": 72, "html": "VPN" } }`
 ,	{
 		ops	: z.array( z.record( z.any() ) )

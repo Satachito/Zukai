@@ -6,7 +6,7 @@ import assert	from 'node:assert/strict'
 //	null context is enough to import the module in plain Node.
 globalThis.document = { createElement: () => ( { getContext: () => null } ) }
 
-const	{ LinkCoordinates } = await import( '../GeoZU.js' )
+const	{ LinkCoordinates, RotateShape, ImageFrame } = await import( '../GeoZU.js' )
 
 const
 node	= ( id, S ) => [ id, S, {} ]
@@ -103,4 +103,47 @@ test( 'unknown pin name falls back to the auto outline point', () => {
 	,	nT = node( 'T', rect( 400, 100, 50, 30 ) )
 	,	[ pF ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'nope' } ] )
 	assert.deepEqual( pF, [ 150, 100 ] )
+} )
+
+test( 'rotate turns pins with the node and their exits with them', () => {
+	//	unrotated symbol 100 × 40 with a pin on its left edge; turned 90° clockwise the
+	//	displayed box is 40 × 100 and the pin sits on the top edge, exiting upward
+	const
+	nF = node( 'F', { ...rect( 100, 100, 20, 50 ), rotate: 90, pins: { a: [ 0, 0.5 ] } } )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ pF, , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'a', anchorT: 'L', corner: 'sharp' } ] )
+	assert.deepEqual( pF, [ 100, 50 ] )
+	//	T -> L routes VH
+	assert.deepEqual( corners, [ [ 100, 300 ] ] )
+} )
+
+test( 'rotate 180 mirrors a pin through the center and turns an explicit exit', () => {
+	const
+	nF = node( 'F', { ...rect( 100, 100, 50, 20 ), rotate: 180, pins: { a: [ 0, 0.25, 'T' ] } } )
+	,	nT = node( 'T', rect( 400, 300, 50, 30 ) )
+	,	[ pF, , corners ] = LinkCoordinates( [ [ nF, nT ], { anchorF: 'a', anchorT: 'L', corner: 'sharp' } ] )
+	assert.deepEqual( pF, [ 150, 110 ] )
+	//	exit T turned twice is B: B -> L routes VH
+	assert.deepEqual( corners, [ [ 150, 300 ] ] )
+} )
+
+test( 'RotateShape swaps the half-sizes and cycles rotate back to none', () => {
+	const
+	S = { type: 'SVG', cX: 10, cY: 20, rH: 50, rV: 12, SVG: 'x' }
+	,	q1 = RotateShape( S )
+	assert.deepEqual( q1, { type: 'SVG', cX: 10, cY: 20, rH: 12, rV: 50, SVG: 'x', rotate: 90 } )
+	const	q4 = RotateShape( RotateShape( RotateShape( q1 ) ) )
+	assert.deepEqual( q4, S )
+	assert.ok( !( 'rotate' in q4 ) )
+} )
+
+test( 'ImageFrame draws the unrotated box under a rotate transform', () => {
+	assert.deepEqual(
+		ImageFrame( { cX: 100, cY: 200, rH: 12, rV: 50, rotate: 90 } )
+	,	{ x: 50, y: 188, w: 100, h: 24, transform: 'rotate(90 100 200)' }
+	)
+	assert.deepEqual(
+		ImageFrame( { cX: 100, cY: 200, rH: 50, rV: 12 } )
+	,	{ x: 50, y: 188, w: 100, h: 24, transform: '' }
+	)
 } )

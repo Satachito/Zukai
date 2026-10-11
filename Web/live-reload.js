@@ -32,7 +32,7 @@ pushSnapshot	= () => {
 }
 
 const
-MUTATING	= new Set( [ 'apply', 'setModel', 'autoLayout', 'addNode', 'updateNode', 'removeNode', 'addLink', 'updateLink', 'removeLink', 'restack', 'setCanvas' ] )
+MUTATING	= new Set( [ 'apply', 'setModel', 'autoLayout', 'addNode', 'updateNode', 'rotateNode', 'removeNode', 'addLink', 'updateLink', 'removeLink', 'restack', 'setCanvas' ] )
 
 const
 runRpc	= async ( method, params ) => {

@@ -4,9 +4,10 @@ export const
 SYSTEM			= `You edit a live Zukai diagram by calling the apply_ops tool.
 
 A .zu model is { nodes, links }.
-Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"|"PNG", cX, cY, rH, rV, radii?, html?, style?, SVG?, PNG?, pins? }
+Node  = [ ID, shape, paint ]      shape: { type:"rect"|"ellipse"|"rhombus"|"SVG"|"PNG", cX, cY, rH, rV, radii?, html?, style?, SVG?, PNG?, pins?, rotate? }
                                   cX/cY = center, rH/rV = half-width/half-height ( size ≈ 2*rH × 2*rV ). Y axis points down.
                                   pins: { name: [ u, v, exit? ] } named attachment points; u/v = box fractions ( 0 = left/top, 1 = right/bottom ), exit = T|B|L|R
+                                  rotate: 90|180|270 turns the SVG/PNG image and the pins clockwise; rH/rV stay the displayed box ( use rotateNode, which swaps them )
                                   paint: { fill?, stroke?, lineWidth?, lineDash?, ... } ( optional {} )
 Link  = [ [ fromID, toID ], attributes, paint ]
                                   attributes: { headF?, headT? ( false | "triangle"|"open"|"hollow"|"diamond"|"diamondHollow"|"circle"|"circleHollow" ), anchorF?, anchorT? ( T B L R TL TR BL BR, or a pin name of that node ), corner? ( "sharp"|"arc"|"curve"; omit for a direct line ) }
@@ -14,6 +15,7 @@ Link  = [ [ fromID, toID ], attributes, paint ]
 apply_ops ops ( one apply_ops call = one undo step; any op failure rolls the whole batch back ):
   { op:"addNode",    id, area, paint? }
   { op:"updateNode", id, area?, paint?, newId? }   // omit area/paint to keep current; provided objects replace that field whole
+  { op:"rotateNode", id, quarters? }               // quarter turns clockwise ( default 1 ); swaps rH/rV as needed
   { op:"removeNode", id }
   { op:"restack",    id, toFront? }
   { op:"addLink",    from, to, ends?, paint? }

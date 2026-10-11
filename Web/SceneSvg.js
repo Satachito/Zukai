@@ -1,7 +1,7 @@
 //	Live diagram scene: build an SVG DOM from app.model (shapes, links, labels).
 //	Labels go in as raw foreignObject HTML (no SanitizeLabel) — Export still sanitizes.
 
-import { XYWH, ArrowDs } from './GeoZU.js'
+import { XYWH, ArrowDs, ImageFrame } from './GeoZU.js'
 import { ParseEmbeddedSVG } from './DomUtils.js'
 import { appendLiveLabel, activateLiveLabelScripts } from './ForeignLabel.js'
 import { layoutScrollableLabels } from './LabelScroll.js'
@@ -32,6 +32,11 @@ paintAttrs	= P => {
 	P.lineDashOffset	&& ( a[ 'stroke-dashoffset' ] = P.lineDashOffset )
 	return a
 }
+
+//	the element to draw a rotated image into: a <g> carrying the transform ( a nested
+//	<svg> ignores its own transform attribute in SVG 1.1 renderers ), else parent itself
+const
+turned		= ( parent, transform ) => transform ? parent.appendChild( E( 'g', { transform } ) ) : parent
 
 const
 appendShape	= ( parent, S, P ) => {
@@ -73,19 +78,19 @@ appendShape	= ( parent, S, P ) => {
 		//	Keep the full <svg> ( root stroke/fill/viewBox inherit correctly ).
 		//	Only children → <g> drops presentation attrs on the root.
 		const
-		[ x, y, w, h ] = XYWH( S )
+		{ x, y, w, h, transform } = ImageFrame( S )
 		,	nested = document.importNode( ParseEmbeddedSVG( S.SVG, w, h ), true )
 		nested.setAttribute( 'x', x )
 		nested.setAttribute( 'y', y )
 		nested.setAttribute( 'width', w )
 		nested.setAttribute( 'height', h )
-		parent.appendChild( nested )
+		turned( parent, transform ).appendChild( nested )
 		break
 	}
 	case 'PNG': {
 		const
-		[ x, y, w, h ] = XYWH( S )
-		parent.appendChild(
+		{ x, y, w, h, transform } = ImageFrame( S )
+		turned( parent, transform ).appendChild(
 			E( 'image', {
 				href	: `data:image/png;base64,${ S.PNG }`
 			,	x, y, width: w, height: h

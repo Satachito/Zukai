@@ -74,6 +74,7 @@ import {
 ,	GRAB
 ,	C2D
 ,	ArrowPathes
+,	RotateShape
 }	from './GeoZU.js'
 
 const
@@ -434,6 +435,12 @@ MainEditor extends HTMLElement {
 		,	this.hideContextMenus()
 		)
 
+		NODE_MENU_ROTATE.onclick	= async ev => (
+			ev.stopPropagation()
+		,	this.hideContextMenus()
+		,	await this.rotate()
+		)
+
 		NODE_MENU_DELETE.onclick	= async ev => (
 			ev.stopPropagation()
 		,	this.nodeMenuTarget && await Delete()
@@ -742,6 +749,15 @@ MainEditor extends HTMLElement {
 		await this.DrawReforms()
 	}
 
+	//	R: turn every selected node a quarter clockwise about its own center
+	//	( one undo step ). Links follow through the nodes' anchors and pins.
+	async rotate() {
+		if	( !app.reforms.length ) return
+		app.reforms = app.reforms.map( ( [ ID, S, P ] ) => [ ID, RotateShape( S ), P ] )
+		await Reform()
+		this.setEditorToLargestReform()
+	}
+
 	//	⌘E: expand the current selection to include everything it contains
 	//	(a node with nothing inside it simply stays as-is). Selection only,
 	//	so it is not part of the undo history.
@@ -823,6 +839,9 @@ MainEditor extends HTMLElement {
 			break
 		case 'e':	case 'E':
 			if ( ev.metaKey || ev.ctrlKey ) { ev.preventDefault(); await this.expand() }
+			break
+		case 'r':	case 'R':
+			if ( !( ev.metaKey || ev.ctrlKey || ev.altKey ) ) { ev.preventDefault(); await this.rotate() }
 			break
 		case 'Escape':
 			ev.preventDefault()

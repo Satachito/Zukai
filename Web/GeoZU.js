@@ -80,12 +80,58 @@ Pin				= ( S, a ) => a && !ANCHORS.includes( a ) && S.pins && Object.hasOwn( S.p
 ?	S.pins[ a ]
 :	undefined
 
+//	shape.rotate = 90 / 180 / 270 turns a node's content clockwise in quarter turns.
+//	cX / cY / rH / rV always describe the box as displayed, so everything box-based
+//	( hit-testing, built-in anchors, resizing ) is unaffected; rotation only turns
+//	the SVG / PNG image and the pins, which are authored in the unrotated frame.
 export const
-PinXY			= ( S, [ u, v ] ) => [ S.cX - S.rH + 2 * S.rH * u, S.cY - S.rV + 2 * S.rV * v ]
+Quarters		= S => ( ( Math.round( ( S.rotate ?? 0 ) / 90 ) % 4 ) + 4 ) % 4
 
 const
-PinExit			= ( [ u, v, exit ] ) => exit ?? [ [ u, 'L' ], [ 1 - u, 'R' ], [ v, 'T' ], [ 1 - v, 'B' ] ]
-.	reduce( ( m, _ ) => _[ 0 ] < m[ 0 ] ? _ : m )[ 1 ]
+EXIT_CW			= { T: 'R', R: 'B', B: 'L', L: 'T' }
+
+//	a pin as it sits on the displayed box: each quarter turn maps [ u, v ] → [ 1 − v, u ]
+const
+TurnPin			= ( S, [ u, v, exit ] ) => {
+	for	( let q = Quarters( S ); q--; ) [ u, v, exit ] = [ 1 - v, u, exit && EXIT_CW[ exit ] ]
+	return	[ u, v, exit ]
+}
+
+export const
+PinXY			= ( S, pin ) => {
+	const	[ u, v ] = TurnPin( S, pin )
+	return	[ S.cX - S.rH + 2 * S.rH * u, S.cY - S.rV + 2 * S.rV * v ]
+}
+
+const
+PinExit			= ( S, pin ) => {
+	const	[ u, v, exit ] = TurnPin( S, pin )
+	return	exit ?? [ [ u, 'L' ], [ 1 - u, 'R' ], [ v, 'T' ], [ 1 - v, 'B' ] ]
+	.	reduce( ( m, _ ) => _[ 0 ] < m[ 0 ] ? _ : m )[ 1 ]
+}
+
+//	the shape turned one more quarter clockwise about its center: the displayed box
+//	swaps its half-sizes and rotate advances ( dropped again at a full turn )
+export const
+RotateShape		= S => {
+	const
+	{ rotate, ...$ } = S
+	,	next = ( Quarters( S ) + 1 ) % 4 * 90
+	return	{ ...$, rH: S.rV, rV: S.rH, ...( next ? { rotate: next } : {} ) }
+}
+
+//	where an SVG / PNG image goes: its unrotated box centered on the node, plus the
+//	SVG transform that turns it into the displayed box ( '' when unrotated )
+export const
+ImageFrame		= S => {
+	const
+	q = Quarters( S )
+	,	[ w, h ] = q % 2 ? [ 2 * S.rV, 2 * S.rH ] : [ 2 * S.rH, 2 * S.rV ]
+	return	{
+		x: S.cX - w / 2, y: S.cY - h / 2, w, h
+	,	transform: q ? `rotate(${ q * 90 } ${ S.cX } ${ S.cY })` : ''
+	}
+}
 
 //	the anchor as routing sees it: built-ins pass through, a pin becomes its exit,
 //	and an unknown name counts as unanchored ( auto )
@@ -93,7 +139,7 @@ const
 AnchorExit		= ( S, a ) => {
 	if	( ANCHORS.includes( a ) ) return a
 	const	p = Pin( S, a )
-	return	p ? PinExit( p ) : undefined
+	return	p ? PinExit( S, p ) : undefined
 }
 
 //	corner anchors ( TL / TR / BL / BR ) each expose two outward edge directions.

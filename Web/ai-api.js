@@ -24,6 +24,8 @@ import {
 ,	SetCanvasSize
 }	from './main-editor.js'
 
+import { RotateShape }	from './GeoZU.js'
+
 import {
 	updateNodeArgs
 ,	updateLinkArgs
@@ -85,6 +87,8 @@ validateNode	= ( n, ids, issues, i ) => {
 		if	( !isNum( S[ k ] ) )	issues.push( `node "${ ID }" ${ k } must be a number` )
 	if	( isNum( S.rH ) && isNum( S.rV ) && !( Math.abs( S.rH ) > 2.5 && Math.abs( S.rV ) > 2.5 ) )
 		issues.push( `node "${ ID }" is too small ( width / height must exceed 5px )` )
+	if	( S.rotate !== undefined && ![ 0, 90, 180, 270 ].includes( S.rotate ) )
+		issues.push( `node "${ ID }" rotate must be 0, 90, 180 or 270` )
 	validatePins( ID, S.pins, issues )
 }
 
@@ -174,6 +178,14 @@ OPS				= {
 		const
 		node = mustFindNode( a.id )
 		return EditNode( a.id, updateNodeArgs( a, node ) )
+	}
+//	quarter turns clockwise ( default 1 ); negative turns counter-clockwise
+,	rotateNode	: a => {
+		const
+		node = mustFindNode( a.id )
+		let	S = node[ 1 ]
+		for	( let q = ( ( ( a.quarters ?? 1 ) % 4 ) + 4 ) % 4; q--; ) S = RotateShape( S )
+		return EditNode( a.id, [ a.id, S, node[ 2 ] ] )
 	}
 ,	removeNode	: a => RemoveNode( a.id )
 ,	restack		: a => Restack( a.id, a.toFront ?? true )

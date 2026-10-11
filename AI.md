@@ -57,6 +57,7 @@ separately from the file format.
 | **`style`** | — | Label CSS fragments (`;prop : value`, newline-separated) |
 | **`SVG`** | when type=SVG | **base64** of the SVG source (decoded at draw time). Not raw `<svg>` markup |
 | **`PNG`** | when type=PNG | PNG base64 |
+| **`rotate`** | — | `90` \| `180` \| `270` — turns the `SVG`/`PNG` image and the pins clockwise. `rH`/`rV` stay the **displayed** box, so a quarter turn swaps them (the `rotateNode` op and the **R** key do). Labels stay upright |
 | **`pins`** | — | Named link attachment points `{ name: [ u, v, exit? ] }` — `u`/`v` box fractions (0 = left/top, 1 = right/bottom), `exit` `T`/`B`/`L`/`R` (default: nearest edge). Names must not be built-in anchors. See SCHEMA.md |
 
 `SVG` / `PNG` nodes are outlined as their bounding box (like `rect`) for link
@@ -132,6 +133,7 @@ Same rules in `Web/ai-api.js` and `tools/zu-validate.mjs`:
 
 - Node: `[ ID, shape, paint? ]`, non-empty unique `ID`, `type` set, finite `cX`/`cY`/`rH`/`rV`, width and height > 5px
 - Link: `[ [ from, to ], attrs?, paint? ]`, endpoints exist, no self-links or duplicate pairs
+- Rotation: `rotate`, when present, is `0`, `90`, `180` or `270`
 - Pins: `pins` is an object of `[ u, v ]` / `[ u, v, T|B|L|R ]` with non-built-in names; a link anchor that is not built-in must name a pin of that end's node
 
 ---
@@ -160,6 +162,7 @@ Every op is also exposed directly (`ZU.addNode({ … })`, `ZU.removeLink({ … }
 |----|----------------|
 | `addNode` | `id`, `area`, `paint?` |
 | `updateNode` | `id`, `area?`, `paint?`, `newId?` — omit `area`/`paint` to keep current |
+| `rotateNode` | `id`, `quarters?` — quarter turns clockwise (default 1, negative = counter-clockwise); swaps `rH`/`rV` and updates `rotate` |
 | `removeNode` | `id` |
 | `restack` | `id`, `toFront?` |
 | `addLink` | `from`, `to`, `ends?`, `paint?` |

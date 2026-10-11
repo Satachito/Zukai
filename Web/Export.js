@@ -1,6 +1,6 @@
 import { FindNode	} from './Application.js'
 import { CanvasSize	} from './main-editor.js'
-import { XYWH, ArrowDs	} from './GeoZU.js'
+import { XYWH, ArrowDs, ImageFrame	} from './GeoZU.js'
 import { EscapeXML, ParseEmbeddedSVG	} from './DomUtils.js'
 import { drawForeignLabelSvg	} from './ForeignLabel.js'
 
@@ -122,26 +122,31 @@ drawShape		= ( parts, X, Y, S, P ) => {
 	}
 }
 
+//	wrap a rotated image in a <g> carrying its transform
+const
+turned			= ( transform, markup ) => transform ? `<g transform="${ transform }">${ markup }</g>` : markup
+
 const
 drawSvgNode		= ( parts, X, Y, S ) => {
 	//	Keep the full <svg> so root stroke/fill/viewBox are preserved ( not just innerHTML ).
 	const
-	[ x, y, w, h ] = XYWH( S )
+	{ x, y, w, h, transform } = ImageFrame( S )
 	,	root = ParseEmbeddedSVG( S.SVG, w, h )
 	root.setAttribute( 'x', X( x ) )
 	root.setAttribute( 'y', Y( y ) )
 	root.setAttribute( 'width', w )
 	root.setAttribute( 'height', h )
-	parts.push( new XMLSerializer().serializeToString( root ) )
+	parts.push( turned( transform, new XMLSerializer().serializeToString( root ) ) )
 }
 
 const
 drawPngNode		= ( parts, X, Y, S ) => {
 	const
-	[ x, y, w, h ] = XYWH( S )
-	parts.push(
-		`<image href="data:image/png;base64,${ S.PNG }" x="${ X( x ) }" y="${ Y( y ) }" width="${ w }" height="${ h }"/>`
-	)
+	{ x, y, w, h, transform } = ImageFrame( S )
+	parts.push( turned(
+		transform
+	,	`<image href="data:image/png;base64,${ S.PNG }" x="${ X( x ) }" y="${ Y( y ) }" width="${ w }" height="${ h }"/>`
+	) )
 }
 
 const

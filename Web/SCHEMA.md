@@ -43,6 +43,14 @@ manual resizes persist in `localStorage` (`tokyo.828.zukai.canvas`) for the sess
     `data-zu-scroll` on an inner element in `html` with `overflow` CSS. The editor
     forwards wheel / pointer events into those areas.
   - `SVG` / `PNG` — base64 image bytes; **required** when `type` is `"SVG"` / `"PNG"`
+  - `rotate` — optional `90` | `180` | `270`: turns the node's content clockwise
+    in quarter turns. `cX` / `cY` / `rH` / `rV` always describe the box **as
+    displayed**, so a quarter turn swaps `rH` and `rV` ( the **R** key, the node
+    menu's *Rotate 90°* and the `rotateNode` op all do this ). Rotation turns the
+    `SVG` / `PNG` image and the `pins` ( which stay authored in the unrotated
+    frame, exits included ); built-in anchors, hit-testing and resizing keep
+    using the displayed box, and the `html` label stays upright. `rect` /
+    `ellipse` / `rhombus` outlines look the same at every quarter turn.
   - `pins` — optional named link attachment points:
     `{ "name": [ u, v ] }` or `{ "name": [ u, v, exit ] }`.
     `u` / `v` are fractions of the box ( `0` = left / top, `1` = right / bottom ),

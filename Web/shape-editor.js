@@ -35,6 +35,14 @@ ShapeEditor extends HTMLElement {
 		this.RADII			= LabeledInput		( this, 'radii'	)
 
 		this.TYPE			= LabeledSelect		( this, 'type'	, 'rect', 'ellipse', 'rhombus', 'PNG', 'SVG' )
+		//	turning by an odd number of quarters swaps the box's half-sizes, like the R key
+		this.ROTATE			= LabeledSelect		( this, 'rotate', '', '90', '180', '270' )
+		this.QUARTERS		= 0
+		this.ROTATE.onchange	= () => {
+			const	now = Number( this.ROTATE.value ) / 90
+			;( now - this.QUARTERS ) % 2 && ( [ this.RH.value, this.RV.value ] = [ this.RV.value, this.RH.value ] )
+			this.QUARTERS = now
+		}
 
 		this.HTML			= LabeledTextArea	( this, 'HTML:'	)
 		this.STYLE			= LabeledTextArea	( this, 'STYLE:')
@@ -63,6 +71,7 @@ ShapeEditor extends HTMLElement {
 		this.RADII	.value	&& ( $[ 'radii'	] = Number( this.RADII	.value ) )
 
 		this.TYPE	.value	&& ( $[ 'type'	] = this.TYPE	.value )
+		this.ROTATE	.value	&& ( $[ 'rotate'] = Number( this.ROTATE.value ) )
 		this.HTML	.value	&& ( $[ 'html'	] = this.HTML	.value )
 		this.STYLE	.value	&& ( $[ 'style'	] = this.STYLE	.value )
 
@@ -90,6 +99,8 @@ ShapeEditor extends HTMLElement {
 		this.RADII	.value	= _.radii	?? ''
 
 		this.TYPE	.value	= _.type
+		this.ROTATE	.value	= _.rotate	|| ''
+		this.QUARTERS		= Number( this.ROTATE.value ) / 90
 		this.HTML	.value	= _.html	?? ''
 		this.STYLE	.value	= _.style	?? ''
 		this.PINS	.value	= FormatPins( _.pins )

@@ -83,3 +83,11 @@ test( 'validateModel rejects bad pins and unknown anchors', () => {
 	assert.ok( issues.some( _ => /anchorT "nope" is neither/.test( _ ) ) )
 	assert.ok( !issues.some( _ => /anchorF/.test( _ ) ) )
 } )
+
+test( 'validateModel accepts quarter-turn rotate and rejects anything else', () => {
+	assert.deepEqual( validateModel( { nodes: [ okNode( 'A', { rotate: 270 } ) ], links: [] } ), [] )
+	assert.ok(
+		validateModel( { nodes: [ okNode( 'A', { rotate: 45 } ) ], links: [] } )
+		.some( _ => /rotate must be/.test( _ ) )
+	)
+} )
