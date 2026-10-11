@@ -1,0 +1,493 @@
+{
+	"model": {
+		"nodes": [
+			[
+				"title",
+				{
+					"type": "rect",
+					"cX": 1100,
+					"cY": 60,
+					"rH": 300,
+					"rV": 14,
+					"html": "<b>Vocal preamp block diagram ( analog )</b>",
+					"style": ";display:grid;place-items:center center;font-size:18px"
+				},
+				{}
+			],
+			[
+				"g.in",
+				{
+					"type": "rect",
+					"cX": 397.5,
+					"cY": 295.0,
+					"rH": 337.5,
+					"rV": 175.0,
+					"radii": 12
+				},
+				{
+					"stroke": "light-dark(#57606a, #8b949e)",
+					"lineWidth": 1,
+					"lineDash": [
+						6,
+						4
+					]
+				}
+			],
+			[
+				"g.in.title",
+				{
+					"type": "rect",
+					"cX": 130,
+					"cY": 142,
+					"rH": 60,
+					"rV": 12,
+					"html": "<b>Input</b>",
+					"style": ";display:grid;place-items:center start;font-size:15px"
+				},
+				{}
+			],
+			[
+				"g.proc",
+				{
+					"type": "rect",
+					"cX": 990.0,
+					"cY": 295.0,
+					"rH": 230.0,
+					"rV": 175.0,
+					"radii": 12
+				},
+				{
+					"stroke": "light-dark(#57606a, #8b949e)",
+					"lineWidth": 1,
+					"lineDash": [
+						6,
+						4
+					]
+				}
+			],
+			[
+				"g.proc.title",
+				{
+					"type": "rect",
+					"cX": 830,
+					"cY": 142,
+					"rH": 60,
+					"rV": 12,
+					"html": "<b>Processing</b>",
+					"style": ";display:grid;place-items:center start;font-size:15px"
+				},
+				{}
+			],
+			[
+				"g.out",
+				{
+					"type": "rect",
+					"cX": 1600.0,
+					"cY": 295.0,
+					"rH": 340.0,
+					"rV": 175.0,
+					"radii": 12
+				},
+				{
+					"stroke": "light-dark(#57606a, #8b949e)",
+					"lineWidth": 1,
+					"lineDash": [
+						6,
+						4
+					]
+				}
+			],
+			[
+				"g.out.title",
+				{
+					"type": "rect",
+					"cX": 1330,
+					"cY": 142,
+					"rH": 60,
+					"rV": 12,
+					"html": "<b>Output</b>",
+					"style": ";display:grid;place-items:center start;font-size:15px"
+				},
+				{}
+			],
+			[
+				"mic",
+				{
+					"type": "rect",
+					"cX": 170,
+					"cY": 230,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Mic ×4",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"rj45",
+				{
+					"type": "rect",
+					"cX": 390,
+					"cY": 230,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "RJ45 input<br>( STP cable )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"pre",
+				{
+					"type": "rect",
+					"cX": 610,
+					"cY": 230,
+					"rH": 105,
+					"rV": 30,
+					"radii": 8,
+					"html": "Mic preamp ×4<br>( instrumentation amp )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"pc",
+				{
+					"type": "rect",
+					"cX": 170,
+					"cY": 390,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "PC<br>( backing track )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"usb",
+				{
+					"type": "rect",
+					"cX": 610,
+					"cY": 390,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "USB Audio DAC<br>( stereo → analog )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"pan",
+				{
+					"type": "rect",
+					"cX": 890,
+					"cY": 230,
+					"rH": 110,
+					"rV": 30,
+					"radii": 8,
+					"html": "Pan ×4<br>( L / R gain per ch )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"sum",
+				{
+					"type": "rect",
+					"cX": 1100,
+					"cY": 310,
+					"rH": 90,
+					"rV": 120,
+					"radii": 8,
+					"html": "Summing amp<br>L / R<br><br>( op-amp )<br><br>Mic 4ch<br>+ backing L / R",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"vol",
+				{
+					"type": "rect",
+					"cX": 1370,
+					"cY": 230,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Volume ×4<br>( per monitor )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"hpamp",
+				{
+					"type": "rect",
+					"cX": 1590,
+					"cY": 230,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Headphone<br>amp ×4",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"hpout",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 230,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Headphone out<br>×4 ( monitor )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"linebuf",
+				{
+					"type": "rect",
+					"cX": 1590,
+					"cY": 390,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Line buffer<br>( op-amp )",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"lineout",
+				{
+					"type": "rect",
+					"cX": 1820,
+					"cY": 390,
+					"rH": 90,
+					"rV": 30,
+					"radii": 8,
+					"html": "Line out",
+					"style": ";display:grid;place-items:center;text-align:center;font-size:14px"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			]
+		],
+		"links": [
+			[
+				[
+					"mic",
+					"rj45"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"rj45",
+					"pre"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"pre",
+					"pan"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"pan",
+					"sum"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"pc",
+					"usb"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"usb",
+					"sum"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum",
+					"vol"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"vol",
+					"hpamp"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"hpamp",
+					"hpout"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum",
+					"linebuf"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"linebuf",
+					"lineout"
+				],
+				{
+					"headF": false,
+					"headT": "triangle",
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			]
+		]
+	}
+}
