@@ -167,7 +167,8 @@ cursorTo	= ( page, x, y ) => page.evaluate( ( [ x, y ] ) => {
 }
 
 //	move the fake cursor onto a DOM element, then click it for real
-,	clickEl	= async ( page, rec, locator, sec = .55 ) => {
+//	act: what to do once the cursor is on the element ( default: click it )
+,	clickEl	= async ( page, rec, locator, sec = .55, act = _ => _.click() ) => {
 	const	box = await locator.boundingBox()
 	if	( box ) {
 		const	pos = await page.evaluate( () => {
@@ -177,9 +178,15 @@ cursorTo	= ( page, x, y ) => page.evaluate( ( [ x, y ] ) => {
 		const	tx = box.x + box.width / 2, ty = box.y + box.height / 2
 		await rec.tween( sec, async t => cursorTo( page, pos[ 0 ] + ( tx - pos[ 0 ] ) * t, pos[ 1 ] + ( ty - pos[ 1 ] ) * t ) )
 	}
-	await locator.click()
+	await act( locator )
 	await rec.hold( .3 )
 }
+
+//	move to the Samples… select and pick a sample ( the native popup is not recorded )
+,	pickSample	= ( page, rec, name, sec ) => clickEl(
+	page, rec, page.locator( '#SAMPLE_SELECT' ), sec
+,	_ => _.selectOption( `Samples/${ name }.zu` )
+)
 
 ,	newPage	= async ( browser, rec, { nav = true, aside = true } = {} ) => {
 	const
@@ -205,7 +212,7 @@ SHOTS	= {
 		const	{ ctx, page } = await newPage( browser, rec )
 		await cursorTo( page, W * .58, H * .55 )
 		await rec.hold( .8 )
-		await clickEl( page, rec, page.locator( '#SAMPLE_MULTICLOUD' ), .7 )
+		await pickSample( page, rec, 'MultiCloud', .7 )
 		await sleep( 700 )
 		await rec.hold( .8 )
 		await clickEl( page, rec, page.locator( '#NAV_TOGGLE' ), .45 )
@@ -220,10 +227,10 @@ SHOTS	= {
 			m.scrollTop = y; m.scrollLeft = x
 		}, [ span[ 0 ] * t, span[ 1 ] * t * .55 ] ) )
 		await rec.hold( .5 )
-		await clickEl( page, rec, page.locator( '#SAMPLE_MINDMAP' ), .5 )
+		await pickSample( page, rec, 'MindMap', .5 )
 		await sleep( 600 )
 		await rec.hold( 1.3 )
-		await clickEl( page, rec, page.locator( '#SAMPLE_SEQUENCE' ), .5 )
+		await pickSample( page, rec, 'Sequence', .5 )
 		await sleep( 600 )
 		await rec.hold( .5 )
 		await ctx.close()
@@ -292,7 +299,7 @@ SHOTS	= {
 	//	AI editing — type the prompt, then show the result of that prompt
 ,	ai	: async ( browser, rec, lang ) => {
 		const	{ ctx, page } = await newPage( browser, rec, { nav: false } )
-		await clickEl( page, rec, page.locator( '#SAMPLE_MULTICLOUD' ), .5 )
+		await pickSample( page, rec, 'MultiCloud', .5 )
 		await sleep( 800 )
 		await rec.tween( 1.4, async t => page.evaluate( y => { document.getElementById( 'MAIN_EDITOR' ).scrollTop = y }, 520 * t ) )
 		const

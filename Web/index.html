@@ -151,34 +151,22 @@ body.aside-collapsed	> aside	{ display: none }
 ;	box-sizing		: border-box
 ;	padding			: 4px 6px
 ;	display			: flex
-;	align-items		: stretch
+;	align-items		: center
 }
-.sample-list {
-;	display			: grid
-;	grid-template-columns	: repeat( 5, auto )
-;	grid-template-rows		: repeat( 2, 1fr )
-;	gap				: 2px
-;	height			: 100%
-}
-.sample-list button {
-;	min-width		: 0
-;	min-height		: 0
+.sample-panel select {
+;	box-sizing		: border-box
+;	height			: 27px	/* same as the header's .file-btn buttons */
 ;	margin			: 0
-;	padding			: 1px 6px
+;	padding			: 0 8px
 ;	border			: 1px solid var( --color-popup-border )
-;	border-radius	: 4px
+;	border-radius	: 6px
 ;	background		: var( --color-popup-bg )
 ;	color			: inherit
 ;	font-family		: inherit
-;	font-size		: 10px
-;	line-height		: 1.2
-;	text-align		: center
+;	font-size		: 12px
 ;	cursor			: pointer
-;	white-space		: nowrap
-;	overflow		: hidden
-;	text-overflow	: ellipsis
 }
-.sample-list button:hover {
+.sample-panel select:hover {
 ;	background		: var( --color-popup-hover )
 }
 main-editor {
@@ -814,20 +802,22 @@ aside input[type=checkbox]
 	</div>
 </header>
 <header class=sample-panel>
-	<div class=sample-list>
-		<button id=SAMPLE_GCP		>GCP		</button>
-		<button id=SAMPLE_AWS		>AWS		</button>
-		<button id=SAMPLE_AZURE		>Azure		</button>
-		<button id=SAMPLE_SEQUENCE	>Sequence	</button>
-		<button id=SAMPLE_MULTICLOUD	>MultiCloud	</button>
-		<button id=SAMPLE_SCRIPTS	>Scripts	</button>
-		<button id=SAMPLE_SCROLL	>Scroll		</button>
-		<button id=SAMPLE_SCREENFLOW	>ScreenFlow</button>
-		<button id=SAMPLE_MINDMAP	>MindMap	</button>
-		<button id=SAMPLE_SHOWCASE	>Showcase	</button>
-		<button id=SAMPLE_ANCHORMATRIX	>AnchorMx	</button>
-		<button id=SAMPLE_CIRCUIT	>Circuit		</button>
-	</div>
+	<select id=SAMPLE_SELECT title="Load a sample diagram">
+		<option value=""							>Samples…</option>
+		<option value=Samples/GCP.zu				>GCP</option>
+		<option value=Samples/AWS.zu				>AWS</option>
+		<option value=Samples/Azure.zu				>Azure</option>
+		<option value=Samples/MultiCloud.zu			>MultiCloud</option>
+		<option value=Samples/Sequence.zu			>Sequence</option>
+		<option value=Samples/Scripts.zu			>Scripts</option>
+		<option value=Samples/Scroll.zu				>Scroll</option>
+		<option value=Samples/ScreenFlow.zu			>ScreenFlow</option>
+		<option value=Samples/MindMap.zu			>MindMap</option>
+		<option value=Samples/Showcase.zu			>Showcase</option>
+		<option value=Samples/AnchorMatrix.zu		>AnchorMatrix</option>
+		<option value=Samples/DiffAmp.zu			>Circuit ( amplifiers )</option>
+		<option value=Samples/PreampBlock.zu		>Preamp block diagram</option>
+	</select>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
 </div>
@@ -1047,18 +1037,13 @@ ASIDE_TOGGLE	.onclick = () => ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	!docu
 ApplyPanel( 'nav-collapsed',	NAV_TOGGLE,		localStorage.getItem( 'nav-collapsed'	) === '1', '‹', '›' )
 ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	localStorage.getItem( 'aside-collapsed'	) === '1', '›', '‹' )
 
-SAMPLE_GCP		.onclick = () => LoadSample( 'Samples/GCP.zu'		).catch( Report )
-SAMPLE_AWS		.onclick = () => LoadSample( 'Samples/AWS.zu'		).catch( Report )
-SAMPLE_AZURE	.onclick = () => LoadSample( 'Samples/Azure.zu'	).catch( Report )
-SAMPLE_SEQUENCE	.onclick = () => LoadSample( 'Samples/Sequence.zu'		).catch( Report )
-SAMPLE_MULTICLOUD	.onclick = () => LoadSample( 'Samples/MultiCloud.zu'	).catch( Report )
-SAMPLE_SCRIPTS		.onclick = () => LoadSample( 'Samples/Scripts.zu'		).catch( Report )
-SAMPLE_SCROLL		.onclick = () => LoadSample( 'Samples/Scroll.zu'		).catch( Report )
-SAMPLE_SCREENFLOW.onclick = () => LoadSample( 'Samples/ScreenFlow.zu'	).catch( Report )
-SAMPLE_MINDMAP	.onclick = () => LoadSample( 'Samples/MindMap.zu'	).catch( Report )
-SAMPLE_SHOWCASE		.onclick = () => LoadSample( 'Samples/Showcase.zu'		).catch( Report )
-SAMPLE_ANCHORMATRIX	.onclick = () => LoadSample( 'Samples/AnchorMatrix.zu'	).catch( Report )
-SAMPLE_CIRCUIT		.onclick = () => LoadSample( 'Samples/DiffAmp.zu'		).catch( Report )
+//	the select acts as a menu: it loads the pick and returns to its placeholder,
+//	so the same sample can be chosen again after editing
+SAMPLE_SELECT.onchange = () => {
+	const	path = SAMPLE_SELECT.value
+	SAMPLE_SELECT.value = ''
+	path && LoadSample( path ).catch( Report )
+}
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )
 DUMP_JOBS		.onclick = DumpJobs
