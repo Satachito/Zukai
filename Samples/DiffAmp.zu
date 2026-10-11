@@ -7,9 +7,9 @@
 					"type": "rect",
 					"cX": 560,
 					"cY": 40,
-					"rH": 300,
+					"rH": 440,
 					"rV": 12,
-					"html": "マイクプリアンプ（非反転増幅：ゲイン 1 + Rf/Rg ≈ 101 倍、約 +40dB）",
+					"html": "Mic preamp ( non-inverting: gain 1 + Rf/Rg ≈ 101×, about +40 dB )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -20,9 +20,9 @@
 					"type": "rect",
 					"cX": 560,
 					"cY": 590,
-					"rH": 300,
+					"rH": 440,
 					"rV": 12,
-					"html": "差動入力アンプ（ゲイン R2/R1 = 10 倍）",
+					"html": "Differential amplifier ( gain R2/R1 = 10× )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -81,7 +81,7 @@
 					"cY": 340,
 					"rH": 100,
 					"rV": 12,
-					"html": "ダイナミックマイク (XLR/TS)",
+					"html": "Dynamic mic (XLR/TS)",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -260,7 +260,7 @@
 					"cY": 362,
 					"rH": 60,
 					"rV": 12,
-					"html": "オペアンプ",
+					"html": "Op-amp",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -372,9 +372,9 @@
 					"type": "rect",
 					"cX": 650,
 					"cY": 96,
-					"rH": 80,
+					"rH": 100,
 					"rV": 12,
-					"html": "Rf 100kΩ（帰還）",
+					"html": "Rf 100kΩ (feedback)",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -414,7 +414,7 @@
 					"cY": 240,
 					"rH": 80,
 					"rV": 12,
-					"html": "出力",
+					"html": "Output",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -646,7 +646,7 @@
 					"cY": 634,
 					"rH": 110,
 					"rV": 12,
-					"html": "R2 100kΩ（フィードバック）",
+					"html": "R2 100kΩ (feedback)",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -672,7 +672,7 @@
 					"cY": 1084,
 					"rH": 80,
 					"rV": 12,
-					"html": "GND（または Vref）",
+					"html": "GND (or Vref)",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -685,7 +685,7 @@
 					"cY": 964,
 					"rH": 60,
 					"rV": 12,
-					"html": "オペアンプ",
+					"html": "Op-amp",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -698,7 +698,7 @@
 					"cY": 840,
 					"rH": 90,
 					"rV": 12,
-					"html": "出力",
+					"html": "Output",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -709,9 +709,9 @@
 					"type": "rect",
 					"cX": 700,
 					"cY": 1176,
-					"rH": 340,
+					"rH": 440,
 					"rV": 12,
-					"html": "計装アンプ（3 オペアンプ：ゲイン 1 + 2Rf/Rg ≈ 10 倍、約 +20dB）",
+					"html": "Instrumentation amplifier ( 3 op-amps: gain 1 + 2Rf/Rg ≈ 10×, about +20 dB )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -1492,7 +1492,7 @@
 					"cY": 1546,
 					"rH": 40,
 					"rV": 12,
-					"html": "出力",
+					"html": "Output",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -1503,9 +1503,9 @@
 					"type": "rect",
 					"cX": 640,
 					"cY": 1954,
-					"rH": 340,
+					"rH": 440,
 					"rV": 12,
-					"html": "THAT1512 マイクプリアンプ（ゲイン 0.5 + 5kΩ/RG ≈ 10 倍、約 +20dB）",
+					"html": "THAT1512 mic preamp ( gain 0.5 + 5kΩ/RG ≈ 10×, about +20 dB )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -1976,7 +1976,448 @@
 					"cY": 2224,
 					"rH": 40,
 					"rV": 12,
-					"html": "出力",
+					"html": "Output",
+					"style": ";display:grid;place-items:center start;font-size:14px"
+				},
+				{}
+			],
+			[
+				"title.sum",
+				{
+					"type": "rect",
+					"cX": 560,
+					"cY": 2599.0,
+					"rH": 440,
+					"rV": 12,
+					"html": "Inverting summer ( Vout = −Rf × (V1/R1 + V2/R2 + V3/R3 + V4/R4) )",
+					"style": ";display:grid;place-items:center center;font-size:16px"
+				},
+				{}
+			],
+			[
+				"sum.in1",
+				{
+					"type": "ellipse",
+					"cX": 200,
+					"cY": 2709.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.in1",
+				{
+					"type": "rect",
+					"cX": 140,
+					"cY": 2709.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "IN1",
+					"style": ";display:grid;place-items:center end;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.R1",
+				{
+					"type": "SVG",
+					"cX": 320,
+					"cY": 2709.0,
+					"rH": 50.0,
+					"rV": 12.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMDAgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0ibGlnaHQtZGFyaygjMDAwMDAwLCAjZmZmZmZmKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGRhdGEtenUtcGlucz0neyJhIjpbMCwwLjVdLCJiIjpbMSwwLjVdfSc+PHBhdGggZD0iTTAgMTJIMjBsNSAtOWwxMCAxOGwxMCAtMThsMTAgMThsMTAgLTE4bDEwIDE4bDUgLTlIMTAwIi8+PC9zdmc+Cg==",
+					"pins": {
+						"a": [
+							0,
+							0.5
+						],
+						"b": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.R1",
+				{
+					"type": "rect",
+					"cX": 320,
+					"cY": 2685.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "R1 10kΩ",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.in2",
+				{
+					"type": "ellipse",
+					"cX": 200,
+					"cY": 2789.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.in2",
+				{
+					"type": "rect",
+					"cX": 140,
+					"cY": 2789.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "IN2",
+					"style": ";display:grid;place-items:center end;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.R2",
+				{
+					"type": "SVG",
+					"cX": 320,
+					"cY": 2789.0,
+					"rH": 50.0,
+					"rV": 12.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMDAgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0ibGlnaHQtZGFyaygjMDAwMDAwLCAjZmZmZmZmKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGRhdGEtenUtcGlucz0neyJhIjpbMCwwLjVdLCJiIjpbMSwwLjVdfSc+PHBhdGggZD0iTTAgMTJIMjBsNSAtOWwxMCAxOGwxMCAtMThsMTAgMThsMTAgLTE4bDEwIDE4bDUgLTlIMTAwIi8+PC9zdmc+Cg==",
+					"pins": {
+						"a": [
+							0,
+							0.5
+						],
+						"b": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.R2",
+				{
+					"type": "rect",
+					"cX": 320,
+					"cY": 2765.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "R2 10kΩ",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.in3",
+				{
+					"type": "ellipse",
+					"cX": 200,
+					"cY": 2869.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.in3",
+				{
+					"type": "rect",
+					"cX": 140,
+					"cY": 2869.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "IN3",
+					"style": ";display:grid;place-items:center end;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.R3",
+				{
+					"type": "SVG",
+					"cX": 320,
+					"cY": 2869.0,
+					"rH": 50.0,
+					"rV": 12.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMDAgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0ibGlnaHQtZGFyaygjMDAwMDAwLCAjZmZmZmZmKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGRhdGEtenUtcGlucz0neyJhIjpbMCwwLjVdLCJiIjpbMSwwLjVdfSc+PHBhdGggZD0iTTAgMTJIMjBsNSAtOWwxMCAxOGwxMCAtMThsMTAgMThsMTAgLTE4bDEwIDE4bDUgLTlIMTAwIi8+PC9zdmc+Cg==",
+					"pins": {
+						"a": [
+							0,
+							0.5
+						],
+						"b": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.R3",
+				{
+					"type": "rect",
+					"cX": 320,
+					"cY": 2845.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "R3 10kΩ",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.in4",
+				{
+					"type": "ellipse",
+					"cX": 200,
+					"cY": 2949.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.in4",
+				{
+					"type": "rect",
+					"cX": 140,
+					"cY": 2949.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "IN4",
+					"style": ";display:grid;place-items:center end;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.R4",
+				{
+					"type": "SVG",
+					"cX": 320,
+					"cY": 2949.0,
+					"rH": 50.0,
+					"rV": 12.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMDAgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0ibGlnaHQtZGFyaygjMDAwMDAwLCAjZmZmZmZmKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGRhdGEtenUtcGlucz0neyJhIjpbMCwwLjVdLCJiIjpbMSwwLjVdfSc+PHBhdGggZD0iTTAgMTJIMjBsNSAtOWwxMCAxOGwxMCAtMThsMTAgMThsMTAgLTE4bDEwIDE4bDUgLTlIMTAwIi8+PC9zdmc+Cg==",
+					"pins": {
+						"a": [
+							0,
+							0.5
+						],
+						"b": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.R4",
+				{
+					"type": "rect",
+					"cX": 320,
+					"cY": 2925.0,
+					"rH": 50,
+					"rV": 12,
+					"html": "R4 10kΩ",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.bus2",
+				{
+					"type": "ellipse",
+					"cX": 440,
+					"cY": 2789.0,
+					"rH": 4,
+					"rV": 4
+				},
+				{
+					"fill": "light-dark(#000000, #ffffff)"
+				}
+			],
+			[
+				"sum.bus3",
+				{
+					"type": "ellipse",
+					"cX": 440,
+					"cY": 2869.0,
+					"rH": 4,
+					"rV": 4
+				},
+				{
+					"fill": "light-dark(#000000, #ffffff)"
+				}
+			],
+			[
+				"sum.nS",
+				{
+					"type": "ellipse",
+					"cX": 500,
+					"cY": 2789.0,
+					"rH": 4,
+					"rV": 4
+				},
+				{
+					"fill": "light-dark(#000000, #ffffff)"
+				}
+			],
+			[
+				"sum.opamp",
+				{
+					"type": "SVG",
+					"cX": 650,
+					"cY": 2849.0,
+					"rH": 90.0,
+					"rV": 100.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMTgwIDIwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJsaWdodC1kYXJrKCMwMDAwMDAsICNmZmZmZmYpIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZGF0YS16dS1waW5zPSd7ImluLSI6WzAsMC4yXSwiaW4rIjpbMCwwLjhdLCJvdXQiOlsxLDAuNV19Jz48cGF0aCBkPSJNMCA0MEgzME0wIDE2MEgzME0xNzAgMTAwSDE4ME0zMCAwVjIwMEwxNzAgMTAwWk00MCA0MEg1Mk00MCAxNjBINTJNNDYgMTU0VjE2NiIvPjwvc3ZnPgo=",
+					"pins": {
+						"in-": [
+							0,
+							0.2
+						],
+						"in+": [
+							0,
+							0.8
+						],
+						"out": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.opamp",
+				{
+					"type": "rect",
+					"cX": 670,
+					"cY": 2971.0,
+					"rH": 60,
+					"rV": 12,
+					"html": "Op-amp",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.Rf",
+				{
+					"type": "SVG",
+					"cX": 650,
+					"cY": 2689.0,
+					"rH": 50.0,
+					"rV": 12.0,
+					"SVG": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAxMDAgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0ibGlnaHQtZGFyaygjMDAwMDAwLCAjZmZmZmZmKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGRhdGEtenUtcGlucz0neyJhIjpbMCwwLjVdLCJiIjpbMSwwLjVdfSc+PHBhdGggZD0iTTAgMTJIMjBsNSAtOWwxMCAxOGwxMCAtMThsMTAgMThsMTAgLTE4bDEwIDE4bDUgLTlIMTAwIi8+PC9zdmc+Cg==",
+					"pins": {
+						"a": [
+							0,
+							0.5
+						],
+						"b": [
+							1,
+							0.5
+						]
+					}
+				},
+				{}
+			],
+			[
+				"label.sum.Rf",
+				{
+					"type": "rect",
+					"cX": 650,
+					"cY": 2665.0,
+					"rH": 100,
+					"rV": 12,
+					"html": "Rf 10kΩ (feedback)",
+					"style": ";display:grid;place-items:center center;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.nOut",
+				{
+					"type": "ellipse",
+					"cX": 800,
+					"cY": 2849.0,
+					"rH": 4,
+					"rV": 4
+				},
+				{
+					"fill": "light-dark(#000000, #ffffff)"
+				}
+			],
+			[
+				"sum.vref",
+				{
+					"type": "ellipse",
+					"cX": 520,
+					"cY": 2989.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.vref",
+				{
+					"type": "rect",
+					"cX": 574,
+					"cY": 2989.0,
+					"rH": 40,
+					"rV": 12,
+					"html": "Vref",
+					"style": ";display:grid;place-items:center start;font-size:14px"
+				},
+				{}
+			],
+			[
+				"sum.out",
+				{
+					"type": "ellipse",
+					"cX": 900,
+					"cY": 2849.0,
+					"rH": 6,
+					"rV": 6
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				"label.sum.out",
+				{
+					"type": "rect",
+					"cX": 960,
+					"cY": 2849.0,
+					"rH": 40,
+					"rV": 12,
+					"html": "Output",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -3177,6 +3618,267 @@
 					"headF": false,
 					"headT": false,
 					"anchorF": "b",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.in1",
+					"sum.R1"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "a"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.in2",
+					"sum.R2"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "a"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.in3",
+					"sum.R3"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "a"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.in4",
+					"sum.R4"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "a"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.R1",
+					"sum.bus2"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "b",
+					"anchorT": "T",
+					"corner": "sharp"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.R2",
+					"sum.bus2"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "b",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.R3",
+					"sum.bus3"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "b",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.R4",
+					"sum.bus3"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "b",
+					"anchorT": "B",
+					"corner": "sharp"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.bus3",
+					"sum.bus2"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "T",
+					"anchorT": "B"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.bus2",
+					"sum.nS"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.nS",
+					"sum.opamp"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
+					"anchorT": "in-"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.nS",
+					"sum.Rf"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "T",
+					"anchorT": "a",
+					"corner": "sharp"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.Rf",
+					"sum.nOut"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "b",
+					"anchorT": "T",
+					"corner": "sharp"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.vref",
+					"sum.opamp"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "T",
+					"anchorT": "in+",
+					"corner": "sharp"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.opamp",
+					"sum.nOut"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "out",
+					"anchorT": "L"
+				},
+				{
+					"stroke": "light-dark(#000000, #ffffff)",
+					"lineWidth": 2
+				}
+			],
+			[
+				[
+					"sum.nOut",
+					"sum.out"
+				],
+				{
+					"headF": false,
+					"headT": false,
+					"anchorF": "R",
 					"anchorT": "L"
 				},
 				{
