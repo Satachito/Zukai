@@ -2443,7 +2443,7 @@
 					"cY": 3107,
 					"rH": 440,
 					"rV": 12,
-					"html": "L2 ∥ C2 and L4 ∥ C4 resonate at the two stopband notches; values follow from fc, ripple and attenuation",
+					"html": "fp = 20 kHz ( 0.1 dB ripple, −3 dB at 22.3 kHz ) · ≥ 60 dB from 40.9 kHz · notches at 42.7 / 66.6 kHz · Rs = RL = 600 Ω",
 					"style": ";display:grid;place-items:center center;font-size:12px"
 				},
 				{}
@@ -2529,9 +2529,9 @@
 					"type": "rect",
 					"cX": 260,
 					"cY": 3225,
-					"rH": 30,
+					"rH": 50,
 					"rV": 12,
-					"html": "Rs",
+					"html": "Rs 600Ω",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -2575,11 +2575,11 @@
 				"label.ell.C1",
 				{
 					"type": "rect",
-					"cX": 404,
+					"cX": 430,
 					"cY": 3331,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "C1",
+					"html": "C1 13.1nF",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -2641,11 +2641,11 @@
 				"label.ell.C3",
 				{
 					"type": "rect",
-					"cX": 624,
+					"cX": 650,
 					"cY": 3331,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "C3",
+					"html": "C3 23.9nF",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -2696,9 +2696,9 @@
 					"type": "rect",
 					"cX": 470,
 					"cY": 3279,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "L2",
+					"html": "L2 5.51mH",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -2731,9 +2731,9 @@
 					"type": "rect",
 					"cX": 470,
 					"cY": 3149,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "C2",
+					"html": "C2 2.52nF",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -2777,11 +2777,11 @@
 				"label.ell.C5",
 				{
 					"type": "rect",
-					"cX": 844,
+					"cX": 870,
 					"cY": 3331,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "C5",
+					"html": "C5 14.5nF",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
@@ -2832,9 +2832,9 @@
 					"type": "rect",
 					"cX": 690,
 					"cY": 3279,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "L4",
+					"html": "L4 6.19mH",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -2867,9 +2867,9 @@
 					"type": "rect",
 					"cX": 690,
 					"cY": 3149,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "C4",
+					"html": "C4 922pF",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -2913,11 +2913,11 @@
 				"label.ell.RL",
 				{
 					"type": "rect",
-					"cX": 964,
+					"cX": 990,
 					"cY": 3331,
-					"rH": 24,
+					"rH": 50,
 					"rV": 12,
-					"html": "RL",
+					"html": "RL 600Ω",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
