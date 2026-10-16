@@ -99,7 +99,8 @@ run	= async () => {
 		await page.locator( '#MAIN_EDITOR' ).waitFor( { state: 'attached' } )
 
 		log( '1/4 — Load MultiCloud sample' )
-		await page.locator( '#SAMPLE_SELECT' ).selectOption( 'Samples/MultiCloud.zu' )
+		await page.locator( '#SAMPLE_BUTTON' ).click()
+		await page.locator( '#SAMPLE_MENU [data-zu="Samples/MultiCloud.zu"]' ).click()
 		await sleep( 900 )
 
 		const

@@ -182,11 +182,11 @@ cursorTo	= ( page, x, y ) => page.evaluate( ( [ x, y ] ) => {
 	await rec.hold( .3 )
 }
 
-//	move to the Samples… select and pick a sample ( the native popup is not recorded )
-,	pickSample	= ( page, rec, name, sec ) => clickEl(
-	page, rec, page.locator( '#SAMPLE_SELECT' ), sec
-,	_ => _.selectOption( `Samples/${ name }.zu` )
-)
+//	open the Samples menu and click a sample in it
+,	pickSample	= async ( page, rec, name, sec ) => {
+	await clickEl( page, rec, page.locator( '#SAMPLE_BUTTON' ), sec )
+	await clickEl( page, rec, page.locator( `#SAMPLE_MENU [data-zu="Samples/${ name }.zu"]` ), .35 )
+}
 
 ,	newPage	= async ( browser, rec, { nav = true, aside = true } = {} ) => {
 	const

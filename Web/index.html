@@ -167,21 +167,14 @@ body.aside-collapsed	> aside	{ display: none }
 ;	gap				: 4px
 }
 .sample-panel .file-btn			{ width: auto }
-.sample-panel select {
-;	box-sizing		: border-box
-;	height			: 21px	/* same as the header's .file-btn buttons */
+/*	the Samples button's drop-down ( a popover: closes on outside click / Esc ) */
+#SAMPLE_MENU {
+;	position		: fixed
+;	inset			: auto
 ;	margin			: 0
-;	padding			: 0 6px
-;	border			: 1px solid var( --color-popup-border )
-;	border-radius	: 5px
-;	background		: var( --color-popup-bg )
-;	color			: inherit
-;	font-family		: inherit
-;	font-size		: 11px
-;	cursor			: pointer
 }
-.sample-panel select:hover {
-;	background		: var( --color-popup-hover )
+#SAMPLE_MENU:popover-open {
+;	display			: block
 }
 main-editor {
 ;	overflow				: scroll
@@ -549,7 +542,8 @@ summary {
 
 #LINK_MENU
 ,	#HEAD_MENU
-,	#NODE_MENU {
+,	#NODE_MENU
+,	#SAMPLE_MENU {
 ;	display			: none
 ;	position		: fixed
 ;	z-index			: 2000
@@ -564,7 +558,8 @@ summary {
 }
 #LINK_MENU > button
 ,	#HEAD_MENU > button
-,	#NODE_MENU > button {
+,	#NODE_MENU > button
+,	#SAMPLE_MENU > button {
 ;	display			: block
 ;	width			: 100%
 ;	text-align		: left
@@ -577,7 +572,8 @@ summary {
 }
 #LINK_MENU > button:hover
 ,	#HEAD_MENU > button:hover
-,	#NODE_MENU > button:hover {
+,	#NODE_MENU > button:hover
+,	#SAMPLE_MENU > button:hover {
 ;	background		: var( --color-popup-hover )
 }
 #HEAD_MENU > button.head-opt::before {
@@ -833,22 +829,25 @@ aside input[type=checkbox]
 		<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><circle cx="8" cy="8" r="6"/><path d="M6.3 6.3a1.8 1.8 0 1 1 2.6 1.6c-.6.3-.9.7-.9 1.3"/><path d="M8 11.4v.1"/></svg>
 		<span>Help</span>
 	</button>
-	<select id=SAMPLE_SELECT title="Load a sample diagram">
-		<option value=""							>Samples…</option>
-		<option value=Samples/GCP.zu				>GCP</option>
-		<option value=Samples/AWS.zu				>AWS</option>
-		<option value=Samples/Azure.zu				>Azure</option>
-		<option value=Samples/MultiCloud.zu			>MultiCloud</option>
-		<option value=Samples/Sequence.zu			>Sequence</option>
-		<option value=Samples/Scripts.zu			>Scripts</option>
-		<option value=Samples/Scroll.zu				>Scroll</option>
-		<option value=Samples/ScreenFlow.zu			>ScreenFlow</option>
-		<option value=Samples/MindMap.zu			>MindMap</option>
-		<option value=Samples/Showcase.zu			>Showcase</option>
-		<option value=Samples/AnchorMatrix.zu		>AnchorMatrix</option>
-		<option value=Samples/DiffAmp.zu			>Circuit ( amplifiers )</option>
-		<option value=Samples/PreampBlock.zu		>Preamp block diagram</option>
-	</select>
+	<button id=SAMPLE_BUTTON class=file-btn popovertarget=SAMPLE_MENU aria-haspopup=menu title="Load a sample diagram">
+		<span>Samples</span>
+		<svg viewBox="0 0 16 16" aria-hidden=true fill=none stroke=currentColor stroke-width=1.5 stroke-linecap=round stroke-linejoin=round><path d="M4 6l4 4 4-4"/></svg>
+	</button>
+	<div id=SAMPLE_MENU popover role=menu>
+		<button data-zu=Samples/GCP.zu>GCP</button>
+		<button data-zu=Samples/AWS.zu>AWS</button>
+		<button data-zu=Samples/Azure.zu>Azure</button>
+		<button data-zu=Samples/MultiCloud.zu>MultiCloud</button>
+		<button data-zu=Samples/Sequence.zu>Sequence</button>
+		<button data-zu=Samples/Scripts.zu>Scripts</button>
+		<button data-zu=Samples/Scroll.zu>Scroll</button>
+		<button data-zu=Samples/ScreenFlow.zu>ScreenFlow</button>
+		<button data-zu=Samples/MindMap.zu>MindMap</button>
+		<button data-zu=Samples/Showcase.zu>Showcase</button>
+		<button data-zu=Samples/AnchorMatrix.zu>AnchorMatrix</button>
+		<button data-zu=Samples/DiffAmp.zu>Circuit ( amplifiers )</button>
+		<button data-zu=Samples/PreampBlock.zu>Preamp block diagram</button>
+	</div>
 </header>
 <button id=ASIDE_TOGGLE	class=panel-toggle title="Toggle right panel (editors)">›</button>
 </div>
@@ -1094,17 +1093,19 @@ ASIDE_TOGGLE	.onclick = () => ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	!docu
 ApplyPanel( 'nav-collapsed',	NAV_TOGGLE,		localStorage.getItem( 'nav-collapsed'	) === '1', '‹', '›' )
 ApplyPanel( 'aside-collapsed',	ASIDE_TOGGLE,	localStorage.getItem( 'aside-collapsed'	) === '1', '›', '‹' )
 
-//	the select acts as a menu: it loads the pick and returns to its placeholder,
-//	so the same sample can be chosen again after editing
-HELP_BUTTON.onclick = () => HELP_DIALOG.showModal()
-HELP_DIALOG_CLOSE.onclick = () => HELP_DIALOG.close()
-//	a click on the backdrop ( the dialog element itself ) closes it too
-HELP_DIALOG.onclick = ev => ev.target === HELP_DIALOG && HELP_DIALOG.close()
-
-SAMPLE_SELECT.onchange = () => {
-	const	path = SAMPLE_SELECT.value
-	SAMPLE_SELECT.value = ''
-	path && LoadSample( path ).catch( Report )
+//	Samples menu: drop it under the button's right edge when it opens; a pick
+//	loads that sample and closes the menu
+SAMPLE_MENU.addEventListener( 'beforetoggle', ev => {
+	if	( ev.newState !== 'open' ) return
+	const	r = SAMPLE_BUTTON.getBoundingClientRect()
+	SAMPLE_MENU.style.top	= `${ r.bottom + 4 }px`
+	SAMPLE_MENU.style.right	= `${ document.documentElement.clientWidth - r.right }px`
+} )
+SAMPLE_MENU.onclick = ev => {
+	const	path = ev.target.closest( 'button[data-zu]' )?.dataset.zu
+	if	( !path ) return
+	SAMPLE_MENU.hidePopover()
+	LoadSample( path ).catch( Report )
 }
 
 DUMP_ZU		.onclick = () => console.log( JSON.stringify( app, null, '\t' ) )

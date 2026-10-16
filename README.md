@@ -35,7 +35,7 @@ Open the page and start drawing — no build step for the hosted demo. Diagrams 
 ## Quick start (demo)
 
 1. Open the [live demo](https://satachito.github.io/Zukai/).
-2. Pick an example from the **Samples…** menu in the top bar.
+2. Pick an example from the **Samples** menu in the top bar.
 3. Drag on the canvas to move nodes; use the mode selector to create nodes and links.
 4. Expand **GCP / Azure / AWS / Lucide / Circuit** in the left panel to place icons.
 5. Press **↓** to download the diagram as a `.zu` file.
