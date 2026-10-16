@@ -4649,7 +4649,7 @@
 					"cY": 5414,
 					"rH": 440,
 					"rV": 12,
-					"html": "2nd-order Sallen-Key low-pass ( unity gain, Butterworth, fc 20 kHz )",
+					"html": "2nd-order Sallen-Key low-pass ( unity gain, Butterworth, fc 23 kHz )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -4662,7 +4662,7 @@
 					"cY": 5444,
 					"rH": 440,
 					"rV": 18,
-					"html": "f0 = 1 / ( 2π R √( C1 C2 ) ) = 19.97 kHz · Q = √( C1 / C2 ) / 2 = 0.720 · R1 = R2 = R<br>C1 sets the feedback ( peaking ), C2 the input to the follower; −3 dB at 20.3 kHz",
+					"html": "f0 = 1 / ( 2π R √( C1 C2 ) ) = 22.74 kHz · Q = √( C1 / C2 ) / 2 = 0.720 · R1 = R2 = R<br>C1 sets the feedback ( peaking ), C2 the input to the follower; −3 dB at 23.1 kHz",
 					"style": ";display:grid;place-items:center center;font-size:12px"
 				},
 				{}
@@ -4724,7 +4724,7 @@
 					"cY": 5730,
 					"rH": 50,
 					"rV": 12,
-					"html": "R1 2.05k",
+					"html": "R1 1.8k",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -4772,7 +4772,7 @@
 					"cY": 5730,
 					"rH": 50,
 					"rV": 12,
-					"html": "R2 2.05k",
+					"html": "R2 1.8k",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
