@@ -4649,7 +4649,7 @@
 					"cY": 5414,
 					"rH": 440,
 					"rV": 12,
-					"html": "2nd-order Sallen-Key low-pass ( unity gain, Butterworth, fc 23 kHz )",
+					"html": "2nd-order Sallen-Key low-pass ( unity gain, Butterworth, fc 23 kHz, E3 parts )",
 					"style": ";display:grid;place-items:center center;font-size:16px"
 				},
 				{}
@@ -4662,7 +4662,7 @@
 					"cY": 5444,
 					"rH": 440,
 					"rV": 18,
-					"html": "f0 = 1 / ( 2π R √( C1 C2 ) ) = 22.74 kHz · Q = √( C1 / C2 ) / 2 = 0.720 · R1 = R2 = R<br>C1 sets the feedback ( peaking ), C2 the input to the follower; −3 dB at 23.1 kHz",
+					"html": "f0 = 1 / ( 2π R √( C1 C2 ) ) = 22.50 kHz · Q = √( C1 / C2 ) / 2 = 0.731 · R1 = R2 = R<br>C1 sets the feedback ( peaking ), C2 the input to the follower; −3 dB at 23.2 kHz",
 					"style": ";display:grid;place-items:center center;font-size:12px"
 				},
 				{}
@@ -4724,7 +4724,7 @@
 					"cY": 5730,
 					"rH": 50,
 					"rV": 12,
-					"html": "R1 1.8k",
+					"html": "R1 2.2k",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -4772,7 +4772,7 @@
 					"cY": 5730,
 					"rH": 50,
 					"rV": 12,
-					"html": "R2 1.8k",
+					"html": "R2 2.2k",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -4885,7 +4885,7 @@
 					"cY": 5482,
 					"rH": 50,
 					"rV": 12,
-					"html": "C1 5.6nF",
+					"html": "C1 4.7nF",
 					"style": ";display:grid;place-items:center center;font-size:14px"
 				},
 				{}
@@ -4920,7 +4920,7 @@
 					"cY": 5834,
 					"rH": 50,
 					"rV": 12,
-					"html": "C2 2.7nF",
+					"html": "C2 2.2nF",
 					"style": ";display:grid;place-items:center start;font-size:14px"
 				},
 				{}
